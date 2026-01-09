@@ -8,7 +8,7 @@ export const TableWrapper = styled.div`
 
   @media (max-width: 550px) {
     table {
-      width: 550px;
+      width: 34.375rem;
     }
   }
 `;

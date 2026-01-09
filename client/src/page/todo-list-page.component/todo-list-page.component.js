@@ -3,7 +3,7 @@ import { Dropdown } from '@/components/antd/dropdown.component';
 import { message } from '@/components/antd/message.component';
 import { Space } from '@/components/antd/space.component';
 import { ThemeSelector } from '@/components/shared/theme-selector.component';
-import { API_ENDPOINTS, LOCALSTORAGE_KEYS, MODAL_TITLES } from '@/utilities/constant';
+import { API_ENDPOINTS, MODAL_TITLES, STORAGE_KEYS } from '@/utilities/constant';
 import { todoApi } from '@/utilities/services/api.service';
 import { getLocalStorage, setLocalStorage } from '@/utilities/services/storage.service';
 import { removeVietnameseTones } from '@/utilities/services/text-processing.service';
@@ -19,7 +19,7 @@ import { Header } from './components/todo-list-page-header.component';
 import { TodoList } from './components/todo-list-table.component';
 import { Wrapper } from './styles/todo-list-page.styled';
 
-const { TODO_LIST, ORIGINAL_LIST } = LOCALSTORAGE_KEYS;
+const { TODO_LIST, ORIGINAL_LIST } = STORAGE_KEYS;
 const { DELETE_ALL_TASKS, DELETE_A_TASK } = MODAL_TITLES;
 
 // Main TodoListPage component that manages the entire todo list application
@@ -198,7 +198,7 @@ export const TodoListPage = () => {
       const response = await todoApi.post(API_ENDPOINTS.LOGOUT);
 
       message.success(response.data.message, 1);
-      Cookies.remove(LOCALSTORAGE_KEYS.AUTH_TOKEN);
+      Cookies.remove(STORAGE_KEYS.AUTH_TOKEN);
       navigate('/login', { replace: true });
     } catch (e) {
       console.error(e);
@@ -242,7 +242,7 @@ export const TodoListPage = () => {
   return (
     <Wrapper>
       <Space>
-        <Dropdown menu={{ items: userMenuItems }} arrow placement="bottomRight" trigger={['click']}>
+        <Dropdown menu={{ items: userMenuItems }} arrow placement="bottomRight">
           <Button type="text" icon={<FontAwesomeIcon icon={faUser} style={{ color: 'var(--text-color)' }} />} />
         </Dropdown>
 

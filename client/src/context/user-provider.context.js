@@ -1,8 +1,8 @@
-import { LOCALSTORAGE_KEYS } from '@/utilities/constant';
+import { STORAGE_KEYS } from '@/utilities/constant';
 import { getLocalStorage } from '@/utilities/services/storage.service';
 import { createContext, useContext, useState } from 'react';
 
-const { USER_ACCOUNT } = LOCALSTORAGE_KEYS;
+const { USER_ACCOUNT } = STORAGE_KEYS;
 
 const UserContext = createContext(null);
 

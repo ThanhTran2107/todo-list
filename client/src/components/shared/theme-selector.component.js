@@ -1,19 +1,13 @@
+import { getLocalStorage, setLocalStorage } from '@/utilities/services/storage.service';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { some } from 'lodash-es';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { getLocalStorage, setLocalStorage } from '@/utilities/services/storage.service';
-import {
-  ATTRIBUTE_DATA,
-  LOCALSTORAGE_KEYS,
-  THEME_MODES,
-  THEME_OPTIONS,
-  THEME_OPTIONS_HASH,
-} from '../../utilities/constant';
+import { ATTRIBUTE_DATA, STORAGE_KEYS, THEME_MODES, THEME_OPTIONS, THEME_OPTIONS_HASH } from '../../utilities/constant';
 
 const { LIGHT, DARK } = THEME_MODES;
-const { THEME } = LOCALSTORAGE_KEYS;
+const { THEME } = STORAGE_KEYS;
 const { DATA_THEME } = ATTRIBUTE_DATA;
 
 const ThemeButton = styled(FontAwesomeIcon)`

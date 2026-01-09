@@ -1,7 +1,7 @@
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { keyBy } from 'lodash-es';
 
-// API endpoints
+// API endpoints and paths
 export const API_ENDPOINTS = Object.freeze({
   LOGIN: '/auth/login',
   REGISTER: '/auth/register',
@@ -10,14 +10,14 @@ export const API_ENDPOINTS = Object.freeze({
   LOGOUT: '/auth/logout',
 });
 
-export const CUSTOM_NOTIFICATION = Object.freeze({
-  pauseOnHover: false,
-  duration: 1,
-  closeIcon: false,
+export const PAGE_PATH = Object.freeze({
+  TODO_LIST: '/todos',
+  LOGIN: '/login',
+  REGISTER: '/register',
 });
 
-// Session storage keys
-export const SESSIONSTORAGE_KEYS = Object.freeze({
+// Storage keys
+export const STORAGE_KEYS = Object.freeze({
   COMPANY_USER: 'company-user',
   PERSONAL_USER: 'personal-user',
   AUTH_TOKEN: 'auth_token',
@@ -31,21 +31,13 @@ export const SESSIONSTORAGE_KEYS = Object.freeze({
   TRIGGER_SIGN_REQUEST: 'trigger-sign-request',
   START_DATE: 'start-date',
   END_DATE: 'end-date',
-});
-
-// Local storage keys
-export const LOCALSTORAGE_KEYS = Object.freeze({
   TODO_LIST: 'todoList',
   ORIGINAL_LIST: 'originalList',
   THEME: 'theme',
-  AUTH_TOKEN: 'auth_token',
+  USER_ACCOUNT: 'user-account',
 });
 
-export const PAGE_PATH = Object.freeze({
-  TODO_LIST: '/todo-list',
-  LOGIN: '/login',
-});
-
+// Theme constants
 export const ATTRIBUTE_DATA = Object.freeze({
   DATA_THEME: 'data-theme',
 });
@@ -62,45 +54,52 @@ export const THEME_OPTIONS = [
 
 export const THEME_OPTIONS_HASH = keyBy(THEME_OPTIONS, 'mode');
 
+// UI constants
+export const CUSTOM_NOTIFICATION = Object.freeze({
+  pauseOnHover: false,
+  duration: 1,
+  closeIcon: false,
+});
+
 export const MODAL_TITLES = Object.freeze({
   DELETE_A_TASK: 'Are you sure you want to delete this task?',
   DELETE_ALL_TASKS: 'Are you sure you want to delete all tasks?',
 });
 
 export const COLORS = Object.freeze({
-  //NEUTRAL COLORS
+  // NEUTRAL COLORS
   BLACK: '#000000',
   WHITE: '#FFFFFF',
 
-  //BLUE COLORS
+  // BLUE COLORS
   BRIGHT_BLUE: '#1677ff',
   BLUE: '#4096ff',
   BLUE_GREEN: '#249995',
 
-  //GRAY COLORS
+  // GRAY COLORS
   FOG_GRAY: '#726f6f75',
   DARK_GRAY: '#3b3b3b',
   LIGHT_GRAY: '#e6e6e6',
   MEDIUM_GRAY: '#666',
 
-  //PINK COLORS
+  // PINK COLORS
   DARK_PINK: '#70114b',
   DEEP_PINK: '#ca077e',
 
-  //RED COLORS
+  // RED COLORS
   RED: 'red',
 
-  //GREEN COLORS
+  // GREEN COLORS
   GREEN: 'green',
   BRIGHT_GREEN: '#47e247',
 
-  //YELLOW COLORS
+  // YELLOW COLORS
   CYBER_YELLOW: '#ffd809',
 
-  //SHADE COLOR
+  // SHADE COLORS
   BLACK_55: 'rgb(0 0 0 / 55%)',
   GRAY_55: '#7f7f7f55',
 
-  //SHADOW
-  BOX_SHADOW: '0 4px 6px rgba(0, 0, 0, 0.1)',
+  // SHADOW
+  BOX_SHADOW: '0 0.25rem 0.375rem rgba(0, 0, 0, 0.1)',
 });

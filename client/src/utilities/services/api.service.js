@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-import { LOCALSTORAGE_KEYS } from '../constant';
+import { STORAGE_KEYS } from '../constant';
 import { getCookie } from './storage.service';
 
-const { AUTH_TOKEN } = LOCALSTORAGE_KEYS;
+const { AUTH_TOKEN } = STORAGE_KEYS;
 
 // Create axios instance for Todo API
 export const todoApi = axios.create({

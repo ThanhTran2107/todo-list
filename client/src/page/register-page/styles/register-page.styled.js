@@ -2,7 +2,7 @@ import { Typography } from '@/components/antd/typography.component';
 import { COLORS } from '@/utilities/constant';
 import styled from 'styled-components';
 
-export const LoginContainer = styled.div`
+export const RegisterContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +10,7 @@ export const LoginContainer = styled.div`
   background-color: var(--background-color);
 `;
 
-export const LoginForm = styled.div`
+export const RegisterForm = styled.div`
   width: 100%;
   max-width: 25rem;
   padding: 2rem;
@@ -29,7 +29,7 @@ export const FormTitle = styled.h2`
   color: ${COLORS.BLUE};
 `;
 
-export const RegisterLink = styled(Typography.Link)`
+export const LoginLink = styled(Typography.Link)`
   display: block;
   text-align: center;
   text-decoration: none;

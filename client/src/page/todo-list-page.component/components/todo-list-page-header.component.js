@@ -120,7 +120,7 @@ export const Header = ({
               marginRight: '0.5rem',
               backgroundColor: !hasCurrentTasks ? COLORS.LIGHT_GRAY : undefined,
               cursor: !hasCurrentTasks ? 'not-allowed' : 'pointer',
-              border: !hasCurrentTasks ? `1px solid ? ${COLORS.LIGHT_GRAY}` : undefined,
+              border: !hasCurrentTasks ? `0.0625rem solid ${COLORS.LIGHT_GRAY}` : undefined,
               borderRadius: !hasCurrentTasks ? '0.375rem' : undefined,
             }}
             options={options}

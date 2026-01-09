@@ -4,35 +4,31 @@ import { Image } from '@/components/antd/image.component';
 import { message } from '@/components/antd/message.component';
 import { Space } from '@/components/antd/space.component';
 import { TextField } from '@/components/antd/text-field.component';
-import { API_ENDPOINTS, PAGE_PATH, STORAGE_KEYS } from '@/utilities/constant';
+import { API_ENDPOINTS, PAGE_PATH } from '@/utilities/constant';
 import { todoApi } from '@/utilities/services/api.service';
-import { setCookie } from '@/utilities/services/storage.service';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { FormTitle, LoginContainer, LoginForm, RegisterLink } from './styles/login-page.styled';
+import { FormTitle, LoginLink, RegisterContainer, RegisterForm } from './styles/register-page.styled';
 
-const { AUTH_TOKEN } = STORAGE_KEYS;
-
-// Login page component with email and password fields, login and register buttons
-export const LoginPage = () => {
+// Register page component with email, password, and confirm password fields
+export const RegisterPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [form] = Form.useForm();
 
   const navigate = useNavigate();
 
-  const handleLogin = async values => {
+  const handleRegister = async values => {
     setIsLoading(true);
 
     try {
-      const response = await todoApi.post(API_ENDPOINTS.LOGIN, {
+      const response = await todoApi.post(API_ENDPOINTS.REGISTER, {
         email: values.email,
         password: values.password,
       });
 
-      message.success('Login successfully!', 1);
-      setCookie(AUTH_TOKEN, response.data.token);
-      navigate(PAGE_PATH.TODO_LIST, { replace: true });
+      message.success(response?.data?.message, 1);
+      navigate(PAGE_PATH.LOGIN, { replace: true });
     } catch (e) {
       console.error(e);
       message.error(e.response?.data?.error, 1);
@@ -42,9 +38,9 @@ export const LoginPage = () => {
   };
 
   return (
-    <LoginContainer>
-      <LoginForm>
-        <Form form={form} name="loginForm" layout="vertical" onFinish={handleLogin} autoComplete="off">
+    <RegisterContainer>
+      <RegisterForm>
+        <Form form={form} name="registerForm" layout="vertical" onFinish={handleRegister} autoComplete="off">
           <FormTitle>
             <Image
               preview={false}
@@ -52,7 +48,7 @@ export const LoginPage = () => {
               alt="Todo Icon"
               style={{ width: '3rem', height: '3rem', marginRight: '1rem' }}
             />
-            Login
+            Register
           </FormTitle>
 
           <Form.Item
@@ -69,22 +65,43 @@ export const LoginPage = () => {
           <Form.Item
             label="Password"
             name="password"
-            rules={[{ required: true, message: 'Please enter your password!' }]}
+            rules={[
+              { required: true, message: 'Please enter your password!' },
+              { min: 6, message: 'Password must be at least 6 characters!' },
+            ]}
           >
             <TextField.Password placeholder="Enter your password" />
+          </Form.Item>
+
+          <Form.Item
+            label="Confirm Password"
+            name="confirmPassword"
+            dependencies={['password']}
+            rules={[
+              { required: true, message: 'Please confirm your password!' },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue('password') === value) return Promise.resolve();
+
+                  return Promise.reject(new Error('Passwords do not match!'));
+                },
+              }),
+            ]}
+          >
+            <TextField.Password placeholder="Confirm your password" />
           </Form.Item>
 
           <Form.Item>
             <Space direction="vertical" style={{ width: '100%' }}>
               <Button type="primary" htmlType="submit" loading={isLoading} block style={{ marginTop: '0.5rem' }}>
-                Login
+                Register
               </Button>
 
-              <RegisterLink onClick={() => navigate(PAGE_PATH.REGISTER)}>Don't have an account?</RegisterLink>
+              <LoginLink onClick={() => navigate(PAGE_PATH.LOGIN)}>Already have an account?</LoginLink>
             </Space>
           </Form.Item>
         </Form>
-      </LoginForm>
-    </LoginContainer>
+      </RegisterForm>
+    </RegisterContainer>
   );
 };
