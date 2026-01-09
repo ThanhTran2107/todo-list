@@ -7,6 +7,7 @@ export const API_ENDPOINTS = Object.freeze({
   REGISTER: '/auth/register',
   TODOS: '/todos',
   TODO_BY_ID: '/todos/{id}',
+  LOGOUT: '/auth/logout',
 });
 
 export const CUSTOM_NOTIFICATION = Object.freeze({
@@ -38,7 +39,6 @@ export const LOCALSTORAGE_KEYS = Object.freeze({
   ORIGINAL_LIST: 'originalList',
   THEME: 'theme',
   AUTH_TOKEN: 'auth_token',
-  USER_ACCOUNT: 'user_account',
 });
 
 export const PAGE_PATH = Object.freeze({

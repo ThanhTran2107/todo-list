@@ -6,7 +6,7 @@ import { Space } from '@/components/antd/space.component';
 import { TextField } from '@/components/antd/text-field.component';
 import { API_ENDPOINTS, LOCALSTORAGE_KEYS, PAGE_PATH } from '@/utilities/constant';
 import { todoApi } from '@/utilities/services/api.service';
-import { setLocalStorage } from '@/utilities/services/storage.service';
+import { setCookie } from '@/utilities/services/storage.service';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,13 +16,13 @@ const { AUTH_TOKEN } = LOCALSTORAGE_KEYS;
 
 // Login page component with email and password fields, login and register buttons
 export const LoginPage = () => {
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [form] = Form.useForm();
 
   const navigate = useNavigate();
 
   const handleLogin = async values => {
-    setLoading(true);
+    setIsLoading(true);
 
     try {
       const response = await todoApi.post(API_ENDPOINTS.LOGIN, {
@@ -31,13 +31,13 @@ export const LoginPage = () => {
       });
 
       message.success('Login successfully!', 1);
-      setLocalStorage(AUTH_TOKEN, response.data.token);
+      setCookie(AUTH_TOKEN, response.data.token);
       navigate(PAGE_PATH.TODO_LIST, { replace: true });
     } catch (e) {
       console.error(e);
       message.error(e.response?.data?.error, 1);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -82,7 +82,7 @@ export const LoginPage = () => {
 
           <Form.Item>
             <Space direction="vertical" style={{ width: '100%' }}>
-              <Button type="primary" htmlType="submit" loading={loading} block style={{ marginTop: '0.5rem' }}>
+              <Button type="primary" htmlType="submit" loading={isLoading} block style={{ marginTop: '0.5rem' }}>
                 Login
               </Button>
 

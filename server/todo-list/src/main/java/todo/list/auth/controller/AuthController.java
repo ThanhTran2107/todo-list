@@ -1,5 +1,6 @@
 package todo.list.auth.controller;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -57,5 +58,17 @@ public class AuthController {
                     .entity(new ErrorResponse(e.getMessage(), Response.Status.UNAUTHORIZED.getStatusCode()))
                     .build();
         }
+    }
+
+    @POST
+    @Path("/logout")
+    @RolesAllowed("User")
+    @APIResponse(responseCode = "200", description = "User logout successfully", content = @Content(mediaType = "application/json", examples = @ExampleObject(name = "LogoutResponse Example", value = "{\n"
+            +
+            "   \"message\": \"Logged out successfully\"\n" +
+            "}")))
+    public Response logout() {
+        return Response.ok().entity(new MessageResponse("Logged out successfully!"))
+                .build();
     }
 }

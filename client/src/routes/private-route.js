@@ -1,23 +1,24 @@
+import { TodoListPage } from '@/page/todo-list-page.component/todo-list-page.component';
 import { LOCALSTORAGE_KEYS } from '@/utilities/constant';
-import { getLocalStorage } from '@/utilities/services/storage.service';
+import { getCookie } from '@/utilities/services/storage.service';
 import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
 const { AUTH_TOKEN } = LOCALSTORAGE_KEYS;
 
 export const PrivateRoute = ({ children }) => {
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const token = getLocalStorage(AUTH_TOKEN);
+    const token = getCookie(AUTH_TOKEN);
 
     if (token) setIsAuthenticated(true);
 
-    setLoading(false);
+    setIsLoading(false);
   }, []);
 
-  if (loading) return null;
+  if (isLoading) return null;
 
   return isAuthenticated ? children : <Navigate to="/login" replace />;
 };

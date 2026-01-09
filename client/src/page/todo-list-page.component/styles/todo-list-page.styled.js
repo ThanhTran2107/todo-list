@@ -8,5 +8,3 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: flex-end;
 `;
-
-

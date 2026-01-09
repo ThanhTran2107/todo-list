@@ -25,8 +25,8 @@ export const FormTitle = styled.h2`
   justify-content: center;
   text-align: center;
   margin-bottom: 2rem;
-  color: var(--text-color);
   font-size: 2rem;
+  color: ${COLORS.BLUE};
 `;
 
 export const RegisterLink = styled(Typography.Link)`

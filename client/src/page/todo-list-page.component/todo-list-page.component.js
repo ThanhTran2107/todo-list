@@ -1,10 +1,18 @@
+import { Button } from '@/components/antd/button.component';
+import { Dropdown } from '@/components/antd/dropdown.component';
 import { message } from '@/components/antd/message.component';
+import { Space } from '@/components/antd/space.component';
 import { ThemeSelector } from '@/components/shared/theme-selector.component';
-import { LOCALSTORAGE_KEYS, MODAL_TITLES } from '@/utilities/constant';
+import { API_ENDPOINTS, LOCALSTORAGE_KEYS, MODAL_TITLES } from '@/utilities/constant';
+import { todoApi } from '@/utilities/services/api.service';
 import { getLocalStorage, setLocalStorage } from '@/utilities/services/storage.service';
 import { removeVietnameseTones } from '@/utilities/services/text-processing.service';
+import { faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Cookies from 'js-cookie';
 import { filter, isEmpty, map } from 'lodash-es';
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { ConfirmDeletionModal } from './components/confirm-deletion-modal.component';
 import { Header } from './components/todo-list-page-header.component';
@@ -19,9 +27,13 @@ export const TodoListPage = () => {
   const [todoList, setTodoList] = useState([]);
   const [originalList, setOriginalList] = useState([]);
   const [searchedList, setSearchedList] = useState([]);
+
   const [completedCount, setCompletedCount] = useState(0);
   const [uncompletedCount, setUncompletedCount] = useState(0);
+
   const hasResetFilterRef = useRef(0);
+
+  const navigate = useNavigate();
 
   // Function to update completed and uncompleted task counts
   const updateStatistics = list => {
@@ -180,6 +192,29 @@ export const TodoListPage = () => {
     });
   };
 
+  // Function to logout the account
+  const handleLogout = async () => {
+    try {
+      const response = await todoApi.post(API_ENDPOINTS.LOGOUT);
+
+      message.success(response.data.message, 1);
+      Cookies.remove(LOCALSTORAGE_KEYS.AUTH_TOKEN);
+      navigate('/login', { replace: true });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const userMenuItems = [
+    {
+      key: 'logout',
+      icon: <FontAwesomeIcon icon={faSignOutAlt} />,
+      label: 'Logout',
+      onClick: handleLogout,
+      danger: true,
+    },
+  ];
+
   useEffect(() => {
     const todoListData = getLocalStorage(TODO_LIST);
     const originalListData = getLocalStorage(ORIGINAL_LIST);
@@ -206,7 +241,13 @@ export const TodoListPage = () => {
 
   return (
     <Wrapper>
-      <ThemeSelector />
+      <Space>
+        <Dropdown menu={{ items: userMenuItems }} arrow placement="bottomRight" trigger={['click']}>
+          <Button type="text" icon={<FontAwesomeIcon icon={faUser} style={{ color: 'var(--text-color)' }} />} />
+        </Dropdown>
+
+        <ThemeSelector />
+      </Space>
 
       <Header
         todoCount={todoList.length}

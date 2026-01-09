@@ -1,3 +1,5 @@
+import Cookies from 'js-cookie';
+
 // Save data (auto stringify object, keep string as-is)
 export const setLocalStorage = (key, value) => {
   const toSave = typeof value === 'string' ? value : JSON.stringify(value);
@@ -7,6 +9,25 @@ export const setLocalStorage = (key, value) => {
 // Get data (try parse JSON, fallback to raw string)
 export const getLocalStorage = (key, defaultValue = null) => {
   const value = window.localStorage.getItem(key);
+
+  if (!value) return defaultValue;
+
+  try {
+    return JSON.parse(value);
+  } catch {
+    return value; // plain string
+  }
+};
+
+// New cookie-based functions for secure storage
+export const setCookie = (key, value) => {
+  const toSave = typeof value === 'string' ? value : JSON.stringify(value);
+  
+  Cookies.set(key, toSave, { expires: 7, secure: true, sameSite: 'strict' }); // Expires in 7 days, secure for HTTPS
+};
+
+export const getCookie = (key, defaultValue = null) => {
+  const value = Cookies.get(key);
 
   if (!value) return defaultValue;
 
