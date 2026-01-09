@@ -31,7 +31,7 @@ export const RegisterPage = () => {
       navigate(PAGE_PATH.LOGIN, { replace: true });
     } catch (e) {
       console.error(e);
-      message.error(e.response?.data?.error, 1);
+      message.error(e.response.data?.error, 1);
     } finally {
       setIsLoading(false);
     }
@@ -50,7 +50,7 @@ export const RegisterPage = () => {
             />
             Register
           </FormTitle>
-
+          
           <Form.Item
             label="Email"
             name="email"

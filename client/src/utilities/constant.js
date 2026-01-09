@@ -37,6 +37,19 @@ export const STORAGE_KEYS = Object.freeze({
   USER_ACCOUNT: 'user-account',
 });
 
+export const PRIORITY_LEVELS = Object.freeze({
+  HIGH: 'High',
+  MEDIUM: 'Medium',
+  LOW: 'Low',
+});
+
+export const STATUS_TYPES = Object.freeze({
+  COMPLETED: 'Completed',
+  PENDING: 'Pending',
+  IN_PROGRESS: 'In Progress',
+  OVERDUE: 'Overdue',
+});
+
 // Theme constants
 export const ATTRIBUTE_DATA = Object.freeze({
   DATA_THEME: 'data-theme',

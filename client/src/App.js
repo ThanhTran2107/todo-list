@@ -29,7 +29,7 @@ const useAuth = () => {
 const AuthRoute = ({ authenticatedPath, unauthenticatedComponent }) => {
   const isAuthenticated = useAuth();
 
-  if (isAuthenticated === null) return <div>Loading...</div>;
+  if (isAuthenticated === null) return null;
 
   return isAuthenticated ? <Navigate to={authenticatedPath} replace /> : unauthenticatedComponent;
 };

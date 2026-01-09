@@ -1,24 +1,21 @@
-import { Divider } from '@/components/antd/divider.component';
-import { Space } from '@/components/antd/space.component';
+import { Button } from '@/components/antd/button.component';
+import { Dropdown } from '@/components/antd/dropdown.component';
+import { Spin } from '@/components/antd/spin.component';
 import { Table } from '@/components/antd/table.component';
-import { faCheck, faEdit, faRedo, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { COLORS, PRIORITY_LEVELS, STATUS_TYPES } from '@/utilities/constant';
+import { formatDate } from '@/utilities/services/format-date.service';
+import { formatDescription, truncateText } from '@/utilities/services/text-format.service';
+import { faCheck, faEdit, faEllipsisV, faEye, faRedo, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 
-import {
-  CompleteButton,
-  DeleteButton,
-  EditButton,
-  RowName,
-  StyledTable,
-  TableWrapper,
-  UncompleteButton,
-} from '../styles/todo-list-table.styled';
-import { EditTaskNameModal } from './edit-task-name-modal.component';
+import { RowName, StyledTable, TableWrapper } from '../styles/todo-list-table.styled';
+import { EditTaskModal } from './edit-task-modal.component';
 
 const { Column } = Table;
 
 // TodoList component that displays the list of tasks in a table
-export const TodoList = ({ todoList, onComplete, onDelete, onUpdateTaskName }) => {
+export const TodoList = ({ todoList, isLoading, onComplete, onDelete, onUpdateTask, onViewDetails }) => {
   const [editRowId, setEditRowId] = useState(null);
 
   // Function to select a row for updating
@@ -29,94 +26,151 @@ export const TodoList = ({ todoList, onComplete, onDelete, onUpdateTaskName }) =
 
   return (
     <TableWrapper>
-      <StyledTable dataSource={todoList} onChange={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+      <StyledTable
+        loading={{
+          spinning: isLoading,
+          indicator: <Spin />,
+        }}
+        dataSource={todoList}
+        onChange={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      >
         <Column align="center" title="No." key="index" render={(_, __, index) => index + 1} />
         <Column
-          align="center"
           title="Title"
           dataIndex="title"
           key="title"
           render={(title, record) => (
             <RowName>
               {editRowId === record.id && (
-                <EditTaskNameModal
+                <EditTaskModal
                   isOpen={editRowId}
                   selectedRow={record}
-                  onUpdateTaskName={onUpdateTaskName}
+                  onUpdateTask={onUpdateTask}
                   onCloseEditModal={handleCloseEditModal}
                 />
               )}
               <span
                 style={{
                   textDecoration: record.completed ? 'line-through' : 'none',
+                  color: STATUS_TYPES[record.status] === STATUS_TYPES.OVERDUE ? COLORS.RED : 'inherit',
                 }}
               >
-                {title}
+                {truncateText(title)}
               </span>
-
-              <EditButton icon={faEdit} onClick={() => handleSelectRowToUpdate(record.id)} />
             </RowName>
           )}
         />
         <Column
-          align="center"
           title="Description"
           dataIndex="description"
           key="description"
-          render={description => <span>{description || '-'}</span>}
+          render={(description, record) => (
+            <span style={{ color: STATUS_TYPES[record.status] === STATUS_TYPES.OVERDUE ? COLORS.RED : 'inherit' }}>
+              {formatDescription(description)}
+            </span>
+          )}
         />
         <Column
-          align="center"
           title="Due Date"
           dataIndex="dueDate"
           key="dueDate"
-          render={dueDate => <span>{dueDate || '-'}</span>}
+          render={(dueDate, record) => (
+            <span style={{ color: STATUS_TYPES[record.status] === STATUS_TYPES.OVERDUE ? COLORS.RED : 'inherit' }}>
+              {formatDate(dueDate)}
+            </span>
+          )}
         />
         <Column
           align="center"
           title="Priority"
           dataIndex="priority"
           key="priority"
-          render={priority => <span>{priority || '-'}</span>}
+          render={(priority, record) => (
+            <span style={{ color: STATUS_TYPES[record.status] === STATUS_TYPES.OVERDUE ? COLORS.RED : 'inherit' }}>
+              {PRIORITY_LEVELS[priority] || '-'}
+            </span>
+          )}
         />
         <Column
           align="center"
           title="Status"
           dataIndex="status"
           key="status"
-          render={status => <span>{status || 'Pending'}</span>}
+          render={(status, record) => (
+            <span style={{ color: STATUS_TYPES[record.status] === STATUS_TYPES.OVERDUE ? COLORS.RED : 'inherit' }}>
+              {STATUS_TYPES[status] || STATUS_TYPES.PENDING}
+            </span>
+          )}
         />
         <Column
-          align="center"
           title="Created At"
           dataIndex="createdAt"
           key="createdAt"
-          render={createdAt => <span>{createdAt}</span>}
+          render={(createdAt, record) => (
+            <span style={{ color: STATUS_TYPES[record.status] === STATUS_TYPES.OVERDUE ? COLORS.RED : 'inherit' }}>
+              {formatDate(createdAt)}
+            </span>
+          )}
         />
         <Column
-          align="center"
           title="Updated At"
           dataIndex="updatedAt"
           key="updatedAt"
-          render={updatedAt => <span>{updatedAt || '-'}</span>}
+          render={(updatedAt, record) => (
+            <span style={{ color: STATUS_TYPES[record.status] === STATUS_TYPES.OVERDUE ? COLORS.RED : 'inherit' }}>
+              {formatDate(updatedAt)}
+            </span>
+          )}
         />
         <Column
           align="center"
           title="Actions"
           key="actions"
-          render={(text, record) => (
-            <Space size="middle">
-              {!record.completed ? (
-                <CompleteButton icon={faCheck} onClick={() => onComplete(record.id)} />
-              ) : (
-                <UncompleteButton icon={faRedo} onClick={() => onComplete(record.id)} />
-              )}
+          render={(_, record) => {
+            const menuItems = [
+              {
+                key: 'view',
+                icon: <FontAwesomeIcon icon={faEye} />,
+                label: 'View Details',
+                onClick: () => onViewDetails(record),
+              },
+              {
+                type: 'divider',
+              },
+              {
+                key: 'edit',
+                icon: <FontAwesomeIcon icon={faEdit} />,
+                label: 'Edit',
+                onClick: () => handleSelectRowToUpdate(record.id),
+              },
+              {
+                type: 'divider',
+              },
+              {
+                key: 'complete',
+                icon: <FontAwesomeIcon icon={record.completed ? faRedo : faCheck} />,
+                label: record.completed ? 'Mark as Incomplete' : 'Mark as Complete',
+                onClick: () => onComplete(record.id),
+                disabled: STATUS_TYPES[record.status] === STATUS_TYPES.OVERDUE,
+              },
+              {
+                type: 'divider',
+              },
+              {
+                key: 'delete',
+                icon: <FontAwesomeIcon icon={faTrash} />,
+                label: 'Delete',
+                onClick: () => onDelete(record.id),
+                danger: true,
+              },
+            ];
 
-              <Divider type="vertical" />
-
-              <DeleteButton icon={faTrash} onClick={() => onDelete(record.id)} />
-            </Space>
-          )}
+            return (
+              <Dropdown menu={{ items: menuItems }} trigger={['click']} placement="bottomRight" arrow>
+                <Button type="text" icon={<FontAwesomeIcon icon={faEllipsisV} />} />
+              </Dropdown>
+            );
+          }}
         />
       </StyledTable>
     </TableWrapper>

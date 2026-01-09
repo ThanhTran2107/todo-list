@@ -3,9 +3,10 @@ import { Dropdown } from '@/components/antd/dropdown.component';
 import { message } from '@/components/antd/message.component';
 import { Space } from '@/components/antd/space.component';
 import { ThemeSelector } from '@/components/shared/theme-selector.component';
-import { API_ENDPOINTS, MODAL_TITLES, STORAGE_KEYS } from '@/utilities/constant';
+import { API_ENDPOINTS, MODAL_TITLES, PAGE_PATH, STORAGE_KEYS } from '@/utilities/constant';
+import { useGetTodos } from '@/utilities/hooks/use-get-todos.hook';
 import { todoApi } from '@/utilities/services/api.service';
-import { getLocalStorage, setLocalStorage } from '@/utilities/services/storage.service';
+import { setLocalStorage } from '@/utilities/services/storage.service';
 import { removeVietnameseTones } from '@/utilities/services/text-processing.service';
 import { faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,6 +18,7 @@ import { useNavigate } from 'react-router-dom';
 import { ConfirmDeletionModal } from './components/confirm-deletion-modal.component';
 import { Header } from './components/todo-list-page-header.component';
 import { TodoList } from './components/todo-list-table.component';
+import { ViewTaskDetailsModal } from './components/view-task-details-modal.component';
 import { Wrapper } from './styles/todo-list-page.styled';
 
 const { TODO_LIST, ORIGINAL_LIST } = STORAGE_KEYS;
@@ -31,9 +33,13 @@ export const TodoListPage = () => {
   const [completedCount, setCompletedCount] = useState(0);
   const [uncompletedCount, setUncompletedCount] = useState(0);
 
+  const [viewTask, setViewTask] = useState(null);
+
   const hasResetFilterRef = useRef(0);
 
   const navigate = useNavigate();
+
+  const { todos: fetchedTodos, isLoading } = useGetTodos();
 
   // Function to update completed and uncompleted task counts
   const updateStatistics = list => {
@@ -43,6 +49,12 @@ export const TodoListPage = () => {
     setCompletedCount(completedCount.length);
     setUncompletedCount(uncompletedCount.length);
   };
+
+  // Function to view task details
+  const handleViewTaskDetails = task => setViewTask(task);
+
+  // Function to close view details modal
+  const handleCloseViewModal = () => setViewTask(null);
 
   // Function to apply filter based on completion status
   const applyFilter = (data, value) => {
@@ -67,25 +79,6 @@ export const TodoListPage = () => {
     }
   };
 
-  // Function to reset todo list to original data
-  const handleResetOriginalData = () => {
-    if (isEmpty(originalList)) return;
-
-    hasResetFilterRef.current = 0;
-
-    setTodoList(originalList);
-    setSearchedList([]);
-  };
-
-  // Function to reset todo list to searched data
-  const handleResetSearchedData = () => setTodoList(searchedList);
-
-  // Function to add a new task to the todo list
-  const handleAddNewTasks = newTask => {
-    setTodoList(prev => [newTask, ...prev]);
-    setOriginalList(prev => [newTask, ...prev]);
-  };
-
   // Function to toggle the completion status of a task
   const handleCompleteTask = id => {
     const updateItemStatus = list =>
@@ -104,6 +97,25 @@ export const TodoListPage = () => {
     setOriginalList(updatedOriginalList);
 
     message.success('Update the task status successfully!', 1);
+  };
+
+  // Function to reset todo list to original data
+  const handleResetOriginalData = () => {
+    if (isEmpty(originalList)) return;
+
+    hasResetFilterRef.current = 0;
+
+    setTodoList(originalList);
+    setSearchedList([]);
+  };
+
+  // Function to reset todo list to searched data
+  const handleResetSearchedData = () => setTodoList(searchedList);
+
+  // Function to add a new task to the todo list
+  const handleAddNewTasks = newTask => {
+    setTodoList(prev => [newTask, ...prev]);
+    setOriginalList(prev => [newTask, ...prev]);
   };
 
   // Function to search tasks by name
@@ -138,24 +150,24 @@ export const TodoListPage = () => {
     setTodoList(result);
   };
 
-  // Function to update the name of a task
-  const handleUpdateTaskName = updatedTaskName => {
-    const updatedItemName = list =>
+  // Function to update the task
+  const handleUpdateTask = updatedTask => {
+    const updatedItem = list =>
       map(list, todo => {
-        if (todo.id === updatedTaskName.id) return { ...updatedTaskName };
+        if (todo.id === updatedTask.id) return { ...updatedTask };
 
         return todo;
       });
 
-    const updatedTodoList = updatedItemName(todoList);
-    const updatedSearchedList = updatedItemName(searchedList);
-    const updatedOriginalList = updatedItemName(originalList);
+    const updatedTodoList = updatedItem(todoList);
+    const updatedSearchedList = updatedItem(searchedList);
+    const updatedOriginalList = updatedItem(originalList);
 
     setTodoList(updatedTodoList);
     setSearchedList(updatedSearchedList);
     setOriginalList(updatedOriginalList);
 
-    message.success('Update the task name successfully!', 1);
+    message.success('Update the task successfully!', 1);
   };
 
   // Function to delete a specific task
@@ -199,7 +211,7 @@ export const TodoListPage = () => {
 
       message.success(response.data.message, 1);
       Cookies.remove(STORAGE_KEYS.AUTH_TOKEN);
-      navigate('/login', { replace: true });
+      navigate(PAGE_PATH.LOGIN, { replace: true });
     } catch (e) {
       console.error(e);
     }
@@ -216,21 +228,12 @@ export const TodoListPage = () => {
   ];
 
   useEffect(() => {
-    const todoListData = getLocalStorage(TODO_LIST);
-    const originalListData = getLocalStorage(ORIGINAL_LIST);
-
-    if (!isEmpty(originalListData)) {
-      updateStatistics(originalListData);
-      setTodoList(originalListData);
-      setOriginalList(originalListData);
-
-      return;
+    if (!isLoading && fetchedTodos.length > 0) {
+      updateStatistics(fetchedTodos);
+      setTodoList(fetchedTodos);
+      setOriginalList(fetchedTodos);
     }
-
-    updateStatistics(todoListData);
-    setTodoList(todoListData);
-    setOriginalList(originalListData);
-  }, []);
+  }, [fetchedTodos, isLoading]);
 
   useEffect(() => {
     updateStatistics(todoList);
@@ -243,7 +246,10 @@ export const TodoListPage = () => {
     <Wrapper>
       <Space>
         <Dropdown menu={{ items: userMenuItems }} arrow placement="bottomRight">
-          <Button type="text" icon={<FontAwesomeIcon icon={faUser} style={{ color: 'var(--text-color)' }} />} />
+          <Button
+            type="text"
+            icon={<FontAwesomeIcon icon={faUser} style={{ color: 'var(--text-color)', fontSize: '1.1rem' }} />}
+          />
         </Dropdown>
 
         <ThemeSelector />
@@ -264,10 +270,14 @@ export const TodoListPage = () => {
 
       <TodoList
         todoList={todoList}
+        isLoading={isLoading}
         onComplete={handleCompleteTask}
         onDelete={handleDeleteTask}
-        onUpdateTaskName={handleUpdateTaskName}
+        onUpdateTaskName={handleUpdateTask}
+        onViewDetails={handleViewTaskDetails}
       />
+
+      <ViewTaskDetailsModal isOpen={!!viewTask} task={viewTask} onClose={handleCloseViewModal} />
     </Wrapper>
   );
 };

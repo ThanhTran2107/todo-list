@@ -31,11 +31,12 @@ export const LoginPage = () => {
       });
 
       message.success('Login successfully!', 1);
+      
       setCookie(AUTH_TOKEN, response.data.token);
       navigate(PAGE_PATH.TODO_LIST, { replace: true });
     } catch (e) {
       console.error(e);
-      message.error(e.response?.data?.error, 1);
+      message.error(e.response.data?.error, 1);
     } finally {
       setIsLoading(false);
     }
