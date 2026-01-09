@@ -13,7 +13,7 @@ public class Todo extends PanacheEntity {
     @Column(nullable = false)
     public String title;
 
-    @Column
+    @Column(length = 500)
     public String description;
 
     @Column(nullable = false)

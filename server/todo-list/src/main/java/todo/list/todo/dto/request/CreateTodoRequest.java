@@ -17,6 +17,7 @@ public class CreateTodoRequest {
     @Schema(description = "title", examples = "string")
     private String title;
 
+    @Size(max = 500)
     @Schema(description = "description", examples = "string")
     private String description;
 
