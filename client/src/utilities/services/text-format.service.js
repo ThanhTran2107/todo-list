@@ -1,10 +1,10 @@
 import { Divider } from '@/components/antd/divider.component';
 
-import { COLORS } from '../constant';
+import { COLORS } from '../constants';
 
 // Text formatting utilities
 export const truncateText = (text, maxLength = 50) => {
-  if (!text) return <Divider style={{ borderColor: COLORS.BLACK }} />;
+  if (!text) return null;
 
   if (text.length <= maxLength) return text;
 

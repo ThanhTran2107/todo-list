@@ -1,7 +1,7 @@
 import { Button } from '@/components/antd/button.component';
 import { Dropdown } from '@/components/antd/dropdown.component';
 import { TextField } from '@/components/antd/text-field.component';
-import { COLORS } from '@/utilities/constant';
+import { COLORS } from '@/utilities/constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 

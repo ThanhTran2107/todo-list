@@ -1,5 +1,5 @@
 import { Typography } from '@/components/antd/typography.component';
-import { COLORS } from '@/utilities/constant';
+import { COLORS } from '@/utilities/constants';
 import styled from 'styled-components';
 
 export const RegisterContainer = styled.div`

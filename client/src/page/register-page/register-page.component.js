@@ -4,9 +4,9 @@ import { Image } from '@/components/antd/image.component';
 import { message } from '@/components/antd/message.component';
 import { Space } from '@/components/antd/space.component';
 import { TextField } from '@/components/antd/text-field.component';
-import { API_ENDPOINTS, PAGE_PATH } from '@/utilities/constant';
+import { API_ENDPOINTS, PAGE_PATH } from '@/utilities/constants';
 import { todoApi } from '@/utilities/services/api.service';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { FormTitle, LoginLink, RegisterContainer, RegisterForm } from './styles/register-page.styled';
@@ -15,6 +15,7 @@ import { FormTitle, LoginLink, RegisterContainer, RegisterForm } from './styles/
 export const RegisterPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [form] = Form.useForm();
+  const emailRef = useRef(null);
 
   const navigate = useNavigate();
 
@@ -37,6 +38,10 @@ export const RegisterPage = () => {
     }
   };
 
+  useEffect(() => {
+    if (emailRef.current) emailRef.current.focus();
+  }, []);
+
   return (
     <RegisterContainer>
       <RegisterForm>
@@ -50,7 +55,7 @@ export const RegisterPage = () => {
             />
             Register
           </FormTitle>
-          
+
           <Form.Item
             label="Email"
             name="email"
@@ -59,7 +64,7 @@ export const RegisterPage = () => {
               { type: 'email', message: 'Please enter a valid email!' },
             ]}
           >
-            <TextField placeholder="Enter your email" />
+            <TextField ref={emailRef} placeholder="Enter your email" />
           </Form.Item>
 
           <Form.Item

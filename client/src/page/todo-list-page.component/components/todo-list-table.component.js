@@ -2,7 +2,7 @@ import { Button } from '@/components/antd/button.component';
 import { Dropdown } from '@/components/antd/dropdown.component';
 import { Spin } from '@/components/antd/spin.component';
 import { Table } from '@/components/antd/table.component';
-import { COLORS, PRIORITY_LEVELS, STATUS_TYPES } from '@/utilities/constant';
+import { COLORS, PRIORITY_LEVELS, STATUS_TYPES, STATUS_VALUES } from '@/utilities/constants';
 import { formatDate } from '@/utilities/services/format-date.service';
 import { formatDescription, truncateText } from '@/utilities/services/text-format.service';
 import { faCheck, faEdit, faEllipsisV, faEye, faRedo, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -15,7 +15,7 @@ import { EditTaskModal } from './edit-task-modal.component';
 const { Column } = Table;
 
 // TodoList component that displays the list of tasks in a table
-export const TodoList = ({ todoList, isLoading, onComplete, onDelete, onUpdateTask, onViewDetails }) => {
+export const TodoListTable = ({ todoList, isLoading, onComplete, onDelete, onUpdateTask, onViewDetails }) => {
   const [editRowId, setEditRowId] = useState(null);
 
   // Function to select a row for updating
@@ -51,7 +51,7 @@ export const TodoList = ({ todoList, isLoading, onComplete, onDelete, onUpdateTa
               )}
               <span
                 style={{
-                  textDecoration: record.completed ? 'line-through' : 'none',
+                  textDecoration: record.status === STATUS_VALUES.COMPLETED ? 'line-through' : 'none',
                   color: STATUS_TYPES[record.status] === STATUS_TYPES.OVERDUE ? COLORS.RED : 'inherit',
                 }}
               >
@@ -96,11 +96,18 @@ export const TodoList = ({ todoList, isLoading, onComplete, onDelete, onUpdateTa
           title="Status"
           dataIndex="status"
           key="status"
-          render={(status, record) => (
-            <span style={{ color: STATUS_TYPES[record.status] === STATUS_TYPES.OVERDUE ? COLORS.RED : 'inherit' }}>
-              {STATUS_TYPES[status] || STATUS_TYPES.PENDING}
-            </span>
-          )}
+          render={(status, record) => {
+            let color =
+              record.status === STATUS_VALUES.OVERDUE
+                ? COLORS.RED
+                : record.status === STATUS_VALUES.COMPLETED
+                  ? COLORS.GREEN
+                  : 'inherit';
+
+            let fontWeight = record.status === STATUS_VALUES.COMPLETED ? 'bold' : 'normal';
+            
+            return <span style={{ color, fontWeight }}>{STATUS_TYPES[status] || STATUS_TYPES.PENDING}</span>;
+          }}
         />
         <Column
           title="Created At"
@@ -148,10 +155,10 @@ export const TodoList = ({ todoList, isLoading, onComplete, onDelete, onUpdateTa
               },
               {
                 key: 'complete',
-                icon: <FontAwesomeIcon icon={record.completed ? faRedo : faCheck} />,
-                label: record.completed ? 'Mark as Incomplete' : 'Mark as Complete',
+                icon: <FontAwesomeIcon icon={record.status === STATUS_VALUES.COMPLETED ? faRedo : faCheck} />,
+                label: record.status === STATUS_VALUES.COMPLETED ? 'Mark as Incomplete' : 'Mark as Complete',
                 onClick: () => onComplete(record.id),
-                disabled: STATUS_TYPES[record.status] === STATUS_TYPES.OVERDUE,
+                disabled: record.status === STATUS_VALUES.OVERDUE,
               },
               {
                 type: 'divider',

@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 
-import { API_ENDPOINTS, PAGE_PATH, STORAGE_KEYS } from '../constant';
+import { API_ENDPOINTS, PAGE_PATH, STORAGE_KEYS } from '../constants';
 import { todoApi } from './api.service';
 
 export const handleUnauthorized = async () => {

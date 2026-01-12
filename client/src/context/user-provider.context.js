@@ -1,4 +1,4 @@
-import { STORAGE_KEYS } from '@/utilities/constant';
+import { STORAGE_KEYS } from '@/utilities/constants';
 import { getLocalStorage } from '@/utilities/services/storage.service';
 import { createContext, useContext, useState } from 'react';
 

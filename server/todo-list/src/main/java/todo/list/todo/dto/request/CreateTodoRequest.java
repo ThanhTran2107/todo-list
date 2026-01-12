@@ -21,6 +21,7 @@ public class CreateTodoRequest {
     @Schema(description = "description", examples = "string")
     private String description;
 
+    @NotNull
     @JsonDeserialize(using = InstantDeserializer.class)
     @Schema(description = "dueDate", examples = "dateTime")
     private Instant dueDate;

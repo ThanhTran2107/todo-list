@@ -1,11 +1,9 @@
-import { ComboBox } from '@/components/antd/combobox.component';
-import { message } from '@/components/antd/message.component';
+import { Select } from '@/components/antd/select.component';
 import { Space } from '@/components/antd/space.component';
-import { COLORS } from '@/utilities/constant';
+import { COLORS } from '@/utilities/constants';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { isEmpty } from 'lodash-es';
 import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 import {
   AddButton,
@@ -17,21 +15,23 @@ import {
   StyledTextField,
   Title,
 } from '../styles/todo-list-page-header.styled';
+import { AddTodoModal } from './add-todo-modal.component';
 
 // Header component for the todo list application
-export const Header = ({
+export const TodoListPageHeader = ({
   todoCount,
   completedCount,
   uncompletedCount,
   hasCurrentTasks,
   hasResetFilter,
   onResetOriginalData,
-  onAddTodoList,
+  onAddNewTodo,
   onSearchTasksByName,
   onFilterData,
   onDeleteAllTasks,
 }) => {
   const [input, setInput] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const items = [
     {
@@ -57,29 +57,11 @@ export const Header = ({
     setInput(e.target.value);
   };
 
-  // Function to handle adding a new task
-  const handleClickAddNewTasks = () => {
-    onResetOriginalData();
+  // Function to open add todo modal
+  const handleOpenAddModal = () => setIsModalOpen(true);
 
-    const newTodo = input.trim();
-    const createdAt = new Date();
-
-    if (!newTodo) {
-      message.error('Task name cannot be empty!', 1);
-
-      return;
-    }
-
-    onAddTodoList({
-      id: uuidv4(),
-      title: newTodo,
-      createdAt: createdAt.toLocaleString(),
-      completed: false,
-    });
-
-    message.success('Add a task successfully!', 1);
-    setInput('');
-  };
+  // Function to close add todo modal
+  const handleCloseAddModal = () => setIsModalOpen(false);
 
   return (
     <HeaderWrapper>
@@ -87,17 +69,10 @@ export const Header = ({
 
       <HeaderContainer>
         <Space style={{ marginTop: '3rem' }}>
-          <StyledTextField
-            placeholder="Enter a task..."
-            onChange={handleInputChange}
-            onKeyDown={e => {
-              if (!isEmpty(input) && e.key === 'Enter') handleClickAddNewTasks();
-            }}
-            value={input}
-          />
+          <StyledTextField placeholder="Enter a task..." onChange={handleInputChange} value={input} />
 
-          <AddButton disabled={!input} type="primary" onClick={() => handleClickAddNewTasks()}>
-            Add
+          <AddButton type="primary" onClick={handleOpenAddModal}>
+            Add Task
           </AddButton>
 
           <DeleteAllButton disabled={todoCount === 0} onClick={() => onDeleteAllTasks()}>
@@ -112,7 +87,7 @@ export const Header = ({
             {todoCount > 1 ? <p>{todoCount} Tasks</p> : <p>{todoCount} Task</p>}
           </StatisticDropdown>
 
-          <ComboBox
+          <Select
             defaultValue="All"
             value={hasResetFilter === 0 ? 'All' : hasResetFilter === 1 ? 'Completed' : 'Incompleted'}
             style={{
@@ -129,6 +104,8 @@ export const Header = ({
           />
         </Space>
       </HeaderContainer>
+
+      <AddTodoModal isOpen={isModalOpen} onAddNewTodo={onAddNewTodo} onClose={handleCloseAddModal} />
     </HeaderWrapper>
   );
 };

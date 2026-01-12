@@ -50,6 +50,19 @@ export const STATUS_TYPES = Object.freeze({
   OVERDUE: 'Overdue',
 });
 
+export const PRIORITY_VALUES = Object.freeze({
+  HIGH: 'HIGH',
+  MEDIUM: 'MEDIUM',
+  LOW: 'LOW',
+});
+
+export const STATUS_VALUES = Object.freeze({
+  PENDING: 'PENDING',
+  IN_PROGRESS: 'IN_PROGRESS',
+  COMPLETED: 'COMPLETED',
+  OVERDUE: 'OVERDUE',
+});
+
 // Theme constants
 export const ATTRIBUTE_DATA = Object.freeze({
   DATA_THEME: 'data-theme',
@@ -94,6 +107,7 @@ export const COLORS = Object.freeze({
   DARK_GRAY: '#3b3b3b',
   LIGHT_GRAY: '#e6e6e6',
   MEDIUM_GRAY: '#666',
+  GRAY_LIGHT_D9: '#d9d9d9',
 
   // PINK COLORS
   DARK_PINK: '#70114b',
@@ -105,6 +119,9 @@ export const COLORS = Object.freeze({
   // GREEN COLORS
   GREEN: 'green',
   BRIGHT_GREEN: '#47e247',
+  TEAL_GREEN: '#008060',
+  MEDIUM_TEAL_GREEN: '#069e70ff',
+  LIGHT_TEAL_GREEN: '#77b4a5ff',
 
   // YELLOW COLORS
   CYBER_YELLOW: '#ffd809',

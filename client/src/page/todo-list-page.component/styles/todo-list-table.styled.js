@@ -1,5 +1,5 @@
 import { Table } from '@/components/antd/table.component';
-import { COLORS } from '@/utilities/constant';
+import { COLORS } from '@/utilities/constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 

@@ -3,7 +3,7 @@ import { Dropdown } from '@/components/antd/dropdown.component';
 import { message } from '@/components/antd/message.component';
 import { Space } from '@/components/antd/space.component';
 import { ThemeSelector } from '@/components/shared/theme-selector.component';
-import { API_ENDPOINTS, MODAL_TITLES, PAGE_PATH, STORAGE_KEYS } from '@/utilities/constant';
+import { API_ENDPOINTS, MODAL_TITLES, PAGE_PATH, STATUS_VALUES, STORAGE_KEYS } from '@/utilities/constants';
 import { useGetTodos } from '@/utilities/hooks/use-get-todos.hook';
 import { todoApi } from '@/utilities/services/api.service';
 import { setLocalStorage } from '@/utilities/services/storage.service';
@@ -16,8 +16,8 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { ConfirmDeletionModal } from './components/confirm-deletion-modal.component';
-import { Header } from './components/todo-list-page-header.component';
-import { TodoList } from './components/todo-list-table.component';
+import { TodoListPageHeader } from './components/todo-list-page-header.component';
+import { TodoListTable } from './components/todo-list-table.component';
 import { ViewTaskDetailsModal } from './components/view-task-details-modal.component';
 import { Wrapper } from './styles/todo-list-page.styled';
 
@@ -80,23 +80,45 @@ export const TodoListPage = () => {
   };
 
   // Function to toggle the completion status of a task
-  const handleCompleteTask = id => {
-    const updateItemStatus = list =>
-      map(list, todo => {
-        if (todo.id === id) return { ...todo, completed: !todo.completed };
+  const handleCompleteTask = async id => {
+    const todo = todoList.find(t => t.id === id);
+    if (!todo) return;
 
-        return todo;
+    const isCompleted = todo.status === STATUS_VALUES.COMPLETED;
+    const newStatus = isCompleted ? STATUS_VALUES.PENDING : STATUS_VALUES.COMPLETED;
+    const newCompleted = !isCompleted;
+
+    try {
+      await todoApi.put(API_ENDPOINTS.TODO_BY_ID.replace('{id}', id), {
+        status: newStatus,
+        completed: newCompleted,
       });
 
-    const updatedTodoList = updateItemStatus(todoList);
-    const updatedSearchedList = updateItemStatus(searchedList);
-    const updatedOriginalList = updateItemStatus(originalList);
+      const updateItemStatus = list =>
+        map(list, t => {
+          if (t.id === id) {
+            return {
+              ...t,
+              completed: newCompleted,
+              status: newStatus,
+            };
+          }
+          return t;
+        });
 
-    setTodoList(updatedTodoList);
-    setSearchedList(updatedSearchedList);
-    setOriginalList(updatedOriginalList);
+      const updatedTodoList = updateItemStatus(todoList);
+      const updatedSearchedList = updateItemStatus(searchedList);
+      const updatedOriginalList = updateItemStatus(originalList);
 
-    message.success('Update the task status successfully!', 1);
+      setTodoList(updatedTodoList);
+      setSearchedList(updatedSearchedList);
+      setOriginalList(updatedOriginalList);
+
+      message.success('Update the task status successfully!', 1);
+    } catch (e) {
+      console.error(e);
+      message.error('Failed to update task status', 1);
+    }
   };
 
   // Function to reset todo list to original data
@@ -113,7 +135,7 @@ export const TodoListPage = () => {
   const handleResetSearchedData = () => setTodoList(searchedList);
 
   // Function to add a new task to the todo list
-  const handleAddNewTasks = newTask => {
+  const handleAddNewTodo = newTask => {
     setTodoList(prev => [newTask, ...prev]);
     setOriginalList(prev => [newTask, ...prev]);
   };
@@ -255,20 +277,20 @@ export const TodoListPage = () => {
         <ThemeSelector />
       </Space>
 
-      <Header
+      <TodoListPageHeader
         todoCount={todoList.length}
         completedCount={completedCount}
         uncompletedCount={uncompletedCount}
         hasCurrentTasks={!isEmpty(originalList)}
         hasResetFilter={hasResetFilterRef.current}
-        onAddTodoList={handleAddNewTasks}
+        onAddNewTodo={handleAddNewTodo}
         onSearchTasksByName={handleSearchTasksByName}
         onResetOriginalData={handleResetOriginalData}
         onFilterData={handleFilterData}
         onDeleteAllTasks={handleDeleteAllTasks}
       />
 
-      <TodoList
+      <TodoListTable
         todoList={todoList}
         isLoading={isLoading}
         onComplete={handleCompleteTask}

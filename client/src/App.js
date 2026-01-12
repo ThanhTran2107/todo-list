@@ -1,5 +1,5 @@
-import { PAGE_PATH } from '@/utilities/constant';
-import { STORAGE_KEYS } from '@/utilities/constant';
+import { PAGE_PATH } from '@/utilities/constants';
+import { STORAGE_KEYS } from '@/utilities/constants';
 import { getCookie } from '@/utilities/services/storage.service';
 import { ConfigProvider } from 'antd';
 import { useEffect, useState } from 'react';

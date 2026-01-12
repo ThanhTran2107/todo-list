@@ -1,4 +1,4 @@
-import { API_ENDPOINTS, STORAGE_KEYS } from '@/utilities/constant';
+import { API_ENDPOINTS, STORAGE_KEYS } from '@/utilities/constants';
 import { todoApi } from '@/utilities/services/api.service';
 import { getLocalStorage } from '@/utilities/services/storage.service';
 import { isEmpty } from 'lodash-es';

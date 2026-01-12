@@ -1,10 +1,10 @@
 import { Divider } from '@/components/antd/divider.component';
 
-import { COLORS } from '../constant';
+import { COLORS } from '../constants';
 
 // Function to format date strings
 export const formatDate = dateString => {
-  if (!dateString) return <Divider style={{ borderColor: COLORS.BLACK }} />;
+  if (!dateString) return null;
 
   const date = new Date(dateString);
 

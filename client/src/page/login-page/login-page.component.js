@@ -4,10 +4,10 @@ import { Image } from '@/components/antd/image.component';
 import { message } from '@/components/antd/message.component';
 import { Space } from '@/components/antd/space.component';
 import { TextField } from '@/components/antd/text-field.component';
-import { API_ENDPOINTS, PAGE_PATH, STORAGE_KEYS } from '@/utilities/constant';
+import { API_ENDPOINTS, PAGE_PATH, STORAGE_KEYS } from '@/utilities/constants';
 import { todoApi } from '@/utilities/services/api.service';
 import { setCookie } from '@/utilities/services/storage.service';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { FormTitle, LoginContainer, LoginForm, RegisterLink } from './styles/login-page.styled';
@@ -18,6 +18,7 @@ const { AUTH_TOKEN } = STORAGE_KEYS;
 export const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [form] = Form.useForm();
+  const emailRef = useRef(null);
 
   const navigate = useNavigate();
 
@@ -31,7 +32,7 @@ export const LoginPage = () => {
       });
 
       message.success('Login successfully!', 1);
-      
+
       setCookie(AUTH_TOKEN, response.data.token);
       navigate(PAGE_PATH.TODO_LIST, { replace: true });
     } catch (e) {
@@ -41,6 +42,10 @@ export const LoginPage = () => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (emailRef.current) emailRef.current.focus();
+  }, []);
 
   return (
     <LoginContainer>
@@ -64,7 +69,7 @@ export const LoginPage = () => {
               { type: 'email', message: 'Please enter a valid email!' },
             ]}
           >
-            <TextField placeholder="Enter your email" />
+            <TextField ref={emailRef} placeholder="Enter your email" />
           </Form.Item>
 
           <Form.Item

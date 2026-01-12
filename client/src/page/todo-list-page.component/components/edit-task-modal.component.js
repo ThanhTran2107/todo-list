@@ -4,14 +4,16 @@ import { Form } from '@/components/antd/form.component';
 import { Input } from '@/components/antd/input.component';
 import { Modal } from '@/components/antd/modal.component';
 import { TextField } from '@/components/antd/text-field.component';
+import { COLORS, PRIORITY_LEVELS, PRIORITY_VALUES, STATUS_TYPES, STATUS_VALUES } from '@/utilities/constants';
 import dayjs from 'dayjs';
 import { trim } from 'lodash-es';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 // EditTaskModal component for updating all task fields
 export const EditTaskModal = ({ isOpen, selectedRow, onUpdateTask, onCloseEditModal }) => {
   const [hasChanged, setHasChanged] = useState(false);
   const [form] = Form.useForm();
+  const titleRef = useRef(null);
 
   // Function to handle the update button click and validate form
   const handleUpdateButtonClick = selectedRow => {
@@ -40,6 +42,10 @@ export const EditTaskModal = ({ isOpen, selectedRow, onUpdateTask, onCloseEditMo
       });
   };
 
+  useEffect(() => {
+    if (isOpen && titleRef.current) titleRef.current.focus();
+  }, [isOpen]);
+
   return (
     <Modal
       title="Edit Task"
@@ -51,6 +57,7 @@ export const EditTaskModal = ({ isOpen, selectedRow, onUpdateTask, onCloseEditMo
       onCancel={onCloseEditModal}
       okButtonProps={{ disabled: !hasChanged }}
       width={600}
+      style={{ marginTop: '-3rem' }}
     >
       <Form
         form={form}
@@ -61,10 +68,10 @@ export const EditTaskModal = ({ isOpen, selectedRow, onUpdateTask, onCloseEditMo
         initialValues={{
           titleField: selectedRow?.title || '',
           descriptionField: selectedRow?.description || '',
-          completedField: selectedRow?.completed || false,
+          completedField: selectedRow?.status === STATUS_VALUES.COMPLETED || selectedRow?.completed || false,
           dueDateField: selectedRow?.dueDate ? dayjs(selectedRow.dueDate) : null,
-          priorityField: selectedRow?.priority || 'MEDIUM',
-          statusField: selectedRow?.status || 'PENDING',
+          priorityField: selectedRow?.priority || PRIORITY_VALUES.MEDIUM,
+          statusField: selectedRow?.status || STATUS_VALUES.PENDING,
         }}
       >
         <Form.Item
@@ -82,7 +89,12 @@ export const EditTaskModal = ({ isOpen, selectedRow, onUpdateTask, onCloseEditMo
             },
           ]}
         >
-          <TextField type="text" placeholder="Enter a task title..." onChange={() => setHasChanged(true)} />
+          <TextField
+            ref={titleRef}
+            type="text"
+            placeholder="Enter a task title..."
+            onChange={() => setHasChanged(true)}
+          />
         </Form.Item>
 
         <Form.Item
@@ -126,12 +138,18 @@ export const EditTaskModal = ({ isOpen, selectedRow, onUpdateTask, onCloseEditMo
           ]}
         >
           <select
-            style={{ width: '100%', padding: '4px 11px', border: '1px solid #d9d9d9', borderRadius: '6px' }}
+            disabled={selectedRow?.status === STATUS_VALUES.OVERDUE}
+            style={{
+              width: '100%',
+              padding: '0.25rem 0.6875rem',
+              border: `1px solid ${COLORS.GRAY_LIGHT_D9}`,
+              borderRadius: '0.375rem',
+            }}
             onChange={() => setHasChanged(true)}
           >
-            <option value="HIGH">High</option>
-            <option value="MEDIUM">Medium</option>
-            <option value="LOW">Low</option>
+            <option value={PRIORITY_VALUES.HIGH}>{PRIORITY_LEVELS.HIGH}</option>
+            <option value={PRIORITY_VALUES.MEDIUM}>{PRIORITY_LEVELS.MEDIUM}</option>
+            <option value={PRIORITY_VALUES.LOW}>{PRIORITY_LEVELS.LOW}</option>
           </select>
         </Form.Item>
 
@@ -146,18 +164,36 @@ export const EditTaskModal = ({ isOpen, selectedRow, onUpdateTask, onCloseEditMo
           ]}
         >
           <select
-            style={{ width: '100%', padding: '4px 11px', border: '1px solid #d9d9d9', borderRadius: '6px' }}
-            onChange={() => setHasChanged(true)}
+            disabled={selectedRow?.status === STATUS_VALUES.OVERDUE}
+            style={{
+              width: '100%',
+              padding: '0.25rem 0.6875rem',
+              border: `1px solid ${COLORS.GRAY_LIGHT_D9}`,
+              borderRadius: '0.375rem',
+            }}
+            onChange={e => {
+              setHasChanged(true);
+              const value = e.target.value;
+
+              console.log('Selected Status:', value);
+              if (value === STATUS_VALUES.COMPLETED) {
+                form.setFieldsValue({ completedField: true });
+              } else {
+                form.setFieldsValue({ completedField: false });
+              }
+            }}
           >
-            <option value="PENDING">Pending</option>
-            <option value="IN_PROGRESS">In Progress</option>
-            <option value="COMPLETED">Completed</option>
-            <option value="OVERDUE">Overdue</option>
+            <option value={STATUS_VALUES.PENDING}>{STATUS_TYPES.PENDING}</option>
+            <option value={STATUS_VALUES.IN_PROGRESS}>{STATUS_TYPES.IN_PROGRESS}</option>
+            <option value={STATUS_VALUES.COMPLETED}>{STATUS_TYPES.COMPLETED}</option>
+            <option value={STATUS_VALUES.OVERDUE}>{STATUS_TYPES.OVERDUE}</option>
           </select>
         </Form.Item>
 
         <Form.Item name="completedField" valuePropName="checked">
-          <Checkbox onChange={() => setHasChanged(true)}>Mark as completed</Checkbox>
+          <Checkbox disabled={selectedRow?.status === STATUS_VALUES.OVERDUE} onChange={() => setHasChanged(true)}>
+            Mark as completed
+          </Checkbox>
         </Form.Item>
       </Form>
     </Modal>

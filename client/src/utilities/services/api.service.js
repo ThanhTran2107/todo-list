@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { STORAGE_KEYS } from '../constant';
+import { STORAGE_KEYS } from '../constants';
 import { getCookie } from './storage.service';
 
 const { AUTH_TOKEN } = STORAGE_KEYS;

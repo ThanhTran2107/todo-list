@@ -1,6 +1,6 @@
 import { Descriptions } from '@/components/antd/descriptions.component';
 import { Modal } from '@/components/antd/modal.component';
-import { PRIORITY_LEVELS, STATUS_TYPES } from '@/utilities/constant';
+import { PRIORITY_LEVELS, STATUS_TYPES } from '@/utilities/constants';
 import { formatDate } from '@/utilities/services/format-date.service';
 
 // ViewTaskDetailsModal component to display task details
@@ -16,7 +16,7 @@ export const ViewTaskDetailsModal = ({ isOpen, task, onClose }) => {
     {
       key: 'description',
       label: 'Description',
-      children: task.description || '-',
+      children: task.description || null,
     },
     {
       key: 'dueDate',

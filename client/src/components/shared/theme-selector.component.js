@@ -4,7 +4,13 @@ import { some } from 'lodash-es';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { ATTRIBUTE_DATA, STORAGE_KEYS, THEME_MODES, THEME_OPTIONS, THEME_OPTIONS_HASH } from '../../utilities/constant';
+import {
+  ATTRIBUTE_DATA,
+  STORAGE_KEYS,
+  THEME_MODES,
+  THEME_OPTIONS,
+  THEME_OPTIONS_HASH,
+} from '../../utilities/constants';
 
 const { LIGHT, DARK } = THEME_MODES;
 const { THEME } = STORAGE_KEYS;

@@ -1,4 +1,4 @@
-import { STORAGE_KEYS } from '@/utilities/constant';
+import { STORAGE_KEYS } from '@/utilities/constants';
 import { getCookie } from '@/utilities/services/storage.service';
 import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
