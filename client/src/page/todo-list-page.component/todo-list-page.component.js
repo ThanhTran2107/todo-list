@@ -6,6 +6,7 @@ import { ThemeSelector } from '@/components/shared/theme-selector.component';
 import { API_ENDPOINTS, MODAL_TITLES, PAGE_PATH, STATUS_VALUES, STORAGE_KEYS } from '@/utilities/constants';
 import { useGetTodos } from '@/utilities/hooks/use-get-todos.hook';
 import { todoApi } from '@/utilities/services/api.service';
+import { handleUnauthorized } from '@/utilities/services/auth-utils.service';
 import { setLocalStorage } from '@/utilities/services/storage.service';
 import { removeVietnameseTones } from '@/utilities/services/text-processing.service';
 import { faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
@@ -195,48 +196,55 @@ export const TodoListPage = () => {
   // Function to delete a specific task
   const handleDeleteTask = id => {
     ConfirmDeletionModal({
-      onOk: () => {
-        const deleteItem = list => filter(list, todo => todo.id !== id);
+      onOk: async () => {
+        try {
+          const response = await todoApi.delete(API_ENDPOINTS.TODO_BY_ID.replace('{id}', id));
 
-        const updatedTodoList = deleteItem(todoList);
-        const updatedSearchedList = deleteItem(searchedList);
-        const updatedOriginalList = deleteItem(originalList);
+          const deleteItem = list => filter(list, todo => todo.id !== id);
 
-        setTodoList(updatedTodoList);
-        setOriginalList(updatedOriginalList);
-        setSearchedList(updatedSearchedList);
+          const updatedTodoList = deleteItem(todoList);
+          const updatedSearchedList = deleteItem(searchedList);
+          const updatedOriginalList = deleteItem(originalList);
 
-        message.success('Delete the task successfully!', 1);
+          setTodoList(updatedTodoList);
+          setOriginalList(updatedOriginalList);
+          setSearchedList(updatedSearchedList);
+
+          message.success(response.data?.message, 1);
+        } catch (e) {
+          console.error(e);
+
+          if (e.response?.status === 401) return handleUnauthorized();
+
+          message.error(e.response?.data?.error, 1);
+        }
       },
       title: DELETE_A_TASK,
     });
   };
 
   // Function to delete all tasks
-  const handleDeleteAllTasks = () => {
+  const handleDeleteAllTasks = async () => {
     ConfirmDeletionModal({
-      onOk: () => {
-        setTodoList([]);
-        setOriginalList([]);
-        setSearchedList([]);
+      onOk: async () => {
+        try {
+          const response = await todoApi.delete(API_ENDPOINTS.TODOS);
 
-        message.success('Delete all tasks successfully!', 1);
+          setTodoList([]);
+          setOriginalList([]);
+          setSearchedList([]);
+
+          message.success(response.data?.message, 1);
+        } catch (e) {
+          console.error(e);
+
+          if (e.response?.status === 401) return handleUnauthorized();
+
+          message.error(response.data?.error, 1);
+        }
       },
       title: DELETE_ALL_TASKS,
     });
-  };
-
-  // Function to logout the account
-  const handleLogout = async () => {
-    try {
-      const response = await todoApi.post(API_ENDPOINTS.LOGOUT);
-
-      message.success(response.data.message, 1);
-      Cookies.remove(STORAGE_KEYS.AUTH_TOKEN);
-      navigate(PAGE_PATH.LOGIN, { replace: true });
-    } catch (e) {
-      console.error(e);
-    }
   };
 
   const userMenuItems = [
@@ -244,7 +252,17 @@ export const TodoListPage = () => {
       key: 'logout',
       icon: <FontAwesomeIcon icon={faSignOutAlt} />,
       label: 'Logout',
-      onClick: handleLogout,
+      onClick: async () => {
+        try {
+          const response = await todoApi.post(API_ENDPOINTS.LOGOUT);
+
+          message.success(response.data.message, 1);
+          Cookies.remove(STORAGE_KEYS.AUTH_TOKEN);
+          navigate(PAGE_PATH.LOGIN, { replace: true });
+        } catch (e) {
+          console.error(e);
+        }
+      },
       danger: true,
     },
   ];

@@ -42,6 +42,9 @@ export const AddTodoModal = ({ isOpen, onAddNewTodo, onClose }) => {
       if (e.errorFields) return;
 
       console.error(e);
+
+      if (e.response?.status === 401) return handleUnauthorized();
+
       message.error('Failed to add a new task!', 1);
     } finally {
       setIsLoading(false);
