@@ -1,32 +1,23 @@
-import { Button } from '@/components/antd/button.component';
-import { Dropdown } from '@/components/antd/dropdown.component';
-import { message } from '@/components/antd/message.component';
-import { Space } from '@/components/antd/space.component';
-import { ThemeSelector } from '@/components/shared/theme-selector.component';
+import { ConfirmDeletionModal } from '@/pages/todo-list-page/components/confirm-deletion-modal.component';
 import { API_ENDPOINTS, MODAL_TITLES, PAGE_PATH, STATUS_VALUES, STORAGE_KEYS } from '@/utilities/constants';
 import { useGetTodos } from '@/utilities/hooks/use-get-todos.hook';
 import { todoApi } from '@/utilities/services/api.service';
 import { handleUnauthorized } from '@/utilities/services/auth-utils.service';
 import { setLocalStorage } from '@/utilities/services/storage.service';
 import { removeVietnameseTones } from '@/utilities/services/text-processing.service';
-import { faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { message } from 'antd';
 import Cookies from 'js-cookie';
-import { filter, isEmpty, map } from 'lodash-es';
+import { filter, find, isEmpty, map } from 'lodash-es';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import { ConfirmDeletionModal } from './components/confirm-deletion-modal.component';
-import { TodoListPageHeader } from './components/todo-list-page-header.component';
-import { TodoListTable } from './components/todo-list-table.component';
-import { ViewTaskDetailsModal } from './components/view-task-details-modal.component';
-import { Wrapper } from './styles/todo-list-page.styled';
 
 const { TODO_LIST, ORIGINAL_LIST } = STORAGE_KEYS;
 const { DELETE_ALL_TASKS, DELETE_A_TASK } = MODAL_TITLES;
 
-// Main TodoListPage component that manages the entire todo list application
-export const TodoListPage = () => {
+export const useTodoList = () => {
+  const navigate = useNavigate();
   const [todoList, setTodoList] = useState([]);
   const [originalList, setOriginalList] = useState([]);
   const [searchedList, setSearchedList] = useState([]);
@@ -37,8 +28,6 @@ export const TodoListPage = () => {
   const [viewTask, setViewTask] = useState(null);
 
   const hasResetFilterRef = useRef(0);
-
-  const navigate = useNavigate();
 
   const { todos: fetchedTodos, isLoading } = useGetTodos();
 
@@ -82,17 +71,20 @@ export const TodoListPage = () => {
 
   // Function to toggle the completion status of a task
   const handleCompleteTask = async id => {
-    const todo = todoList.find(t => t.id === id);
+    const todo = find(todoList, t => t.id === id);
+
     if (!todo) return;
 
-    const isCompleted = todo.status === STATUS_VALUES.COMPLETED;
-    const newStatus = isCompleted ? STATUS_VALUES.PENDING : STATUS_VALUES.COMPLETED;
-    const newCompleted = !isCompleted;
+    const newStatus = todo.status === STATUS_VALUES.COMPLETED ? STATUS_VALUES.IN_PROGRESS : STATUS_VALUES.COMPLETED;
 
     try {
       await todoApi.put(API_ENDPOINTS.TODO_BY_ID.replace('{id}', id), {
+        title: todo.title,
+        description: todo.description,
         status: newStatus,
-        completed: newCompleted,
+        completed: newStatus === STATUS_VALUES.COMPLETED,
+        dueDate: todo.dueDate,
+        priority: todo.priority,
       });
 
       const updateItemStatus = list =>
@@ -100,10 +92,11 @@ export const TodoListPage = () => {
           if (t.id === id) {
             return {
               ...t,
-              completed: newCompleted,
+              completed: newStatus === STATUS_VALUES.COMPLETED,
               status: newStatus,
             };
           }
+
           return t;
         });
 
@@ -117,7 +110,8 @@ export const TodoListPage = () => {
 
       message.success('Update the task status successfully!', 1);
     } catch (e) {
-      console.error(e);
+      if (e.response?.status === 401) return handleUnauthorized();
+
       message.error('Failed to update task status', 1);
     }
   };
@@ -174,23 +168,31 @@ export const TodoListPage = () => {
   };
 
   // Function to update the task
-  const handleUpdateTask = updatedTask => {
-    const updatedItem = list =>
-      map(list, todo => {
-        if (todo.id === updatedTask.id) return { ...updatedTask };
+  const handleUpdateTask = async updatedTask => {
+    try {
+      await todoApi.put(API_ENDPOINTS.TODO_BY_ID.replace('{id}', updatedTask.id), updatedTask);
 
-        return todo;
-      });
+      const updatedItem = list =>
+        map(list, todo => {
+          if (todo.id === updatedTask.id) return { ...updatedTask };
 
-    const updatedTodoList = updatedItem(todoList);
-    const updatedSearchedList = updatedItem(searchedList);
-    const updatedOriginalList = updatedItem(originalList);
+          return todo;
+        });
 
-    setTodoList(updatedTodoList);
-    setSearchedList(updatedSearchedList);
-    setOriginalList(updatedOriginalList);
+      const updatedTodoList = updatedItem(todoList);
+      const updatedSearchedList = updatedItem(searchedList);
+      const updatedOriginalList = updatedItem(originalList);
 
-    message.success('Update the task successfully!', 1);
+      setTodoList(updatedTodoList);
+      setSearchedList(updatedSearchedList);
+      setOriginalList(updatedOriginalList);
+
+      message.success('Update the task successfully!', 1);
+    } catch (e) {
+      if (e.response?.status === 401) return handleUnauthorized();
+
+      message.error('Failed to update the task!', 1);
+    }
   };
 
   // Function to delete a specific task
@@ -212,8 +214,6 @@ export const TodoListPage = () => {
 
           message.success(response.data?.message, 1);
         } catch (e) {
-          console.error(e);
-
           if (e.response?.status === 401) return handleUnauthorized();
 
           message.error(e.response?.data?.error, 1);
@@ -236,11 +236,9 @@ export const TodoListPage = () => {
 
           message.success(response.data?.message, 1);
         } catch (e) {
-          console.error(e);
-
           if (e.response?.status === 401) return handleUnauthorized();
 
-          message.error(response.data?.error, 1);
+          message.error(e.response?.data?.error, 1);
         }
       },
       title: DELETE_ALL_TASKS,
@@ -260,7 +258,7 @@ export const TodoListPage = () => {
           Cookies.remove(STORAGE_KEYS.AUTH_TOKEN);
           navigate(PAGE_PATH.LOGIN, { replace: true });
         } catch (e) {
-          console.error(e);
+          message.error(e.response?.data?.error, 1);
         }
       },
       danger: true,
@@ -282,42 +280,23 @@ export const TodoListPage = () => {
     setLocalStorage(ORIGINAL_LIST, [...originalList]);
   }, [todoList, originalList]);
 
-  return (
-    <Wrapper>
-      <Space>
-        <Dropdown menu={{ items: userMenuItems }} arrow placement="bottomRight">
-          <Button
-            type="text"
-            icon={<FontAwesomeIcon icon={faUser} style={{ color: 'var(--text-color)', fontSize: '1.1rem' }} />}
-          />
-        </Dropdown>
-
-        <ThemeSelector />
-      </Space>
-
-      <TodoListPageHeader
-        todoCount={todoList.length}
-        completedCount={completedCount}
-        uncompletedCount={uncompletedCount}
-        hasCurrentTasks={!isEmpty(originalList)}
-        hasResetFilter={hasResetFilterRef.current}
-        onAddNewTodo={handleAddNewTodo}
-        onSearchTasksByName={handleSearchTasksByName}
-        onResetOriginalData={handleResetOriginalData}
-        onFilterData={handleFilterData}
-        onDeleteAllTasks={handleDeleteAllTasks}
-      />
-
-      <TodoListTable
-        todoList={todoList}
-        isLoading={isLoading}
-        onComplete={handleCompleteTask}
-        onDelete={handleDeleteTask}
-        onUpdateTaskName={handleUpdateTask}
-        onViewDetails={handleViewTaskDetails}
-      />
-
-      <ViewTaskDetailsModal isOpen={!!viewTask} task={viewTask} onClose={handleCloseViewModal} />
-    </Wrapper>
-  );
+  return {
+    todoList,
+    isLoading,
+    completedCount,
+    uncompletedCount,
+    viewTask,
+    hasResetFilterRef,
+    handleViewTaskDetails,
+    handleCloseViewModal,
+    handleCompleteTask,
+    handleResetOriginalData,
+    handleAddNewTodo,
+    handleSearchTasksByName,
+    handleFilterData,
+    handleUpdateTask,
+    handleDeleteTask,
+    handleDeleteAllTasks,
+    userMenuItems,
+  };
 };

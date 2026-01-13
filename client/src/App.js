@@ -1,13 +1,12 @@
-import { PAGE_PATH } from '@/utilities/constants';
-import { STORAGE_KEYS } from '@/utilities/constants';
+import { PAGE_PATH, STORAGE_KEYS } from '@/utilities/constants';
 import { getCookie } from '@/utilities/services/storage.service';
 import { ConfigProvider } from 'antd';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
-import { LoginPage } from './page/login-page/login-page.component';
-import { RegisterPage } from './page/register-page/register-page.component';
-import { TodoListPage } from './page/todo-list-page.component/todo-list-page.component';
+import { LoginPage } from './pages/login-page/login-page.component';
+import { RegisterPage } from './pages/register-page/register-page.component';
+import { TodoListPage } from './pages/todo-list-page/todo-list-page.component';
 import { PrivateRoute } from './routes/private-route.jsx';
 
 const { AUTH_TOKEN } = STORAGE_KEYS;

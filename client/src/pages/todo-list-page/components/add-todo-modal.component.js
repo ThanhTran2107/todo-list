@@ -1,10 +1,9 @@
 import { DatePicker } from '@/components/antd/date-picker.component';
 import { Form } from '@/components/antd/form.component';
-import { Input } from '@/components/antd/input.component';
+import { TextField } from '@/components/antd/input.component';
 import { message } from '@/components/antd/message.component';
 import { Modal } from '@/components/antd/modal.component';
 import { Select } from '@/components/antd/select.component';
-import { TextField } from '@/components/antd/text-field.component';
 import { API_ENDPOINTS, PRIORITY_LEVELS, PRIORITY_VALUES, STATUS_TYPES, STATUS_VALUES } from '@/utilities/constants';
 import { todoApi } from '@/utilities/services/api.service';
 import { trim } from 'lodash-es';
@@ -40,8 +39,6 @@ export const AddTodoModal = ({ isOpen, onAddNewTodo, onClose }) => {
       form.resetFields();
     } catch (e) {
       if (e.errorFields) return;
-
-      console.error(e);
 
       if (e.response?.status === 401) return handleUnauthorized();
 
@@ -110,7 +107,7 @@ export const AddTodoModal = ({ isOpen, onAddNewTodo, onClose }) => {
             },
           ]}
         >
-          <Input.TextArea
+          <TextField.TextArea
             showCount
             placeholder="Enter task description..."
             rows={3}

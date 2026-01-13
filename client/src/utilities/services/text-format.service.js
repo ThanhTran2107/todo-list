@@ -1,7 +1,3 @@
-import { Divider } from '@/components/antd/divider.component';
-
-import { COLORS } from '../constants';
-
 // Text formatting utilities
 export const truncateText = (text, maxLength = 50) => {
   if (!text) return null;

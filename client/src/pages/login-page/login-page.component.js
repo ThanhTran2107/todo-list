@@ -1,9 +1,9 @@
 import { Button } from '@/components/antd/button.component';
 import { Form } from '@/components/antd/form.component';
 import { Image } from '@/components/antd/image.component';
+import { TextField } from '@/components/antd/input.component';
 import { message } from '@/components/antd/message.component';
 import { Space } from '@/components/antd/space.component';
-import { TextField } from '@/components/antd/text-field.component';
 import { API_ENDPOINTS, PAGE_PATH, STORAGE_KEYS } from '@/utilities/constants';
 import { todoApi } from '@/utilities/services/api.service';
 import { setCookie } from '@/utilities/services/storage.service';
@@ -36,7 +36,6 @@ export const LoginPage = () => {
       setCookie(AUTH_TOKEN, response.data.token);
       navigate(PAGE_PATH.TODO_LIST, { replace: true });
     } catch (e) {
-      console.error(e);
       message.error(e.response.data?.error, 1);
     } finally {
       setIsLoading(false);

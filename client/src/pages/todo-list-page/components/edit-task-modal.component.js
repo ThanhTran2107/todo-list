@@ -2,12 +2,18 @@ import { Checkbox } from '@/components/antd/checkbox.component';
 import { DatePicker } from '@/components/antd/date-picker.component';
 import { Form } from '@/components/antd/form.component';
 import { Input } from '@/components/antd/input.component';
+import { TextField } from '@/components/antd/input.component';
 import { Modal } from '@/components/antd/modal.component';
-import { TextField } from '@/components/antd/text-field.component';
 import { COLORS, PRIORITY_LEVELS, PRIORITY_VALUES, STATUS_TYPES, STATUS_VALUES } from '@/utilities/constants';
-import dayjs from 'dayjs';
-import { trim } from 'lodash-es';
 import { useEffect, useRef, useState } from 'react';
+
+import {
+  createUpdatedTask,
+  getInitialFormValues,
+  handleCompletionChange,
+  handleStatusChange,
+  updateStatusBasedOnDueDate,
+} from '../utils/edit-task-utils';
 
 // EditTaskModal component for updating all task fields
 export const EditTaskModal = ({ isOpen, selectedRow, onUpdateTask, onCloseEditModal }) => {
@@ -20,25 +26,12 @@ export const EditTaskModal = ({ isOpen, selectedRow, onUpdateTask, onCloseEditMo
     form
       .validateFields()
       .then(formValue => {
-        const { titleField, descriptionField, completedField, dueDateField, priorityField, statusField } = formValue;
-
-        const updatedTask = {
-          ...selectedRow,
-          title: trim(titleField),
-          description: trim(descriptionField) || null,
-          completed: completedField || false,
-          dueDate: dueDateField ? dueDateField.toISOString() : selectedRow.dueDate,
-          priority: priorityField,
-          status: statusField,
-        };
-
+        const updatedTask = createUpdatedTask(formValue, selectedRow);
         onUpdateTask(updatedTask);
         onCloseEditModal();
       })
       .catch(e => {
         if (e.errorFields) return;
-
-        console.log(e);
       });
   };
 
@@ -65,14 +58,7 @@ export const EditTaskModal = ({ isOpen, selectedRow, onUpdateTask, onCloseEditMo
         layout="vertical"
         onFinish={() => handleUpdateButtonClick(selectedRow)}
         style={{ marginTop: '1.5rem' }}
-        initialValues={{
-          titleField: selectedRow?.title || '',
-          descriptionField: selectedRow?.description || '',
-          completedField: selectedRow?.status === STATUS_VALUES.COMPLETED || selectedRow?.completed || false,
-          dueDateField: selectedRow?.dueDate ? dayjs(selectedRow.dueDate) : null,
-          priorityField: selectedRow?.priority || PRIORITY_VALUES.MEDIUM,
-          statusField: selectedRow?.status || STATUS_VALUES.PENDING,
-        }}
+        initialValues={getInitialFormValues(selectedRow)}
       >
         <Form.Item
           label="Task Title"
@@ -123,7 +109,11 @@ export const EditTaskModal = ({ isOpen, selectedRow, onUpdateTask, onCloseEditMo
             format="YYYY-MM-DD HH:mm:ss"
             placeholder="Select due date"
             style={{ width: '100%' }}
-            onChange={() => setHasChanged(true)}
+            onChange={value => {
+              setHasChanged(true);
+              const completed = form.getFieldValue('completedField');
+              updateStatusBasedOnDueDate(value, completed, form);
+            }}
           />
         </Form.Item>
 
@@ -173,14 +163,7 @@ export const EditTaskModal = ({ isOpen, selectedRow, onUpdateTask, onCloseEditMo
             }}
             onChange={e => {
               setHasChanged(true);
-              const value = e.target.value;
-
-              console.log('Selected Status:', value);
-              if (value === STATUS_VALUES.COMPLETED) {
-                form.setFieldsValue({ completedField: true });
-              } else {
-                form.setFieldsValue({ completedField: false });
-              }
+              handleStatusChange(e.target.value, form);
             }}
           >
             <option value={STATUS_VALUES.PENDING}>{STATUS_TYPES.PENDING}</option>
@@ -191,7 +174,13 @@ export const EditTaskModal = ({ isOpen, selectedRow, onUpdateTask, onCloseEditMo
         </Form.Item>
 
         <Form.Item name="completedField" valuePropName="checked">
-          <Checkbox disabled={selectedRow?.status === STATUS_VALUES.OVERDUE} onChange={() => setHasChanged(true)}>
+          <Checkbox
+            disabled={selectedRow?.status === STATUS_VALUES.OVERDUE}
+            onChange={e => {
+              setHasChanged(true);
+              handleCompletionChange(e.target.checked, form);
+            }}
+          >
             Mark as completed
           </Checkbox>
         </Form.Item>

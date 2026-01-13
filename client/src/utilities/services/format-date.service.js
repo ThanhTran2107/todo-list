@@ -1,7 +1,3 @@
-import { Divider } from '@/components/antd/divider.component';
-
-import { COLORS } from '../constants';
-
 // Function to format date strings
 export const formatDate = dateString => {
   if (!dateString) return null;

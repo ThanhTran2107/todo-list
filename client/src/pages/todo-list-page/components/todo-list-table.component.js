@@ -1,0 +1,48 @@
+import { Spin } from '@/components/antd/spin.component';
+import { Table } from '@/components/antd/table.component';
+import { useState } from 'react';
+
+import { getTodoTableColumns } from '../config/todo-table-columns.config';
+import { StyledTable, TableWrapper } from '../styles/todo-list-table.styled';
+import { EditTaskModal } from './edit-task-modal.component';
+
+const { Column } = Table;
+
+// TodoList component that displays the list of tasks in a table
+export const TodoListTable = ({ todoList, isLoading, onComplete, onDelete, onUpdateTask, onViewDetails }) => {
+  const [editRowId, setEditRowId] = useState(null);
+
+  // Function to select a row for updating
+  const handleSelectRowToUpdate = id => setEditRowId(id);
+
+  // Function to close the edit modal
+  const handleCloseEditModal = () => setEditRowId(null);
+
+  const columns = getTodoTableColumns(
+    editRowId,
+    onViewDetails,
+    handleSelectRowToUpdate,
+    onComplete,
+    onDelete,
+    onUpdateTask,
+    handleCloseEditModal,
+    EditTaskModal,
+  );
+
+  return (
+    <TableWrapper>
+      <StyledTable
+        loading={{
+          spinning: isLoading,
+          indicator: <Spin />,
+        }}
+        dataSource={todoList}
+        onChange={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      >
+        {columns.map(column => (
+          <Column key={column.key} {...column} />
+        ))}
+      </StyledTable>
+    </TableWrapper>
+  );
+};

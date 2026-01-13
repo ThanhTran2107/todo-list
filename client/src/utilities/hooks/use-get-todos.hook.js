@@ -22,8 +22,6 @@ export const useGetTodos = () => {
           ? setTodos(response?.data)
           : setTodos(getLocalStorage(ORIGINAL_LIST) || getLocalStorage(TODO_LIST) || []);
       } catch (e) {
-        console.error(e);
-
         if (e.response?.status === 401) return handleUnauthorized();
 
         setTodos(getLocalStorage(ORIGINAL_LIST) || getLocalStorage(TODO_LIST) || []);
