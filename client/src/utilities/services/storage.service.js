@@ -23,7 +23,7 @@ export const getLocalStorage = (key, defaultValue = null) => {
 export const setCookie = (key, value) => {
   const toSave = typeof value === 'string' ? value : JSON.stringify(value);
   
-  Cookies.set(key, toSave, { expires: 7, secure: true, sameSite: 'strict' }); // Expires in 7 days, secure for HTTPS
+  Cookies.set(key, toSave, { expires: 1, secure: true, sameSite: 'strict' }); // Expires in 1 day, secure for HTTPS
 };
 
 export const getCookie = (key, defaultValue = null) => {

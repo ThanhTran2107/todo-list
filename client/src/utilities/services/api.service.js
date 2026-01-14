@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import { STORAGE_KEYS } from '../constants';
+import { handleUnauthorized } from './auth-utils.service';
 import { getCookie } from './storage.service';
 
 const { AUTH_TOKEN } = STORAGE_KEYS;
@@ -19,3 +20,13 @@ todoApi.interceptors.request.use(config => {
 
   return config;
 });
+
+// Add response interceptor to handle 401 errors globally
+todoApi.interceptors.response.use(
+  response => response,
+  error => {
+    if (error.response?.status === 401) handleUnauthorized();
+
+    return Promise.reject(error);
+  },
+);
