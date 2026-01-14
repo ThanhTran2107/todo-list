@@ -1,5 +1,6 @@
 import { Spin } from '@/components/antd/spin.component';
 import { Table } from '@/components/antd/table.component';
+import { map } from 'lodash-es';
 import { useState } from 'react';
 
 import { getTodoTableColumns } from '../config/todo-table-columns.config';
@@ -39,7 +40,7 @@ export const TodoListTable = ({ todoList, isLoading, onComplete, onDelete, onUpd
         dataSource={todoList}
         onChange={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
-        {columns.map(column => (
+        {map(columns, column => (
           <Column key={column.key} {...column} />
         ))}
       </StyledTable>

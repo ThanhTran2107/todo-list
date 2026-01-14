@@ -16,8 +16,6 @@ export const TodoListPage = () => {
   const {
     todoList,
     isLoading,
-    completedCount,
-    uncompletedCount,
     viewTask,
     hasResetFilterRef,
     handleViewTaskDetails,
@@ -48,8 +46,6 @@ export const TodoListPage = () => {
 
       <TodoListPageHeader
         todoCount={todoList.length}
-        completedCount={completedCount}
-        uncompletedCount={uncompletedCount}
         hasCurrentTasks={todoList.length > 0}
         hasResetFilter={hasResetFilterRef.current}
         onAddNewTodo={handleAddNewTodo}

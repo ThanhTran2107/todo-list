@@ -12,9 +12,7 @@ export const updateStatusBasedOnDueDate = (dueDate, completed, form) => {
     } else {
       const currentStatus = form.getFieldValue('statusField');
 
-      if (currentStatus === STATUS_VALUES.OVERDUE) {
-        form.setFieldsValue({ statusField: STATUS_VALUES.IN_PROGRESS });
-      }
+      if (currentStatus === STATUS_VALUES.OVERDUE) form.setFieldsValue({ statusField: STATUS_VALUES.IN_PROGRESS });
     }
   }
 };
@@ -45,11 +43,10 @@ export const createUpdatedTask = (formValues, selectedRow) => {
 };
 
 // Utility function to handle status change and sync completion checkbox
-export const handleStatusChange = (value, form) => 
+export const handleStatusChange = (value, form) =>
   value === STATUS_VALUES.COMPLETED
     ? form.setFieldsValue({ completedField: true })
     : form.setFieldsValue({ completedField: false });
-
 
 // Utility function to handle completion checkbox change and sync status
 export const handleCompletionChange = (checked, form) => {

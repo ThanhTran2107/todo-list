@@ -22,23 +22,11 @@ export const useTodoList = () => {
   const [originalList, setOriginalList] = useState([]);
   const [searchedList, setSearchedList] = useState([]);
 
-  const [completedCount, setCompletedCount] = useState(0);
-  const [uncompletedCount, setUncompletedCount] = useState(0);
-
   const [viewTask, setViewTask] = useState(null);
 
   const hasResetFilterRef = useRef(0);
 
   const { todos: fetchedTodos, isLoading } = useGetTodos();
-
-  // Function to update completed and uncompleted task counts
-  const updateStatistics = list => {
-    const completedCount = filter(list, todo => todo.completed === true);
-    const uncompletedCount = filter(list, todo => todo.completed === false);
-
-    setCompletedCount(completedCount.length);
-    setUncompletedCount(uncompletedCount.length);
-  };
 
   // Function to view task details
   const handleViewTaskDetails = task => setViewTask(task);
@@ -154,11 +142,7 @@ export const useTodoList = () => {
 
     if (!hasOriginal) setOriginalList(todoList);
 
-    if (value === 0) {
-      hasSearch ? handleResetSearchedData() : handleResetOriginalData();
-
-      return;
-    }
+    if (value === 0) return hasSearch ? handleResetSearchedData() : handleResetOriginalData();
 
     const sourceData = hasSearch ? searchedList : hasOriginal ? originalList : todoList;
 
@@ -267,15 +251,12 @@ export const useTodoList = () => {
 
   useEffect(() => {
     if (!isLoading && fetchedTodos.length > 0) {
-      updateStatistics(fetchedTodos);
       setTodoList(fetchedTodos);
       setOriginalList(fetchedTodos);
     }
   }, [fetchedTodos, isLoading]);
 
   useEffect(() => {
-    updateStatistics(todoList);
-
     setLocalStorage(TODO_LIST, [...todoList]);
     setLocalStorage(ORIGINAL_LIST, [...originalList]);
   }, [todoList, originalList]);
@@ -283,8 +264,6 @@ export const useTodoList = () => {
   return {
     todoList,
     isLoading,
-    completedCount,
-    uncompletedCount,
     viewTask,
     hasResetFilterRef,
     handleViewTaskDetails,

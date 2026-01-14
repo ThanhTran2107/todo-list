@@ -78,7 +78,7 @@ A simple and minimal To-Do List web application built with **ReactJS**. This app
 
 ### Live Demo
 
-Live Demo: https://dailytask-tsw.onrender.com/
+Live Demo: comming soon!
 
 ## Server (Quarkus Backend)
 

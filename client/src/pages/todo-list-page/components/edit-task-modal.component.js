@@ -27,6 +27,7 @@ export const EditTaskModal = ({ isOpen, selectedRow, onUpdateTask, onCloseEditMo
       .validateFields()
       .then(formValue => {
         const updatedTask = createUpdatedTask(formValue, selectedRow);
+        
         onUpdateTask(updatedTask);
         onCloseEditModal();
       })
