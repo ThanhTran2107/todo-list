@@ -7,8 +7,8 @@ import { todoApi } from './api.service';
 export const handleUnauthorized = async () => {
   try {
     await todoApi.get(API_ENDPOINTS.LOGOUT);
-  } catch (e) {
-    message.error('Session expired. Please login again.', 1);
+  } catch {
+    // Ignore logout errors
   } finally {
     Cookies.remove(STORAGE_KEYS.AUTH_TOKEN);
     window.location.replace(PAGE_PATH.LOGIN);

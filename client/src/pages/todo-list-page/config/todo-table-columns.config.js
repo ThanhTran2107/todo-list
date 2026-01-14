@@ -101,7 +101,7 @@ export const getTodoTableColumns = (editRowId, onViewDetails, onSelectRowToUpdat
         {
           key: 'view',
           icon: <FontAwesomeIcon icon={faEye} />,
-          label: 'View Details',
+          label: 'View details',
           onClick: () => onViewDetails(record),
         },
         {
@@ -119,7 +119,7 @@ export const getTodoTableColumns = (editRowId, onViewDetails, onSelectRowToUpdat
         {
           key: 'complete',
           icon: <FontAwesomeIcon icon={record.status === STATUS_VALUES.COMPLETED ? faRedo : faCheck} />,
-          label: record.status === STATUS_VALUES.COMPLETED ? 'Mark as Incomplete' : 'Mark as Complete',
+          label: record.status === STATUS_VALUES.COMPLETED ? 'Mark as incompleted' : 'Mark as completed',
           onClick: () => onComplete(record.id),
           disabled: record.status === STATUS_VALUES.OVERDUE,
         },
