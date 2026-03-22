@@ -144,7 +144,7 @@ export const LoginPage = () => {
         <FormFooterText>Don't have an account ?</FormFooterText>
 
         <RegisterLink onClick={() => navigate(PAGE_PATH.REGISTER)}>Create an account</RegisterLink>
-      </FormFooter> 
+      </FormFooter>
     </Wrapper>
   );
 };

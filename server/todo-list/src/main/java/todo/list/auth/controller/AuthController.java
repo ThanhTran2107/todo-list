@@ -54,8 +54,8 @@ public class AuthController {
 
             return Response.ok(new LoginResponse(token)).build();
         } catch (Exception e) {
-            return Response.status(Response.Status.UNAUTHORIZED)
-                    .entity(new ErrorResponse(e.getMessage(), Response.Status.UNAUTHORIZED.getStatusCode()))
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(new ErrorResponse(e.getMessage(), Response.Status.BAD_REQUEST.getStatusCode()))
                     .build();
         }
     }
