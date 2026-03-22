@@ -101,6 +101,7 @@ export const COLORS = Object.freeze({
   BRIGHT_BLUE: '#1677ff',
   BLUE: '#4096ff',
   BLUE_GREEN: '#249995',
+  DARK_BLUE: '#003a8c',
 
   // GRAY COLORS
   FOG_GRAY: '#726f6f75',
@@ -131,5 +132,5 @@ export const COLORS = Object.freeze({
   GRAY_55: '#7f7f7f55',
 
   // SHADOW
-  BOX_SHADOW: '0 0.25rem 0.375rem rgba(0, 0, 0, 0.1)',
+  BOX_SHADOW: '0 0 3.125rem rgba(0, 0, 0, 0.18), 0 0.125rem 0.4375rem rgba(0, 0, 0, 0.5)',
 });

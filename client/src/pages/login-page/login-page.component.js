@@ -1,6 +1,4 @@
-import { Button } from '@/components/antd/button.component';
 import { Form } from '@/components/antd/form.component';
-import { Image } from '@/components/antd/image.component';
 import { TextField } from '@/components/antd/input.component';
 import { message } from '@/components/antd/message.component';
 import { Space } from '@/components/antd/space.component';
@@ -10,7 +8,25 @@ import { setCookie } from '@/utilities/services/storage.service';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { FormTitle, LoginContainer, LoginForm, RegisterLink } from './styles/login-page.styled';
+import {
+  DividerText,
+  ForgotPasswordButton,
+  FormButtonWrapper,
+  FormDescription,
+  FormFooter,
+  FormFooterText,
+  FormTitle,
+  LoginButton,
+  LoginForm,
+  PasswordLabelWrapper,
+  RegisterLink,
+  SocialImageButton,
+  SocialLoginWrapper,
+  StyledDivider,
+  TitleWrapper,
+  TodoImage,
+  Wrapper,
+} from './styles/login-page.styled';
 
 const { AUTH_TOKEN } = STORAGE_KEYS;
 
@@ -47,17 +63,16 @@ export const LoginPage = () => {
   }, []);
 
   return (
-    <LoginContainer>
+    <Wrapper>
       <LoginForm>
         <Form form={form} name="loginForm" layout="vertical" onFinish={handleLogin} autoComplete="off">
           <FormTitle>
-            <Image
-              preview={false}
-              src="/icons8-to-do-list-48.png"
-              alt="Todo Icon"
-              style={{ width: '3rem', height: '3rem', marginRight: '1rem' }}
-            />
-            Login
+            <TitleWrapper>
+              <TodoImage preview={false} src="/icons8-to-do-list-48.png" alt="Todo Icon" />
+              Welcome back
+            </TitleWrapper>
+
+            <FormDescription>Enter your credentials to access your workspace</FormDescription>
           </FormTitle>
 
           <Form.Item
@@ -72,7 +87,15 @@ export const LoginPage = () => {
           </Form.Item>
 
           <Form.Item
-            label="Password"
+            label={
+              <PasswordLabelWrapper size={270}>
+                <span>Password</span>
+
+                <ForgotPasswordButton onClick={() => message.info('Forgot password flow is coming soon!', 1)}>
+                  Forgot?
+                </ForgotPasswordButton>
+              </PasswordLabelWrapper>
+            }
             name="password"
             rules={[{ required: true, message: 'Please enter your password!' }]}
           >
@@ -80,16 +103,48 @@ export const LoginPage = () => {
           </Form.Item>
 
           <Form.Item>
-            <Space direction="vertical" style={{ width: '100%' }}>
-              <Button type="primary" htmlType="submit" loading={isLoading} block style={{ marginTop: '0.5rem' }}>
+            <FormButtonWrapper>
+              <LoginButton type="primary" htmlType="submit" loading={isLoading} block>
                 Login
-              </Button>
-
-              <RegisterLink onClick={() => navigate(PAGE_PATH.REGISTER)}>Don't have an account?</RegisterLink>
-            </Space>
+              </LoginButton>
+            </FormButtonWrapper>
           </Form.Item>
+
+          <StyledDivider plain>
+            <DividerText>OR CONTINUE WITH</DividerText>
+          </StyledDivider>
+
+          <SocialLoginWrapper>
+            <Space direction="vertical" align="center">
+              <SocialImageButton
+                preview={false}
+                src="/google.png"
+                alt="Google icon"
+                onClick={() => message.info('Login with Google (dev)', 1)}
+              />
+
+              <span>Google</span>
+            </Space>
+
+            <Space direction="vertical" align="center">
+              <SocialImageButton
+                preview={false}
+                src="/facebook.png"
+                alt="Facebook icon"
+                onClick={() => message.info('Login with Facebook (dev)', 1)}
+              />
+
+              <span>Facebook</span>
+            </Space>
+          </SocialLoginWrapper>
         </Form>
       </LoginForm>
-    </LoginContainer>
+
+      <FormFooter>
+        <FormFooterText>Don't have an account ?</FormFooterText>
+
+        <RegisterLink onClick={() => navigate(PAGE_PATH.REGISTER)}>Create an account</RegisterLink>
+      </FormFooter> 
+    </Wrapper>
   );
 };

@@ -12,7 +12,7 @@ code {
 }
 
 [data-theme='dark'] {
-  --background-color: rgb(35, 33, 33);
+  --background-color: rgb(46, 45, 45);
   --text-color: white;
 }
 

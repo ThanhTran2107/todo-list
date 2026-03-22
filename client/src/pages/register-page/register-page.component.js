@@ -1,6 +1,5 @@
 import { Button } from '@/components/antd/button.component';
 import { Form } from '@/components/antd/form.component';
-import { Image } from '@/components/antd/image.component';
 import { TextField } from '@/components/antd/input.component';
 import { message } from '@/components/antd/message.component';
 import { Space } from '@/components/antd/space.component';
@@ -9,7 +8,19 @@ import { todoApi } from '@/utilities/services/api.service';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { FormTitle, LoginLink, RegisterContainer, RegisterForm } from './styles/register-page.styled';
+import {
+  FooterText,
+  FormDescription,
+  FormFooter,
+  FormTitle,
+  LoginLink,
+  RegisterButton,
+  RegisterForm,
+  RegisterFormAction,
+  RegisterIcon,
+  TitleWrapper,
+  Wrapper,
+} from './styles/register-page.styled';
 
 // Register page component with email, password, and confirm password fields
 export const RegisterPage = () => {
@@ -42,17 +53,18 @@ export const RegisterPage = () => {
   }, []);
 
   return (
-    <RegisterContainer>
+    <Wrapper>
       <RegisterForm>
         <Form form={form} name="registerForm" layout="vertical" onFinish={handleRegister} autoComplete="off">
           <FormTitle>
-            <Image
-              preview={false}
-              src="/icons8-to-do-list-48.png"
-              alt="Todo Icon"
-              style={{ width: '3rem', height: '3rem', marginRight: '1rem' }}
-            />
-            Register
+            <Space direction="vertical">
+              <TitleWrapper>
+                <RegisterIcon src="/icons8-to-do-list-48.png" alt="Todo Icon" />
+                Create your account
+              </TitleWrapper>
+
+              <FormDescription>Enter your credentials to create your account</FormDescription>
+            </Space>
           </FormTitle>
 
           <Form.Item
@@ -96,16 +108,19 @@ export const RegisterPage = () => {
           </Form.Item>
 
           <Form.Item>
-            <Space direction="vertical" style={{ width: '100%' }}>
-              <Button type="primary" htmlType="submit" loading={isLoading} block style={{ marginTop: '0.5rem' }}>
-                Register
-              </Button>
-
-              <LoginLink onClick={() => navigate(PAGE_PATH.LOGIN)}>Already have an account?</LoginLink>
-            </Space>
+            <RegisterFormAction>
+              <RegisterButton type="primary" htmlType="submit" loading={isLoading} block>
+                Submit
+              </RegisterButton>
+            </RegisterFormAction>
           </Form.Item>
         </Form>
       </RegisterForm>
-    </RegisterContainer>
+
+      <FormFooter>
+        <FooterText>Already have an account ?</FooterText>
+        <LoginLink onClick={() => navigate(PAGE_PATH.LOGIN)}>Login</LoginLink>
+      </FormFooter>
+    </Wrapper>
   );
 };
