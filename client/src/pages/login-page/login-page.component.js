@@ -2,10 +2,12 @@ import { Form } from '@/components/antd/form.component';
 import { TextField } from '@/components/antd/input.component';
 import { message } from '@/components/antd/message.component';
 import { Space } from '@/components/antd/space.component';
-import { API_ENDPOINTS, PAGE_PATH, STORAGE_KEYS } from '@/utilities/constants';
+import { API_ENDPOINTS, AUTH_ID, PAGE_PATH, STORAGE_KEYS } from '@/utilities/constants';
 import { todoApi } from '@/utilities/services/api.service';
 import { setCookie } from '@/utilities/services/storage.service';
+import { useGoogleLogin } from '@react-oauth/google';
 import { useEffect, useRef, useState } from 'react';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import { useNavigate } from 'react-router-dom';
 
 import {
@@ -42,14 +44,56 @@ export const LoginPage = () => {
     setIsLoading(true);
 
     try {
-      const response = await todoApi.post(API_ENDPOINTS.LOGIN, {
+      const apiResponse = await todoApi.post(API_ENDPOINTS.LOGIN, {
         email: values.email,
         password: values.password,
       });
 
       message.success('Login successfully!', 1);
 
-      setCookie(AUTH_TOKEN, response.data.token);
+      setCookie(AUTH_TOKEN, apiResponse.data.token);
+      navigate(PAGE_PATH.TODO_LIST, { replace: true });
+    } catch (e) {
+      message.error(e.response.data?.error, 1);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleGoogleLogin = async googleResponse => {
+    const accessToken = googleResponse?.access_token;
+
+    if (!accessToken) return message.error('Google authentication failed: missing token', 1);
+
+    setIsLoading(true);
+
+    try {
+      const apiResponse = await todoApi.post(API_ENDPOINTS.GOOGLE_LOGIN, { accessToken });
+
+      message.success('Login successfully!', 1);
+      setCookie(AUTH_TOKEN, apiResponse.data.token);
+      navigate(PAGE_PATH.TODO_LIST, { replace: true });
+    } catch (e) {
+      message.error(e.response.data?.error, 1);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleFacebookLogin = async facebookResponse => {
+    if (!facebookResponse?.accessToken || !facebookResponse?.userID)
+      return message.error('Facebook authentication failed.', 1);
+
+    setIsLoading(true);
+
+    try {
+      const apiResponse = await todoApi.post(API_ENDPOINTS.FACEBOOK_LOGIN, {
+        accessToken: facebookResponse.accessToken,
+        userId: facebookResponse.userID,
+      });
+
+      message.success('Login successfully!', 1);
+      setCookie(AUTH_TOKEN, apiResponse.data.token);
       navigate(PAGE_PATH.TODO_LIST, { replace: true });
     } catch (e) {
       message.error(e.response.data?.error, 1);
@@ -89,8 +133,7 @@ export const LoginPage = () => {
           <Form.Item
             label={
               <PasswordLabelWrapper size={270}>
-                <span>Password</span>
-
+                Password
                 <ForgotPasswordButton onClick={() => message.info('Forgot password flow is coming soon!', 1)}>
                   Forgot?
                 </ForgotPasswordButton>
@@ -118,24 +161,29 @@ export const LoginPage = () => {
             <Space direction="vertical" align="center">
               <SocialImageButton
                 preview={false}
+                onClick={useGoogleLogin({
+                  onSuccess: handleGoogleLogin,
+                  onError: () => message.error('Google sign-in failed', 1),
+                  flow: 'implicit',
+                })}
                 src="/google.png"
                 alt="Google icon"
-                onClick={() => message.info('Login with Google (dev)', 1)}
               />
-
-              <span>Google</span>
+              Google
             </Space>
 
-            <Space direction="vertical" align="center">
-              <SocialImageButton
-                preview={false}
-                src="/facebook.png"
-                alt="Facebook icon"
-                onClick={() => message.info('Login with Facebook (dev)', 1)}
-              />
-
-              <span>Facebook</span>
-            </Space>
+            <FacebookLogin
+              appId={AUTH_ID.FACEBOOK_APP_ID}
+              fields="name,email,picture"
+              callback={handleFacebookLogin}
+              onFailure={() => message.error('Facebook sign-in failed', 1)}
+              render={({ onClick }) => (
+                <Space direction="vertical" align="center">
+                  <SocialImageButton onClick={onClick} preview={false} src="/facebook.png" alt="Facebook icon" />
+                  Facebook
+                </Space>
+              )}
+            />
           </SocialLoginWrapper>
         </Form>
       </LoginForm>
@@ -143,7 +191,7 @@ export const LoginPage = () => {
       <FormFooter>
         <FormFooterText>Don't have an account ?</FormFooterText>
 
-        <RegisterLink onClick={() => navigate(PAGE_PATH.REGISTER)}>Create an account</RegisterLink>
+        <RegisterLink onClick={() => navigate(PAGE_PATH.REGISTER)}>Register</RegisterLink>
       </FormFooter>
     </Wrapper>
   );

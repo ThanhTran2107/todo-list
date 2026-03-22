@@ -33,6 +33,24 @@ public class UserService {
         return userRepository.saveUser(user);
     }
 
+    @Transactional
+    public String loginOrRegisterSocial(String email, String name, String avatar) throws Exception {
+        Optional<User> existingUser = findByEmail(email);
+        
+        if (existingUser.isPresent())
+            return jwtGenerator.generateToken(existingUser.get().email);
+
+        User newUser = new User();
+        newUser.email = email;
+        newUser.passwordHash = passwordEncoder.hash(java.util.UUID.randomUUID().toString());
+        newUser.active = true;
+        newUser.createdAt = java.time.Instant.now();
+
+        saveUser(newUser);
+
+        return jwtGenerator.generateToken(newUser.email);
+    }
+
     // SERVICE METHODS
     @Transactional
     public User register(String email, String password) throws Exception {

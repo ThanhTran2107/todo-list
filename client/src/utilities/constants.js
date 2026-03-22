@@ -8,6 +8,8 @@ export const API_ENDPOINTS = Object.freeze({
   TODOS: '/todos',
   TODO_BY_ID: '/todos/{id}',
   LOGOUT: '/auth/logout',
+  GOOGLE_LOGIN: '/auth/google',
+  FACEBOOK_LOGIN: '/auth/facebook',
 });
 
 export const PAGE_PATH = Object.freeze({
@@ -133,4 +135,9 @@ export const COLORS = Object.freeze({
 
   // SHADOW
   BOX_SHADOW: '0 0 3.125rem rgba(0, 0, 0, 0.18), 0 0.125rem 0.4375rem rgba(0, 0, 0, 0.5)',
+});
+
+export const AUTH_ID = Object.freeze({
+  GOOGLE_CLIENT_ID: '631241229433-9eumlhji2vg8aimnv50qgrjaj3bb3u2p.apps.googleusercontent.com',
+  FACEBOOK_APP_ID: '554442523971007',
 });

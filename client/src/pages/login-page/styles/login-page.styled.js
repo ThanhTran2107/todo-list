@@ -135,19 +135,7 @@ export const SocialLoginWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1.5rem;
   gap: 10rem;
-`;
-
-export const SocialLoginButton = styled(Button)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  min-width: 12rem;
-  height: 2.5rem;
-  border-radius: 8px;
-  font-weight: 500;
 `;
 
 export const ForgotPasswordButton = styled(Typography.Link)`
