@@ -8,6 +8,6 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true
   },
-  "include": ["src/**/*", "src/components/antd/.component.js"],
+  "include": ["src/**/*", "src/antd-components/.component.js"],
   "exclude": ["node_modules", "dist"]
 }

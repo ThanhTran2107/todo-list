@@ -6,11 +6,12 @@ import styled from 'styled-components';
 
 import {
   ATTRIBUTE_DATA,
+  COLORS,
   STORAGE_KEYS,
   THEME_MODES,
   THEME_OPTIONS,
   THEME_OPTIONS_HASH,
-} from '../../utilities/constants';
+} from '../../../utilities/constants';
 
 const { LIGHT, DARK } = THEME_MODES;
 const { THEME } = STORAGE_KEYS;
@@ -42,5 +43,12 @@ export const ThemeSelector = () => {
     setCurrentTheme(newTheme);
   };
 
-  return <ThemeButton key={currentTheme} icon={THEME_OPTIONS_HASH[currentTheme].icon} onClick={handleToggleTheme} />;
+  return (
+    <ThemeButton
+      key={currentTheme}
+      icon={THEME_OPTIONS_HASH[currentTheme].icon}
+      onClick={handleToggleTheme}
+      style={{ color: COLORS.BLACK, width: '1rem' }}
+    />
+  );
 };

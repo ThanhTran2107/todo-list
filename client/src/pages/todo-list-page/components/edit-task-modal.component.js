@@ -1,9 +1,9 @@
-import { Checkbox } from '@/components/antd/checkbox.component';
-import { DatePicker } from '@/components/antd/date-picker.component';
-import { Form } from '@/components/antd/form.component';
-import { Input } from '@/components/antd/input.component';
-import { TextField } from '@/components/antd/input.component';
-import { Modal } from '@/components/antd/modal.component';
+import { Checkbox } from '@/antd-components/checkbox.component';
+import { DatePicker } from '@/antd-components/date-picker.component';
+import { Form } from '@/antd-components/form.component';
+import { Input } from '@/antd-components/input.component';
+import { TextField } from '@/antd-components/input.component';
+import { Modal } from '@/antd-components/modal.component';
 import { COLORS, PRIORITY_LEVELS, PRIORITY_VALUES, STATUS_TYPES, STATUS_VALUES } from '@/utilities/constants';
 import { useEffect, useRef, useState } from 'react';
 
@@ -27,7 +27,7 @@ export const EditTaskModal = ({ isOpen, selectedRow, onUpdateTask, onCloseEditMo
       .validateFields()
       .then(formValue => {
         const updatedTask = createUpdatedTask(formValue, selectedRow);
-        
+
         onUpdateTask(updatedTask);
         onCloseEditModal();
       })

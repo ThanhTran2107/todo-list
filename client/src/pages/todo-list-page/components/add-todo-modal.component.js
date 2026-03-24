@@ -1,9 +1,9 @@
-import { DatePicker } from '@/components/antd/date-picker.component';
-import { Form } from '@/components/antd/form.component';
-import { TextField } from '@/components/antd/input.component';
-import { message } from '@/components/antd/message.component';
-import { Modal } from '@/components/antd/modal.component';
-import { Select } from '@/components/antd/select.component';
+import { DatePicker } from '@/antd-components/date-picker.component';
+import { Form } from '@/antd-components/form.component';
+import { TextField } from '@/antd-components/input.component';
+import { message } from '@/antd-components/message.component';
+import { Modal } from '@/antd-components/modal.component';
+import { Select } from '@/antd-components/select.component';
 import { API_ENDPOINTS, PRIORITY_LEVELS, PRIORITY_VALUES, STATUS_TYPES, STATUS_VALUES } from '@/utilities/constants';
 import { todoApi } from '@/utilities/services/api.service';
 import { trim } from 'lodash-es';

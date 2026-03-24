@@ -22,7 +22,7 @@ export const getLocalStorage = (key, defaultValue = null) => {
 // New cookie-based functions for secure storage
 export const setCookie = (key, value) => {
   const toSave = typeof value === 'string' ? value : JSON.stringify(value);
-  
+
   Cookies.set(key, toSave, { expires: 1, secure: true, sameSite: 'strict' }); // Expires in 1 day, secure for HTTPS
 };
 

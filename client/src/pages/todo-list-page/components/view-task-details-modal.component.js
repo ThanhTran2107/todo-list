@@ -1,5 +1,5 @@
-import { Descriptions } from '@/components/antd/descriptions.component';
-import { Modal } from '@/components/antd/modal.component';
+import { Descriptions } from '@/antd-components/descriptions.component';
+import { Modal } from '@/antd-components/modal.component';
 import { PRIORITY_LEVELS, STATUS_TYPES } from '@/utilities/constants';
 import { formatDate } from '@/utilities/services/format-date.service';
 

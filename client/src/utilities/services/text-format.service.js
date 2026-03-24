@@ -1,5 +1,5 @@
 // Text formatting utilities
-export const truncateText = (text, maxLength = 50) => {
+export const truncateText = (text, maxLength = 22) => {
   if (!text) return null;
 
   if (text.length <= maxLength) return text;
@@ -8,4 +8,4 @@ export const truncateText = (text, maxLength = 50) => {
 };
 
 // Format description for table display
-export const formatDescription = (description, maxLength = 50) => truncateText(description, maxLength);
+export const formatDescription = (description, maxLength = 19) => truncateText(description, maxLength);
