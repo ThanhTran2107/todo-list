@@ -1,4 +1,4 @@
-import { Table } from '@/components/antd/table.component';
+import { Table } from '@/antd-components/table.component';
 import { COLORS } from '@/utilities/constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
@@ -15,6 +15,12 @@ export const TableWrapper = styled.div`
 
 export const StyledTable = styled(Table)`
   margin: 0.5rem;
+
+  .ant-table-container {
+    border: 0.0625rem solid ${COLORS.LIGHT_GRAY};
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
 
   .ant-pagination-prev,
   .ant-pagination-next {

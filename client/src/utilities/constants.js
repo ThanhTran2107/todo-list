@@ -53,6 +53,7 @@ export const STATUS_TYPES = Object.freeze({
 });
 
 export const PRIORITY_VALUES = Object.freeze({
+  ALL: 'ALL',
   HIGH: 'HIGH',
   MEDIUM: 'MEDIUM',
   LOW: 'LOW',
@@ -98,6 +99,7 @@ export const COLORS = Object.freeze({
   // NEUTRAL COLORS
   BLACK: '#000000',
   WHITE: '#FFFFFF',
+  GHOST_WHITE: '#f8fafc',
 
   // BLUE COLORS
   BRIGHT_BLUE: '#1677ff',

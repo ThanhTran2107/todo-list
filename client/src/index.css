@@ -17,6 +17,6 @@ code {
 }
 
 [data-theme='light'] {
-  --background-color: white;
+  --background-color: #f8fafc;
   --text-color: black;
 }

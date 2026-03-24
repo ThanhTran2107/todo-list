@@ -1,5 +1,5 @@
-import { Button } from '@/components/antd/button.component';
-import { Typography } from '@/components/antd/typography.component';
+import { Button } from '@/antd-components/button.component';
+import { Typography } from '@/antd-components/typography.component';
 import { COLORS } from '@/utilities/constants';
 import styled from 'styled-components';
 
@@ -10,6 +10,8 @@ export const Wrapper = styled.div`
   align-items: center;
   min-height: 100vh;
   background-color: var(--background-color);
+  overflow: hidden;
+  overscroll-behavior: none;
 `;
 
 export const RegisterForm = styled.div`

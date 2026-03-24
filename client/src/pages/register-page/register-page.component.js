@@ -1,8 +1,7 @@
-import { Button } from '@/components/antd/button.component';
-import { Form } from '@/components/antd/form.component';
-import { TextField } from '@/components/antd/input.component';
-import { message } from '@/components/antd/message.component';
-import { Space } from '@/components/antd/space.component';
+import { Form } from '@/antd-components/form.component';
+import { TextField } from '@/antd-components/input.component';
+import { message } from '@/antd-components/message.component';
+import { Space } from '@/antd-components/space.component';
 import { API_ENDPOINTS, PAGE_PATH } from '@/utilities/constants';
 import { todoApi } from '@/utilities/services/api.service';
 import { useEffect, useRef, useState } from 'react';

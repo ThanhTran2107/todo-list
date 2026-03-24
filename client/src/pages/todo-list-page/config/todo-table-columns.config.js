@@ -1,5 +1,5 @@
-import { Button } from '@/components/antd/button.component';
-import { Dropdown } from '@/components/antd/dropdown.component';
+import { Button } from '@/antd-components/button.component';
+import { Dropdown } from '@/antd-components/dropdown.component';
 import { COLORS, PRIORITY_LEVELS, STATUS_TYPES, STATUS_VALUES } from '@/utilities/constants';
 import { formatDate } from '@/utilities/services/format-date.service';
 import { formatDescription, truncateText } from '@/utilities/services/text-format.service';
@@ -9,10 +9,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { RowName } from '../styles/todo-list-table.styled';
 
 // Column configurations for the TodoListTable
-export const getTodoTableColumns = (editRowId, onViewDetails, onSelectRowToUpdate, onComplete, onDelete, onUpdateTask, onCloseEditModal, EditTaskModal) => [
+export const getTodoTableColumns = (
+  editRowId,
+  onViewDetails,
+  onSelectRowToUpdate,
+  onComplete,
+  onDelete,
+  onUpdateTask,
+  onCloseEditModal,
+  EditTaskModal,
+) => [
   {
     align: 'center',
     title: 'No.',
+    width: 55,
     key: 'index',
     render: (_, __, index) => index + 1,
   },
@@ -20,6 +30,7 @@ export const getTodoTableColumns = (editRowId, onViewDetails, onSelectRowToUpdat
     title: 'Title',
     dataIndex: 'title',
     key: 'title',
+    ellipsis: true,
     render: (title, record) => (
       <RowName>
         {editRowId === record.id && (
@@ -33,7 +44,7 @@ export const getTodoTableColumns = (editRowId, onViewDetails, onSelectRowToUpdat
         <span
           style={{
             color: record.status === STATUS_VALUES.OVERDUE ? COLORS.RED : 'inherit',
-            fontWeight: record.status === STATUS_VALUES.OVERDUE ? 'bold' : 'normal',
+            fontWeight: record.status === STATUS_VALUES.OVERDUE ? 500 : 'normal',
             textDecoration: record.status === STATUS_VALUES.COMPLETED ? 'line-through' : 'none',
           }}
         >
@@ -51,6 +62,7 @@ export const getTodoTableColumns = (editRowId, onViewDetails, onSelectRowToUpdat
   {
     title: 'Due Date',
     dataIndex: 'dueDate',
+    width: 180,
     key: 'dueDate',
     render: dueDate => <span>{formatDate(dueDate)}</span>,
   },
@@ -59,12 +71,14 @@ export const getTodoTableColumns = (editRowId, onViewDetails, onSelectRowToUpdat
     title: 'Priority',
     dataIndex: 'priority',
     key: 'priority',
+    width: 85,
     render: priority => <span>{PRIORITY_LEVELS[priority] || '-'}</span>,
   },
   {
     align: 'center',
     title: 'Status',
     dataIndex: 'status',
+    width: 110,
     key: 'status',
     render: (status, record) => {
       let color =
@@ -75,7 +89,7 @@ export const getTodoTableColumns = (editRowId, onViewDetails, onSelectRowToUpdat
             : 'inherit';
 
       let fontWeight =
-        record.status === STATUS_VALUES.COMPLETED || record.status === STATUS_VALUES.OVERDUE ? 'bold' : 'normal';
+        record.status === STATUS_VALUES.COMPLETED || record.status === STATUS_VALUES.OVERDUE ? 500 : 'normal';
 
       return <span style={{ color, fontWeight }}>{STATUS_TYPES[status] || STATUS_TYPES.PENDING}</span>;
     },
@@ -83,12 +97,14 @@ export const getTodoTableColumns = (editRowId, onViewDetails, onSelectRowToUpdat
   {
     title: 'Created At',
     dataIndex: 'createdAt',
+    width: 180,
     key: 'createdAt',
     render: createdAt => <span>{formatDate(createdAt)}</span>,
   },
   {
     title: 'Updated At',
     dataIndex: 'updatedAt',
+    width: 180,
     key: 'updatedAt',
     render: updatedAt => <span>{formatDate(updatedAt)}</span>,
   },
@@ -96,6 +112,7 @@ export const getTodoTableColumns = (editRowId, onViewDetails, onSelectRowToUpdat
     align: 'center',
     title: 'Actions',
     key: 'actions',
+    width: 80,
     render: (_, record) => {
       const menuItems = [
         {

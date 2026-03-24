@@ -1,4 +1,4 @@
-import { Modal } from '@/components/antd/modal.component';
+import { Modal } from '@/antd-components/modal.component';
 
 const { confirm } = Modal;
 

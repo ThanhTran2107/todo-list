@@ -1,5 +1,5 @@
-import { Spin } from '@/components/antd/spin.component';
-import { Table } from '@/components/antd/table.component';
+import { Spin } from '@/antd-components/spin.component';
+import { Table } from '@/antd-components/table.component';
 import { map } from 'lodash-es';
 import { useState } from 'react';
 

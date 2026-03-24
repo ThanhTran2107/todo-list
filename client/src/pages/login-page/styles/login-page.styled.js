@@ -1,8 +1,8 @@
-import { Button } from '@/components/antd/button.component';
-import { Divider } from '@/components/antd/divider.component';
-import { Image } from '@/components/antd/image.component';
-import { Space } from '@/components/antd/space.component';
-import { Typography } from '@/components/antd/typography.component';
+import { Button } from '@/antd-components/button.component';
+import { Divider } from '@/antd-components/divider.component';
+import { Image } from '@/antd-components/image.component';
+import { Space } from '@/antd-components/space.component';
+import { Typography } from '@/antd-components/typography.component';
 import { COLORS } from '@/utilities/constants';
 import styled from 'styled-components';
 
@@ -12,6 +12,8 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  overflow: hidden;
+  overscroll-behavior: none;
   background-color: var(--background-color);
 `;
 

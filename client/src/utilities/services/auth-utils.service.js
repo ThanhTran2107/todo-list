@@ -1,4 +1,4 @@
-import { message } from '@/components/antd/message.component';
+import { message } from '@/antd-components/message.component';
 import Cookies from 'js-cookie';
 
 import { API_ENDPOINTS, PAGE_PATH, STORAGE_KEYS } from '../constants';

@@ -1,8 +1,8 @@
-import { Checkbox } from '@/components/antd/checkbox.component';
-import { Form } from '@/components/antd/form.component';
-import { TextField } from '@/components/antd/input.component';
-import { message } from '@/components/antd/message.component';
-import { Space } from '@/components/antd/space.component';
+import { Checkbox } from '@/antd-components/checkbox.component';
+import { Form } from '@/antd-components/form.component';
+import { TextField } from '@/antd-components/input.component';
+import { message } from '@/antd-components/message.component';
+import { Space } from '@/antd-components/space.component';
 import { API_ENDPOINTS, AUTH_ID, PAGE_PATH, STORAGE_KEYS } from '@/utilities/constants';
 import { todoApi } from '@/utilities/services/api.service';
 import { setCookie } from '@/utilities/services/storage.service';
