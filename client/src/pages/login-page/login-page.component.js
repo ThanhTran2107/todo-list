@@ -1,3 +1,4 @@
+import { Checkbox } from '@/components/antd/checkbox.component';
 import { Form } from '@/components/antd/form.component';
 import { TextField } from '@/components/antd/input.component';
 import { message } from '@/components/antd/message.component';
@@ -81,15 +82,16 @@ export const LoginPage = () => {
   };
 
   const handleFacebookLogin = async facebookResponse => {
-    if (!facebookResponse?.accessToken || !facebookResponse?.userID)
-      return message.error('Facebook authentication failed.', 1);
+    const { accessToken, userID: userId } = facebookResponse;
+
+    if (!accessToken || !userId) return message.error('Facebook authentication failed.', 1);
 
     setIsLoading(true);
 
     try {
       const apiResponse = await todoApi.post(API_ENDPOINTS.FACEBOOK_LOGIN, {
-        accessToken: facebookResponse.accessToken,
-        userId: facebookResponse.userID,
+        accessToken,
+        userId,
       });
 
       message.success('Login successfully!', 1);
@@ -143,6 +145,10 @@ export const LoginPage = () => {
             rules={[{ required: true, message: 'Please enter your password!' }]}
           >
             <TextField.Password placeholder="Enter your password" />
+          </Form.Item>
+
+          <Form.Item name="remember" valuePropName="checked" style={{ marginTop: -15 }}>
+            <Checkbox>Remember me</Checkbox>
           </Form.Item>
 
           <Form.Item>
