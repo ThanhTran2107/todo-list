@@ -1,6 +1,13 @@
 import { ConfirmDeletionModal } from '@/pages/todo-list-page/components/confirm-deletion-modal.component';
-import { API_ENDPOINTS, MODAL_TITLES, PAGE_PATH, STATUS_VALUES, STORAGE_KEYS } from '@/utilities/constants';
-import { useGetTodosByStatus } from '@/utilities/hooks/use-get-todos-by-status.hook';
+import {
+  API_ENDPOINTS,
+  MODAL_TITLES,
+  PAGE_PATH,
+  PRIORITY_VALUES,
+  STATUS_VALUES,
+  STORAGE_KEYS,
+} from '@/utilities/constants';
+import { useGetTodosWithFilter } from '@/utilities/hooks/use-get-todos-with-filter.hook';
 import { useGetTodos } from '@/utilities/hooks/use-get-todos.hook';
 import { todoApi } from '@/utilities/services/api.service';
 import { handleUnauthorized } from '@/utilities/services/auth-utils.service';
@@ -11,7 +18,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { message } from 'antd';
 import Cookies from 'js-cookie';
 import { filter, find, isEmpty, map } from 'lodash-es';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const { TODO_LIST, ORIGINAL_LIST } = STORAGE_KEYS;
@@ -25,10 +32,12 @@ export const useTodoList = () => {
 
   const [viewTask, setViewTask] = useState(null);
 
-  const hasResetFilterRef = useRef(0);
-
   const { todos: fetchedTodos, isLoading } = useGetTodos();
-  const { handleFilterStatus: handleFilterStatusApi } = useGetTodosByStatus();
+  const { fetchTodosWithFilter } = useGetTodosWithFilter();
+
+  const [currentStatusFilter, setCurrentStatusFilter] = useState(STATUS_VALUES.MY_TASKS);
+  const [currentPriorityFilter, setCurrentPriorityFilter] = useState(PRIORITY_VALUES.ALL);
+  const [currentDueDateFilter, setCurrentDueDateFilter] = useState(null);
 
   // Function to view task details
   const handleViewTaskDetails = task => setViewTask(task);
@@ -36,32 +45,9 @@ export const useTodoList = () => {
   // Function to close view details modal
   const handleCloseViewModal = () => setViewTask(null);
 
-  // Function to apply filter based on completion status
-  const applyFilter = (data, value) => {
-    switch (value) {
-      case 0:
-        hasResetFilterRef.current = 0;
-
-        return data;
-
-      case true:
-        hasResetFilterRef.current = 1;
-
-        return filter(data, todo => todo.completed);
-
-      case false:
-        hasResetFilterRef.current = 2;
-
-        return filter(data, todo => !todo.completed);
-
-      default:
-        return data;
-    }
-  };
-
   // Function to toggle the completion status of a task
   const handleCompleteTask = async id => {
-    const todo = find(todoList, t => t.id === id);
+    const todo = find(todoList, task => task.id === id);
 
     if (!todo) return;
 
@@ -78,16 +64,16 @@ export const useTodoList = () => {
       });
 
       const updateItemStatus = list =>
-        map(list, t => {
-          if (t.id === id) {
+        map(list, task => {
+          if (task.id === id) {
             return {
-              ...t,
+              ...task,
               completed: newStatus === STATUS_VALUES.COMPLETED,
               status: newStatus,
             };
           }
 
-          return t;
+          return task;
         });
 
       const updatedTodoList = updateItemStatus(todoList);
@@ -110,14 +96,9 @@ export const useTodoList = () => {
   const handleResetOriginalData = () => {
     if (isEmpty(originalList)) return;
 
-    hasResetFilterRef.current = 0;
-
     setTodoList(originalList);
     setSearchedList([]);
   };
-
-  // Function to reset todo list to searched data
-  const handleResetSearchedData = () => setTodoList(searchedList);
 
   // Function to add a new task to the todo list
   const handleAddNewTodo = newTask => {
@@ -137,31 +118,38 @@ export const useTodoList = () => {
     setSearchedList(found);
   };
 
-  // Function to filter tasks based on completion status
-  const handleFilterData = value => {
-    const hasSearch = !isEmpty(searchedList);
-    const hasOriginal = !isEmpty(originalList);
-
-    if (!hasOriginal) setOriginalList(todoList);
-
-    if (value === 0) return hasSearch ? handleResetSearchedData() : handleResetOriginalData();
-
-    const sourceData = hasSearch ? searchedList : hasOriginal ? originalList : todoList;
-
-    const result = applyFilter(sourceData, value);
-
-    setTodoList(result);
-  };
-
-  // Function to filter tasks by status from backend (e.g., pending, in_progress, completed, overdue)
+  // Function to filter tasks by status from backend (supports status + priority)
   const handleFilterStatus = async status => {
-    const fetched = await handleFilterStatusApi(status);
+    if (status === currentStatusFilter) return;
+
+    setCurrentStatusFilter(status);
+
+    const fetched = await fetchTodosWithFilter({
+      status,
+      priority: currentPriorityFilter,
+      dueDateBefore: currentDueDateFilter,
+    });
 
     setTodoList(fetched);
     setOriginalList(fetched);
     setSearchedList([]);
+  };
 
-    hasResetFilterRef.current = status && status !== 'my-tasks' ? 1 : 0;
+  // Function to filter tasks by priority from backend (supports status + priority)
+  const handleFilterPriority = async priority => {
+    if (priority === currentPriorityFilter) return;
+
+    setCurrentPriorityFilter(priority);
+
+    const fetched = await fetchTodosWithFilter({
+      status: currentStatusFilter,
+      priority,
+      dueDateBefore: currentDueDateFilter,
+    });
+
+    setTodoList(fetched);
+    setOriginalList(fetched);
+    setSearchedList([]);
   };
 
   // Function to update the task
@@ -170,10 +158,10 @@ export const useTodoList = () => {
       await todoApi.put(API_ENDPOINTS.TODO_BY_ID.replace('{id}', updatedTask.id), updatedTask);
 
       const updatedItem = list =>
-        map(list, todo => {
-          if (todo.id === updatedTask.id) return { ...updatedTask };
+        map(list, task => {
+          if (task.id === updatedTask.id) return { ...updatedTask };
 
-          return todo;
+          return task;
         });
 
       const updatedTodoList = updatedItem(todoList);
@@ -276,17 +264,17 @@ export const useTodoList = () => {
 
   return {
     todoList,
+    fetchedTodos,
     isLoading,
     viewTask,
-    hasResetFilterRef,
     handleViewTaskDetails,
     handleCloseViewModal,
     handleCompleteTask,
     handleResetOriginalData,
     handleAddNewTodo,
     handleSearchTasksByName,
-    handleFilterData,
     handleFilterStatus,
+    handleFilterPriority,
     handleUpdateTask,
     handleDeleteTask,
     handleDeleteAllTasks,

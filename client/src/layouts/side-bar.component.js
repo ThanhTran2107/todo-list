@@ -1,6 +1,7 @@
 import { Menu } from '@/antd-components/menu.component';
 import { Space } from '@/antd-components/space.component';
 import { AddTodoModal } from '@/pages/todo-list-page/components/add-todo-modal.component';
+import { STATUS_TYPES, STATUS_VALUES } from '@/utilities/constants';
 import {
   faArrowTrendUp,
   faCheckCircle,
@@ -24,7 +25,7 @@ import {
 
 export const SideBar = ({ onAddNewTodo, onFilterStatus }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedMenu, setSelectedMenu] = useState('my-tasks');
+  const [selectedMenu, setSelectedMenu] = useState(STATUS_VALUES.MY_TASKS);
 
   // Function to open add todo modal
   const handleOpenAddModal = () => setIsModalOpen(true);
@@ -48,20 +49,20 @@ export const SideBar = ({ onAddNewTodo, onFilterStatus }) => {
             if (onFilterStatus) onFilterStatus(item.key);
           }}
         >
-          <Menu.Item key="my-tasks" icon={<FontAwesomeIcon icon={faList} />}>
-            My tasks
+          <Menu.Item key={STATUS_VALUES.MY_TASKS} icon={<FontAwesomeIcon icon={faList} />}>
+            {STATUS_TYPES.MY_TASKS}
           </Menu.Item>
-          <Menu.Item key="pending" icon={<FontAwesomeIcon icon={faHourglassHalf} />}>
-            Pending
+          <Menu.Item key={STATUS_VALUES.PENDING} icon={<FontAwesomeIcon icon={faHourglassHalf} />}>
+            {STATUS_TYPES.PENDING}
           </Menu.Item>
-          <Menu.Item key="in-progress" icon={<FontAwesomeIcon icon={faArrowTrendUp} />}>
-            In progress
+          <Menu.Item key={STATUS_VALUES.IN_PROGRESS} icon={<FontAwesomeIcon icon={faArrowTrendUp} />}>
+            {STATUS_TYPES.IN_PROGRESS}
           </Menu.Item>
-          <Menu.Item key="completed" icon={<FontAwesomeIcon icon={faCheckCircle} />}>
-            Completed
+          <Menu.Item key={STATUS_VALUES.COMPLETED} icon={<FontAwesomeIcon icon={faCheckCircle} />}>
+            {STATUS_TYPES.COMPLETED}
           </Menu.Item>
-          <Menu.Item key="overdue" icon={<FontAwesomeIcon icon={faExclamationTriangle} />}>
-            Overdue
+          <Menu.Item key={STATUS_VALUES.OVERDUE} icon={<FontAwesomeIcon icon={faExclamationTriangle} />}>
+            {STATUS_TYPES.OVERDUE}
           </Menu.Item>
         </SideBarMenu>
       </SideBarHeader>

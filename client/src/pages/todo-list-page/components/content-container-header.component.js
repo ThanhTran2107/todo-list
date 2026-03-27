@@ -1,5 +1,5 @@
 import { Space } from '@/antd-components/space.component';
-import { PRIORITY_VALUES } from '@/utilities/constants';
+import { PRIORITY_LEVELS, PRIORITY_VALUES } from '@/utilities/constants';
 import { faArrowDown, faArrowUp, faList, faMinus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { map } from 'lodash-es';
@@ -15,7 +15,7 @@ import {
 } from '../styles/content-container-header.styled';
 
 // Header component for the todo list application
-export const ContentContainerHeader = ({ hasCurrentTasks, onFilterData, onDeleteAllTasks }) => {
+export const ContentContainerHeader = ({ hasCurrentTasks, onFilterPriority, onDeleteAllTasks }) => {
   const [filters, setFilters] = useState({
     completed: 0,
     dueDateBefore: null,
@@ -23,16 +23,17 @@ export const ContentContainerHeader = ({ hasCurrentTasks, onFilterData, onDelete
   });
 
   const priorityButtons = [
-    { key: PRIORITY_VALUES.ALL, label: 'All', icon: faList },
-    { key: PRIORITY_VALUES.HIGH, label: 'High', icon: faArrowUp },
-    { key: PRIORITY_VALUES.MEDIUM, label: 'Medium', icon: faMinus },
-    { key: PRIORITY_VALUES.LOW, label: 'Low', icon: faArrowDown },
+    { key: PRIORITY_VALUES.ALL, label: PRIORITY_LEVELS.ALL, icon: faList },
+    { key: PRIORITY_VALUES.HIGH, label: PRIORITY_LEVELS.HIGH, icon: faArrowUp },
+    { key: PRIORITY_VALUES.MEDIUM, label: PRIORITY_LEVELS.MEDIUM, icon: faMinus },
+    { key: PRIORITY_VALUES.LOW, label: PRIORITY_LEVELS.LOW, icon: faArrowDown },
   ];
 
   const handlePriorityChange = key => {
     const newFilters = { ...filters, priority: key };
     setFilters(newFilters);
-    onFilterData(newFilters);
+
+    if (onFilterPriority) onFilterPriority(key);
   };
 
   return (
@@ -70,7 +71,6 @@ export const ContentContainerHeader = ({ hasCurrentTasks, onFilterData, onDelete
           onChange={date => {
             const newFilters = { ...filters, dueDateBefore: date };
             setFilters(newFilters);
-            onFilterData(newFilters);
           }}
           disabled={!hasCurrentTasks}
         />

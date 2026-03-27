@@ -5,12 +5,13 @@ import jakarta.enterprise.context.ApplicationScoped;
 import java.time.Instant;
 import java.util.List;
 import todo.list.todo.entity.Todo;
+import todo.list.todo.entity.enums.PriorityEnum;
 import todo.list.todo.entity.enums.StatusEnum;
 import todo.list.user.entity.User;
 
 @ApplicationScoped
 public class TodoRepository implements PanacheRepository<Todo> {
-    public List<Todo> findByUserWithFilters(User user, String searchText, String priority, Instant dueDateBefore,
+    public List<Todo> findByUserWithFilters(User user, String searchText, PriorityEnum priority, Instant dueDateBefore,
             Instant dueDateAfter, Boolean completed, StatusEnum status) {
         StringBuilder query = new StringBuilder("user = ?1");
         List<Object> params = new java.util.ArrayList<>();
@@ -20,9 +21,9 @@ public class TodoRepository implements PanacheRepository<Todo> {
             query.append(" and lower(title) like ?").append(params.size() + 1);
             params.add("%" + searchText.toLowerCase() + "%");
         }
-        if (priority != null && !priority.trim().isEmpty()) {
+        if (priority != null) {
             query.append(" and priority = ?").append(params.size() + 1);
-            params.add(priority.toLowerCase());
+            params.add(priority);
         }
         if (dueDateBefore != null) {
             query.append(" and dueDate < ?").append(params.size() + 1);

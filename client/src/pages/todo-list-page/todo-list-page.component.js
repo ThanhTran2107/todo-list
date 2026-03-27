@@ -12,9 +12,9 @@ import { ContentContainer, Wrapper } from './styles/todo-list-page.styled';
 export const TodoListPage = () => {
   const {
     todoList,
+    fetchedTodos,
     isLoading,
     viewTask,
-    hasResetFilterRef,
     handleViewTaskDetails,
     handleCloseViewModal,
     handleCompleteTask,
@@ -22,7 +22,7 @@ export const TodoListPage = () => {
     handleAddNewTodo,
     handleSearchTasksByName,
     handleFilterStatus,
-    handleFilterData,
+    handleFilterPriority,
     handleUpdateTask,
     handleDeleteTask,
     handleDeleteAllTasks,
@@ -37,9 +37,8 @@ export const TodoListPage = () => {
 
         <ContentContainer>
           <ContentContainerHeader
-            hasCurrentTasks={todoList.length > 0}
-            hasResetFilter={hasResetFilterRef.current}
-            onFilterData={handleFilterData}
+            hasCurrentTasks={fetchedTodos.length > 0}
+            onFilterPriority={handleFilterPriority}
             onDeleteAllTasks={handleDeleteAllTasks}
           />
 

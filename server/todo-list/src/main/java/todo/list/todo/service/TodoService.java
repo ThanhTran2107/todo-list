@@ -33,7 +33,7 @@ public class TodoService {
         return Optional.ofNullable(todoRepository.findById(id));
     }
 
-    public List<Todo> findByUserWithFilters(User user, String searchText, String priority, Instant dueDateBefore,
+    public List<Todo> findByUserWithFilters(User user, String searchText, PriorityEnum priority, Instant dueDateBefore,
             Instant dueDateAfter, Boolean completed, StatusEnum status) {
         return todoRepository.findByUserWithFilters(user, searchText, priority, dueDateBefore, dueDateAfter, completed,
                 status);
@@ -60,10 +60,16 @@ public class TodoService {
         StatusEnum statusEnum = null;
 
         if (status != null && !status.trim().isEmpty()) {
-            try {
-                statusEnum = StatusEnum.valueOf(status.trim().toUpperCase());
-            } catch (IllegalArgumentException e) {
-                throw new Exception("Invalid status value: " + status);
+            String normalizedStatus = status.trim().toLowerCase().replace('_', '-');
+
+            if ("my-tasks".equals(normalizedStatus)) {
+                statusEnum = null;
+            } else {
+                try {
+                    statusEnum = StatusEnum.valueOf(normalizedStatus.toUpperCase().replace('-', '_'));
+                } catch (IllegalArgumentException e) {
+                    throw new Exception("Invalid status value: " + status);
+                }
             }
         }
         // Overdue means dueDate before now and not completed
@@ -90,7 +96,16 @@ public class TodoService {
             }
         }
 
-        List<Todo> todosOfUser = findByUserWithFilters(user, searchText, priority, dueDateBefore, dueDateAfter,
+        PriorityEnum priorityEnum = null;
+        if (priority != null && !priority.trim().isEmpty()) {
+            try {
+                priorityEnum = PriorityEnum.valueOf(priority.trim().toUpperCase());
+            } catch (IllegalArgumentException e) {
+                throw new Exception("Invalid priority value: " + priority);
+            }
+        }
+
+        List<Todo> todosOfUser = findByUserWithFilters(user, searchText, priorityEnum, dueDateBefore, dueDateAfter,
                 completed, statusEnum);
 
         // Order by createdAt desc (newest first)

@@ -1,3 +1,4 @@
+import { MoneyCollectFilled } from '@ant-design/icons';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { keyBy } from 'lodash-es';
 
@@ -40,12 +41,14 @@ export const STORAGE_KEYS = Object.freeze({
 });
 
 export const PRIORITY_LEVELS = Object.freeze({
+  ALL: 'All',
   HIGH: 'High',
   MEDIUM: 'Medium',
   LOW: 'Low',
 });
 
 export const STATUS_TYPES = Object.freeze({
+  MY_TASKS: 'My Tasks',
   COMPLETED: 'Completed',
   PENDING: 'Pending',
   IN_PROGRESS: 'In Progress',
@@ -60,6 +63,7 @@ export const PRIORITY_VALUES = Object.freeze({
 });
 
 export const STATUS_VALUES = Object.freeze({
+  MY_TASKS: 'MY_TASKS',
   PENDING: 'PENDING',
   IN_PROGRESS: 'IN_PROGRESS',
   COMPLETED: 'COMPLETED',
