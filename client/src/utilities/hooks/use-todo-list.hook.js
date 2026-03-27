@@ -1,5 +1,6 @@
 import { ConfirmDeletionModal } from '@/pages/todo-list-page/components/confirm-deletion-modal.component';
 import { API_ENDPOINTS, MODAL_TITLES, PAGE_PATH, STATUS_VALUES, STORAGE_KEYS } from '@/utilities/constants';
+import { useGetTodosByStatus } from '@/utilities/hooks/use-get-todos-by-status.hook';
 import { useGetTodos } from '@/utilities/hooks/use-get-todos.hook';
 import { todoApi } from '@/utilities/services/api.service';
 import { handleUnauthorized } from '@/utilities/services/auth-utils.service';
@@ -27,6 +28,7 @@ export const useTodoList = () => {
   const hasResetFilterRef = useRef(0);
 
   const { todos: fetchedTodos, isLoading } = useGetTodos();
+  const { handleFilterStatus: handleFilterStatusApi } = useGetTodosByStatus();
 
   // Function to view task details
   const handleViewTaskDetails = task => setViewTask(task);
@@ -151,6 +153,17 @@ export const useTodoList = () => {
     setTodoList(result);
   };
 
+  // Function to filter tasks by status from backend (e.g., pending, in_progress, completed, overdue)
+  const handleFilterStatus = async status => {
+    const fetched = await handleFilterStatusApi(status);
+
+    setTodoList(fetched);
+    setOriginalList(fetched);
+    setSearchedList([]);
+
+    hasResetFilterRef.current = status && status !== 'my-tasks' ? 1 : 0;
+  };
+
   // Function to update the task
   const handleUpdateTask = async updatedTask => {
     try {
@@ -273,6 +286,7 @@ export const useTodoList = () => {
     handleAddNewTodo,
     handleSearchTasksByName,
     handleFilterData,
+    handleFilterStatus,
     handleUpdateTask,
     handleDeleteTask,
     handleDeleteAllTasks,

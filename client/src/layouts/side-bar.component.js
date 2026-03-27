@@ -2,12 +2,12 @@ import { Menu } from '@/antd-components/menu.component';
 import { Space } from '@/antd-components/space.component';
 import { AddTodoModal } from '@/pages/todo-list-page/components/add-todo-modal.component';
 import {
+  faArrowTrendUp,
   faCheckCircle,
   faExclamationTriangle,
   faHourglassHalf,
   faList,
   faPlus,
-  faSpinner,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
@@ -22,7 +22,7 @@ import {
   SideBarMenu,
 } from './styles/side-bar.styled';
 
-export const SideBar = ({ onAddNewTodo }) => {
+export const SideBar = ({ onAddNewTodo, onFilterStatus }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState('my-tasks');
 
@@ -40,14 +40,21 @@ export const SideBar = ({ onAddNewTodo }) => {
           <HeaderSubtitle>Productivity Workspace</HeaderSubtitle>
         </Space>
 
-        <SideBarMenu mode="inline" selectedKeys={[selectedMenu]} onClick={item => setSelectedMenu(item.key)}>
+        <SideBarMenu
+          mode="inline"
+          selectedKeys={[selectedMenu]}
+          onClick={item => {
+            setSelectedMenu(item.key);
+            if (onFilterStatus) onFilterStatus(item.key);
+          }}
+        >
           <Menu.Item key="my-tasks" icon={<FontAwesomeIcon icon={faList} />}>
             My tasks
           </Menu.Item>
           <Menu.Item key="pending" icon={<FontAwesomeIcon icon={faHourglassHalf} />}>
             Pending
           </Menu.Item>
-          <Menu.Item key="in-progress" icon={<FontAwesomeIcon icon={faSpinner} spin />}>
+          <Menu.Item key="in-progress" icon={<FontAwesomeIcon icon={faArrowTrendUp} />}>
             In progress
           </Menu.Item>
           <Menu.Item key="completed" icon={<FontAwesomeIcon icon={faCheckCircle} />}>

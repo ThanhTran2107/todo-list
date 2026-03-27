@@ -12,6 +12,7 @@ export const ConfirmDeletionModal = options => {
     okType: 'danger',
     cancelText: 'Cancel',
     onOk,
+    maskClosable: true,
     ...options,
   });
 };

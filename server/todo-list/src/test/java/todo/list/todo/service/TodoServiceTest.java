@@ -56,7 +56,7 @@ public class TodoServiceTest {
         request.setStatus(StatusEnum.PENDING);
         todoService.createTodo(testUser.email, request);
 
-        List<TodoResponse> todos = todoService.getTodos(testUser.email, null, null, null, null, null, null);
+        List<TodoResponse> todos = todoService.getTodos(testUser.email, null, null, null, null, null, null, null);
         assertEquals(1, todos.size());
         assertEquals("Test Todo", todos.get(0).getTitle());
     }
@@ -137,12 +137,12 @@ public class TodoServiceTest {
         request2.setStatus(StatusEnum.IN_PROGRESS);
         todoService.createTodo(testUser.email, request2);
 
-        List<TodoResponse> todosBefore = todoService.getTodos(testUser.email, null, null, null, null, null, null);
+        List<TodoResponse> todosBefore = todoService.getTodos(testUser.email, null, null, null, null, null, null, null);
         assertEquals(2, todosBefore.size());
 
         todoService.deleteAllTodos(testUser.email);
 
-        List<TodoResponse> todosAfter = todoService.getTodos(testUser.email, null, null, null, null, null, null);
+        List<TodoResponse> todosAfter = todoService.getTodos(testUser.email, null, null, null, null, null, null, null);
         assertEquals(0, todosAfter.size());
     }
 }

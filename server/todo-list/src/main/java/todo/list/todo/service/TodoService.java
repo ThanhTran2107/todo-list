@@ -34,8 +34,9 @@ public class TodoService {
     }
 
     public List<Todo> findByUserWithFilters(User user, String searchText, String priority, Instant dueDateBefore,
-            Boolean completed) {
-        return todoRepository.findByUserWithFilters(user, searchText, priority, dueDateBefore, completed);
+            Instant dueDateAfter, Boolean completed, StatusEnum status) {
+        return todoRepository.findByUserWithFilters(user, searchText, priority, dueDateBefore, dueDateAfter, completed,
+                status);
     }
 
     public Todo saveTodo(Todo todo) {
@@ -52,12 +53,45 @@ public class TodoService {
 
     // SERVICE METHODS
     public List<TodoResponse> getTodos(String userEmail, Boolean completed, String searchText, String priority,
-            Instant dueDateBefore, Integer limit, Integer offset)
+            String status, Instant dueDateBefore, Integer limit, Integer offset)
             throws Exception {
         User user = todoSupportService.findUserByEmail(userEmail);
+        // Normalize status value
+        StatusEnum statusEnum = null;
 
-        List<Todo> todosOfUser = findByUserWithFilters(user, searchText, priority, dueDateBefore,
-                completed);
+        if (status != null && !status.trim().isEmpty()) {
+            try {
+                statusEnum = StatusEnum.valueOf(status.trim().toUpperCase());
+            } catch (IllegalArgumentException e) {
+                throw new Exception("Invalid status value: " + status);
+            }
+        }
+        // Overdue means dueDate before now and not completed
+        if (statusEnum == StatusEnum.OVERDUE) {
+            dueDateBefore = Instant.now();
+            completed = false;
+            statusEnum = null; // avoid filtering 'status' db column
+        }
+        // Completed/InProgress/Pending mapping (for directly persisted status column)
+        Instant dueDateAfter = null;
+
+        if (statusEnum != null) {
+            if (statusEnum == StatusEnum.COMPLETED) {
+                // Keep status filter for COMPLETED tasks; ignore completed flag to include old
+                // data with status=COMPLETED.
+                completed = null;
+                dueDateAfter = null;
+            } else if (statusEnum == StatusEnum.IN_PROGRESS) {
+                completed = false;
+                dueDateAfter = Instant.now(); // prevent overdue from appearing in in-progress
+            } else if (statusEnum == StatusEnum.PENDING) {
+                completed = false;
+                dueDateAfter = Instant.now(); // future/pending tasks only
+            }
+        }
+
+        List<Todo> todosOfUser = findByUserWithFilters(user, searchText, priority, dueDateBefore, dueDateAfter,
+                completed, statusEnum);
 
         // Order by createdAt desc (newest first)
         todosOfUser.sort((a, b) -> b.createdAt.compareTo(a.createdAt));

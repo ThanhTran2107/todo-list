@@ -20,6 +20,7 @@ export const Title = styled.h3`
 export const StyledTextField = styled(TextField)`
   width: 20rem;
   height: 2.3rem;
+  border-radius: 0.5rem;
   margin-left: 0.5rem;
 
   @media (max-width: 768px) {

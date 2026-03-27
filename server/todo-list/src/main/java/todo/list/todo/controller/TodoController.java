@@ -62,12 +62,14 @@ public class TodoController {
     @GET
     @APIResponse(responseCode = "200", description = "List of todos retrieved successfully", content = @Content(mediaType = "application/json", examples = @ExampleObject(name = "GetTodosResponse Example", value = TODO_RESPONSE_EXAMPLE)))
     public Response getTodos(@QueryParam("completed") Boolean completed, @QueryParam("searchText") String searchText,
-            @QueryParam("priority") String priority, @QueryParam("dueDateBefore") String dueDateBeforeStr,
+            @QueryParam("priority") String priority, @QueryParam("status") String status,
+            @QueryParam("dueDateBefore") String dueDateBeforeStr,
             @QueryParam("limit") Integer limit, @QueryParam("offset") Integer offset) {
         try {
             String userEmail = jwt.getSubject();
             Instant dueDateBefore = InstantDeserializer.parseInstant(dueDateBeforeStr);
-            List<TodoResponse> todos = todoService.getTodos(userEmail, completed, searchText, priority, dueDateBefore,
+            List<TodoResponse> todos = todoService.getTodos(userEmail, completed, searchText, priority, status,
+                    dueDateBefore,
                     limit, offset);
 
             return Response.ok(todos).build();

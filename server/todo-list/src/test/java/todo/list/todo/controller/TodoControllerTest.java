@@ -84,10 +84,10 @@ class TodoControllerTest {
         mockTodo.setId(1L);
         List<TodoResponse> mockTodos = Arrays.asList(mockTodo);
 
-        when(todoService.getTodos(anyString(), any(), any(), any(), any(), any(), any())).thenReturn(mockTodos);
+        when(todoService.getTodos(anyString(), any(), any(), any(), any(), any(), any(), any())).thenReturn(mockTodos);
 
         // Act
-        Response response = todoController.getTodos(null, null, null, null, null, null);
+        Response response = todoController.getTodos(null, null, null, null, null, null, null);
 
         // Assert
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());

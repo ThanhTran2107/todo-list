@@ -45,9 +45,7 @@ export const ContentContainerHeader = ({ hasCurrentTasks, onFilterData, onDelete
             danger
             onClick={onDeleteAllTasks}
             disabled={!hasCurrentTasks}
-          >
-            Delete all
-          </DeleteAllButton>
+          ></DeleteAllButton>
 
           <PriorityFilterContainer>
             {map(priorityButtons, button => (
@@ -67,7 +65,7 @@ export const ContentContainerHeader = ({ hasCurrentTasks, onFilterData, onDelete
         </Space>
 
         <StyledDatePicker
-          placeholder="Filter due date before"
+          placeholder="Due date before"
           value={filters.dueDateBefore}
           onChange={date => {
             const newFilters = { ...filters, dueDateBefore: date };

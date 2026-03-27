@@ -51,7 +51,7 @@ public class TodoRepositoryTest {
 
     @Test
     void testFindByUserWithFilters() {
-        List<Todo> todos = todoRepository.findByUserWithFilters(testUser, "Test", null, null, null);
+        List<Todo> todos = todoRepository.findByUserWithFilters(testUser, "Test", null,null, null, null, null);
         assertEquals(1, todos.size());
         assertEquals("Test Todo", todos.get(0).title);
     }

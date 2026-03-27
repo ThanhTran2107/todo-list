@@ -32,8 +32,9 @@ public class TodoSupportService {
     // METHOD RETURNS TodoResponse OBJECT
     public TodoResponse mapTodoResponse(Todo todo) {
         StatusEnum computedStatus = computeStatus(todo);
+        boolean completedFlag = todo.completed || computedStatus == StatusEnum.COMPLETED;
 
-        return new TodoResponse(todo.id, todo.title, todo.description, todo.completed, todo.dueDate, todo.priority,
+        return new TodoResponse(todo.id, todo.title, todo.description, completedFlag, todo.dueDate, todo.priority,
                 computedStatus, todo.createdAt, todo.updatedAt);
     }
 
@@ -46,6 +47,11 @@ public class TodoSupportService {
         todo.dueDate = dueDate;
         todo.priority = priority;
         todo.status = status;
+
+        // Ensure completed flag follows status
+        if (status != null)
+            todo.completed = status == StatusEnum.COMPLETED;
+
     }
 
     // METHOD TO VALIDATE INPUT FIELDS

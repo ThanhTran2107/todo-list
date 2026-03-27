@@ -96,5 +96,5 @@ export const DeleteAllButton = styled(Button)`
   align-items: center;
   gap: 0.5rem;
   border-radius: 0.5rem;
-  margin-left: 0.3rem;
+  margin-left: 0.4rem;
 `;

@@ -21,6 +21,7 @@ export const TodoListPage = () => {
     handleResetOriginalData,
     handleAddNewTodo,
     handleSearchTasksByName,
+    handleFilterStatus,
     handleFilterData,
     handleUpdateTask,
     handleDeleteTask,
@@ -32,7 +33,7 @@ export const TodoListPage = () => {
       <TopBar onResetOriginalData={handleResetOriginalData} onSearchTasksByName={handleSearchTasksByName} />
 
       <Space align="start">
-        <SideBar onAddNewTodo={handleAddNewTodo} />
+        <SideBar onAddNewTodo={handleAddNewTodo} onFilterStatus={handleFilterStatus} />
 
         <ContentContainer>
           <ContentContainerHeader
