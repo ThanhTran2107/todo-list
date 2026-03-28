@@ -123,11 +123,13 @@ export const useTodoList = () => {
     if (status === currentStatusFilter) return;
 
     setCurrentStatusFilter(status);
+    setCurrentPriorityFilter(PRIORITY_VALUES.ALL);
+    setCurrentDueDateFilter(null);
 
     const fetched = await fetchTodosWithFilter({
       status,
-      priority: currentPriorityFilter,
-      dueDateBefore: currentDueDateFilter,
+      priority: PRIORITY_VALUES.ALL,
+      dueDateBefore: null,
     });
 
     setTodoList(fetched);
@@ -145,6 +147,21 @@ export const useTodoList = () => {
       status: currentStatusFilter,
       priority,
       dueDateBefore: currentDueDateFilter,
+    });
+
+    setTodoList(fetched);
+    setOriginalList(fetched);
+    setSearchedList([]);
+  };
+
+  // Function to filter tasks by due date from backend
+  const handleFilterDueDate = async dueDate => {
+    setCurrentDueDateFilter(dueDate);
+
+    const fetched = await fetchTodosWithFilter({
+      status: currentStatusFilter,
+      priority: currentPriorityFilter,
+      dueDateBefore: dueDate,
     });
 
     setTodoList(fetched);
@@ -267,6 +284,8 @@ export const useTodoList = () => {
     fetchedTodos,
     isLoading,
     viewTask,
+    currentPriorityFilter,
+    currentDueDateFilter,
     handleViewTaskDetails,
     handleCloseViewModal,
     handleCompleteTask,
@@ -275,6 +294,7 @@ export const useTodoList = () => {
     handleSearchTasksByName,
     handleFilterStatus,
     handleFilterPriority,
+    handleFilterDueDate,
     handleUpdateTask,
     handleDeleteTask,
     handleDeleteAllTasks,

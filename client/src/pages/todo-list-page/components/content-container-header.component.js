@@ -3,7 +3,7 @@ import { PRIORITY_LEVELS, PRIORITY_VALUES } from '@/utilities/constants';
 import { faArrowDown, faArrowUp, faList, faMinus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { map } from 'lodash-es';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import {
   DeleteAllButton,
@@ -15,7 +15,14 @@ import {
 } from '../styles/content-container-header.styled';
 
 // Header component for the todo list application
-export const ContentContainerHeader = ({ hasCurrentTasks, onFilterPriority, onDeleteAllTasks }) => {
+export const ContentContainerHeader = ({
+  hasCurrentTasks,
+  currentPriority,
+  currentDueDate,
+  onFilterPriority,
+  onFilterDueDate,
+  onDeleteAllTasks,
+}) => {
   const [filters, setFilters] = useState({
     completed: 0,
     dueDateBefore: null,
@@ -35,6 +42,14 @@ export const ContentContainerHeader = ({ hasCurrentTasks, onFilterPriority, onDe
 
     if (onFilterPriority) onFilterPriority(key);
   };
+
+  useEffect(() => {
+    setFilters(prev => ({
+      ...prev,
+      priority: currentPriority,
+      dueDateBefore: currentDueDate,
+    }));
+  }, [currentPriority, currentDueDate]);
 
   return (
     <HeaderWrapper>
@@ -71,6 +86,8 @@ export const ContentContainerHeader = ({ hasCurrentTasks, onFilterPriority, onDe
           onChange={date => {
             const newFilters = { ...filters, dueDateBefore: date };
             setFilters(newFilters);
+
+            if (onFilterDueDate) onFilterDueDate(date);
           }}
           disabled={!hasCurrentTasks}
         />

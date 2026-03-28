@@ -15,6 +15,8 @@ export const TodoListPage = () => {
     fetchedTodos,
     isLoading,
     viewTask,
+    currentPriorityFilter,
+    currentDueDateFilter,
     handleViewTaskDetails,
     handleCloseViewModal,
     handleCompleteTask,
@@ -23,6 +25,7 @@ export const TodoListPage = () => {
     handleSearchTasksByName,
     handleFilterStatus,
     handleFilterPriority,
+    handleFilterDueDate,
     handleUpdateTask,
     handleDeleteTask,
     handleDeleteAllTasks,
@@ -38,7 +41,10 @@ export const TodoListPage = () => {
         <ContentContainer>
           <ContentContainerHeader
             hasCurrentTasks={fetchedTodos.length > 0}
+            currentPriority={currentPriorityFilter}
+            currentDueDate={currentDueDateFilter}
             onFilterPriority={handleFilterPriority}
+            onFilterDueDate={handleFilterDueDate}
             onDeleteAllTasks={handleDeleteAllTasks}
           />
 

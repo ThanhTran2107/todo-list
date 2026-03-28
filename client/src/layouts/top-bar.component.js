@@ -4,8 +4,9 @@ import { Space } from '@/antd-components/space.component';
 import { ThemeSelector } from '@/pages/todo-list-page/components/theme-selector.component';
 import { COLORS } from '@/utilities/constants';
 import { useTodoList } from '@/utilities/hooks/use-todo-list.hook';
-import { faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faMinus, faRemove, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { isEmpty } from 'lodash-es';
 import { useState } from 'react';
 
 import { StyledTextField, Title, TodoImage, TopBarContainer } from './styles/top-bar.styled';
@@ -37,6 +38,18 @@ export const TopBar = ({ onResetOriginalData, onSearchTasksByName }) => {
           onChange={handleInputChange}
           value={input}
           prefix={<FontAwesomeIcon style={{ marginRight: '0.5rem', color: COLORS.FOG_GRAY }} icon={faSearch} />}
+          suffix={
+            !isEmpty(input) && (
+              <FontAwesomeIcon
+                style={{ color: COLORS.FOG_GRAY, cursor: 'pointer' }}
+                icon={faRemove}
+                onClick={() => {
+                  setInput('');
+                  onResetOriginalData();
+                }}
+              />
+            )
+          }
         />
 
         <ThemeSelector />

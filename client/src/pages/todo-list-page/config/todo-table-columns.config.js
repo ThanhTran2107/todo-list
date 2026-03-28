@@ -27,7 +27,7 @@ export const getTodoTableColumns = (
     render: (_, __, index) => index + 1,
   },
   {
-    title: 'Title',
+    title: <p style={{ textAlign: 'center' }}>Title</p>,
     dataIndex: 'title',
     key: 'title',
     ellipsis: true,
@@ -54,17 +54,10 @@ export const getTodoTableColumns = (
     ),
   },
   {
-    title: 'Description',
+    title: <p style={{ textAlign: 'center' }}>Description</p>,
     dataIndex: 'description',
     key: 'description',
     render: description => <span>{formatDescription(description)}</span>,
-  },
-  {
-    title: 'Due Date',
-    dataIndex: 'dueDate',
-    width: 180,
-    key: 'dueDate',
-    render: dueDate => <span>{formatDate(dueDate)}</span>,
   },
   {
     align: 'center',
@@ -95,14 +88,21 @@ export const getTodoTableColumns = (
     },
   },
   {
-    title: 'Created At',
+    title: <p style={{ textAlign: 'center' }}>Due Date</p>,
+    dataIndex: 'dueDate',
+    width: 180,
+    key: 'dueDate',
+    render: dueDate => <span>{formatDate(dueDate)}</span>,
+  },
+  {
+    title: <p style={{ textAlign: 'center' }}>Created At</p>,
     dataIndex: 'createdAt',
     width: 180,
     key: 'createdAt',
     render: createdAt => <span>{formatDate(createdAt)}</span>,
   },
   {
-    title: 'Updated At',
+    title: <p style={{ textAlign: 'center' }}>Updated At</p>,
     dataIndex: 'updatedAt',
     width: 180,
     key: 'updatedAt',
