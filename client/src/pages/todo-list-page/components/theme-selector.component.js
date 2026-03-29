@@ -6,7 +6,6 @@ import styled from 'styled-components';
 
 import {
   ATTRIBUTE_DATA,
-  COLORS,
   STORAGE_KEYS,
   THEME_MODES,
   THEME_OPTIONS,
@@ -19,8 +18,9 @@ const { DATA_THEME } = ATTRIBUTE_DATA;
 
 const ThemeButton = styled(FontAwesomeIcon)`
   cursor: pointer;
-  font-size: 1.1rem;
   margin: 0.5rem;
+  color: var(--theme-button-color);
+  width: 1rem;
 `;
 
 // Theme selector component that toggles between light and dark themes
@@ -43,12 +43,5 @@ export const ThemeSelector = () => {
     setCurrentTheme(newTheme);
   };
 
-  return (
-    <ThemeButton
-      key={currentTheme}
-      icon={THEME_OPTIONS_HASH[currentTheme].icon}
-      onClick={handleToggleTheme}
-      style={{ color: COLORS.BLACK, width: '1rem' }}
-    />
-  );
+  return <ThemeButton key={currentTheme} icon={THEME_OPTIONS_HASH[currentTheme].icon} onClick={handleToggleTheme} />;
 };

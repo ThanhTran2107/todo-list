@@ -2,8 +2,8 @@ import { COLORS } from '@/utilities/constants';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: var(--main-background-color);
+  color: var(--primary-text-color);
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -14,8 +14,8 @@ export const Wrapper = styled.div`
 export const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: ${COLORS.WHITE};
-  border: 0.0625rem solid ${COLORS.LIGHT_GRAY};
+  background-color: var(--item-background-color);
+  border: 0.0625rem solid var(--divider-color);
   padding: 0 0.5rem;
   border-radius: 0.5rem;
   margin-top: 0.5rem;

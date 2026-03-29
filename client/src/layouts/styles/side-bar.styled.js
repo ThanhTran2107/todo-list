@@ -9,27 +9,27 @@ export const SideBarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  border-right: 0.0625rem solid ${COLORS.LIGHT_GRAY};
-  background-color: ${COLORS.WHITE};
+  border-right: 0.0625rem solid var(--divider-color);
+  background-color: var(--item-background-color);
   min-height: 87vh;
   width: 15rem;
 `;
 
 export const HeaderTitle = styled.p`
-  color: ${COLORS.DARK_BLUE};
+  color: var(--primary-blue-color);
   font-weight: 500;
   font-size: 1.2rem;
 `;
 
 export const HeaderSubtitle = styled.p`
-  color: ${COLORS.MEDIUM_GRAY};
+  color: var(--secondary-text-color);
   font-size: 0.8rem;
   font-weight: 400;
   margin-top: -1rem;
 `;
 
 export const CreateTaskButton = styled(Button)`
-  background-color: ${COLORS.DARK_BLUE};
+  background-color: var(--primary-blue-color);
   color: ${COLORS.WHITE};
   height: 3rem;
   width: 13rem;
@@ -39,7 +39,7 @@ export const CreateTaskButton = styled(Button)`
 
   &:hover {
     color: ${COLORS.WHITE} !important;
-    background-color: ${COLORS.BRIGHT_BLUE} !important;
+    background-color: var(--hover-color) !important;
   }
 `;
 
@@ -59,4 +59,14 @@ export const SideBarMenu = styled(Menu)`
   font-size: 0.9rem;
   margin-top: 1rem;
   border-right: none !important;
+  background-color: var(--item-background-color) !important;
+
+  .ant-menu-item {
+    color: var(--primary-text-color) !important;
+  }
+
+  .ant-menu-item-selected {
+    color: var(--primary-text-color) !important;
+    background-color: var(--active-menu-button-color) !important;
+  }
 `;

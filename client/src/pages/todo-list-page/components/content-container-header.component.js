@@ -61,7 +61,7 @@ export const ContentContainerHeader = ({
             danger
             onClick={onDeleteAllTasks}
             disabled={!hasCurrentTasks}
-          ></DeleteAllButton>
+          />
 
           <PriorityFilterContainer>
             {map(priorityButtons, button => (

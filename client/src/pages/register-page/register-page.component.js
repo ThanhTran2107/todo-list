@@ -1,5 +1,4 @@
 import { Form } from '@/antd-components/form.component';
-import { TextField } from '@/antd-components/input.component';
 import { message } from '@/antd-components/message.component';
 import { Space } from '@/antd-components/space.component';
 import { API_ENDPOINTS, PAGE_PATH } from '@/utilities/constants';
@@ -8,11 +7,16 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import {
+  AuthPasswordField,
+  AuthTextField,
+  ConfirmPasswordLabelWrapper,
+  EmailLabelWrapper,
   FooterText,
   FormDescription,
   FormFooter,
   FormTitle,
   LoginLink,
+  PasswordLabelWrapper,
   RegisterButton,
   RegisterForm,
   RegisterFormAction,
@@ -67,29 +71,29 @@ export const RegisterPage = () => {
           </FormTitle>
 
           <Form.Item
-            label="Email"
+            label={<EmailLabelWrapper size={270}>Email</EmailLabelWrapper>}
             name="email"
             rules={[
               { required: true, message: 'Please enter your email!' },
               { type: 'email', message: 'Please enter a valid email!' },
             ]}
           >
-            <TextField ref={emailRef} placeholder="Enter your email" />
+            <AuthTextField ref={emailRef} placeholder="Enter your email" />
           </Form.Item>
 
           <Form.Item
-            label="Password"
+            label={<PasswordLabelWrapper size={270}>Password</PasswordLabelWrapper>}
             name="password"
             rules={[
               { required: true, message: 'Please enter your password!' },
               { min: 6, message: 'Password must be at least 6 characters!' },
             ]}
           >
-            <TextField.Password placeholder="Enter your password" />
+            <AuthPasswordField placeholder="Enter your password" />
           </Form.Item>
 
           <Form.Item
-            label="Confirm Password"
+            label={<ConfirmPasswordLabelWrapper size={270}>Confirm Password</ConfirmPasswordLabelWrapper>}
             name="confirmPassword"
             dependencies={['password']}
             rules={[
@@ -103,7 +107,7 @@ export const RegisterPage = () => {
               }),
             ]}
           >
-            <TextField.Password placeholder="Confirm your password" />
+            <AuthPasswordField placeholder="Confirm your password" />
           </Form.Item>
 
           <Form.Item>

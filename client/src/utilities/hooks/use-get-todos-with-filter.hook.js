@@ -19,7 +19,7 @@ export const useGetTodosWithFilter = () => {
       if (e.response?.status === 401) return handleUnauthorized();
 
       message.error('Failed to get tasks with filter', 1);
-      
+
       return [];
     }
   };

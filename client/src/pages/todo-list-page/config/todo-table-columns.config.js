@@ -1,6 +1,6 @@
 import { Button } from '@/antd-components/button.component';
 import { Dropdown } from '@/antd-components/dropdown.component';
-import { COLORS, PRIORITY_LEVELS, STATUS_TYPES, STATUS_VALUES } from '@/utilities/constants';
+import { PRIORITY_LEVELS, STATUS_TYPES, STATUS_VALUES } from '@/utilities/constants';
 import { formatDate } from '@/utilities/services/format-date.service';
 import { formatDescription, truncateText } from '@/utilities/services/text-format.service';
 import { faCheck, faEdit, faEllipsisV, faEye, faRedo, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -11,13 +11,14 @@ import { RowName } from '../styles/todo-list-table.styled';
 // Column configurations for the TodoListTable
 export const getTodoTableColumns = (
   editRowId,
+  EditTaskModal,
   onViewDetails,
   onSelectRowToUpdate,
   onComplete,
   onDelete,
   onUpdateTask,
   onCloseEditModal,
-  EditTaskModal,
+  onActionMenuOpenChange,
 ) => [
   {
     align: 'center',
@@ -43,8 +44,18 @@ export const getTodoTableColumns = (
         )}
         <span
           style={{
-            color: record.status === STATUS_VALUES.OVERDUE ? COLORS.RED : 'inherit',
-            fontWeight: record.status === STATUS_VALUES.OVERDUE ? 500 : 'normal',
+            color:
+              record.status === STATUS_VALUES.OVERDUE
+                ? 'var(--overdue-item-color)'
+                : record.status === STATUS_VALUES.COMPLETED
+                  ? 'var(--completed-item-color)'
+                  : 'inherit',
+            fontWeight:
+              record.status === STATUS_VALUES.OVERDUE
+                ? 500
+                : record.status === STATUS_VALUES.COMPLETED
+                  ? 500
+                  : 'normal',
             textDecoration: record.status === STATUS_VALUES.COMPLETED ? 'line-through' : 'none',
           }}
         >
@@ -65,7 +76,7 @@ export const getTodoTableColumns = (
     dataIndex: 'priority',
     key: 'priority',
     width: 85,
-    render: priority => <span>{PRIORITY_LEVELS[priority] || '-'}</span>,
+    render: priority => <span>{PRIORITY_LEVELS[priority]}</span>,
   },
   {
     align: 'center',
@@ -76,9 +87,9 @@ export const getTodoTableColumns = (
     render: (status, record) => {
       let color =
         record.status === STATUS_VALUES.OVERDUE
-          ? COLORS.RED
+          ? 'var(--overdue-item-color)'
           : record.status === STATUS_VALUES.COMPLETED
-            ? COLORS.GREEN
+            ? 'var(--completed-item-color)'
             : 'inherit';
 
       let fontWeight =
@@ -122,16 +133,10 @@ export const getTodoTableColumns = (
           onClick: () => onViewDetails(record),
         },
         {
-          type: 'divider',
-        },
-        {
           key: 'edit',
           icon: <FontAwesomeIcon icon={faEdit} />,
           label: 'Edit',
           onClick: () => onSelectRowToUpdate(record.id),
-        },
-        {
-          type: 'divider',
         },
         {
           key: 'complete',
@@ -153,8 +158,17 @@ export const getTodoTableColumns = (
       ];
 
       return (
-        <Dropdown menu={{ items: menuItems }} trigger={['click']} placement="bottomRight" arrow>
-          <Button type="text" icon={<FontAwesomeIcon icon={faEllipsisV} />} />
+        <Dropdown
+          menu={{ items: menuItems }}
+          trigger={['click']}
+          placement="bottomRight"
+          arrow
+          onOpenChange={isOpen => onActionMenuOpenChange(record.id, isOpen)}
+        >
+          <Button
+            type="text"
+            icon={<FontAwesomeIcon icon={faEllipsisV} style={{ color: 'var(--primary-text-color)' }} />}
+          />
         </Dropdown>
       );
     },
