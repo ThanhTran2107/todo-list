@@ -1,6 +1,7 @@
 import { Button } from '@/antd-components/button.component';
 import { Divider } from '@/antd-components/divider.component';
 import { Image } from '@/antd-components/image.component';
+import { TextField } from '@/antd-components/input.component';
 import { Space } from '@/antd-components/space.component';
 import { Typography } from '@/antd-components/typography.component';
 import { COLORS } from '@/utilities/constants';
@@ -14,14 +15,14 @@ export const Wrapper = styled.div`
   min-height: 100vh;
   overflow: hidden;
   overscroll-behavior: none;
-  background-color: var(--background-color);
+  background-color: var(--main-background-color);
 `;
 
 export const LoginForm = styled.div`
   width: 100%;
   max-width: 25rem;
   padding: 2rem;
-  background-color: ${COLORS.WHITE};
+  background-color: var(--item-background-color);
   border-radius: 0.5rem;
   box-shadow: ${COLORS.BOX_SHADOW};
 `;
@@ -34,13 +35,13 @@ export const FormTitle = styled.h2`
   text-align: center;
   margin-bottom: 2rem;
   font-size: 2rem;
-  color: ${COLORS.DARK_BLUE};
+  color: var(--primary-blue-color);
 `;
 
 export const FormDescription = styled.p`
   margin-top: -0.2rem;
   font-size: 0.7rem;
-  color: ${COLORS.MEDIUM_GRAY};
+  color: var(--secondary-text-color);
   font-style: italic;
   text-align: center;
 `;
@@ -78,13 +79,13 @@ export const FormButtonWrapper = styled.div`
 export const LoginButton = styled(Button)`
   height: 2.5rem;
   font-size: 1rem;
-  background-color: ${COLORS.DARK_BLUE};
-  border-color: ${COLORS.DARK_BLUE};
+  background-color: var(--primary-blue-color);
+  border-color: var(--divider-color);
   color: white;
 
   &:hover {
-    background-color: ${COLORS.BRIGHT_BLUE};
-    border-color: ${COLORS.BRIGHT_BLUE};
+    background-color: var(--hover-color);
+    border-color: var(--hover-color);
   }
 `;
 
@@ -92,13 +93,13 @@ export const RegisterLink = styled(Typography.Link)`
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  color: ${COLORS.DARK_BLUE} !important;
+  color: var(--primary-blue-color);
   font-weight: 500;
   font-size: 0.9rem;
   line-height: 1;
 
   &:hover {
-    color: ${COLORS.BRIGHT_BLUE} !important;
+    color: var(--hover-color);
   }
 `;
 
@@ -113,6 +114,7 @@ export const FormFooter = styled.div`
 export const FormFooterText = styled.p`
   font-size: 0.9rem;
   margin: 0;
+  color: var(--primary-text-color);
 `;
 
 export const StyledDivider = styled(Divider)`
@@ -121,9 +123,17 @@ export const StyledDivider = styled(Divider)`
 
 export const DividerText = styled.p`
   font-size: 0.7rem;
-  color: ${COLORS.MEDIUM_GRAY} !important;
+  color: var(--secondary-text-color);
   font-weight: 500;
   margin: 0;
+`;
+
+export const EmailLabelWrapper = styled(Space)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: var(--primary-text-color);
 `;
 
 export const PasswordLabelWrapper = styled(Space)`
@@ -131,6 +141,7 @@ export const PasswordLabelWrapper = styled(Space)`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  color: var(--primary-text-color);
 `;
 
 export const SocialLoginWrapper = styled.div`
@@ -142,7 +153,7 @@ export const SocialLoginWrapper = styled.div`
 
 export const ForgotPasswordButton = styled(Typography.Link)`
   font-size: 0.85rem;
-  color: ${COLORS.DARK_BLUE} !important;
+  color: var(--primary-blue-color);
   background-color: transparent;
   border: none;
   box-shadow: none;
@@ -150,6 +161,30 @@ export const ForgotPasswordButton = styled(Typography.Link)`
   font-weight: 500;
 
   &:hover {
-    color: ${COLORS.BRIGHT_BLUE} !important;
+    color: var(--hover-color);
+  }
+`;
+
+export const AuthTextField = styled(TextField)`
+  width: 100%;
+  background-color: var(--input-background-color) !important;
+  border-color: var(--divider-color) !important;
+  color: var(--primary-text-color) !important;
+
+  &::placeholder {
+    color: var(--input-placeholder-color) !important;
+  }
+`;
+
+export const AuthPasswordField = styled(TextField.Password)`
+  width: 100%;
+  background-color: var(--input-background-color) !important;
+  border-color: var(--divider-color) !important;
+  color: var(--primary-text-color) !important;
+
+  input {
+    &::placeholder {
+      color: var(--input-placeholder-color) !important;
+    }
   }
 `;

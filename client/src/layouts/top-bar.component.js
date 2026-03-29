@@ -2,9 +2,9 @@ import { Button } from '@/antd-components/button.component';
 import { Dropdown } from '@/antd-components/dropdown.component';
 import { Space } from '@/antd-components/space.component';
 import { ThemeSelector } from '@/pages/todo-list-page/components/theme-selector.component';
-import { COLORS } from '@/utilities/constants';
 import { useTodoList } from '@/utilities/hooks/use-todo-list.hook';
-import { faMinus, faRemove, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
+import { CloseCircleFilled } from '@ant-design/icons';
+import { faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { isEmpty } from 'lodash-es';
 import { useState } from 'react';
@@ -37,12 +37,16 @@ export const TopBar = ({ onResetOriginalData, onSearchTasksByName }) => {
           placeholder="Search tasks..."
           onChange={handleInputChange}
           value={input}
-          prefix={<FontAwesomeIcon style={{ marginRight: '0.5rem', color: COLORS.FOG_GRAY }} icon={faSearch} />}
+          prefix={
+            <FontAwesomeIcon
+              style={{ marginRight: '0.5rem', color: 'var(--input-placeholder-color)' }}
+              icon={faSearch}
+            />
+          }
           suffix={
             !isEmpty(input) && (
-              <FontAwesomeIcon
-                style={{ color: COLORS.FOG_GRAY, cursor: 'pointer' }}
-                icon={faRemove}
+              <CloseCircleFilled
+                style={{ color: 'var(--input-placeholder-color)', cursor: 'pointer' }}
                 onClick={() => {
                   setInput('');
                   onResetOriginalData();
@@ -55,7 +59,10 @@ export const TopBar = ({ onResetOriginalData, onSearchTasksByName }) => {
         <ThemeSelector />
 
         <Dropdown menu={{ items: userMenuItems }} arrow placement="bottomRight">
-          <Button type="text" icon={<FontAwesomeIcon icon={faUser} style={{ fontSize: '1.1rem' }} />} />
+          <Button
+            type="text"
+            icon={<FontAwesomeIcon icon={faUser} style={{ fontSize: '1.1rem', color: 'var(--primary-text-color)' }} />}
+          />
         </Dropdown>
       </Space>
     </TopBarContainer>

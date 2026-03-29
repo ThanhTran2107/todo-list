@@ -10,7 +10,15 @@ import { EditTaskModal } from './edit-task-modal.component';
 const { Column } = Table;
 
 // TodoList component that displays the list of tasks in a table
-export const TodoListTable = ({ todoList, isLoading, onComplete, onDelete, onUpdateTask, onViewDetails }) => {
+export const TodoListTable = ({
+  todoList,
+  isLoading,
+  onComplete,
+  onDelete,
+  onUpdateTask,
+  onViewDetails,
+  onActionMenuOpenChange,
+}) => {
   const [editRowId, setEditRowId] = useState(null);
 
   // Function to select a row for updating
@@ -21,13 +29,14 @@ export const TodoListTable = ({ todoList, isLoading, onComplete, onDelete, onUpd
 
   const columns = getTodoTableColumns(
     editRowId,
+    EditTaskModal,
     onViewDetails,
     handleSelectRowToUpdate,
     onComplete,
     onDelete,
     onUpdateTask,
     handleCloseEditModal,
-    EditTaskModal,
+    onActionMenuOpenChange,
   );
 
   return (

@@ -1,6 +1,5 @@
 import { Checkbox } from '@/antd-components/checkbox.component';
 import { Form } from '@/antd-components/form.component';
-import { TextField } from '@/antd-components/input.component';
 import { message } from '@/antd-components/message.component';
 import { Space } from '@/antd-components/space.component';
 import { API_ENDPOINTS, AUTH_ID, PAGE_PATH, STORAGE_KEYS } from '@/utilities/constants';
@@ -12,7 +11,10 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import { useNavigate } from 'react-router-dom';
 
 import {
+  AuthPasswordField,
+  AuthTextField,
   DividerText,
+  EmailLabelWrapper,
   ForgotPasswordButton,
   FormButtonWrapper,
   FormDescription,
@@ -122,14 +124,14 @@ export const LoginPage = () => {
           </FormTitle>
 
           <Form.Item
-            label="Email"
+            label={<EmailLabelWrapper size={270}>Email</EmailLabelWrapper>}
             name="email"
             rules={[
               { required: true, message: 'Please enter your email!' },
               { type: 'email', message: 'Please enter a valid email!' },
             ]}
           >
-            <TextField ref={emailRef} placeholder="Enter your email" />
+            <AuthTextField ref={emailRef} placeholder="Enter your email" />
           </Form.Item>
 
           <Form.Item
@@ -144,11 +146,11 @@ export const LoginPage = () => {
             name="password"
             rules={[{ required: true, message: 'Please enter your password!' }]}
           >
-            <TextField.Password placeholder="Enter your password" />
+            <AuthPasswordField placeholder="Enter your password" />
           </Form.Item>
 
           <Form.Item name="remember" valuePropName="checked" style={{ marginTop: -15 }}>
-            <Checkbox>Remember me</Checkbox>
+            <Checkbox style={{ color: 'var(--primary-text-color)' }}>Remember me</Checkbox>
           </Form.Item>
 
           <Form.Item>
@@ -164,7 +166,7 @@ export const LoginPage = () => {
           </StyledDivider>
 
           <SocialLoginWrapper>
-            <Space direction="vertical" align="center">
+            <Space direction="vertical" align="center" style={{ color: 'var(--primary-text-color)' }}>
               <SocialImageButton
                 preview={false}
                 onClick={useGoogleLogin({
@@ -184,7 +186,7 @@ export const LoginPage = () => {
               callback={handleFacebookLogin}
               onFailure={() => message.error('Facebook sign-in failed', 1)}
               render={({ onClick }) => (
-                <Space direction="vertical" align="center">
+                <Space direction="vertical" align="center" style={{ color: 'var(--primary-text-color)' }}>
                   <SocialImageButton onClick={onClick} preview={false} src="/facebook.png" alt="Facebook icon" />
                   Facebook
                 </Space>

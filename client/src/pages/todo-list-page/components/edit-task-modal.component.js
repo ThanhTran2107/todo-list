@@ -133,7 +133,7 @@ export const EditTaskModal = ({ isOpen, selectedRow, onUpdateTask, onCloseEditMo
             style={{
               width: '100%',
               padding: '0.25rem 0.6875rem',
-              border: `1px solid ${COLORS.GRAY_LIGHT_D9}`,
+              border: `0.0625rem solid ${COLORS.GRAY_LIGHT_D9}`,
               borderRadius: '0.375rem',
             }}
             onChange={() => setHasChanged(true)}
@@ -159,7 +159,7 @@ export const EditTaskModal = ({ isOpen, selectedRow, onUpdateTask, onCloseEditMo
             style={{
               width: '100%',
               padding: '0.25rem 0.6875rem',
-              border: `1px solid ${COLORS.GRAY_LIGHT_D9}`,
+              border: `0.0625rem solid ${COLORS.GRAY_LIGHT_D9}`,
               borderRadius: '0.375rem',
             }}
             onChange={e => {

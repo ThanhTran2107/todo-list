@@ -1,6 +1,5 @@
 import { Table } from '@/antd-components/table.component';
 import { COLORS } from '@/utilities/constants';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 
 export const TableWrapper = styled.div`
@@ -17,61 +16,76 @@ export const StyledTable = styled(Table)`
   margin: 0.5rem;
 
   .ant-table-container {
-    border: 0.0625rem solid ${COLORS.LIGHT_GRAY};
+    border: 0.0625rem solid var(--divider-color) !important;
     border-radius: 0.5rem;
     overflow: hidden;
+    background-color: var(--item-background-color);
+    color: var(--primary-text-color);
+  }
+
+  .ant-table-thead > tr > th {
+    background-color: var(--table-header-background-color) !important;
+    color: var(--primary-text-color) !important;
+    border-bottom: 0.0625rem solid var(--divider-color) !important;
+  }
+
+  .ant-table-tbody > tr > td {
+    border-bottom: 0.0625rem solid var(--divider-color) !important;
+  }
+
+  .ant-table-tbody > tr:hover > td {
+    background-color: var(--row-hover-color) !important;
+  }
+
+  .ant-table-row-selected > td {
+    background-color: var(--row-hover-color) !important;
+  }
+
+  .ant-table-row-popup-active > td {
+    background-color: var(--row-hover-color) !important;
   }
 
   .ant-pagination-prev,
   .ant-pagination-next {
-    background-color: ${COLORS.WHITE} !important;
+    color: var(--primary-text-color) !important;
+    background-color: var(--item-background-color) !important;
   }
 
   .ant-pagination-item {
-    background-color: ${COLORS.WHITE} !important;
+    background-color: var(--item-background-color) !important;
   }
 
   .ant-pagination-item:hover {
-    border-color: ${COLORS.BLUE} !important;
+    color: var(--primary-text-color) !important;
+    border-color: var(--primary-blue-color) !important;
   }
-`;
 
-export const StyledButton = styled(FontAwesomeIcon)`
-  font-size: 1.3rem;
-  cursor: pointer;
-`;
-
-export const CompleteButton = styled(StyledButton)`
-  color: ${COLORS.BRIGHT_GREEN};
-  cursor: pointer;
-
-  &:hover {
-    color: ${COLORS.GREEN};
+  .ant-pagination-item a {
+    color: var(--primary-text-color) !important;
   }
-`;
 
-export const UncompleteButton = styled(StyledButton)`
-  color: ${COLORS.BRIGHT_BLUE};
-  cursor: pointer;
-
-  &:hover {
-    color: ${COLORS.BLUE};
+  .ant-pagination-item-active a {
+    color: ${COLORS.WHITE} !important;
+    background-color: var(--primary-blue-color) !important;
+    border-radius: 0.25rem;
+    border-color: var(--primary-blue-color) !important;
+    height: 1.9rem;
   }
-`;
 
-export const DeleteButton = styled(StyledButton)`
-  color: ${COLORS.DARK_GRAY};
+  .ant-pagination-item-link {
+    color: var(--primary-text-color) !important;
 
-  &:hover {
-    color: ${COLORS.RED};
+    &:hover {
+      background-color: var(--active-menu-button-color) !important;
+    }
   }
-`;
 
-export const EditButton = styled(StyledButton)`
-  color: ${COLORS.BRIGHT_BLUE};
+  .ant-table-cell {
+    background-color: var(--item-background-color) !important;
+  }
 
-  &:hover {
-    color: ${COLORS.BLUE};
+  .ant-empty-description {
+    color: var(--primary-text-color) !important;
   }
 `;
 
