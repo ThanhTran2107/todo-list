@@ -5,7 +5,6 @@ import { COLORS } from '@/utilities/constants';
 import styled from 'styled-components';
 
 export const HeaderWrapper = styled.div`
-  width: 100%;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -26,7 +25,7 @@ export const StatisticDropdown = styled(Dropdown)`
 
 export const StyledDatePicker = styled(DatePicker)`
   width: 20rem;
-  margin-right: 0.7rem;
+  margin-right: 0.3rem;
   border-radius: 0.5rem;
   background-color: var(--input-background-color);
   color: var(--primary-text-color);

@@ -63,22 +63,25 @@ export const useTodoList = () => {
         priority: todo.priority,
       });
 
-      const updateItemStatus = list =>
-        map(list, task => {
-          if (task.id === id) {
-            return {
-              ...task,
-              completed: newStatus === STATUS_VALUES.COMPLETED,
-              status: newStatus,
-            };
-          }
+      const moveCompletedTaskToTheTop = list => {
+        const updatedTaskInList = find(list, task => task.id === id);
 
-          return task;
-        });
+        if (!updatedTaskInList) return list;
 
-      const updatedTodoList = updateItemStatus(todoList);
-      const updatedSearchedList = updateItemStatus(searchedList);
-      const updatedOriginalList = updateItemStatus(originalList);
+        const updatedTaskObject = {
+          ...updatedTaskInList,
+          completed: newStatus === STATUS_VALUES.COMPLETED,
+          status: newStatus,
+        };
+
+        const remaining = filter(list, task => task.id !== id);
+
+        return [updatedTaskObject, ...remaining];
+      };
+
+      const updatedOriginalList = moveCompletedTaskToTheTop(originalList);
+      const updatedTodoList = moveCompletedTaskToTheTop(todoList);
+      const updatedSearchedList = moveCompletedTaskToTheTop(searchedList);
 
       setTodoList(updatedTodoList);
       setSearchedList(updatedSearchedList);
@@ -174,16 +177,15 @@ export const useTodoList = () => {
     try {
       await todoApi.put(API_ENDPOINTS.TODO_BY_ID.replace('{id}', updatedTask.id), updatedTask);
 
-      const updatedItem = list =>
-        map(list, task => {
-          if (task.id === updatedTask.id) return { ...updatedTask };
+      const moveUpdatedTaskToTheTop = list => {
+        const remaining = filter(list, task => task.id !== updatedTask.id);
 
-          return task;
-        });
+        return [{ ...updatedTask }, ...remaining];
+      };
 
-      const updatedTodoList = updatedItem(todoList);
-      const updatedSearchedList = updatedItem(searchedList);
-      const updatedOriginalList = updatedItem(originalList);
+      const updatedOriginalList = moveUpdatedTaskToTheTop(originalList);
+      const updatedTodoList = moveUpdatedTaskToTheTop(todoList);
+      const updatedSearchedList = moveUpdatedTaskToTheTop(searchedList);
 
       setTodoList(updatedTodoList);
       setSearchedList(updatedSearchedList);

@@ -108,8 +108,14 @@ public class TodoService {
         List<Todo> todosOfUser = findByUserWithFilters(user, searchText, priorityEnum, dueDateBefore, dueDateAfter,
                 completed, statusEnum);
 
-        // Order by createdAt desc (newest first)
-        todosOfUser.sort((a, b) -> b.createdAt.compareTo(a.createdAt));
+        // Order by updatedAt desc (most recently edited first), fallback to createdAt
+        // desc for never-updated tasks
+        todosOfUser.sort((a, b) -> {
+            Instant aOrder = a.updatedAt != null ? a.updatedAt : a.createdAt;
+            Instant bOrder = b.updatedAt != null ? b.updatedAt : b.createdAt;
+
+            return bOrder.compareTo(aOrder);
+        });
 
         // Apply pagination if provided
         if (limit != null && offset != null) {
