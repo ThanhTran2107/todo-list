@@ -16,7 +16,7 @@ export const ViewTaskDetailsModal = ({ isOpen, task, onClose }) => {
     {
       key: 'description',
       label: 'Description',
-      children: task.description || null,
+      children: task.description ? <div style={{ whiteSpace: 'pre-wrap' }}>{task.description}</div> : null,
     },
     {
       key: 'dueDate',

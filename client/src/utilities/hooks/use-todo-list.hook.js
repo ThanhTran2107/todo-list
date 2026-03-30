@@ -29,15 +29,28 @@ export const useTodoList = () => {
   const [todoList, setTodoList] = useState([]);
   const [originalList, setOriginalList] = useState([]);
   const [searchedList, setSearchedList] = useState([]);
-
+  const [currentStatusFilter, setCurrentStatusFilter] = useState(STATUS_VALUES.MY_TASKS);
+  const [currentPriorityFilter, setCurrentPriorityFilter] = useState(PRIORITY_VALUES.ALL);
+  const [currentDueDateFilter, setCurrentDueDateFilter] = useState(null);
   const [viewTask, setViewTask] = useState(null);
 
   const { todos: fetchedTodos, isLoading } = useGetTodos();
   const { fetchTodosWithFilter } = useGetTodosWithFilter();
 
-  const [currentStatusFilter, setCurrentStatusFilter] = useState(STATUS_VALUES.MY_TASKS);
-  const [currentPriorityFilter, setCurrentPriorityFilter] = useState(PRIORITY_VALUES.ALL);
-  const [currentDueDateFilter, setCurrentDueDateFilter] = useState(null);
+  const doesTaskMatchCurrentFilter = updatedTask => {
+    if (currentStatusFilter !== STATUS_VALUES.MY_TASKS && updatedTask.status !== currentStatusFilter) return false;
+    if (currentPriorityFilter !== PRIORITY_VALUES.ALL && updatedTask.priority !== currentPriorityFilter) return false;
+    // Currently due date filter is handled by backend; keep existing in-view tasks as-is for simplicity.
+    return true;
+  };
+
+  const invalidateTaskInList = updatedTask => list => {
+    const filtered = filter(list, item => item.id !== updatedTask.id);
+
+    if (doesTaskMatchCurrentFilter(updatedTask)) return [{ ...updatedTask }, ...filtered];
+
+    return filtered;
+  };
 
   // Function to view task details
   const handleViewTaskDetails = task => setViewTask(task);
@@ -63,25 +76,19 @@ export const useTodoList = () => {
         priority: todo.priority,
       });
 
-      const moveCompletedTaskToTheTop = list => {
-        const updatedTaskInList = find(list, task => task.id === id);
+      const updatedTaskInList = find(todoList, task => task.id === id);
 
-        if (!updatedTaskInList) return list;
+      if (!updatedTaskInList) return;
 
-        const updatedTaskObject = {
-          ...updatedTaskInList,
-          completed: newStatus === STATUS_VALUES.COMPLETED,
-          status: newStatus,
-        };
-
-        const remaining = filter(list, task => task.id !== id);
-
-        return [updatedTaskObject, ...remaining];
+      const updatedTaskObject = {
+        ...updatedTaskInList,
+        completed: newStatus === STATUS_VALUES.COMPLETED,
+        status: newStatus,
       };
 
-      const updatedOriginalList = moveCompletedTaskToTheTop(originalList);
-      const updatedTodoList = moveCompletedTaskToTheTop(todoList);
-      const updatedSearchedList = moveCompletedTaskToTheTop(searchedList);
+      const updatedOriginalList = invalidateTaskInList(updatedTaskObject)(originalList);
+      const updatedTodoList = invalidateTaskInList(updatedTaskObject)(todoList);
+      const updatedSearchedList = invalidateTaskInList(updatedTaskObject)(searchedList);
 
       setTodoList(updatedTodoList);
       setSearchedList(updatedSearchedList);
@@ -177,15 +184,9 @@ export const useTodoList = () => {
     try {
       await todoApi.put(API_ENDPOINTS.TODO_BY_ID.replace('{id}', updatedTask.id), updatedTask);
 
-      const moveUpdatedTaskToTheTop = list => {
-        const remaining = filter(list, task => task.id !== updatedTask.id);
-
-        return [{ ...updatedTask }, ...remaining];
-      };
-
-      const updatedOriginalList = moveUpdatedTaskToTheTop(originalList);
-      const updatedTodoList = moveUpdatedTaskToTheTop(todoList);
-      const updatedSearchedList = moveUpdatedTaskToTheTop(searchedList);
+      const updatedOriginalList = invalidateTaskInList(updatedTask)(originalList);
+      const updatedTodoList = invalidateTaskInList(updatedTask)(todoList);
+      const updatedSearchedList = invalidateTaskInList(updatedTask)(searchedList);
 
       setTodoList(updatedTodoList);
       setSearchedList(updatedSearchedList);
