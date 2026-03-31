@@ -4,12 +4,12 @@ import { TopBar } from '@/layouts/top-bar.component';
 import { useTodoList } from '@/utilities/hooks/use-todo-list.hook';
 import { useEffect, useRef, useState } from 'react';
 
+import { AIChatBox } from './components/ai-chat-box.component';
 import { ContentContainerHeader } from './components/content-container-header.component';
 import { TodoListTable } from './components/todo-list-table.component';
 import { ViewTaskDetailsModal } from './components/view-task-details-modal.component';
 import { ContentContainer, Wrapper } from './styles/todo-list-page.styled';
 
-// Main TodoListPage component that manages the entire todo list application
 export const TodoListPage = () => {
   const [openActionRowId, setOpenActionRowId] = useState(null);
   const contentRef = useRef(null);
@@ -71,6 +71,8 @@ export const TodoListPage = () => {
       </Space>
 
       <ViewTaskDetailsModal isOpen={!!viewTask} task={viewTask} onClose={handleCloseViewModal} />
+
+      <AIChatBox onTaskCreated={handleAddNewTodo} />
     </Wrapper>
   );
 };
