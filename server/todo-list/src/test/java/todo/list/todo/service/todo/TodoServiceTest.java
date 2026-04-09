@@ -1,4 +1,4 @@
-package todo.list.todo.service;
+package todo.list.todo.service.todo;
 
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;

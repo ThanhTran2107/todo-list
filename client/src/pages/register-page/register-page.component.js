@@ -86,7 +86,7 @@ export const RegisterPage = () => {
             name="password"
             rules={[
               { required: true, message: 'Please enter your password!' },
-              { min: 6, message: 'Password must be at least 6 characters!' },
+              { min: 10, message: 'Password must be at least 10 characters!' },
             ]}
           >
             <AuthPasswordField placeholder="Enter your password" />

@@ -9,7 +9,7 @@ const { AUTH_TOKEN } = STORAGE_KEYS;
 // Create axios instance for Todo API
 export const todoApi = axios.create({
   baseURL: '/api',
-  headers: { 'Content-Type': 'application/json' },
+  headers: { 'Content-Type': 'application/json; charset=UTF-8' },
 });
 
 // Add token to Todo API requests

@@ -40,6 +40,10 @@ export const StyledTextField = styled(TextField)`
     color: var(--primary-text-color);
   }
 
+  .ant-input-suffix .ant-input-clear-icon {
+    color: var(--input-placeholder-color);
+  }
+
   .ant-input::placeholder {
     color: var(--input-placeholder-color);
   }

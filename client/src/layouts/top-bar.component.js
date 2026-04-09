@@ -43,17 +43,7 @@ export const TopBar = ({ onResetOriginalData, onSearchTasksByName }) => {
               icon={faSearch}
             />
           }
-          suffix={
-            !isEmpty(input) && (
-              <CloseCircleFilled
-                style={{ color: 'var(--input-placeholder-color)', cursor: 'pointer' }}
-                onClick={() => {
-                  setInput('');
-                  onResetOriginalData();
-                }}
-              />
-            )
-          }
+          allowClear
         />
 
         <ThemeSelector />
