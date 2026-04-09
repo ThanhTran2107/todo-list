@@ -18,6 +18,7 @@
 - sentence: `Thêm nộp đơn nghỉ phép ngày 25/4`
 - labels: O B-TITLE I-TITLE I-TITLE I-TITLE O O O O
 
+<<<<<<< HEAD
 - sentence: `Thêm họp nhóm vào ngày 20/4 lúc 10h`
 - labels: O B-TITLE I-TITLE O O O O O O B-TIME
 
@@ -219,6 +220,8 @@
 - sentence: `Mua vé concert vào ngày-1-11-2025`
 - labels: B-TITLE I-TITLE I-TITLE O O O O O O O O
 
+=======
+>>>>>>> 4a4bae2 (Implement Vietnamese NLP-based AI todo generation)
 - sentence: `Thêm chuẩn bị slide cho buổi họp ngày mai`
 - labels: O B-TITLE I-TITLE I-TITLE O O O B-DATE I-DATE
 
@@ -351,6 +354,7 @@
 - sentence: `Thêm họp offline với team vào 21/4 lúc 16h`
 - labels: O B-TITLE I-TITLE I-TITLE I-TITLE O O O O O B-TIME
 
+<<<<<<< HEAD
 - sentence: `20/5 lúc 9h, tôi đi chùa với gia đình`
 - labels: O O O O B-TIME O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE
 
@@ -417,6 +421,8 @@
 - sentence: `9h sáng, 22 tháng 6 năm 2029, nhắc tôi gọi điện khách hàng`
 - labels: B-TIME B-TIME O O O O O O O O O O O O O
 
+=======
+>>>>>>> 4a4bae2 (Implement Vietnamese NLP-based AI todo generation)
 - sentence: `Ngày 21 tháng 4, tôi phải lên lớp báo cáo đồ án môn chuyên ngành lúc 1h chiều`
 - labels: O O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
 

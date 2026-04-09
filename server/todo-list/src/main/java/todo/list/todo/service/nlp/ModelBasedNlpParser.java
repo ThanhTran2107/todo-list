@@ -334,9 +334,12 @@ public class ModelBasedNlpParser implements NlpParser {
                 "");
         cleaned = cleaned.trim();
 
+<<<<<<< HEAD
         // Remove any leading/trailing punctuation left after date/time removal
         cleaned = cleaned.replaceAll("^[,\\.\\s]+", "").replaceAll("[,\\.\\s]+$", "").trim();
 
+=======
+>>>>>>> 4a4bae2 (Implement Vietnamese NLP-based AI todo generation)
         // Take first meaningful segment (before comma or period)
         String candidate = cleaned.split("[,\\.]")[0].trim();
 
@@ -366,7 +369,11 @@ public class ModelBasedNlpParser implements NlpParser {
         for (String word : timeDateWords) {
             normalized = normalized.replaceAll("\\b" + word + "\\b", "").replaceAll("\\s+", " ").trim();
         }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 4a4bae2 (Implement Vietnamese NLP-based AI todo generation)
         return normalized.isEmpty();
     }
 
