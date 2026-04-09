@@ -1,4 +1,4 @@
-package todo.list.todo.service;
+package todo.list.todo.service.todo;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;

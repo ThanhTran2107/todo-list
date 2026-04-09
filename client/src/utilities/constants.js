@@ -1,4 +1,3 @@
-import { MoneyCollectFilled } from '@ant-design/icons';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { keyBy } from 'lodash-es';
 
@@ -11,6 +10,7 @@ export const API_ENDPOINTS = Object.freeze({
   LOGOUT: '/auth/logout',
   GOOGLE_LOGIN: '/auth/google',
   FACEBOOK_LOGIN: '/auth/facebook',
+  NLP_PARSE: '/nlp/parse',
 });
 
 export const PAGE_PATH = Object.freeze({
@@ -40,11 +40,26 @@ export const STORAGE_KEYS = Object.freeze({
   USER_ACCOUNT: 'user-account',
 });
 
+export const ASSISTANT_MESSAGES = Object.freeze({
+  WELCOME: "Hello! I'm your Todo Assistant. What task schedule would you like me to create 😊?",
+  EMPTY: 'Please enter a prompt before sending to me 😘',
+  INTENT_NOT_SUPPORTED: 'I detected the task\'s intent is "%s 🤔", but currently I only support creating tasks',
+  TASK_CREATED:
+    'I have created the task "%s" for you. The due date is %s. If you want me to create another task, just say so 🥰!',
+});
+
 export const PRIORITY_LEVELS = Object.freeze({
   ALL: 'All',
   HIGH: 'High',
   MEDIUM: 'Medium',
   LOW: 'Low',
+});
+
+export const INTENT_TYPES = Object.freeze({
+  CREATE: 'Create',
+  UPDATE: 'Update',
+  DELETE: 'Delete',
+  VIEW: 'View',
 });
 
 export const STATUS_TYPES = Object.freeze({

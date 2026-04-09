@@ -22,6 +22,7 @@ dependencies {
     implementation 'io.quarkus:quarkus-security'
     implementation 'io.quarkus:quarkus-agroal'
     implementation 'io.quarkus:quarkus-hibernate-validator'
+    implementation 'com.microsoft.onnxruntime:onnxruntime:1.17.0'
 
     compileOnly 'org.projectlombok:lombok:1.18.32'
     annotationProcessor 'org.projectlombok:lombok:1.18.32'
@@ -51,4 +52,13 @@ compileJava {
 
 compileTestJava {
     options.encoding = 'UTF-8'
+}
+
+processResources {
+    // Exclude heavy training checkpoints (not needed for runtime)
+    exclude '**/ner_classifier_finetuned/**'
+    exclude '**/intent_classifier_finetuned/**'
+    exclude '**/checkpoint-*/**'
+    // Keep production ONNX models and tokenizer files
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }

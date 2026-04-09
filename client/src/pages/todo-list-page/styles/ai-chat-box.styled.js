@@ -26,28 +26,35 @@ export const ChatTitle = styled.div`
 `;
 
 export const ChatBody = styled.div`
-  padding: 1.5rem 1rem;
   overflow-y: auto;
   flex: 1;
   background: var(--main-background-color);
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
-  width: 25rem;
-  margin-top: -0.5rem;
-  margin-left: -1.5rem;
+
+  /* Hide scrollbar but keep scroll behavior */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 `;
 
 export const ChatMessage = styled.div`
-  width: 20rem;
+  max-width: 20rem;
+  width: fit-content;
   line-height: 1.4;
   word-break: break-word;
   white-space: pre-wrap;
   border-radius: 0.5rem;
   padding: 0.65rem 0.7rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   font-size: 0.88rem;
   background: ${({ from }) =>
-    from === 'ai' ? `${COLORS.LIGHT_GRAY}` : from === 'user' ? '#096dd9' : `${COLORS.LIGHT_GRAY}`};
+    from === 'ai' ? `${COLORS.LIGHT_GRAY}` : from === 'user' ? `${COLORS.BRIGHT_BLUE}` : `${COLORS.LIGHT_GRAY}`};
   color: ${({ from }) => (from === 'user' ? `${COLORS.WHITE}` : `${COLORS.DARK_GRAY}`)};
   align-self: ${({ from }) => (from === 'user' ? 'flex-end' : 'flex-start')};
 `;
@@ -74,7 +81,7 @@ export const ChatModal = styled(Modal)`
     border-radius: 0.75rem;
     height: 25rem;
     overflow: hidden;
-    background-color: ${COLORS.GHOST_WHITE};
+    background: var(--main-background-color) !important;
   }
 
   .ant-modal-body {
@@ -112,9 +119,18 @@ export const SendPromptButton = styled(Button)`
   }
 `;
 
-export const PromptTextArea = styled(Input.TextArea)`
+export const PromptTextArea = styled(Input)`
   background-color: var(--input-background-color);
+  color: var(--primary-text-color);
   border-color: var(--divider-color);
+
+  .ant-input-suffix .ant-input-clear-icon {
+    color: var(--input-placeholder-color);
+  }
+
+  .ant-input::placeholder {
+    color: var(--input-placeholder-color);
+  }
 
   &:hover {
     background-color: var(--input-background-color);
@@ -140,6 +156,7 @@ export const PromptTextArea = styled(Input.TextArea)`
     cursor: not-allowed;
     border: 0.0625rem solid var(--divider-color);
     border-radius: 0.375rem;
+    color: var(--input-placeholder-color) !important;
 
     .ant-input-suffix .anticon,
     .ant-input-clear .anticon {

@@ -14,7 +14,7 @@ import todo.list.common.dto.MessageResponse;
 import todo.list.todo.dto.request.CreateTodoRequest;
 import todo.list.todo.dto.request.UpdateTodoRequest;
 import todo.list.todo.dto.response.TodoResponse;
-import todo.list.todo.service.TodoService;
+import todo.list.todo.service.todo.TodoService;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
