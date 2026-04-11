@@ -40,6 +40,9 @@ public class Todo extends PanacheEntity {
     @Column
     public Instant updatedAt;
 
+    @Column(nullable = false)
+    public boolean reminded = false;
+
     public boolean isOverdue() {
         return dueDate != null && dueDate.isBefore(Instant.now()) && !completed;
     }

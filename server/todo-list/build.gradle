@@ -24,6 +24,9 @@ dependencies {
     implementation 'io.quarkus:quarkus-hibernate-validator'
     implementation 'com.microsoft.onnxruntime:onnxruntime:1.17.0'
 
+    implementation 'io.quarkus:quarkus-mailer'
+    implementation 'io.quarkus:quarkus-scheduler'
+
     compileOnly 'org.projectlombok:lombok:1.18.32'
     annotationProcessor 'org.projectlombok:lombok:1.18.32'
     
