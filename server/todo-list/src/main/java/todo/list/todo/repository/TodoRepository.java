@@ -45,6 +45,11 @@ public class TodoRepository implements PanacheRepository<Todo> {
         return list(query.toString(), params.toArray());
     }
 
+    public List<Todo> findUpcomingTasks(Instant start, Instant end) {
+        return find("status IN ('PENDING', 'IN_PROGRESS') and reminded = false and dueDate > ?1 and dueDate <= ?2",
+                start, end).list();
+    }
+
     public Todo findById(Long id) {
         return find("id", id).firstResult();
     }
@@ -64,4 +69,5 @@ public class TodoRepository implements PanacheRepository<Todo> {
     public void deleteAllByUser(User user) {
         delete("user", user);
     }
+
 }

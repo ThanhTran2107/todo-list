@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div
+        style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #ddd; border-radius: 10px; padding: 20px;">
+        <h2 style="color: #003a8c;">🔔 Task Reminder</h2>
+        <p>Hi <strong>{email}</strong>,</p>
+        <p>You have a task that is approaching its deadline:</p>
+
+        <div style="background-color: #f9f9f9; padding: 15px; border-left: 5px solid #003a8c; margin: 20px 0;">
+            <strong style="font-size: 18px;">{title}</strong><br />
+            <span style="color: #666;">Deadline: {dueDate}</span>
+        </div>
+
+        <p>Please review and complete it on time.</p>
+
+        <hr style="border: 0; border-top: 1px solid #eee; margin-top: 20px;">
+        <p>Click the button below to view more details:</p>
+
+        <a href="{appUrl}/todos"
+            style="background-color: #003a8c; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">
+            Open Task List
+        </a>
+
+        <hr style="border: 0; border-top: 1px solid #eee; margin-top: 20px;">
+        <small style="color: #999;">&copy; This is an automated email from the Smart Scheduler system.</small>
+    </div>
+</body>
+
+</html>

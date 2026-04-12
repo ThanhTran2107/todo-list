@@ -366,7 +366,6 @@ public class ModelBasedNlpParser implements NlpParser {
         for (String word : timeDateWords) {
             normalized = normalized.replaceAll("\\b" + word + "\\b", "").replaceAll("\\s+", " ").trim();
         }
-
         return normalized.isEmpty();
     }
 
