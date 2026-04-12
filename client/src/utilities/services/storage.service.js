@@ -55,3 +55,29 @@ export const getSessionStorage = (key, defaultValue = null) => {
     return value;
   }
 };
+
+const getCooldownKey = (email) => {
+  if (!email) return 'forgot_password_cooldown_unknown';
+  return `forgot_password_cooldown_${email.trim().toLowerCase()}`;
+};
+
+export const setCooldown = (email, seconds) => {
+  const expireAt = Date.now() + seconds * 1000;
+  setLocalStorage(getCooldownKey(email), expireAt);
+};
+
+export const getCooldown = (email) => {
+  if (!email) return 0;
+
+  const expireAt = getLocalStorage(getCooldownKey(email));
+
+  if (!expireAt) return 0;
+
+  const remaining = Math.floor((expireAt - Date.now()) / 1000);
+  return remaining > 0 ? remaining : 0;
+};
+
+export const clearCooldown = (email) => {
+  if (!email) return;
+  window.localStorage.removeItem(getCooldownKey(email));
+};

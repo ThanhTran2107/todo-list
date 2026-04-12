@@ -5,6 +5,9 @@ import { keyBy } from 'lodash-es';
 export const API_ENDPOINTS = Object.freeze({
   LOGIN: '/auth/login',
   REGISTER: '/auth/register',
+  FORGOT_PASSWORD: '/auth/forgot-password',
+  HELP_WITH_RESET_PASSWORD: '/auth/help-with-reset-password',
+  RESET_PASSWORD: '/auth/reset-password',
   TODOS: '/todos',
   TODO_BY_ID: '/todos/{id}',
   LOGOUT: '/auth/logout',
@@ -17,6 +20,9 @@ export const PAGE_PATH = Object.freeze({
   TODO_LIST: '/todos',
   LOGIN: '/login',
   REGISTER: '/register',
+  FORGOT_PASSWORD: '/forgot-password',
+  FORGOT_PASSWORD_SENT: '/forgot-password/sent',
+  RESET_PASSWORD: '/resetPassword',
 });
 
 // Storage keys
@@ -161,4 +167,9 @@ export const COLORS = Object.freeze({
 export const AUTH_ID = Object.freeze({
   GOOGLE_CLIENT_ID: '631241229433-9eumlhji2vg8aimnv50qgrjaj3bb3u2p.apps.googleusercontent.com',
   FACEBOOK_APP_ID: '554442523971007',
+});
+
+export const RESET_PASSWORD_CONFIG = Object.freeze({
+  PASSWORD_MIN_LENGTH: 10,
+  COOL_DOWN_SECOND: 60,
 });

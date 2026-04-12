@@ -4,8 +4,11 @@ import { ConfigProvider } from 'antd';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
+import { ForgotPasswordPage } from './pages/forgot-password-page/forgot-password-page.component';
+import { ForgotPasswordSentPage } from './pages/forgot-password-sent-page/forgot-password-sent-page.component';
 import { LoginPage } from './pages/login-page/login-page.component';
 import { RegisterPage } from './pages/register-page/register-page.component';
+import { ResetPasswordPage } from './pages/reset-password-page/reset-password-page.component';
 import { TodoListPage } from './pages/todo-list-page/todo-list-page.component';
 import { PrivateRoute } from './routes/private-route.jsx';
 
@@ -62,6 +65,24 @@ function App() {
           <Route
             path={PAGE_PATH.REGISTER}
             element={<AuthRoute authenticatedPath={PAGE_PATH.TODO_LIST} unauthenticatedComponent={<RegisterPage />} />}
+          />
+          <Route
+            path={PAGE_PATH.FORGOT_PASSWORD}
+            element={
+              <AuthRoute authenticatedPath={PAGE_PATH.TODO_LIST} unauthenticatedComponent={<ForgotPasswordPage />} />
+            }
+          />
+          <Route
+            path={PAGE_PATH.FORGOT_PASSWORD_SENT}
+            element={
+              <AuthRoute authenticatedPath={PAGE_PATH.TODO_LIST} unauthenticatedComponent={<ForgotPasswordSentPage />} />
+            }
+          />
+          <Route
+            path={PAGE_PATH.RESET_PASSWORD}
+            element={
+              <AuthRoute authenticatedPath={PAGE_PATH.TODO_LIST} unauthenticatedComponent={<ResetPasswordPage />} />
+            }
           />
         </Routes>
       </BrowserRouter>

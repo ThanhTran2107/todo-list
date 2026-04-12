@@ -60,6 +60,10 @@ public class UserService {
         if (password.length() < 10)
             throw new Exception("Password must be at least 10 characters long");
 
+        String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?\":{}|<>]).*$";
+        if (password.matches(passwordRegex))
+            throw new Exception("Password must contain at least one number, one lowercase letter, one uppercase letter, and one special character");
+
         User user = new User();
         user.email = email;
         user.passwordHash = passwordEncoder.hash(password);
