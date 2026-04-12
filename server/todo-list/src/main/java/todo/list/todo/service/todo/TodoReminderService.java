@@ -26,8 +26,8 @@ public class TodoReminderService {
 
         Instant now = Instant.now();
         // Quét rộng ra hẳn 12 tiếng trước và sau để "bắt" bằng được task
-        Instant start = now.minus(12, ChronoUnit.HOURS);
-        Instant end = now.plus(12, ChronoUnit.HOURS);
+        Instant start = now.minus(10, ChronoUnit.MINUTES);
+        Instant end = now.plus(5, ChronoUnit.MINUTES);
 
         List<Todo> upcomingTodos = Todo.find(
                 "status = 'PENDING' and reminded = false and dueDate BETWEEN ?1 AND ?2",
