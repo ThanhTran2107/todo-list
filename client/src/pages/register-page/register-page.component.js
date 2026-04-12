@@ -1,7 +1,7 @@
 import { Form } from '@/antd-components/form.component';
 import { message } from '@/antd-components/message.component';
 import { Space } from '@/antd-components/space.component';
-import { API_ENDPOINTS, PAGE_PATH } from '@/utilities/constants';
+import { API_ENDPOINTS, PAGE_PATH, RESET_PASSWORD_CONFIG } from '@/utilities/constants';
 import { todoApi } from '@/utilities/services/api.service';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -27,8 +27,8 @@ import {
 
 // Register page component with email, password, and confirm password fields
 export const RegisterPage = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const [form] = Form.useForm();
+  const [isLoading, setIsLoading] = useState(false);
   const emailRef = useRef(null);
 
   const navigate = useNavigate();
@@ -86,7 +86,26 @@ export const RegisterPage = () => {
             name="password"
             rules={[
               { required: true, message: 'Please enter your password!' },
-              { min: 10, message: 'Password must be at least 10 characters!' },
+              {
+                min: RESET_PASSWORD_CONFIG.PASSWORD_MIN_LENGTH,
+                message: `Password must be at least ${RESET_PASSWORD_CONFIG.PASSWORD_MIN_LENGTH} characters!`,
+              },
+              {
+                pattern: /(?=.*[0-9])/,
+                message: 'Password must include at least one number!',
+              },
+              {
+                pattern: /(?=.*[a-z])/,
+                message: 'Password must include at least one lowercase letter!',
+              },
+              {
+                pattern: /(?=.*[A-Z])/,
+                message: 'Password must include at least one uppercase letter!',
+              },
+              {
+                pattern: /(?=.*[!@#$%^&*(),.?":{}|<>])/,
+                message: 'Password must include at least one special character!',
+              },
             ]}
           >
             <AuthPasswordField placeholder="Enter your password" />

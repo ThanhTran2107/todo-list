@@ -6,9 +6,9 @@ import { API_ENDPOINTS, AUTH_ID, PAGE_PATH, STORAGE_KEYS } from '@/utilities/con
 import { todoApi } from '@/utilities/services/api.service';
 import { setCookie } from '@/utilities/services/storage.service';
 import { useGoogleLogin } from '@react-oauth/google';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import {
   AuthPasswordField,
@@ -37,11 +37,16 @@ const { AUTH_TOKEN } = STORAGE_KEYS;
 
 // Login page component with email and password fields, login and register buttons
 export const LoginPage = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const [form] = Form.useForm();
+  const [isLoading, setIsLoading] = useState(false);
   const emailRef = useRef(null);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const defaultEmail = useMemo(() => {
+    return location.state?.email ?? '';
+  }, [location.state]);
 
   const handleLogin = async values => {
     setIsLoading(true);
@@ -110,10 +115,20 @@ export const LoginPage = () => {
     if (emailRef.current) emailRef.current.focus();
   }, []);
 
+  useEffect(() => {
+    if (defaultEmail)
+      setTimeout(() => {
+        form.setFieldsValue({
+          email: defaultEmail,
+          password: '',
+        });
+      }, 100);
+  }, [defaultEmail, form]);
+
   return (
     <Wrapper>
       <LoginForm>
-        <Form form={form} name="loginForm" layout="vertical" onFinish={handleLogin} autoComplete="off">
+        <Form form={form} name="loginForm" layout="vertical" onFinish={handleLogin}>
           <FormTitle>
             <TitleWrapper>
               <TodoImage preview={false} src="/icons8-to-do-list-48.png" alt="Todo Icon" />
@@ -138,7 +153,12 @@ export const LoginPage = () => {
             label={
               <PasswordLabelWrapper size={270}>
                 Password
-                <ForgotPasswordButton onClick={() => message.info('Forgot password flow is coming soon!', 1)}>
+                <ForgotPasswordButton
+                  onClick={e => {
+                    e.preventDefault();
+                    navigate(PAGE_PATH.FORGOT_PASSWORD);
+                  }}
+                >
                   Forgot?
                 </ForgotPasswordButton>
               </PasswordLabelWrapper>

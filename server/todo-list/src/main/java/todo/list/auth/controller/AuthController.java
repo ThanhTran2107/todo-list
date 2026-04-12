@@ -6,20 +6,26 @@ import jakarta.validation.Valid;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.ExampleObject;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
-import todo.list.auth.dto.request.FacebookLoginRequest;
-import todo.list.auth.dto.request.GoogleLoginRequest;
-import todo.list.auth.dto.request.LoginRequest;
-import todo.list.auth.dto.request.RegisterRequest;
+import todo.list.auth.dto.request.*;
 import todo.list.auth.dto.response.LoginResponse;
+import todo.list.auth.dto.response.UserInformationResponse;
+import todo.list.auth.entity.PasswordResetToken;
+import todo.list.auth.service.ForgotPasswordService;
 import todo.list.common.dto.ErrorResponse;
 import todo.list.common.dto.MessageResponse;
+import todo.list.common.exception.InvalidTokenException;
+import todo.list.common.exception.TooManyTokenRequestException;
+import todo.list.user.entity.User;
 import todo.list.user.service.UserService;
+
+import java.util.Optional;
 
 @Path("/auth")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -27,6 +33,9 @@ import todo.list.user.service.UserService;
 public class AuthController {
     @Inject
     UserService userService;
+
+    @Inject
+    ForgotPasswordService forgotPasswordService;
 
     @POST
     @Path("/register")
@@ -124,6 +133,74 @@ public class AuthController {
             return Response.status(Response.Status.UNAUTHORIZED)
                     .entity(new ErrorResponse("Facebook login failed: " + e.getMessage(),
                             Response.Status.UNAUTHORIZED.getStatusCode()))
+                    .build();
+        }
+    }
+
+    @POST
+    @Path("/forgot-password")
+    @APIResponse(responseCode = "200", description = "Forgot password", content = @Content(mediaType = "application/json"))
+    public Response forgotPassword(@Valid ForgotPasswordRequest request) {
+        try {
+            String email = request.getEmail();
+            // Kiểm tra email có tồn tại trên hệ thống không
+            Optional<User> user = userService.findByEmail(email);
+            if (user.isEmpty()) {
+                return Response.ok().build();
+            }
+            // Tạo token
+            PasswordResetToken passwordResetToken = forgotPasswordService.createToken(user.get());
+            // Gửi reset link + token cho email
+            forgotPasswordService.sendMessageToEmail(email, passwordResetToken.token);
+            return Response.ok().build();
+        } catch (TooManyTokenRequestException ex) {
+            return Response.status(Response.Status.FORBIDDEN)
+                    .entity(new ErrorResponse(ex.getMessage(), Response.Status.FORBIDDEN.getStatusCode()))
+                    .build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity(new ErrorResponse("API failed: " + e.getMessage(), Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()))
+                    .build();
+        }
+    }
+
+    @GET
+    @Path("/help-with-reset-password")
+    @APIResponse(responseCode = "200", description = "Help With Reset Password - Load User Info")
+    public Response helpWithResetPassword(@QueryParam("token") @NotBlank String token) {
+        try {
+            // Lấy thông tin user
+            User user = forgotPasswordService.getUserInfoByToken(token);
+            // Trả user về để cho trang reset password
+            UserInformationResponse userInformationResponse = new UserInformationResponse(user.id, user.email);
+            return Response.status(Response.Status.OK)
+                    .entity(userInformationResponse)
+                    .build();
+        } catch (InvalidTokenException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(new ErrorResponse(e.getMessage(), Response.Status.BAD_REQUEST.getStatusCode()))
+                    .build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity(new ErrorResponse("API failed: " + e.getMessage(), Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()))
+                    .build();
+        }
+    }
+
+    @POST
+    @Path("/reset-password")
+    @APIResponse(responseCode = "200", description = "Reset password", content = @Content(mediaType = "application/json"))
+    public Response resetPassword(@Valid ResetPasswordRequest request) {
+        try {
+            forgotPasswordService.resetPassword(request.getToken(), request.getNewPassword());
+            return Response.ok().build();
+        } catch (InvalidTokenException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(new ErrorResponse(e.getMessage(), Response.Status.BAD_REQUEST.getStatusCode()))
+                    .build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity(new ErrorResponse("API failed: " + e.getMessage(), Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()))
                     .build();
         }
     }
