@@ -25,7 +25,7 @@ public class TodoReminderService {
         System.out.println(">>> [DEBUG] DANG QUET DATABASE...");
 
         Instant now = Instant.now();
-        // Quét rộng ra hẳn 12 tiếng trước và sau để "bắt" bằng được task
+        // Quét ra hẳn 10 phút trước và 5 phút sau để "bắt" được task
         Instant start = now.minus(10, ChronoUnit.MINUTES);
         Instant end = now.plus(5, ChronoUnit.MINUTES);
 
@@ -51,16 +51,21 @@ public class TodoReminderService {
                 .withZone(ZoneId.of("Asia/Ho_Chi_Minh"));
         String formattedDate = formatter.format(todo.dueDate);
         // Nội dung HTML giúp hiển thị tiếng Việt chuẩn và trình bày đẹp hơn
-        String htmlContent = String.format(
-                "<html><body>" +
-                        "<h3>Chào %s,</h3>" +
-                        "<p>Bạn có công việc: <b>%s</b> sắp đến hạn.</p>" +
-                        "<p>Thời gian: <i>%s</i></p>" +
-                        "<p>Đừng quên hoàn thành nhé!</p>" +
-                        "</body></html>",
-                todo.user.email, // Bạn có thể thay bằng username nếu có
-                todo.title,
-                formattedDate);
+        String htmlContent = """
+                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #ddd; border-radius: 10px; padding: 20px;">
+                        <h2 style="color: #2d89ef;">🔔 Nhắc nhở công việc</h2>
+                        <p>Chào bạn, bạn có một công việc sắp đến hạn:</p>
+                        <div style="background-color: #f9f9f9; padding: 15px; border-left: 5px solid #2d89ef; margin: 20px 0;">
+                            <strong style="font-size: 18px;">%s</strong><br/>
+                            <span style="color: #666;">Hạn chót: %s</span>
+                        </div>
+                        <p>Hãy nhấn vào nút bên dưới để xem chi tiết:</p>
+                        <a href="http://localhost:3000/todos" style="background-color: #2d89ef; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Mở danh sách công việc</a>
+                        <hr style="border: 0; border-top: 1px solid #eee; margin-top: 20px;">
+                        <small style="color: #999;">Đây là email tự động, vui lòng không phản hồi.</small>
+                    </div>
+                """
+                .formatted(todo.title, formattedDate);
 
         mailer.send(Mail.withHtml(todo.user.email, "🔔 Nhắc nhở công việc: " + todo.title, htmlContent));
         System.out.println("Sent reminder for task: " + todo.title + " to " + todo.user.email);

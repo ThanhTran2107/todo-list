@@ -66,7 +66,6 @@ Tập hợp các câu lệnh tiếng Việt mẫu để kiểm tra khả năng p
 - expected dueDate: 25/04
 - expected notes: `task cơ bản`
 
-<<<<<<< HEAD
 - prompt: `Thêm họp nhóm vào ngày 20/4 lúc 10h`
 - intent: `CREATE`
 - expected title: `họp nhóm`
@@ -603,8 +602,6 @@ Tập hợp các câu lệnh tiếng Việt mẫu để kiểm tra khả năng p
 - expected dueDate: `1/11/2025`
 - expected notes: `vào ngày-tháng-năm`
 
-=======
->>>>>>> 4a4bae2 (Implement Vietnamese NLP-based AI todo generation)
 - prompt: `Thêm chuẩn bị slide cho buổi họp ngày mai`
 - intent: `CREATE`
 - expected title: `chuẩn bị slide`
@@ -965,7 +962,6 @@ Tập hợp các câu lệnh tiếng Việt mẫu để kiểm tra khả năng p
 - expected dueDate: `21/4 lúc 16:00`
 - expected notes: `explicit date`
 
-<<<<<<< HEAD
 - prompt: `20/5 lúc 9h, tôi đi chùa với gia đình`
 - intent: `CREATE`
 - expected title: `đi chùa với gia đình`
@@ -1150,8 +1146,6 @@ Tập hợp các câu lệnh tiếng Việt mẫu để kiểm tra khả năng p
 - expected dueDate: `20/5 lúc 09:00`
 - expected notes: `explicit date`
 
-=======
->>>>>>> 4a4bae2 (Implement Vietnamese NLP-based AI todo generation)
 ### 5a. Task dài không có từ xóa hay cập nhật
 
 - prompt: `Ngày 21 tháng 4, tôi phải lên lớp báo cáo đồ án môn chuyên ngành lúc 1h chiều`
