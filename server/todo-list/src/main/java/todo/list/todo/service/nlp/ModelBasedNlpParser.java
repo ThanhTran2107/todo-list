@@ -312,12 +312,14 @@ public class ModelBasedNlpParser implements NlpParser {
         // First try to find known title from training samples
         String knownTitle = findKnownTitle(text);
         if (knownTitle != null && !knownTitle.isBlank())
-            return knownTitle;
+            return capitalizeFirstLetter(knownTitle);
 
         // If no known title found, extract meaningful content from the prompt
-        String cleaned = text.replaceAll(
-                "\\b(hãy|giúp( mình)?|tạo( giúp)?|lập|đặt|nhắc|tôi|mình|mua|đặt|hoàn thành|xong|đã xong|đang làm|gấp|khẩn|ưu tiên cao|thấp|bình thường|ngày mai|mai|mốt|ngày kia|chủ nhật|cn|cuối tuần|cuoi tuan|tháng sau|lúc|trước|deadline|gửi sếp|gửi cho sếp|gửi sếp trước|phải nộp|phải xong|phải|cần xong|cần|báo cáo quan trọng|giờ|có|việc|phải|đi|ra|ngoài|mất|tiêu)\b",
-                "").replaceAll("\\s+", " ").trim();
+        // Use proper Vietnamese word removal with diacritics
+        String cleaned = removeVietnameseWordsBySpaces(text,
+                Pattern.compile(
+                        "(hãy|giúp( mình)?|tạo( giúp)?|lập|đặt|nhắc|tôi|mình|mua|đặt|hoàn thành|xong|đã xong|đang làm|gấp|khẩn|ưu tiên cao|thấp|bình thường|ngày mai|mai|mốt|ngày kia|chủ nhật|cn|cuối tuần|cuối tuần|tháng sau|lúc|trước|deadline|gửi sếp|gửi cho sếp|gửi sếp trước|phải nộp|phải xong|phải|cần xong|cần|báo cáo quan trọng|giờ|có|việc|phải|đi|ra|ngoài|mất|tiêu)",
+                        Pattern.CASE_INSENSITIVE));
 
         // Remove date patterns but keep weekday references for context
         cleaned = cleaned.replaceAll(
@@ -328,10 +330,12 @@ public class ModelBasedNlpParser implements NlpParser {
         cleaned = cleaned.replaceAll("\\b(\\d{1,2})(?:h| giờ|:)(\\d{1,2})?\\b", "").replaceAll("\\s+", " ").trim();
 
         // Remove leading/trailing filler words
-        cleaned = cleaned.replaceAll("^(thêm|tạo|lập|nhắc|ghi|ghi lại|cần làm|tôi|mình|phải|cần|cho|và|thì|là)\\s+",
-                "");
-        cleaned = cleaned.replaceAll("\\s+(thêm|tạo|lập|nhắc|ghi|ghi lại|cần làm|tôi|mình|phải|cần|cho|và|thì|là)$",
-                "");
+        cleaned = Pattern.compile(
+                "^(thêm|tạo|lập|nhắc|ghi|ghi lại|cần làm|tôi|mình|phải|cần|cho|và|thì|là|có|buổi)\\s+",
+                Pattern.CASE_INSENSITIVE).matcher(cleaned).replaceAll("");
+        cleaned = Pattern.compile(
+                "\\s+(thêm|tạo|lập|nhắc|ghi|ghi lại|cần làm|tôi|mình|phải|cần|cho|và|thì|là|có|buổi)$",
+                Pattern.CASE_INSENSITIVE).matcher(cleaned).replaceAll("");
         cleaned = cleaned.trim();
 
         // Remove any leading/trailing punctuation left after date/time removal
@@ -343,15 +347,32 @@ public class ModelBasedNlpParser implements NlpParser {
         // Validate candidate: should be meaningful (3+ chars) and not just time/date
         // words
         if (candidate.length() >= 3 && !isOnlyTimeDateWords(candidate))
-            return candidate;
+            return capitalizeFirstLetter(candidate);
 
         // Fallback: try to extract action-oriented phrase
         String fallback = extractActionPhrase(text);
         if (!fallback.isEmpty() && !isOnlyTimeDateWords(fallback))
-            return fallback;
+            return capitalizeFirstLetter(fallback);
 
         // Final fallback
         return "Nhiệm vụ AI";
+    }
+
+    private String removeVietnameseWordsBySpaces(String text, Pattern pattern) {
+        // Normalize spacing first
+        String normalized = text.replaceAll("\\s+", " ").trim();
+
+        // Use the pattern to replace matching phrases (supports multi-word patterns)
+        String result = pattern.matcher(normalized).replaceAll("");
+
+        // Clean up extra spaces
+        return result.replaceAll("\\s+", " ").trim();
+    }
+
+    private String capitalizeFirstLetter(String text) {
+        if (text == null || text.isEmpty())
+            return text;
+        return text.substring(0, 1).toUpperCase() + text.substring(1);
     }
 
     private boolean isOnlyTimeDateWords(String text) {
@@ -472,14 +493,21 @@ public class ModelBasedNlpParser implements NlpParser {
     }
 
     private LocalDate parseRelativeDate(String text) {
-        if (Pattern.compile("\\b(nay|hôm nay|hom nay|hômnay)\\b", Pattern.CASE_INSENSITIVE).matcher(text).find())
+        if (Pattern.compile("\\b(nay|hôm nay|hom nay|hômnay|chiều nay|tối nay|sáng nay|trưa nay|đêm nay)\\b",
+                Pattern.CASE_INSENSITIVE).matcher(text).find())
             return LocalDate.now();
         if (Pattern.compile("\\b(ngày mai|mai)\\b", Pattern.CASE_INSENSITIVE).matcher(text).find())
             return LocalDate.now().plusDays(1);
+        if (Pattern.compile("\\b(hôm kia)\\b", Pattern.CASE_INSENSITIVE).matcher(text).find())
+            return LocalDate.now().minusDays(2);
         if (Pattern.compile("\\b(mốt|ngày kia)\\b", Pattern.CASE_INSENSITIVE).matcher(text).find())
             return LocalDate.now().plusDays(2);
         if (Pattern.compile("\\b(hôm qua)\\b", Pattern.CASE_INSENSITIVE).matcher(text).find())
             return LocalDate.now().minusDays(1);
+        if (Pattern.compile("\\b(cuối\\s+tháng\\s+này)\\b", Pattern.CASE_INSENSITIVE).matcher(text).find()) {
+            LocalDate now = LocalDate.now();
+            return now.withDayOfMonth(now.lengthOfMonth());
+        }
 
         return null;
     }

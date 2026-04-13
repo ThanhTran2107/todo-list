@@ -8,43 +8,35 @@ public class TransformerTextClassifier<T> {
     private static final Pattern TOKEN_SPLIT = Pattern.compile("[^\\p{L}\\p{Nd}]+", Pattern.UNICODE_CHARACTER_CLASS);
     private final Map<String, Integer> tokenIndex;
     private final List<T> labels;
-    private final double[][] tokenEmbeddings;
-    private final double[][] wq;
-    private final double[][] wk;
-    private final double[][] wv;
-    private final double[][] wo;
-    private final double[][] w1;
-    private final double[][] w2;
-    private final double[][] classifierWeights;
-    private final double[] classifierBias;
+    private final double[][] tokenEmbeddings; // Trainable embeddings
+    private final double[][] hiddenWeights; // Hidden layer: dModel -> hiddenDim
+    private final double[] hiddenBias;
+    private final double[][] outputWeights; // Output layer: hiddenDim -> labelCount
+    private final double[] outputBias;
     private final T defaultLabel;
     private final int dModel;
+    private final int hiddenDim;
 
     private TransformerTextClassifier(Map<String, Integer> tokenIndex,
             List<T> labels,
             double[][] tokenEmbeddings,
-            double[][] wq,
-            double[][] wk,
-            double[][] wv,
-            double[][] wo,
-            double[][] w1,
-            double[][] w2,
-            double[][] classifierWeights,
-            double[] classifierBias,
-            T defaultLabel) {
+            double[][] hiddenWeights,
+            double[] hiddenBias,
+            double[][] outputWeights,
+            double[] outputBias,
+            T defaultLabel,
+            int dModel,
+            int hiddenDim) {
         this.tokenIndex = tokenIndex;
         this.labels = labels;
         this.tokenEmbeddings = tokenEmbeddings;
-        this.wq = wq;
-        this.wk = wk;
-        this.wv = wv;
-        this.wo = wo;
-        this.w1 = w1;
-        this.w2 = w2;
-        this.classifierWeights = classifierWeights;
-        this.classifierBias = classifierBias;
+        this.hiddenWeights = hiddenWeights;
+        this.hiddenBias = hiddenBias;
+        this.outputWeights = outputWeights;
+        this.outputBias = outputBias;
         this.defaultLabel = defaultLabel;
-        this.dModel = tokenEmbeddings[0].length;
+        this.dModel = dModel;
+        this.hiddenDim = hiddenDim;
     }
 
     public T predict(String text) {
@@ -52,156 +44,54 @@ public class TransformerTextClassifier<T> {
         if (tokenIds.isEmpty())
             return defaultLabel;
 
-        double[][] embeddings = new double[tokenIds.size()][dModel];
-        for (int i = 0; i < tokenIds.size(); i++) {
-            embeddings[i] = tokenEmbeddings[tokenIds.get(i)];
-        }
+        double[] pooled = getMeanEmbeddings(tokenIds);
+        if (pooled == null)
+            return defaultLabel;
 
-        double[][] encoded = encodeSequence(embeddings);
-        double[] pooled = averagePooling(encoded);
-        double[] logits = linearlyClassify(pooled);
-
+        double[] hidden = forwardHidden(pooled);
+        double[] logits = forwardOutput(hidden);
         int best = argMax(logits);
 
         return labels.get(best);
     }
 
-    private double[] linearlyClassify(double[] input) {
-        double[] logits = new double[labels.size()];
-        for (int i = 0; i < labels.size(); i++) {
-            logits[i] = dot(classifierWeights[i], input) + classifierBias[i];
-        }
-
-        return logits;
-    }
-
-    private double[] averagePooling(double[][] hidden) {
-        double[] pooled = new double[dModel];
-        for (double[] token : hidden) {
+    private double[] getMeanEmbeddings(List<Integer> tokenIds) {
+        double[] sum = new double[dModel];
+        for (int tokenId : tokenIds) {
+            double[] emb = tokenEmbeddings[tokenId];
             for (int j = 0; j < dModel; j++) {
-                pooled[j] += token[j];
+                sum[j] += emb[j];
             }
         }
-
         for (int j = 0; j < dModel; j++) {
-            pooled[j] /= hidden.length;
+            sum[j] /= tokenIds.size();
         }
-
-        return pooled;
-    }
-
-    private double[][] encodeSequence(double[][] x) {
-        double[][] q = matMul(x, wq);
-        double[][] k = matMul(x, wk);
-        double[][] v = matMul(x, wv);
-
-        double[][] attention = attention(q, k, v);
-        double[][] attentionResidual = add(attention, x);
-        double[][] ffHidden = relu(matMul(attentionResidual, w1));
-        double[][] ffOutput = matMul(ffHidden, w2);
-
-        return add(ffOutput, attentionResidual);
-    }
-
-    private double[][] attention(double[][] q, double[][] k, double[][] v) {
-        int seq = q.length;
-        double scale = 1.0 / Math.sqrt(dModel);
-        double[][] scores = new double[seq][seq];
-
-        for (int i = 0; i < seq; i++) {
-            for (int j = 0; j < seq; j++) {
-                scores[i][j] = dot(q[i], k[j]) * scale;
-            }
-
-            softmax(scores[i]);
-        }
-
-        double[][] result = new double[seq][dModel];
-        for (int i = 0; i < seq; i++) {
-            for (int j = 0; j < seq; j++) {
-                for (int kIndex = 0; kIndex < dModel; kIndex++) {
-                    result[i][kIndex] += scores[i][j] * v[j][kIndex];
-                }
-            }
-        }
-
-        return matMul(result, wo);
-    }
-
-    private static double[][] matMul(double[][] a, double[][] b) {
-        int rows = a.length;
-        int cols = b[0].length;
-        int inner = b.length;
-        double[][] result = new double[rows][cols];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                double sum = 0.0;
-                for (int k = 0; k < inner; k++) {
-                    sum += a[i][k] * b[k][j];
-                }
-                result[i][j] = sum;
-            }
-        }
-
-        return result;
-    }
-
-    private static double dot(double[] a, double[] b) {
-        double sum = 0.0;
-        for (int i = 0; i < a.length; i++) {
-            sum += a[i] * b[i];
-        }
-
         return sum;
     }
 
-    private static double[][] add(double[][] a, double[][] b) {
-        int rows = a.length;
-        int cols = a[0].length;
-        double[][] result = new double[rows][cols];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                result[i][j] = a[i][j] + b[i][j];
+    private double[] forwardHidden(double[] input) {
+        double[] hidden = new double[hiddenDim];
+        for (int i = 0; i < hiddenDim; i++) {
+            double sum = 0.0;
+            for (int j = 0; j < dModel; j++) {
+                sum += hiddenWeights[j][i] * input[j];
             }
+            sum += hiddenBias[i];
+            hidden[i] = Math.max(0.0, sum); // ReLU
         }
-
-        return result;
+        return hidden;
     }
 
-    private static void softmax(double[] row) {
-        double max = Arrays.stream(row).max().orElse(0.0);
-        double sum = 0.0;
-        for (int i = 0; i < row.length; i++) {
-            row[i] = Math.exp(row[i] - max);
-            sum += row[i];
-        }
-
-        for (int i = 0; i < row.length; i++) {
-            row[i] /= sum;
-        }
-    }
-
-    private static double[][] relu(double[][] input) {
-        int rows = input.length;
-        int cols = input[0].length;
-        double[][] output = new double[rows][cols];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                output[i][j] = Math.max(0.0, input[i][j]);
+    private double[] forwardOutput(double[] hidden) {
+        double[] logits = new double[labels.size()];
+        for (int i = 0; i < labels.size(); i++) {
+            double sum = 0.0;
+            for (int j = 0; j < hiddenDim; j++) {
+                sum += outputWeights[j][i] * hidden[j];
             }
+            logits[i] = sum + outputBias[i];
         }
-
-        return output;
-    }
-
-    private List<Integer> toTokenIds(String text) {
-        List<String> tokens = tokenize(text);
-        List<Integer> ids = new ArrayList<>();
-        for (String token : tokens) {
-            ids.add(tokenIndex.getOrDefault(token, tokenIndex.getOrDefault("<unk>", 0)));
-        }
-
-        return ids;
+        return logits;
     }
 
     private int argMax(double[] logits) {
@@ -215,6 +105,16 @@ public class TransformerTextClassifier<T> {
         }
 
         return best;
+    }
+
+    private List<Integer> toTokenIds(String text) {
+        List<String> tokens = tokenize(text);
+        List<Integer> ids = new ArrayList<>();
+        for (String token : tokens) {
+            ids.add(tokenIndex.getOrDefault(token, tokenIndex.getOrDefault("<unk>", 0)));
+        }
+
+        return ids;
     }
 
     private static List<String> tokenize(String text) {
@@ -247,63 +147,117 @@ public class TransformerTextClassifier<T> {
 
         List<T> labels = new ArrayList<>(labelSet);
         int labelCount = labels.size();
-        int dModel = 16;
-        double[][] tokenEmbeddings = randomMatrix(vocabulary.size(), dModel, 0.01, 1234);
-        double[][] wq = randomMatrix(dModel, dModel, 0.02, 2345);
-        double[][] wk = randomMatrix(dModel, dModel, 0.02, 3456);
-        double[][] wv = randomMatrix(dModel, dModel, 0.02, 4567);
-        double[][] wo = randomMatrix(dModel, dModel, 0.02, 5678);
-        double[][] w1 = randomMatrix(dModel, dModel, 0.02, 6789);
-        double[][] w2 = randomMatrix(dModel, dModel, 0.02, 7890);
+        int dModel = 32; // Increased from 16 for better representation
+        int hiddenDim = 64; // Hidden layer size
 
-        double[][] classifierWeights = new double[labelCount][dModel];
-        double[] classifierBias = new double[labelCount];
-        Random random = new Random(31415);
-        for (int i = 0; i < labelCount; i++) {
-            for (int j = 0; j < dModel; j++) {
-                classifierWeights[i][j] = random.nextGaussian() * 0.01;
-            }
+        Random random = new Random(42);
+        double[][] tokenEmbeddings = randomMatrix(vocabulary.size(), dModel, 0.1, random);
+        double[][] hiddenWeights = randomMatrix(dModel, hiddenDim, 0.1, random);
+        double[] hiddenBias = new double[hiddenDim];
+        double[][] outputWeights = randomMatrix(hiddenDim, labelCount, 0.1, random);
+        double[] outputBias = new double[labelCount];
 
-            classifierBias[i] = 0.0;
-        }
+        TransformerTextClassifier<T> classifier = new TransformerTextClassifier<>(
+                tokenIndex, labels, tokenEmbeddings,
+                hiddenWeights, hiddenBias, outputWeights, outputBias,
+                defaultLabel, dModel, hiddenDim);
 
-        TransformerTextClassifier<T> classifier = new TransformerTextClassifier<>(tokenIndex, labels, tokenEmbeddings,
-                wq, wk, wv, wo, w1, w2, classifierWeights, classifierBias, defaultLabel);
-        classifier.trainWeights(trainingData, 150, 0.12);
+        // Train with proper backpropagation
+        classifier.trainWithBackprop(trainingData, 200, 0.01);
 
         return classifier;
     }
 
-    private void trainWeights(List<LabeledText<T>> trainingData, int epochs, double learningRate) {
+    private void trainWithBackprop(List<LabeledText<T>> trainingData, int epochs, double learningRate) {
         Map<T, Integer> labelIndex = new HashMap<>();
         for (int i = 0; i < labels.size(); i++) {
             labelIndex.put(labels.get(i), i);
         }
 
         for (int epoch = 0; epoch < epochs; epoch++) {
-            for (LabeledText<T> example : trainingData) {
+            // Shuffle training data each epoch
+            List<LabeledText<T>> shuffled = new ArrayList<>(trainingData);
+            Collections.shuffle(shuffled, new Random(epoch));
+
+            double totalLoss = 0.0;
+            int correct = 0;
+
+            for (LabeledText<T> example : shuffled) {
                 List<Integer> tokenIds = toTokenIds(normalizeText(example.getText()));
                 if (tokenIds.isEmpty())
                     continue;
 
-                double[][] embeddings = new double[tokenIds.size()][dModel];
-                for (int i = 0; i < tokenIds.size(); i++) {
-                    embeddings[i] = tokenEmbeddings[tokenIds.get(i)];
-                }
-
-                double[][] encoded = encodeSequence(embeddings);
-                double[] pooled = averagePooling(encoded);
-                double[] logits = linearlyClassify(pooled);
-                double[] probs = softmaxCopy(logits);
                 int target = labelIndex.get(example.getLabel());
-                for (int i = 0; i < labels.size(); i++) {
-                    double error = ((i == target) ? 1.0 : 0.0) - probs[i];
-                    for (int j = 0; j < dModel; j++) {
-                        classifierWeights[i][j] += learningRate * error * pooled[j];
-                    }
 
-                    classifierBias[i] += learningRate * error;
+                // Forward pass
+                double[] pooled = getMeanEmbeddings(tokenIds);
+                double[] hidden = forwardHidden(pooled);
+                double[] logits = forwardOutput(hidden);
+                double[] probs = softmaxCopy(logits);
+
+                // Calculate cross-entropy loss
+                totalLoss -= Math.log(Math.max(probs[target], 1e-10));
+                if (argMax(logits) == target)
+                    correct++;
+
+                // Backward pass: compute gradients
+                double[] dLogits = new double[labels.size()];
+                for (int i = 0; i < labels.size(); i++) {
+                    dLogits[i] = probs[i] - ((i == target) ? 1.0 : 0.0);
                 }
+
+                // Update output weights and biases
+                for (int i = 0; i < labels.size(); i++) {
+                    for (int j = 0; j < hiddenDim; j++) {
+                        outputWeights[j][i] -= learningRate * dLogits[i] * hidden[j];
+                    }
+                    outputBias[i] -= learningRate * dLogits[i];
+                }
+
+                // Backprop through hidden layer
+                double[] dHidden = new double[hiddenDim];
+                for (int j = 0; j < hiddenDim; j++) {
+                    for (int i = 0; i < labels.size(); i++) {
+                        dHidden[j] += outputWeights[j][i] * dLogits[i];
+                    }
+                    // ReLU gradient
+                    if (hidden[j] <= 0)
+                        dHidden[j] = 0;
+                }
+
+                // Update hidden weights and biases
+                for (int j = 0; j < dModel; j++) {
+                    for (int k = 0; k < hiddenDim; k++) {
+                        hiddenWeights[j][k] -= learningRate * dHidden[k] * pooled[j];
+                    }
+                }
+                for (int k = 0; k < hiddenDim; k++) {
+                    hiddenBias[k] -= learningRate * dHidden[k];
+                }
+
+                // Backprop through embeddings
+                double[] dPooled = new double[dModel];
+                for (int j = 0; j < dModel; j++) {
+                    for (int k = 0; k < hiddenDim; k++) {
+                        dPooled[j] += hiddenWeights[j][k] * dHidden[k];
+                    }
+                }
+
+                // Update token embeddings
+                double scale = 1.0 / tokenIds.size();
+                for (int tokenId : tokenIds) {
+                    for (int j = 0; j < dModel; j++) {
+                        tokenEmbeddings[tokenId][j] -= learningRate * dPooled[j] * scale;
+                    }
+                }
+            }
+
+            // Print training progress every 50 epochs
+            if ((epoch + 1) % 50 == 0) {
+                double avgLoss = totalLoss / shuffled.size();
+                double accuracy = (double) correct / shuffled.size();
+                System.out.printf("[NLP] Epoch %d/%d - Loss: %.4f, Accuracy: %.2f%%%n",
+                        epoch + 1, epochs, avgLoss, accuracy * 100);
             }
         }
     }
@@ -324,9 +278,8 @@ public class TransformerTextClassifier<T> {
         return out;
     }
 
-    private static double[][] randomMatrix(int rows, int cols, double scale, int seed) {
+    private static double[][] randomMatrix(int rows, int cols, double scale, Random random) {
         double[][] matrix = new double[rows][cols];
-        Random random = new Random(seed);
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 matrix[i][j] = random.nextGaussian() * scale;

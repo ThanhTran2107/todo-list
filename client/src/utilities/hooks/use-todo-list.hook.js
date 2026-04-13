@@ -17,7 +17,7 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { message } from 'antd';
 import Cookies from 'js-cookie';
-import { filter, find, isEmpty, map } from 'lodash-es';
+import { filter, find, isEmpty } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -27,7 +27,7 @@ const { DELETE_ALL_TASKS, DELETE_A_TASK } = MODAL_TITLES;
 export const useTodoList = () => {
   const navigate = useNavigate();
   const [todoList, setTodoList] = useState([]);
-  const [originalList, setOriginalList] = useState([]);
+  const [allTasks, setAllTasks] = useState([]);
   const [searchedList, setSearchedList] = useState([]);
   const [currentStatusFilter, setCurrentStatusFilter] = useState(STATUS_VALUES.MY_TASKS);
   const [currentPriorityFilter, setCurrentPriorityFilter] = useState(PRIORITY_VALUES.ALL);
@@ -44,7 +44,7 @@ export const useTodoList = () => {
     return true;
   };
 
-  const invalidateTaskInList = updatedTask => list => {
+  const invalidateTaskInList = (updatedTask, list) => {
     const filtered = filter(list, item => item.id !== updatedTask.id);
 
     if (doesTaskMatchCurrentFilter(updatedTask)) return [{ ...updatedTask }, ...filtered];
@@ -86,13 +86,13 @@ export const useTodoList = () => {
         status: newStatus,
       };
 
-      const updatedOriginalList = invalidateTaskInList(updatedTaskObject)(originalList);
-      const updatedTodoList = invalidateTaskInList(updatedTaskObject)(todoList);
-      const updatedSearchedList = invalidateTaskInList(updatedTaskObject)(searchedList);
+      const updatedAllTasks = invalidateTaskInList(updatedTaskObject, allTasks);
+      const updatedTodoList = invalidateTaskInList(updatedTaskObject, todoList);
+      const updatedSearchedList = invalidateTaskInList(updatedTaskObject, searchedList);
 
       setTodoList(updatedTodoList);
       setSearchedList(updatedSearchedList);
-      setOriginalList(updatedOriginalList);
+      setAllTasks(updatedAllTasks);
 
       message.success('Update the task status successfully!', 1);
     } catch (e) {
@@ -104,16 +104,16 @@ export const useTodoList = () => {
 
   // Function to reset todo list to original data
   const handleResetOriginalData = () => {
-    if (isEmpty(originalList)) return;
+    if (isEmpty(allTasks)) return;
 
-    setTodoList(originalList);
+    setTodoList(allTasks);
     setSearchedList([]);
   };
 
   // Function to add a new task to the todo list
   const handleAddNewTodo = newTask => {
-    setTodoList(prev => [newTask, ...prev]);
-    setOriginalList(prev => [newTask, ...prev]);
+    setAllTasks(prev => [newTask, ...prev]);
+    if (doesTaskMatchCurrentFilter(newTask)) setTodoList(prev => [newTask, ...prev]);
   };
 
   // Function to search tasks by name
@@ -122,7 +122,7 @@ export const useTodoList = () => {
 
     if (!searchName) return;
 
-    const found = filter(originalList, todo => removeVietnameseTones(todo.title).includes(searchName));
+    const found = filter(allTasks, todo => removeVietnameseTones(todo.title).includes(searchName));
 
     setTodoList(found);
     setSearchedList(found);
@@ -143,7 +143,6 @@ export const useTodoList = () => {
     });
 
     setTodoList(fetched);
-    setOriginalList(fetched);
     setSearchedList([]);
   };
 
@@ -160,7 +159,6 @@ export const useTodoList = () => {
     });
 
     setTodoList(fetched);
-    setOriginalList(fetched);
     setSearchedList([]);
   };
 
@@ -175,7 +173,6 @@ export const useTodoList = () => {
     });
 
     setTodoList(fetched);
-    setOriginalList(fetched);
     setSearchedList([]);
   };
 
@@ -184,13 +181,13 @@ export const useTodoList = () => {
     try {
       await todoApi.put(API_ENDPOINTS.TODO_BY_ID.replace('{id}', updatedTask.id), updatedTask);
 
-      const updatedOriginalList = invalidateTaskInList(updatedTask)(originalList);
-      const updatedTodoList = invalidateTaskInList(updatedTask)(todoList);
-      const updatedSearchedList = invalidateTaskInList(updatedTask)(searchedList);
+      const updatedAllTasks = invalidateTaskInList(updatedTask, allTasks);
+      const updatedTodoList = invalidateTaskInList(updatedTask, todoList);
+      const updatedSearchedList = invalidateTaskInList(updatedTask, searchedList);
 
       setTodoList(updatedTodoList);
       setSearchedList(updatedSearchedList);
-      setOriginalList(updatedOriginalList);
+      setAllTasks(updatedAllTasks);
 
       message.success('Update the task successfully!', 1);
     } catch (e) {
@@ -211,10 +208,10 @@ export const useTodoList = () => {
 
           const updatedTodoList = deleteItem(todoList);
           const updatedSearchedList = deleteItem(searchedList);
-          const updatedOriginalList = deleteItem(originalList);
+          const updatedAllTasks = deleteItem(allTasks);
 
           setTodoList(updatedTodoList);
-          setOriginalList(updatedOriginalList);
+          setAllTasks(updatedAllTasks);
           setSearchedList(updatedSearchedList);
 
           message.success(response.data?.message, 1);
@@ -236,7 +233,7 @@ export const useTodoList = () => {
           const response = await todoApi.delete(API_ENDPOINTS.TODOS);
 
           setTodoList([]);
-          setOriginalList([]);
+          setAllTasks([]);
           setSearchedList([]);
 
           message.success(response.data?.message, 1);
@@ -273,17 +270,18 @@ export const useTodoList = () => {
   useEffect(() => {
     if (!isLoading && fetchedTodos.length > 0) {
       setTodoList(fetchedTodos);
-      setOriginalList(fetchedTodos);
+      setAllTasks(fetchedTodos);
     }
   }, [fetchedTodos, isLoading]);
 
   useEffect(() => {
     setLocalStorage(TODO_LIST, [...todoList]);
-    setLocalStorage(ORIGINAL_LIST, [...originalList]);
-  }, [todoList, originalList]);
+    setLocalStorage(ORIGINAL_LIST, [...allTasks]);
+  }, [todoList, allTasks]);
 
   return {
     todoList,
+    originalList: allTasks,
     fetchedTodos,
     isLoading,
     viewTask,

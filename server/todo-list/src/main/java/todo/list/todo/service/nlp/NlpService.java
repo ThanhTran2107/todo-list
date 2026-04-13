@@ -102,7 +102,7 @@ public class NlpService {
             return false;
 
         String normalized = prompt.toLowerCase(Locale.forLanguageTag("vi-VN"));
-        String datePattern = "\\b(hôm\\s+nay|mai|mốt|ngày\\s+\\d{1,2}|\\d{1,2}/\\d{1,2}|\\d{1,2}-\\d{1,2}|thứ\\s*[2-7]|thứ\\s+hai|chủ\\s+nhật|cuối\\s+tuần|tuần\\s+sau|tháng\\s+sau|ngày\\s+kia|ngày\\s+sau|trong\\s+tuần|cuối\\s+tuần)\\b";
+        String datePattern = "\\b(nay|hôm\\s+nay|chiều\\s+nay|tối\\s+nay|sáng\\s+nay|trưa\\s+nay|đêm\\s+nay|hôm\\s+qua|hôm\\s+kia|hôm\\s+sau|mai|mốt|tháng\\s+này|cuối\\s+tháng\\s+này|cuối\\s+tuần\\s+này|cuối\\s+tuần|tháng\\s+sau|tuần\\s+sau|ngày\\s+\\d{1,2}|\\d{1,2}/\\d{1,2}|\\d{1,2}-\\d{1,2}|thứ\\s*[2-7]|thứ\\s+hai|chủ\\s+nhật|ngày\\s+kia|ngày\\s+sau|trong\\s+tuần)\\b";
         return Pattern.compile(datePattern, Pattern.CASE_INSENSITIVE).matcher(normalized).find();
     }
 

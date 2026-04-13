@@ -1,8 +1,8 @@
 import { message } from '@/antd-components/message.component';
-import { API_ENDPOINTS, PAGE_PATH, RESET_PASSWORD_CONFIG } from '@/utilities/constants';
+import { API_ENDPOINTS, PAGE_PATH } from '@/utilities/constants';
+import { useCooldown } from '@/utilities/hooks/use-cooldown.hook.js';
 import { todoApi } from '@/utilities/services/api.service';
-import { getCooldown, setCooldown } from '@/utilities/services/storage.service';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 import {
@@ -22,7 +22,6 @@ import {
 
 export const ForgotPasswordSentPage = () => {
   const [isResending, setResending] = useState(false);
-  const [cooldown, setCooldownState] = useState(0);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,8 +31,10 @@ export const ForgotPasswordSentPage = () => {
     return typeof fromState === 'string' ? fromState.trim().toLowerCase() : '';
   }, [location.state]);
 
+  const { cooldown, isOnCooldown, resetCooldown } = useCooldown(email);
+
   const handleResend = async () => {
-    if (cooldown > 0) return message.error(`Please wait ${cooldown} seconds before requesting again.`, 1);
+    if (isOnCooldown) return message.error(`Please wait ${cooldown} seconds before requesting again.`, 1);
 
     setResending(true);
 
@@ -42,8 +43,7 @@ export const ForgotPasswordSentPage = () => {
 
       message.success('If this email is registered, you will receive another password reset message shortly.', 1);
 
-      setCooldown(email, RESET_PASSWORD_CONFIG.COOL_DOWN_SECOND);
-      setCooldownState(RESET_PASSWORD_CONFIG.COOL_DOWN_SECOND);
+      resetCooldown();
     } catch (e) {
       message.error(e.response?.data?.error ?? 'Something went wrong. Please try again.', 1);
     } finally {
@@ -52,21 +52,6 @@ export const ForgotPasswordSentPage = () => {
   };
 
   if (!email) return <Navigate to={PAGE_PATH.FORGOT_PASSWORD} replace />;
-
-  useEffect(() => {
-    if (!email) return;
-    setCooldownState(getCooldown(email));
-  }, [email]);
-
-  useEffect(() => {
-    if (cooldown === 0) return;
-
-    const timer = setTimeout(() => {
-      setCooldownState(prev => prev - 1);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [cooldown]);
 
   return (
     <Wrapper>

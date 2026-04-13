@@ -1,8 +1,8 @@
 import { Form } from '@/antd-components/form.component';
 import { message } from '@/antd-components/message.component';
-import { API_ENDPOINTS, PAGE_PATH, RESET_PASSWORD_CONFIG } from '@/utilities/constants';
+import { API_ENDPOINTS, PAGE_PATH } from '@/utilities/constants';
+import { useCooldown } from '@/utilities/hooks/use-cooldown.hook.js';
 import { todoApi } from '@/utilities/services/api.service';
-import { getCooldown, setCooldown } from '@/utilities/services/storage.service';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -24,18 +24,17 @@ import {
 export const ForgotPasswordPage = () => {
   const [form] = Form.useForm();
   const [isLoading, setIsLoading] = useState(false);
-  const [cooldown, setCooldownState] = useState(0);
 
   const emailRef = useRef(null);
   const navigate = useNavigate();
 
   const email = Form.useWatch('email', form);
+  const { cooldown, isOnCooldown, resetCooldown } = useCooldown(email);
 
   const handleSubmit = async values => {
     const normalizedEmail = values.email.trim().toLowerCase();
 
-    if (getCooldown(normalizedEmail) > 0)
-      return message.error(`Please wait ${getCooldown(normalizedEmail)} seconds before requesting again.`, 1);
+    if (isOnCooldown) return message.error(`Please wait ${cooldown} seconds before requesting again.`, 1);
 
     setIsLoading(true);
 
@@ -44,8 +43,7 @@ export const ForgotPasswordPage = () => {
         email: normalizedEmail,
       });
 
-      setCooldown(normalizedEmail, RESET_PASSWORD_CONFIG.COOL_DOWN_SECOND);
-      setCooldownState(RESET_PASSWORD_CONFIG.COOL_DOWN_SECOND);
+      resetCooldown();
 
       navigate(PAGE_PATH.FORGOT_PASSWORD_SENT, {
         replace: true,
@@ -61,21 +59,6 @@ export const ForgotPasswordPage = () => {
   useEffect(() => {
     if (emailRef.current) emailRef.current.focus();
   }, []);
-
-  useEffect(() => {
-    if (!email) return;
-    setCooldownState(getCooldown(email));
-  }, [email]);
-
-  useEffect(() => {
-    if (cooldown === 0) return;
-
-    const timer = setTimeout(() => {
-      setCooldownState(prev => prev - 1);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [cooldown]);
 
   return (
     <Wrapper>

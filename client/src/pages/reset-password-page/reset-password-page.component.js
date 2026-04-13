@@ -1,8 +1,7 @@
 import { Form } from '@/antd-components/form.component';
-import { message } from '@/antd-components/message.component';
-import { API_ENDPOINTS, PAGE_PATH, RESET_PASSWORD_CONFIG } from '@/utilities/constants';
-import { todoApi } from '@/utilities/services/api.service';
-import { useEffect, useMemo, useState } from 'react';
+import { PAGE_PATH } from '@/utilities/constants';
+import { useResetPassword } from '@/utilities/hooks/use-reset-password.hook.js';
+import { useMemo } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import {
@@ -19,64 +18,17 @@ import {
   TitleWrapper,
   TodoImage,
   Wrapper,
-} from '../reset-password-page/styles/reset-password-page.styled';
-
-const validateTokenRequest = async token => {
-  const { data } = await todoApi.get(`${API_ENDPOINTS.HELP_WITH_RESET_PASSWORD}?token=${encodeURIComponent(token)}`);
-  return data;
-};
+} from './styles/reset-password-page.styled';
 
 export const ResetPasswordPage = () => {
-  const [phase, setPhase] = useState('loading');
-  const [userEmail, setUserEmail] = useState('');
-  const [submitting, setSubmitting] = useState(false);
-
-  const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
   const [form] = Form.useForm();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const token = useMemo(() => searchParams.get('token')?.trim() ?? '', [searchParams]);
 
-  const handleReset = async values => {
-    setSubmitting(true);
+  const { phase, userEmail, isSubmitting, handleReset, getPasswordRules, getConfirmRules } = useResetPassword(token);
 
-    try {
-      await todoApi.post(API_ENDPOINTS.RESET_PASSWORD, {
-        token,
-        newPassword: values.password,
-      });
-
-      message.success('Your password has been updated. You can sign in now.', 1);
-      navigate(PAGE_PATH.LOGIN, { replace: true, state: { email: userEmail } });
-    } catch (e) {
-      message.error(e.response?.data?.error ?? 'Could not reset password. Please try again.', 1);
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
-  useEffect(() => {
-    if (!token) return setPhase('no_token');
-
-    let cancelled = false;
-
-    (async () => {
-      try {
-        const data = await validateTokenRequest(token);
-
-        if (cancelled) return;
-
-        setUserEmail(typeof data?.email === 'string' ? data.email : '');
-        setPhase('ready');
-      } catch {
-        if (!cancelled) setPhase('invalid');
-      }
-    })();
-
-    return () => (cancelled = true);
-  }, [token]);
-
-  // ===== LOADING =====
   if (phase === 'loading') {
     return (
       <Wrapper>
@@ -92,7 +44,6 @@ export const ResetPasswordPage = () => {
     );
   }
 
-  // ===== INVALID / NO TOKEN =====
   if (phase === 'no_token' || phase === 'invalid') {
     const text =
       phase === 'no_token' ? 'Missing reset token. Please request again.' : 'This reset link is invalid or expired.';
@@ -106,15 +57,12 @@ export const ResetPasswordPage = () => {
               Reset password
             </TitleWrapper>
           </FormTitle>
-
           <FormBodyLabelText>{text}</FormBodyLabelText>
-
           <FormButtonWrapper>
             <PrimaryButton type="primary" block onClick={() => navigate(PAGE_PATH.FORGOT_PASSWORD)}>
               Request new reset link
             </PrimaryButton>
           </FormButtonWrapper>
-
           <FormFooter>
             <SecondaryButton onClick={() => navigate(PAGE_PATH.LOGIN)}>Back to login</SecondaryButton>
           </FormFooter>
@@ -123,7 +71,6 @@ export const ResetPasswordPage = () => {
     );
   }
 
-  // ===== READY =====
   return (
     <Wrapper>
       <ResetPasswordForm>
@@ -134,67 +81,32 @@ export const ResetPasswordPage = () => {
               Reset password
             </TitleWrapper>
           </FormTitle>
-
           {userEmail && <FormBodyLabelText>Account: {userEmail}</FormBodyLabelText>}
-
           <Form.Item
             label={<EmailLabelWrapper size={270}>New password</EmailLabelWrapper>}
             name="password"
-            rules={[
-              { required: true, message: 'Please enter your new password!' },
-              { min: RESET_PASSWORD_CONFIG.PASSWORD_MIN_LENGTH, message: 'Password must be at least 10 characters!' },
-              {
-                pattern: /(?=.*[0-9])/,
-                message: 'Password must include at least one number!',
-              },
-              {
-                pattern: /(?=.*[a-z])/,
-                message: 'Password must include at least one lowercase letter!',
-              },
-              {
-                pattern: /(?=.*[A-Z])/,
-                message: 'Password must include at least one uppercase letter!',
-              },
-              {
-                pattern: /(?=.*[!@#$%^&*(),.?":{}|<>])/,
-                message: 'Password must include at least one special character!',
-              },
-            ]}
+            rules={getPasswordRules()}
           >
             <AuthTextField type="password" placeholder="Enter new password" />
           </Form.Item>
-
           <Form.Item
             label={<EmailLabelWrapper size={270}>Confirm password</EmailLabelWrapper>}
             name="confirmPassword"
             dependencies={['password']}
-            rules={[
-              { required: true, message: 'Please confirm your password!' },
-              ({ getFieldValue }) => ({
-                validator(_, value) {
-                  if (!value || getFieldValue('password') === value) {
-                    return Promise.resolve();
-                  }
-                  return Promise.reject(new Error('Passwords do not match!'));
-                },
-              }),
-            ]}
+            rules={getConfirmRules()}
           >
             <AuthTextField type="password" placeholder="Confirm new password" />
           </Form.Item>
-
           <Form.Item>
             <FormButtonWrapper>
-              <PrimaryButton type="primary" htmlType="submit" loading={submitting} block>
+              <PrimaryButton type="primary" htmlType="submit" loading={isSubmitting} block>
                 Update password
               </PrimaryButton>
             </FormButtonWrapper>
           </Form.Item>
         </Form>
-
         <FormFooter>
           <FormFooterText>Link expires 30 minutes after it is sent.</FormFooterText>
-
           <SecondaryButton onClick={() => navigate(PAGE_PATH.LOGIN)}>Cancel</SecondaryButton>
         </FormFooter>
       </ResetPasswordForm>

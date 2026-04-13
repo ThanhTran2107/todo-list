@@ -126,12 +126,30 @@ public class OnnxBertNlpParser implements NlpParser {
                 return false;
         }
 
-        // Reject if title starts or ends with time words
-        String[] timeWords = { "lúc", "giờ", "sáng", "chiều", "tối", "đêm", "ngày", "tháng", "năm", "tuần" };
+        // CRITICAL: Reject single common Vietnamese words that are likely NER errors
+        // These are words that frequently appear in prompts but are not valid task
+        // titles
+        String[] commonWords = {
+                "cáo", "báo", "án", "đồ", "việc", "làm", "đi", "ăn", "uống",
+                "ngủ", "chơi", "học", "công", "buổi", "có", "tôi", "mình",
+                "phải", "cần", "muốn", "sẽ", "đang", "đã", "sắp", "nên"
+        };
         String[] words = normalized.split("\\s+");
-        if (words.length > 0) {
+        if (words.length == 1) {
+            for (String common : commonWords) {
+                if (words[0].equals(common)) {
+                    System.out.println("[NLP] Rejecting single common word as title: " + title);
+                    return false;
+                }
+            }
+        }
+
+        // Reject titles that are just common filler phrases
+        String[] timeWords = { "lúc", "giờ", "sáng", "chiều", "tối", "đêm", "ngày", "tháng", "năm", "tuần" };
+        String[] titleWords = normalized.split("\\s+");
+        if (titleWords.length > 0) {
             for (String tw : timeWords) {
-                if (words[0].equals(tw) || words[words.length - 1].equals(tw)) {
+                if (titleWords[0].equals(tw) || titleWords[titleWords.length - 1].equals(tw)) {
                     System.out.println("[NLP] Rejecting title starting/ending with time word: " + title);
                     return false;
                 }
@@ -285,7 +303,9 @@ public class OnnxBertNlpParser implements NlpParser {
 
     private LocalDate parseRelativeDate(String text) {
         LocalDate now = LocalDate.now();
-        if (text.contains("hôm nay") || text.contains("hom nay") || text.contains("hômnay"))
+        if (text.contains("hôm nay") || text.contains("hom nay") || text.contains("hômnay") ||
+                text.contains("chiều nay") || text.contains("tối nay") || text.contains("sáng nay") ||
+                text.contains("trưa nay") || text.contains("đêm nay"))
             return now;
         if (text.contains("ngày mai") || text.matches(".*\\bmai\\b.*"))
             return now.plusDays(1);
@@ -301,7 +321,13 @@ public class OnnxBertNlpParser implements NlpParser {
 
             return now.plusDays(daysUntilMonday);
         }
-        
+
+        if (text.contains("cuối tháng"))
+            return now.withDayOfMonth(now.lengthOfMonth());
+
+        if (text.contains("cuối năm"))
+            return LocalDate.of(now.getYear(), 12, 31);
+
         return null;
     }
 
