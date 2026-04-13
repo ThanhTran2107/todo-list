@@ -2122,15 +2122,15 @@ Tập hợp các câu lệnh tiếng Việt mẫu để kiểm tra khả năng p
 
 ### 14a. Task với từ 'nay'
 
-- prompt: `Nay tôi về nhà lúc tối`
+- prompt: `Nay tôi về nhà lúc 18h tối`
 - intent: `CREATE`
 - expected title: `về nhà`
 - expected priority: `MEDIUM`
 - expected status: `PENDING`
-- expected dueDate: tối nay
+- expected dueDate: hôm nay lúc 18:00
 - expected notes: `ngày nay`, `tối`
 
-- prompt: `Nay tôi phải đi họp lúc 3h`
+- prompt: `Nay tôi phải đi họp lúc 3h chiều`
 - intent: `CREATE`
 - expected title: `đi họp`
 - expected priority: `MEDIUM`
@@ -2138,69 +2138,2067 @@ Tập hợp các câu lệnh tiếng Việt mẫu để kiểm tra khả năng p
 - expected dueDate: hôm nay lúc 15:00
 - expected notes: `ngày nay`
 
-- prompt: `Nay tôi có việc phải hoàn thành`
+- prompt: `Nay tôi có việc phải hoàn thành trước 17h`
 - intent: `CREATE`
 - expected title: `việc phải hoàn thành`
 - expected priority: `HIGH`
 - expected status: `PENDING`
-- expected dueDate: hôm nay
+- expected dueDate: hôm nay lúc 17:00
 - expected notes: `ngày nay`
 
-- prompt: `Nay tôi sẽ gọi cho khách hàng`
+- prompt: `Nay tôi sẽ gọi cho khách hàng lúc 16h30`
 - intent: `CREATE`
 - expected title: `gọi cho khách hàng`
 - expected priority: `MEDIUM`
 - expected status: `PENDING`
-- expected dueDate: hôm nay
+- expected dueDate: hôm nay lúc 16:30
 - expected notes: `ngày nay`
 
-- prompt: `Nay tôi cần gửi báo cáo`
+- prompt: `Nay tôi cần gửi báo cáo vào 14h`
 - intent: `CREATE`
 - expected title: `gửi báo cáo`
 - expected priority: `HIGH`
 - expected status: `PENDING`
-- expected dueDate: hôm nay
+- expected dueDate: hôm nay lúc 14:00
 - expected notes: `ngày nay`
 
-- prompt: `Nay tôi có lịch hẹn bác sĩ`
+- prompt: `Nay tôi có lịch hẹn bác sĩ lúc 9h30`
 - intent: `CREATE`
 - expected title: `lịch hẹn bác sĩ`
 - expected priority: `MEDIUM`
 - expected status: `PENDING`
-- expected dueDate: hôm nay
+- expected dueDate: hôm nay lúc 09:30
 - expected notes: `ngày nay`
 
-- prompt: `Nay tôi phải tập gym`
+- prompt: `Nay tôi phải tập gym vào 19h`
 - intent: `CREATE`
 - expected title: `tập gym`
 - expected priority: `LOW`
 - expected status: `PENDING`
-- expected dueDate: hôm nay
+- expected dueDate: hôm nay lúc 19:00
 - expected notes: `ngày nay`
 
-- prompt: `Nay tôi sẽ nộp hồ sơ`
+- prompt: `Nay tôi sẽ nộp hồ sơ lúc 15h15`
 - intent: `CREATE`
 - expected title: `nộp hồ sơ`
 - expected priority: `HIGH`
 - expected status: `PENDING`
-- expected dueDate: hôm nay
+- expected dueDate: hôm nay lúc 15:15
 - expected notes: `ngày nay`
 
-- prompt: `Nay tôi cần chuẩn bị bài thuyết trình`
+- prompt: `Nay tôi cần chuẩn bị bài thuyết trình lúc 11h`
 - intent: `CREATE`
 - expected title: `chuẩn bị bài thuyết trình`
 - expected priority: `HIGH`
 - expected status: `PENDING`
-- expected dueDate: hôm nay
+- expected dueDate: hôm nay lúc 11:00
 - expected notes: `ngày nay`
 
-- prompt: `Nay tôi muốn dọn nhà`
+- prompt: `Nay tôi muốn dọn nhà lúc 20h`
 - intent: `CREATE`
 - expected title: `dọn nhà`
 - expected priority: `LOW`
 - expected status: `PENDING`
-- expected dueDate: hôm nay
+- expected dueDate: tối nay lúc 20:00
 - expected notes: `ngày nay`
+
+- prompt: `Nay phải gọi cho khách lúc 10h sáng`
+- intent: `CREATE`
+- expected title: `gọi cho khách`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 10:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi cần đi siêu thị lúc 16h`
+- intent: `CREATE`
+- expected title: `đi siêu thị`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 16:00
+- expected notes: `ngày nay`
+
+- prompt: `Hôm nay có họp trực tuyến lúc 13h30`
+- intent: `CREATE`
+- expected title: `họp trực tuyến`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 13:30
+- expected notes: `ngày nay`
+
+- prompt: `Nay phải làm bài tập thêm vào buổi tối lúc 21h`
+- intent: `CREATE`
+- expected title: `làm bài tập thêm`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: tối nay lúc 21:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay về quê xong trước 8h tối`
+- intent: `CREATE`
+- expected title: `về quê`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: tối nay lúc 20:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay mình tranh thủ sửa máy tính lúc 11h`
+- intent: `CREATE`
+- expected title: `sửa máy tính`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 11:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi nhận đơn hàng lúc 14 giờ`
+- intent: `CREATE`
+- expected title: `nhận đơn hàng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 14:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay gửi mail yêu cầu sếp lúc 17h`
+- intent: `CREATE`
+- expected title: `gửi mail yêu cầu sếp`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 17:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay chiều tôi làm việc ở văn phòng lúc 15h30`
+- intent: `CREATE`
+- expected title: `làm việc ở văn phòng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 15:30
+- expected notes: `ngày nay`
+
+- prompt: `Nay tối tôi học tiếng Anh lúc 20h30`
+- intent: `CREATE`
+- expected title: `học tiếng Anh`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: tối nay lúc 20:30
+- expected notes: `ngày nay`
+
+- prompt: `Nay sáng tôi họp online lúc 8h`
+- intent: `CREATE`
+- expected title: `họp online`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 08:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay trưa tôi ăn nhẹ lúc 12h30`
+- intent: `CREATE`
+- expected title: `ăn nhẹ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 12:30
+- expected notes: `ngày nay`
+
+- prompt: `Nay chiều tôi đến thư viện lúc 16h`
+- intent: `CREATE`
+- expected title: `đến thư viện`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 16:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tối tôi gọi điện cho bố lúc 21h`
+- intent: `CREATE`
+- expected title: `gọi điện cho bố`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: tối nay lúc 21:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay mình học thêm lúc 18h30`
+- intent: `CREATE`
+- expected title: `học thêm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 18:30
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi phỏng vấn lúc 10h`
+- intent: `CREATE`
+- expected title: `phỏng vấn`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 10:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi gặp nhà cung cấp lúc 11h`
+- intent: `CREATE`
+- expected title: `gặp nhà cung cấp`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 11:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay mình làm báo cáo tài chính lúc 14h`
+- intent: `CREATE`
+- expected title: `làm báo cáo tài chính`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 14:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi trả lời khách hàng lúc 15h`
+- intent: `CREATE`
+- expected title: `trả lời khách hàng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 15:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi đặt vé xem phim lúc 19h`
+- intent: `CREATE`
+- expected title: `đặt vé xem phim`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 19:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi đến ngân hàng lúc 9h`
+- intent: `CREATE`
+- expected title: `đến ngân hàng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 09:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi sửa máy tính lúc 16h`
+- intent: `CREATE`
+- expected title: `sửa máy tính`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 16:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi học đàn lúc 17h`
+- intent: `CREATE`
+- expected title: `học đàn`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 17:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi làm slide lúc 13h`
+- intent: `CREATE`
+- expected title: `làm slide`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 13:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi gọi điện cho bố lúc 18h`
+- intent: `CREATE`
+- expected title: `gọi điện cho bố`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 18:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi lên kế hoạch dự án lúc 14h30`
+- intent: `CREATE`
+- expected title: `lên kế hoạch dự án`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 14:30
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi tập yoga lúc 7h`
+- intent: `CREATE`
+- expected title: `tập yoga`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 07:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi có buổi họp online lúc 10h30`
+- intent: `CREATE`
+- expected title: `họp online`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 10:30
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi đi thị trường lúc 8h`
+- intent: `CREATE`
+- expected title: `đi thị trường`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 08:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi trả tiền hóa đơn lúc 11h`
+- intent: `CREATE`
+- expected title: `trả tiền hóa đơn`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 11:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi dọn phòng lúc 20h`
+- intent: `CREATE`
+- expected title: `dọn phòng`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: tối nay lúc 20:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi học tiếng Nhật lúc 19h`
+- intent: `CREATE`
+- expected title: `học tiếng Nhật`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 19:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi gửi báo cáo lúc 16h`
+- intent: `CREATE`
+- expected title: `gửi báo cáo`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 16:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi uống thuốc lúc 21h`
+- intent: `CREATE`
+- expected title: `uống thuốc`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: tối nay lúc 21:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi họp đội lúc 15h`
+- intent: `CREATE`
+- expected title: `họp đội`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 15:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi soạn email lúc 12h`
+- intent: `CREATE`
+- expected title: `soạn email`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 12:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi viết nhật ký lúc 22h`
+- intent: `CREATE`
+- expected title: `viết nhật ký`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: tối nay lúc 22:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi làm bài kiểm tra lúc 17h`
+- intent: `CREATE`
+- expected title: `làm bài kiểm tra`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 17:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi đi mua sắm lúc 10h`
+- intent: `CREATE`
+- expected title: `đi mua sắm`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 10:00
+- expected notes: `ngày nay`
+
+- prompt: `Nay tôi liên hệ đối tác lúc 14h`
+- intent: `CREATE`
+- expected title: `liên hệ đối tác`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm nay lúc 14:00
+- expected notes: `ngày nay`
+
+### 14b. Task với từ 'hôm kia'
+
+- prompt: `Hôm kia tôi đã nói sẽ nộp báo cáo trước 18h`
+- intent: `CREATE`
+- expected title: `nộp báo cáo`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 18:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia họp với khách lúc 2h chiều`
+- intent: `CREATE`
+- expected title: `họp với khách`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 14:00
+- expected notes: `hôm kia`
+
+- prompt: `Tôi đã ăn tối hôm kia lúc 19h30`
+- intent: `CREATE`
+- expected title: `ăn tối`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 19:30
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi phải đi sân bay lúc 6h sáng`
+- intent: `CREATE`
+- expected title: `đi sân bay`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 06:00
+- expected notes: `hôm kia`
+
+- prompt: `Cuộc hẹn hôm kia vào buổi trưa lúc 12h`
+- intent: `CREATE`
+- expected title: `cuộc hẹn`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 12:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi đi khám bệnh lúc 10h30`
+- intent: `CREATE`
+- expected title: `đi khám bệnh`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 10:30
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia buổi chiều tôi sửa ô tô lúc 16h`
+- intent: `CREATE`
+- expected title: `sửa ô tô`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 16:00
+- expected notes: `hôm kia`
+
+- prompt: `Tôi đã nộp hồ sơ hôm kia lúc 14h15`
+- intent: `CREATE`
+- expected title: `nộp hồ sơ`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 14:15
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi qua nhà ba mẹ lúc 18h`
+- intent: `CREATE`
+- expected title: `qua nhà ba mẹ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 18:00
+- expected notes: `hôm kia`
+
+- prompt: `Cuộc họp hôm kia diễn ra lúc 9h15`
+- intent: `CREATE`
+- expected title: `cuộc họp`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 09:15
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia mình đi chợ lúc 17h30 chiều`
+- intent: `CREATE`
+- expected title: `đi chợ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 17:30
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi phải sửa máy lạnh lúc 15h`
+- intent: `CREATE`
+- expected title: `sửa máy lạnh`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 15:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi nhận bưu phẩm lúc 11h sáng`
+- intent: `CREATE`
+- expected title: `nhận bưu phẩm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 11:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tối tôi xem phim lúc 20h`
+- intent: `CREATE`
+- expected title: `xem phim`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 20:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi làm bài tập về nhà lúc 19h`
+- intent: `CREATE`
+- expected title: `làm bài tập về nhà`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 19:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi phải làm bài tập lúc 8h sáng`
+- intent: `CREATE`
+- expected title: `làm bài tập`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 08:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia mình kể chuyện với bạn lúc 19h`
+- intent: `CREATE`
+- expected title: `kể chuyện với bạn`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 19:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi dạy học online lúc 14h`
+- intent: `CREATE`
+- expected title: `dạy học online`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 14:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia sáng tôi đi chạy bộ lúc 6h30`
+- intent: `CREATE`
+- expected title: `đi chạy bộ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 06:30
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi học tiếng Anh lúc 19h tối`
+- intent: `CREATE`
+- expected title: `học tiếng Anh`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 19:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi gọi cho bạn vào lúc 8h tối`
+- intent: `CREATE`
+- expected title: `gọi cho bạn`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 20:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi phải nộp thuế lúc 16h30`
+- intent: `CREATE`
+- expected title: `nộp thuế`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 16:30
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi làm việc ở văn phòng lúc 9h`
+- intent: `CREATE`
+- expected title: `làm việc ở văn phòng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 09:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia mình gặp bạn uống cà phê lúc 16h`
+- intent: `CREATE`
+- expected title: `gặp bạn uống cà phê`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 16:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi tìm hiểu hợp đồng lúc 10h`
+- intent: `CREATE`
+- expected title: `tìm hiểu hợp đồng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 10:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi trả lời email lúc 11h`
+- intent: `CREATE`
+- expected title: `trả lời email`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 11:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi đi họp online lúc 14h`
+- intent: `CREATE`
+- expected title: `đi họp online`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 14:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi sửa file báo cáo lúc 15h30`
+- intent: `CREATE`
+- expected title: `sửa file báo cáo`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 15:30
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi học online lúc 19h`
+- intent: `CREATE`
+- expected title: `học online`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 19:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi tập gym lúc 18h`
+- intent: `CREATE`
+- expected title: `tập gym`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 18:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi nấu cơm lúc 17h`
+- intent: `CREATE`
+- expected title: `nấu cơm`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 17:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi đi đón con lúc 16h30`
+- intent: `CREATE`
+- expected title: `đi đón con`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 16:30
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi kiểm tra kho hàng lúc 13h`
+- intent: `CREATE`
+- expected title: `kiểm tra kho hàng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 13:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi gọi điện cho sếp lúc 8h`
+- intent: `CREATE`
+- expected title: `gọi điện cho sếp`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 08:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi đóng gói hàng lúc 10h`
+- intent: `CREATE`
+- expected title: `đóng gói hàng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 10:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi xin nghỉ phép lúc 9h`
+- intent: `CREATE`
+- expected title: `xin nghỉ phép`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 09:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi chạy bộ lúc 6h30`
+- intent: `CREATE`
+- expected title: `chạy bộ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 06:30
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi học thêm lúc 20h`
+- intent: `CREATE`
+- expected title: `học thêm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 20:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi đi chợ lúc 8h30`
+- intent: `CREATE`
+- expected title: `đi chợ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 08:30
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi viết báo cáo lúc 14h`
+- intent: `CREATE`
+- expected title: `viết báo cáo`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 14:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi sắp xếp tài liệu lúc 11h`
+- intent: `CREATE`
+- expected title: `sắp xếp tài liệu`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 11:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi họp nhóm lúc 15h`
+- intent: `CREATE`
+- expected title: `họp nhóm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 15:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi gặp đối tác lúc 10h30`
+- intent: `CREATE`
+- expected title: `gặp đối tác`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 10:30
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi đi du lịch lúc 7h`
+- intent: `CREATE`
+- expected title: `đi du lịch`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 07:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi chuẩn bị bài thuyết trình lúc 13h`
+- intent: `CREATE`
+- expected title: `chuẩn bị bài thuyết trình`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 13:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi đọc sách lúc 21h`
+- intent: `CREATE`
+- expected title: `đọc sách`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 21:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi trả hóa đơn lúc 12h`
+- intent: `CREATE`
+- expected title: `trả hóa đơn`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 12:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi khám sức khỏe lúc 8h`
+- intent: `CREATE`
+- expected title: `khám sức khỏe`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 08:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi dọn nhà lúc 17h30`
+- intent: `CREATE`
+- expected title: `dọn nhà`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 17:30
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi đến thăm bà lúc 10h`
+- intent: `CREATE`
+- expected title: `đến thăm bà`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 10:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi làm bài kiểm tra lúc 9h`
+- intent: `CREATE`
+- expected title: `làm bài kiểm tra`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 09:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi giao hồ sơ lúc 14h`
+- intent: `CREATE`
+- expected title: `giao hồ sơ`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 14:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia mình đi học thêm lúc 18h`
+- intent: `CREATE`
+- expected title: `đi học thêm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 18:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi họp trực tuyến lúc 16h`
+- intent: `CREATE`
+- expected title: `họp trực tuyến`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 16:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi sửa xe lúc 13h30`
+- intent: `CREATE`
+- expected title: `sửa xe`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 13:30
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi nhận cuộc gọi lúc 11h`
+- intent: `CREATE`
+- expected title: `nhận cuộc gọi`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 11:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi đi tập gym lúc 7h`
+- intent: `CREATE`
+- expected title: `đi tập gym`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 07:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi nói chuyện với đối tác lúc 15h`
+- intent: `CREATE`
+- expected title: `nói chuyện với đối tác`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 15:00
+- expected notes: `hôm kia`
+
+- prompt: `Hôm kia tôi đặt vé xem phim lúc 20h`
+- intent: `CREATE`
+- expected title: `đặt vé xem phim`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm kia lúc 20:00
+- expected notes: `hôm kia`
+
+### 14c. Task với từ 'hôm sau'
+
+- prompt: `Hôm sau tôi phải họp lúc 8h sáng`
+- intent: `CREATE`
+- expected title: `họp`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 08:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau mình đi tiêm phòng lúc 10h`
+- intent: `CREATE`
+- expected title: `đi tiêm phòng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 10:00
+- expected notes: `hôm sau`
+
+- prompt: `Việc giao hàng sẽ diễn ra hôm sau vào chiều lúc 15h`
+- intent: `CREATE`
+- expected title: `giao hàng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 15:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau tôi cần họp với đội lúc 16h`
+- intent: `CREATE`
+- expected title: `họp với đội`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 16:00
+- expected notes: `hôm sau`
+
+- prompt: `Ngày mai thì không, hôm sau tôi đi khám bệnh lúc 11h`
+- intent: `CREATE`
+- expected title: `đi khám bệnh`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 11:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau buổi trưa tôi ăn trưa với khách lúc 12h30`
+- intent: `CREATE`
+- expected title: `ăn trưa với khách`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 12:30
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau sáng tôi phải đi họp lúc 9h`
+- intent: `CREATE`
+- expected title: `đi họp`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 09:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau tôi gửi email báo cáo lúc 10h`
+- intent: `CREATE`
+- expected title: `gửi email báo cáo`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 10:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau mình dọn dẹp phòng vào tối lúc 19h`
+- intent: `CREATE`
+- expected title: `dọn dẹp phòng`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 19:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau tôi tập gym lúc 7h30`
+- intent: `CREATE`
+- expected title: `tập gym`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 19:30
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau tôi học nhóm lúc 18h`
+- intent: `CREATE`
+- expected title: `học nhóm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 18:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau mình nộp hồ sơ lúc 15h`
+- intent: `CREATE`
+- expected title: `nộp hồ sơ`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 15:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau gặp bác sĩ lúc 15h30`
+- intent: `CREATE`
+- expected title: `gặp bác sĩ`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 15:30
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau tôi đi siêu thị lúc 16h`
+- intent: `CREATE`
+- expected title: `đi siêu thị`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 16:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau tôi phải chơi banh đũa lúc 3h chiều`
+- intent: `CREATE`
+- expected title: `chơi banh đũa`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 15:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau tôi cần giao hàng lúc 7h sáng`
+- intent: `CREATE`
+- expected title: `giao hàng`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 07:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau mình làm bài thuyết trình lúc 14h`
+- intent: `CREATE`
+- expected title: `làm bài thuyết trình`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 14:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau buổi chiều tôi dạy học lúc 15h`
+- intent: `CREATE`
+- expected title: `dạy học`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 15:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau tối tôi xem phim với gia đình lúc 20h`
+- intent: `CREATE`
+- expected title: `xem phim với gia đình`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 20:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau tôi gọi cho đối tác lúc 8h tối`
+- intent: `CREATE`
+- expected title: `gọi cho đối tác`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 20:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau mình học thêm tiếng Nhật lúc 16h`
+- intent: `CREATE`
+- expected title: `học thêm tiếng Nhật`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 16:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau tôi làm báo cáo lúc 13h`
+- intent: `CREATE`
+- expected title: `làm báo cáo`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 13:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau tôi gặp khách hàng lúc 10h30`
+- intent: `CREATE`
+- expected title: `gặp khách hàng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 10:30
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau tôi đi lấy hàng lúc 9h`
+- intent: `CREATE`
+- expected title: `đi lấy hàng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 09:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau tôi tập yoga lúc 18h`
+- intent: `CREATE`
+- expected title: `tập yoga`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 18:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau mình đi xem nhà lúc 14h`
+- intent: `CREATE`
+- expected title: `đi xem nhà`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 14:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau tôi chuẩn bị bài giảng lúc 11h`
+- intent: `CREATE`
+- expected title: `chuẩn bị bài giảng`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 11:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau tối tôi ăn cùng gia đình lúc 19h`
+- intent: `CREATE`
+- expected title: `ăn cùng gia đình`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 19:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau tôi nộp đơn xin việc lúc 9h`
+- intent: `CREATE`
+- expected title: `nộp đơn xin việc`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 09:00
+- expected notes: `hôm sau`
+
+- prompt: `Hôm sau tôi đọc sách lúc 20h`
+- intent: `CREATE`
+- expected title: `đọc sách`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm sau lúc 20:00
+- expected notes: `hôm sau`
+
+### 14d. Task với từ 'hôm qua'
+
+- prompt: `Hôm qua tôi đã họp với sếp lúc 9h30`
+- intent: `CREATE`
+- expected title: `họp với sếp`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 09:30
+- expected notes: `hôm qua`
+
+- prompt: `Hôm qua tôi ăn trưa lúc 12h`
+- intent: `CREATE`
+- expected title: `ăn trưa`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 12:00
+- expected notes: `hôm qua`
+
+- prompt: `Hôm qua tôi phải đi sân bay lúc 6h sáng`
+- intent: `CREATE`
+- expected title: `đi sân bay`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 06:00
+- expected notes: `hôm qua`
+
+- prompt: `Hôm qua buổi chiều tôi sửa ô tô lúc 15h`
+- intent: `CREATE`
+- expected title: `sửa ô tô`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 15:00
+- expected notes: `hôm qua`
+
+- prompt: `Hôm qua tôi nhận bưu phẩm lúc 11h`
+- intent: `CREATE`
+- expected title: `nhận bưu phẩm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 11:00
+- expected notes: `hôm qua`
+
+- prompt: `Hôm qua tôi xem phim với bạn lúc 20h`
+- intent: `CREATE`
+- expected title: `xem phim với bạn`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 20:00
+- expected notes: `hôm qua`
+
+- prompt: `Hôm qua tôi có lịch hẹn bác sĩ lúc 14h30`
+- intent: `CREATE`
+- expected title: `lịch hẹn bác sĩ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 14:30
+- expected notes: `hôm qua`
+
+- prompt: `Hôm qua tối tôi ăn tối lúc 19h`
+- intent: `CREATE`
+- expected title: `ăn tối`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 19:00
+- expected notes: `hôm qua`
+
+- prompt: `Hôm qua tôi phải làm báo cáo lúc 22h`
+- intent: `CREATE`
+- expected title: `làm báo cáo`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 22:00
+- expected notes: `hôm qua`
+
+- prompt: `Hôm qua mình dạy học online lúc 18h`
+- intent: `CREATE`
+- expected title: `dạy học online`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 18:00
+- expected notes: `hôm qua`
+
+- prompt: `Hôm qua tôi đi chợ lúc 16h30`
+- intent: `CREATE`
+- expected title: `đi chợ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 16:30
+- expected notes: `hôm qua`
+
+- prompt: `Hôm qua tôi tập gym lúc 7h30`
+- intent: `CREATE`
+- expected title: `tập gym`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 19:30
+- expected notes: `hôm qua`
+
+- prompt: `Hôm qua tôi đi họp lúc 8h30 sáng`
+- intent: `CREATE`
+- expected title: `đi họp`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 08:30
+- expected notes: `hôm qua`
+
+- prompt: `Hôm qua tôi ghi chú gửi mail lúc 17h`
+- intent: `CREATE`
+- expected title: `gửi mail`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 17:00
+- expected notes: `hôm qua`
+
+- prompt: `Hôm qua tôi họp với nhóm lúc 13h`
+- intent: `CREATE`
+- expected title: `họp với nhóm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 13:00
+- expected notes: `hôm qua`
+
+- prompt: `Hôm qua tôi làm việc đến 19h`
+- intent: `CREATE`
+- expected title: `làm việc`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 19:00
+- expected notes: `hôm qua`
+
+- prompt: `Hôm qua tôi dọn nhà lúc 17h`
+- intent: `CREATE`
+- expected title: `dọn nhà`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 17:00
+- expected notes: `hôm qua`
+
+- prompt: `Hôm qua tôi chuẩn bị slide lúc 14h`
+- intent: `CREATE`
+- expected title: `chuẩn bị slide`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 14:00
+- expected notes: `hôm qua`
+
+- prompt: `Hôm qua tôi kiểm tra email lúc 11h`
+- intent: `CREATE`
+- expected title: `kiểm tra email`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 11:00
+- expected notes: `hôm qua`
+
+- prompt: `Hôm qua tôi học tiếng Anh lúc 18h`
+- intent: `CREATE`
+- expected title: `học tiếng Anh`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: hôm qua lúc 18:00
+- expected notes: `hôm qua`
+
+### 14e. Task với từ 'mai'
+
+- prompt: `Mai tôi phải nộp báo cáo lúc 10h`
+- intent: `CREATE`
+- expected title: `nộp báo cáo`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 10:00
+- expected notes: `mai`
+
+- prompt: `Mai chiều tôi họp với đối tác lúc 15h`
+- intent: `CREATE`
+- expected title: `họp với đối tác`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 15:00
+- expected notes: `mai`
+
+- prompt: `Mai sáng mình đi tập lúc 6h30`
+- intent: `CREATE`
+- expected title: `đi tập`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 06:30
+- expected notes: `mai`
+
+- prompt: `Mai tối tôi ăn tối cùng gia đình lúc 19h`
+- intent: `CREATE`
+- expected title: `ăn tối cùng gia đình`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 19:00
+- expected notes: `mai`
+
+- prompt: `Mai tôi phải đi siêu thị lúc 11h`
+- intent: `CREATE`
+- expected title: `đi siêu thị`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 11:00
+- expected notes: `mai`
+
+- prompt: `Mai tôi gặp bác sĩ lúc 14h30`
+- intent: `CREATE`
+- expected title: `gặp bác sĩ`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 14:30
+- expected notes: `mai`
+
+- prompt: `Mai sáng tôi làm bài kiểm tra lúc 8h`
+- intent: `CREATE`
+- expected title: `làm bài kiểm tra`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 08:00
+- expected notes: `mai`
+
+- prompt: `Mai tôi gửi email báo cáo lúc 10h30`
+- intent: `CREATE`
+- expected title: `gửi email báo cáo`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 10:30
+- expected notes: `mai`
+
+- prompt: `Mai chiều tôi học thêm lúc 17h`
+- intent: `CREATE`
+- expected title: `học thêm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 17:00
+- expected notes: `mai`
+
+- prompt: `Mai tối tôi xem phim lúc 20h`
+- intent: `CREATE`
+- expected title: `xem phim`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 20:00
+- expected notes: `mai`
+
+- prompt: `Mai buổi trưa tôi ăn trưa với khách lúc 12h30`
+- intent: `CREATE`
+- expected title: `ăn trưa với khách`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 12:30
+- expected notes: `mai`
+
+- prompt: `Mai trưa tôi đi họp lúc 13h`
+- intent: `CREATE`
+- expected title: `đi họp`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 13:00
+- expected notes: `mai`
+
+- prompt: `Mai tối tôi tập gym lúc 18h30`
+- intent: `CREATE`
+- expected title: `tập gym`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 18:30
+- expected notes: `mai`
+
+- prompt: `Mai sáng tôi làm báo cáo lúc 9h`
+- intent: `CREATE`
+- expected title: `làm báo cáo`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 09:00
+- expected notes: `mai`
+
+- prompt: `Mai tôi gặp nhóm lúc 16h`
+- intent: `CREATE`
+- expected title: `gặp nhóm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 16:00
+- expected notes: `mai`
+
+- prompt: `Mai tôi kiểm tra nhật ký lúc 9h`
+- intent: `CREATE`
+- expected title: `kiểm tra nhật ký`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 09:00
+- expected notes: `mai`
+
+- prompt: `Mai tôi họp với phòng lúc 14h30`
+- intent: `CREATE`
+- expected title: `họp với phòng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 14:30
+- expected notes: `mai`
+
+- prompt: `Mai tôi đi xét nghiệm lúc 10h`
+- intent: `CREATE`
+- expected title: `đi xét nghiệm`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 10:00
+- expected notes: `mai`
+
+- prompt: `Mai tôi soạn thảo hợp đồng lúc 16h`
+- intent: `CREATE`
+- expected title: `soạn thảo hợp đồng`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 16:00
+- expected notes: `mai`
+
+- prompt: `Mai tối tôi xem phim lúc 20h30`
+- intent: `CREATE`
+- expected title: `xem phim`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: mai lúc 20:30
+- expected notes: `mai`
+
+### 14f. Task với từ 'mốt'
+
+- prompt: `Mốt tôi đi họp lúc 8h sáng`
+- intent: `CREATE`
+- expected title: `đi họp`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: mốt lúc 08:00
+- expected notes: `mốt`
+
+- prompt: `Mốt tôi có cuộc hẹn bác sĩ lúc 10h`
+- intent: `CREATE`
+- expected title: `cuộc hẹn bác sĩ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mốt lúc 10:00
+- expected notes: `mốt`
+
+- prompt: `Mốt chiều tôi đi siêu thị lúc 17h`
+- intent: `CREATE`
+- expected title: `đi siêu thị`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mốt lúc 17:00
+- expected notes: `mốt`
+
+- prompt: `Mốt tối tôi học tiếng Anh lúc 19h30`
+- intent: `CREATE`
+- expected title: `học tiếng Anh`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mốt lúc 19:30
+- expected notes: `mốt`
+
+- prompt: `Mốt tôi phải nộp hồ sơ lúc 15h`
+- intent: `CREATE`
+- expected title: `nộp hồ sơ`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: mốt lúc 15:00
+- expected notes: `mốt`
+
+- prompt: `Mốt sáng tôi đi chạy bộ lúc 6h30`
+- intent: `CREATE`
+- expected title: `đi chạy bộ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: mốt lúc 06:30
+- expected notes: `mốt`
+
+- prompt: `Mốt buổi trưa tôi ăn trưa với khách lúc 12h30`
+- intent: `CREATE`
+- expected title: `ăn trưa với khách`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mốt lúc 12:30
+- expected notes: `mốt`
+
+- prompt: `Mốt tôi làm bài tập lúc 14h`
+- intent: `CREATE`
+- expected title: `làm bài tập`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: mốt lúc 14:00
+- expected notes: `mốt`
+
+- prompt: `Mốt tôi sửa chiếc máy tính lúc 16h`
+- intent: `CREATE`
+- expected title: `sửa chiếc máy tính`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mốt lúc 16:00
+- expected notes: `mốt`
+
+- prompt: `Mốt tối tôi xem phim lúc 20h`
+- intent: `CREATE`
+- expected title: `xem phim`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: mốt lúc 20:00
+- expected notes: `mốt`
+
+- prompt: `Mốt tôi gửi email cho đối tác lúc 11h`
+- intent: `CREATE`
+- expected title: `gửi email cho đối tác`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mốt lúc 11:00
+- expected notes: `mốt`
+
+- prompt: `Mốt tôi có buổi học thêm lúc 17h`
+- intent: `CREATE`
+- expected title: `buổi học thêm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mốt lúc 17:00
+- expected notes: `mốt`
+
+- prompt: `Mốt tôi phải đi tiêm phòng lúc 9h`
+- intent: `CREATE`
+- expected title: `đi tiêm phòng`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: mốt lúc 09:00
+- expected notes: `mốt`
+
+- prompt: `Mốt chiều tôi gặp nhóm lúc 15h`
+- intent: `CREATE`
+- expected title: `gặp nhóm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mốt lúc 15:00
+- expected notes: `mốt`
+
+- prompt: `Mốt tôi đi làm báo cáo lúc 13h`
+- intent: `CREATE`
+- expected title: `đi làm báo cáo`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: mốt lúc 13:00
+- expected notes: `mốt`
+
+- prompt: `Mốt tôi thăm mẹ lúc 15h`
+- intent: `CREATE`
+- expected title: `thăm mẹ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mốt lúc 15:00
+- expected notes: `mốt`
+
+- prompt: `Mốt tôi kiểm tra tài liệu lúc 14h30`
+- intent: `CREATE`
+- expected title: `kiểm tra tài liệu`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mốt lúc 14:30
+- expected notes: `mốt`
+
+- prompt: `Mốt tôi học nhảy lúc 19h`
+- intent: `CREATE`
+- expected title: `học nhảy`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: mốt lúc 19:00
+- expected notes: `mốt`
+
+- prompt: `Mốt tối tôi gọi bạn lúc 21h`
+- intent: `CREATE`
+- expected title: `gọi bạn`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: mốt lúc 21:00
+- expected notes: `mốt`
+
+### 14g. Task với từ 'cuối tuần này'
+
+- prompt: `Cuối tuần này tôi đi chợ lúc 9h`
+- intent: `CREATE`
+- expected title: `đi chợ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 09:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này mình họp nhóm lúc 14h`
+- intent: `CREATE`
+- expected title: `họp nhóm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 14:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi đi siêu thị lúc 10h30`
+- intent: `CREATE`
+- expected title: `đi siêu thị`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 10:30
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tối tôi xem phim lúc 20h`
+- intent: `CREATE`
+- expected title: `xem phim`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 20:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi có lịch hẹn bác sĩ lúc 15h`
+- intent: `CREATE`
+- expected title: `lịch hẹn bác sĩ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 15:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này mình đi bơi lúc 8h sáng`
+- intent: `CREATE`
+- expected title: `đi bơi`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 08:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi làm việc ở văn phòng lúc 13h`
+- intent: `CREATE`
+- expected title: `làm việc ở văn phòng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 13:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi học Anh lúc 17h`
+- intent: `CREATE`
+- expected title: `học Anh`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 17:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi đi khám nha khoa lúc 16h`
+- intent: `CREATE`
+- expected title: `đi khám nha khoa`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 16:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi đã hẹn gặp bạn lúc 18h`
+- intent: `CREATE`
+- expected title: `gặp bạn`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 18:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này mình đi làm tình nguyện lúc 9h`
+- intent: `CREATE`
+- expected title: `đi làm tình nguyện`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 09:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi cần dọn nhà lúc 14h`
+- intent: `CREATE`
+- expected title: `dọn nhà`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 14:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi họp trực tuyến lúc 11h`
+- intent: `CREATE`
+- expected title: `họp trực tuyến`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 11:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này mình tập yoga lúc 7h30`
+- intent: `CREATE`
+- expected title: `tập yoga`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 07:30
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi nộp hồ sơ lúc 16h`
+- intent: `CREATE`
+- expected title: `nộp hồ sơ`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 16:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi đi mua sắm lúc 15h`
+- intent: `CREATE`
+- expected title: `đi mua sắm`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 15:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi đi mua sắm lúc 14h chiều`
+- intent: `CREATE`
+- expected title: `đi mua sắm`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 14:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi họp nhóm lúc 10h`
+- intent: `CREATE`
+- expected title: `họp nhóm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 10:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi làm bánh lúc 13h`
+- intent: `CREATE`
+- expected title: `làm bánh`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 13:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi gặp bác sĩ lúc 10h30`
+- intent: `CREATE`
+- expected title: `gặp bác sĩ`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 10:30
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi làm việc sáng lúc 8h`
+- intent: `CREATE`
+- expected title: `làm việc sáng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 08:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi đi cắm trại lúc 7h`
+- intent: `CREATE`
+- expected title: `đi cắm trại`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 07:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi họp gia đình lúc 12h`
+- intent: `CREATE`
+- expected title: `họp gia đình`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 12:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi sửa máy lúc 15h`
+- intent: `CREATE`
+- expected title: `sửa máy`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 15:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi viết nhật ký lúc 20h`
+- intent: `CREATE`
+- expected title: `viết nhật ký`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 20:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi sửa chữa xe lúc 9h`
+- intent: `CREATE`
+- expected title: `sửa chữa xe`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 09:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi đi thăm bạn lúc 10h`
+- intent: `CREATE`
+- expected title: `đi thăm bạn`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 10:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi học thêm lúc 14h`
+- intent: `CREATE`
+- expected title: `học thêm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 14:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi có buổi cà phê lúc 16h`
+- intent: `CREATE`
+- expected title: `buổi cà phê`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 16:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi đến bảo tàng lúc 11h`
+- intent: `CREATE`
+- expected title: `đến bảo tàng`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 11:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi đi chợ hoa lúc 8h`
+- intent: `CREATE`
+- expected title: `đi chợ hoa`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 08:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi làm việc nhóm lúc 13h`
+- intent: `CREATE`
+- expected title: `làm việc nhóm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 13:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi tập gym lúc 18h`
+- intent: `CREATE`
+- expected title: `tập gym`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 18:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi gọi mẹ lúc 19h`
+- intent: `CREATE`
+- expected title: `gọi mẹ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 19:00
+- expected notes: `cuối tuần này`
+
+- prompt: `Cuối tuần này tôi xem triển lãm lúc 15h`
+- intent: `CREATE`
+- expected title: `xem triển lãm`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tuần này lúc 15:00
+- expected notes: `cuối tuần này`
+
+### 14h. Task với từ 'cuối tháng này'
+
+- prompt: `Cuối tháng này tôi phải nộp báo cáo lúc 15h`
+- intent: `CREATE`
+- expected title: `nộp báo cáo`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 15:00
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi họp với sếp lúc 10h`
+- intent: `CREATE`
+- expected title: `họp với sếp`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 10:00
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này mình đi siêu thị lúc 11h`
+- intent: `CREATE`
+- expected title: `đi siêu thị`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 11:00
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi làm việc đến 18h`
+- intent: `CREATE`
+- expected title: `làm việc`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 18:00
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi đi khám bệnh lúc 16h30`
+- intent: `CREATE`
+- expected title: `đi khám bệnh`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 16:30
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này mình nộp hồ sơ lúc 14h`
+- intent: `CREATE`
+- expected title: `nộp hồ sơ`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 14:00
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi gửi email lúc 10h30`
+- intent: `CREATE`
+- expected title: `gửi email`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 10:30
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi cần nộp hóa đơn vào 10h`
+- intent: `CREATE`
+- expected title: `nộp hóa đơn`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 10:00
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi đi gặp kế toán lúc 13h`
+- intent: `CREATE`
+- expected title: `đi gặp kế toán`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 13:00
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi làm bài tập lúc 20h`
+- intent: `CREATE`
+- expected title: `làm bài tập`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 20:00
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi kiểm tra báo cáo lúc 9h`
+- intent: `CREATE`
+- expected title: `kiểm tra báo cáo`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 09:00
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi gặp khách hàng lúc 13h`
+- intent: `CREATE`
+- expected title: `gặp khách hàng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 13:00
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi đi giao hàng lúc 17h`
+- intent: `CREATE`
+- expected title: `đi giao hàng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 17:00
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này mình làm slide lúc 15h`
+- intent: `CREATE`
+- expected title: `làm slide`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 15:00
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi dọn dẹp nhà lúc 14h`
+- intent: `CREATE`
+- expected title: `dọn dẹp nhà`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 14:00
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi nộp thuế lúc 16h30`
+- intent: `CREATE`
+- expected title: `nộp thuế`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 16:30
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi kiểm tra dự án lúc 11h`
+- intent: `CREATE`
+- expected title: `kiểm tra dự án`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 11:00
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi gặp sếp lúc 10h30`
+- intent: `CREATE`
+- expected title: `gặp sếp`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 10:30
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi vào công ty lúc 8h`
+- intent: `CREATE`
+- expected title: `vào công ty`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 08:00
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi tổng kết công việc lúc 16h`
+- intent: `CREATE`
+- expected title: `tổng kết công việc`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 16:00
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi hoàn thành báo cáo lúc 17h`
+- intent: `CREATE`
+- expected title: `hoàn thành báo cáo`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 17:00
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi họp kiểm tra lúc 9h30`
+- intent: `CREATE`
+- expected title: `họp kiểm tra`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 09:30
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi sửa hợp đồng lúc 14h`
+- intent: `CREATE`
+- expected title: `sửa hợp đồng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 14:00
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi kiểm tra kho lúc 11h`
+- intent: `CREATE`
+- expected title: `kiểm tra kho`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 11:00
+- expected notes: `cuối tháng này`
+
+- prompt: `Cuối tháng này tôi tổng kết lúc 16h30`
+- intent: `CREATE`
+- expected title: `tổng kết`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 16:30
+- expected notes: `cuối tháng này`
 
 ### 15. Task hàng ngày
 
@@ -9907,3 +11905,4097 @@ Tập hợp các câu lệnh tiếng Việt mẫu để kiểm tra khả năng p
 - expected status: `PENDING`
 - expected dueDate: thứ 7
 - expected notes: `du lịch`
+
+### 101. CREATE với từ "có" - Các mẫu cải thiện
+
+#### 101.1. Sự kiện thể thao với "có"
+
+- prompt: `Thứ 7 tuần sau mình có buổi leo núi nhân tạo lúc 10h ngày 20 tháng 4 năm 2026`
+- intent: `CREATE`
+- expected title: `leo núi nhân tạo`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `20/4/2026 lúc 10:00`
+- expected notes: `thể thao`, `leo núi`
+
+- prompt: `Ngày 15 tháng 5 năm 2026 tôi có buổi tập gym lúc 6h sáng`
+- intent: `CREATE`
+- expected title: `buổi tập gym`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `15/5/2026 lúc 06:00`
+- expected notes: `thể thao`, `gym`
+
+- prompt: `Chủ nhật này mình có trận đá bóng lúc 4h chiều`
+- intent: `CREATE`
+- expected title: `trận đá bóng`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `chủ nhật lúc 16:00`
+- expected notes: `thể thao`, `bóng đá`
+
+- prompt: `Thứ 4 tuần này tôi có buổi bơi lội lúc 7h tối`
+- intent: `CREATE`
+- expected title: `buổi bơi lội`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `thứ 4 lúc 19:00`
+- expected notes: `thể thao`, `bơi`
+
+- prompt: `Sáng mai mình có buổi chạy bộ công viên lúc 5h30`
+- intent: `CREATE`
+- expected title: `chạy bộ công viên`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `sáng mai lúc 05:30`
+- expected notes: `thể thao`, `chạy bộ`
+
+- prompt: `Chiều nay tôi có buổi tập yoga lúc 5h`
+- intent: `CREATE`
+- expected title: `buổi tập yoga`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `chiều nay lúc 17:00`
+- expected notes: `thể thao`, `yoga`
+
+- prompt: `Ngày 10 tháng 6 năm 2026 mình có giải chạy marathon lúc 6h sáng`
+- intent: `CREATE`
+- expected title: `giải chạy marathon`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `10/6/2026 lúc 06:00`
+- expected notes: `thể thao`, `marathon`
+
+- prompt: `Tối thứ 6 tôi có buổi tập võ lúc 8h`
+- intent: `CREATE`
+- expected title: `buổi tập võ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `thứ 6 lúc 20:00`
+- expected notes: `thể thao`, `võ thuật`
+
+#### 101.2. Thi cử, học tập với "có"
+
+- prompt: `Ngày 20 tháng 5 năm 2029, tôi có bài thi cuối kỳ lúc 1h chiều`
+- intent: `CREATE`
+- expected title: `bài thi cuối kỳ`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `20/5/2029 lúc 13:00`
+- expected notes: `học tập`, `thi cử`
+
+- prompt: `Sáng mai tôi có bài kiểm tra toán lúc 8h`
+- intent: `CREATE`
+- expected title: `bài kiểm tra toán`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `sáng mai lúc 08:00`
+- expected notes: `học tập`, `kiểm tra`
+
+- prompt: `Thứ 2 tuần sau mình có thi vấn đáp môn triết lúc 2h chiều`
+- intent: `CREATE`
+- expected title: `thi vấn đáp môn triết`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `thứ 2 tuần sau lúc 14:00`
+- expected notes: `học tập`, `thi cử`, `triết`
+
+- prompt: `Ngày 5 tháng 7 năm 2026 tôi có bài thi tiếng Anh lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `bài thi tiếng Anh`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `5/7/2026 lúc 09:00`
+- expected notes: `học tập`, `thi cử`, `tiếng Anh`
+
+- prompt: `Chiều nay tôi có bài thuyết trình lúc 3h`
+- intent: `CREATE`
+- expected title: `bài thuyết trình`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `chiều nay lúc 15:00`
+- expected notes: `học tập`, `thuyết trình`
+
+- prompt: `Thứ 6 này mình có nộp báo cáo thực tập lúc 5h chiều`
+- intent: `CREATE`
+- expected title: `nộp báo cáo thực tập`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `thứ 6 lúc 17:00`
+- expected notes: `học tập`, `báo cáo`, `thực tập`
+
+- prompt: `Ngày 15 tháng 8 năm 2026 tôi có thi tốt nghiệp lúc 7h30 sáng`
+- intent: `CREATE`
+- expected title: `thi tốt nghiệp`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `15/8/2026 lúc 07:30`
+- expected notes: `học tập`, `thi cử`, `tốt nghiệp`
+
+- prompt: `Tuần sau tôi có bài tập lớn môn lập trình lúc 10h`
+- intent: `CREATE`
+- expected title: `bài tập lớn môn lập trình`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `tuần sau lúc 10:00`
+- expected notes: `học tập`, `bài tập`, `lập trình`
+
+#### 101.3. Hoạt động gia đình với "có"
+
+- prompt: `Ngày 20 tháng 5 năm 2029, tôi đi chùa với gia đình lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `đi chùa với gia đình`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/5/2029 lúc 09:00`
+- expected notes: `gia đình`, `tâm linh`
+
+- prompt: `Cuối tuần này mình có bữa tiệc sinh nhật gia đình lúc 6h tối`
+- intent: `CREATE`
+- expected title: `bữa tiệc sinh nhật gia đình`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần lúc 18:00`
+- expected notes: `gia đình`, `sinh nhật`
+
+- prompt: `Sáng chủ nhật tôi có buổi họp mặt gia đình lúc 10h`
+- intent: `CREATE`
+- expected title: `buổi họp mặt gia đình`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `chủ nhật lúc 10:00`
+- expected notes: `gia đình`, `họp mặt`
+
+- prompt: `Ngày 1 tháng 6 năm 2026 mình có đưa con đi chơi công viên lúc 8h sáng`
+- intent: `CREATE`
+- expected title: `đưa con đi chơi công viên`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `1/6/2026 lúc 08:00`
+- expected notes: `gia đình`, `công viên`, `con cái`
+
+- prompt: `Chiều nay tôi có đón con tan học lúc 4h30`
+- intent: `CREATE`
+- expected title: `đón con tan học`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `chiều nay lúc 16:30`
+- expected notes: `gia đình`, `con cái`, `đón`
+
+- prompt: `Tối mai mình có ăn tối với bố mẹ lúc 7h`
+- intent: `CREATE`
+- expected title: `ăn tối với bố mẹ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `tối mai lúc 19:00`
+- expected notes: `gia đình`, `ăn tối`
+
+- prompt: `Ngày 10 tháng 10 năm 2026 tôi có đám cưới họ hàng lúc 11h sáng`
+- intent: `CREATE`
+- expected title: `đám cưới họ hàng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `10/10/2026 lúc 11:00`
+- expected notes: `gia đình`, `đám cưới`, `họ hàng`
+
+#### 102. Examples cho patterns "ngày XX tháng XX năm XXXX, tôi [action]"
+
+- prompt: `ngày 20 tháng 5 năm 2029, tôi tới bệnh viện lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `tới bệnh viện`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/5/2029 lúc 09:00`
+- expected notes: `sức khỏe`, `bệnh viện`
+
+- prompt: `ngày 15 tháng 3 năm 2029, tôi đi mua sắm lúc 2h chiều`
+- intent: `CREATE`
+- expected title: `đi mua sắm`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `15/3/2029 lúc 14:00`
+- expected notes: `mua sắm`, `shopping`
+
+- prompt: `ngày 1 tháng 1 năm 2030, tôi tham gia hội nghị lúc 8h30 sáng`
+- intent: `CREATE`
+- expected title: `tham gia hội nghị`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `1/1/2030 lúc 08:30`
+- expected notes: `công việc`, `hội nghị`
+
+- prompt: `ngày 25 tháng 12 năm 2028, tôi gặp gỡ bạn bè lúc 7h tối`
+- intent: `CREATE`
+- expected title: `gặp gỡ bạn bè`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `25/12/2028 lúc 19:00`
+- expected notes: `bạn bè`, `gặp gỡ`
+
+- prompt: `ngày 20 tháng 5 năm 2029, tôi tới bệnh viện`
+- intent: `CREATE`
+- expected title: `tới bệnh viện`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/5/2029`
+- expected notes: `sức khỏe`, `bệnh viện`
+
+- prompt: `ngày 15 tháng 3 năm 2029, tôi đi mua sắm`
+- intent: `CREATE`
+- expected title: `đi mua sắm`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `15/3/2029`
+- expected notes: `mua sắm`, `shopping`
+
+#### 104. Additional training data for date format patterns (100 examples)
+
+- prompt: `tôi sinh nhật ngày 25/4 lúc 8h tối`
+- intent: `CREATE`
+- expected title: `sinh nhật`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `25/4 lúc 20:00`
+- expected notes: `sinh nhật`
+
+- prompt: `tôi đi chơi ngày 20/4 lúc 3h chiều`
+- intent: `CREATE`
+- expected title: `đi chơi`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `20/4 lúc 15:00`
+- expected notes: `đi chơi`
+
+- prompt: `tôi có kỳ thi ngày 15-8 lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `có kỳ thi`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `15/8 lúc 09:00`
+- expected notes: `kỳ thi`, `thi cử`
+
+- prompt: `tôi tốt nghiệp ngày 13/5/2025 lúc 14h`
+- intent: `CREATE`
+- expected title: `tốt nghiệp`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `13/5/2025 lúc 14:00`
+- expected notes: `tốt nghiệp`
+
+- prompt: `tôi kết hôn ngày 21-7-2027 lúc 16h`
+- intent: `CREATE`
+- expected title: `kết hôn`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `21/7/2027 lúc 16:00`
+- expected notes: `kết hôn`, `cưới hỏi`
+
+- prompt: `tôi có cuộc họp ngày 20/4 lúc 10:00`
+- intent: `CREATE`
+- expected title: `có cuộc họp`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/4 lúc 10:00`
+- expected notes: `cuộc họp`
+
+- prompt: `tôi đi khám bệnh ngày/15/9/2025 lúc 8h30`
+- intent: `CREATE`
+- expected title: `đi khám bệnh`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `15/9/2025 lúc 08:30`
+- expected notes: `khám bệnh`, `sức khỏe`
+
+- prompt: `tôi mua nhà ngày-15-8 lúc 11h`
+- intent: `CREATE`
+- expected title: `mua nhà`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `15/8 lúc 11:00`
+- expected notes: `mua nhà`
+
+- prompt: `tôi nghỉ hưu ngày-25-10-2025 lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `nghỉ hưu`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `25/10/2025 lúc 09:00`
+- expected notes: `nghỉ hưu`
+
+- prompt: `tôi đi công tác ngày 20 tháng 5 lúc 2h chiều`
+- intent: `CREATE`
+- expected title: `đi công tác`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/5 lúc 14:00`
+- expected notes: `công tác`
+
+- prompt: `tôi tham gia sự kiện ngày 20 tháng 5 năm 2029 lúc 10h`
+- intent: `CREATE`
+- expected title: `tham gia sự kiện`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/5/2029 lúc 10:00`
+- expected notes: `sự kiện`
+
+- prompt: `tôi bắt đầu công việc ngày 1 tháng 6 năm 2025 lúc 8h sáng`
+- intent: `CREATE`
+- expected title: `bắt đầu công việc`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `1/6/2025 lúc 08:00`
+- expected notes: `công việc`
+
+- prompt: `tôi đi ăn tối ngày 25/4 lúc 7h tối`
+- intent: `CREATE`
+- expected title: `đi ăn tối`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `25/4 lúc 19:00`
+- expected notes: `ăn tối`
+
+- prompt: `tôi học tiếng Anh ngày 20/4 lúc 3h chiều`
+- intent: `CREATE`
+- expected title: `học tiếng Anh`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/4 lúc 15:00`
+- expected notes: `học tập`
+
+- prompt: `tôi nộp báo cáo ngày 15-8 lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `nộp báo cáo`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `15/8 lúc 09:00`
+- expected notes: `báo cáo`
+
+- prompt: `tôi đi tập gym ngày 13/5/2025 lúc 14h`
+- intent: `CREATE`
+- expected title: `đi tập gym`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `13/5/2025 lúc 14:00`
+- expected notes: `tập gym`
+
+- prompt: `tôi gặp khách hàng ngày 21-7-2027 lúc 16h`
+- intent: `CREATE`
+- expected title: `gặp khách hàng`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `21/7/2027 lúc 16:00`
+- expected notes: `khách hàng`
+
+- prompt: `tôi tham dự hội thảo ngày 20/4 lúc 10:00`
+- intent: `CREATE`
+- expected title: `tham dự hội thảo`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/4 lúc 10:00`
+- expected notes: `hội thảo`
+
+- prompt: `tôi đi siêu thị ngày/15/9/2025 lúc 8h30`
+- intent: `CREATE`
+- expected title: `đi siêu thị`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `15/9/2025 lúc 08:30`
+- expected notes: `siêu thị`
+
+- prompt: `tôi sửa nhà ngày-15-8 lúc 11h`
+- intent: `CREATE`
+- expected title: `sửa nhà`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `15/8 lúc 11:00`
+- expected notes: `sửa nhà`
+
+- prompt: `tôi về quê ngày-25-10-2025 lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `về quê`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `25/10/2025 lúc 09:00`
+- expected notes: `về quê`
+
+- prompt: `tôi đi họp ngày 20 tháng 5 lúc 2h chiều`
+- intent: `CREATE`
+- expected title: `đi họp`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/5 lúc 14:00`
+- expected notes: `họp`
+
+- prompt: `tôi tham gia khóa học ngày 20 tháng 5 năm 2029 lúc 10h`
+- intent: `CREATE`
+- expected title: `tham gia khóa học`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/5/2029 lúc 10:00`
+- expected notes: `khóa học`
+
+- prompt: `tôi bắt đầu dự án ngày 1 tháng 6 năm 2025 lúc 8h sáng`
+- intent: `CREATE`
+- expected title: `bắt đầu dự án`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `1/6/2025 lúc 08:00`
+- expected notes: `dự án`
+
+- prompt: `tôi đi cà phê ngày 25/4 lúc 7h tối`
+- intent: `CREATE`
+- expected title: `đi cà phê`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `25/4 lúc 19:00`
+- expected notes: `cà phê`
+
+- prompt: `tôi học piano ngày 20/4 lúc 3h chiều`
+- intent: `CREATE`
+- expected title: `học piano`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/4 lúc 15:00`
+- expected notes: `học piano`
+
+- prompt: `tôi nộp đơn ngày 15-8 lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `nộp đơn`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `15/8 lúc 09:00`
+- expected notes: `nộp đơn`
+
+- prompt: `tôi đi bơi ngày 13/5/2025 lúc 14h`
+- intent: `CREATE`
+- expected title: `đi bơi`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `13/5/2025 lúc 14:00`
+- expected notes: `bơi`
+
+- prompt: `tôi gặp đối tác ngày 21-7-2027 lúc 16h`
+- intent: `CREATE`
+- expected title: `gặp đối tác`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `21/7/2027 lúc 16:00`
+- expected notes: `đối tác`
+
+- prompt: `tôi tham dự webinar ngày 20/4 lúc 10:00`
+- intent: `CREATE`
+- expected title: `tham dự webinar`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/4 lúc 10:00`
+- expected notes: `webinar`
+
+- prompt: `tôi đi chợ ngày/15/9/2025 lúc 8h30`
+- intent: `CREATE`
+- expected title: `đi chợ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `15/9/2025 lúc 08:30`
+- expected notes: `đi chợ`
+
+- prompt: `tôi sơn nhà ngày-15-8 lúc 11h`
+- intent: `CREATE`
+- expected title: `sơn nhà`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `15/8 lúc 11:00`
+- expected notes: `sơn nhà`
+
+- prompt: `tôi đi lễ ngày-25-10-2025 lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `đi lễ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `25/10/2025 lúc 09:00`
+- expected notes: `đi lễ`
+
+- prompt: `tôi đi phỏng vấn ngày 20 tháng 5 lúc 2h chiều`
+- intent: `CREATE`
+- expected title: `đi phỏng vấn`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `20/5 lúc 14:00`
+- expected notes: `phỏng vấn`
+
+- prompt: `tôi tham gia workshop ngày 20 tháng 5 năm 2029 lúc 10h`
+- intent: `CREATE`
+- expected title: `tham gia workshop`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/5/2029 lúc 10:00`
+- expected notes: `workshop`
+
+- prompt: `tôi bắt đầu kinh doanh ngày 1 tháng 6 năm 2025 lúc 8h sáng`
+- intent: `CREATE`
+- expected title: `bắt đầu kinh doanh`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `1/6/2025 lúc 08:00`
+- expected notes: `kinh doanh`
+
+- prompt: `tôi đi xem phim ngày 25/4 lúc 7h tối`
+- intent: `CREATE`
+- expected title: `đi xem phim`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `25/4 lúc 19:00`
+- expected notes: `xem phim`
+
+- prompt: `tôi học vẽ ngày 20/4 lúc 3h chiều`
+- intent: `CREATE`
+- expected title: `học vẽ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/4 lúc 15:00`
+- expected notes: `học vẽ`
+
+- prompt: `tôi nộp thuế ngày 15-8 lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `nộp thuế`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `15/8 lúc 09:00`
+- expected notes: `nộp thuế`
+
+- prompt: `tôi đi câu cá ngày 13/5/2025 lúc 14h`
+- intent: `CREATE`
+- expected title: `đi câu cá`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `13/5/2025 lúc 14:00`
+- expected notes: `câu cá`
+
+- prompt: `tôi gặp nhà cung cấp ngày 21-7-2027 lúc 16h`
+- intent: `CREATE`
+- expected title: `gặp nhà cung cấp`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `21/7/2027 lúc 16:00`
+- expected notes: `nhà cung cấp`
+
+- prompt: `tôi tham dự seminar ngày 20/4 lúc 10:00`
+- intent: `CREATE`
+- expected title: `tham dự seminar`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/4 lúc 10:00`
+- expected notes: `seminar`
+
+- prompt: `tôi đi mua đồ ngày/15/9/2025 lúc 8h30`
+- intent: `CREATE`
+- expected title: `đi mua đồ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `15/9/2025 lúc 08:30`
+- expected notes: `mua đồ`
+
+- prompt: `tôi dọn nhà ngày-15-8 lúc 11h`
+- intent: `CREATE`
+- expected title: `dọn nhà`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `15/8 lúc 11:00`
+- expected notes: `dọn nhà`
+
+- prompt: `tôi đi chùa ngày-25-10-2025 lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `đi chùa`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `25/10/2025 lúc 09:00`
+- expected notes: `đi chùa`
+
+- prompt: `tôi đi kiểm tra ngày 20 tháng 5 lúc 2h chiều`
+- intent: `CREATE`
+- expected title: `đi kiểm tra`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/5 lúc 14:00`
+- expected notes: `kiểm tra`
+
+- prompt: `tôi tham gia training ngày 20 tháng 5 năm 2029 lúc 10h`
+- intent: `CREATE`
+- expected title: `tham gia training`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/5/2029 lúc 10:00`
+- expected notes: `training`
+
+- prompt: `tôi bắt đầu startup ngày 1 tháng 6 năm 2025 lúc 8h sáng`
+- intent: `CREATE`
+- expected title: `bắt đầu startup`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `1/6/2025 lúc 08:00`
+- expected notes: `startup`
+
+- prompt: `tôi đi dạo phố ngày 25/4 lúc 7h tối`
+- intent: `CREATE`
+- expected title: `đi dạo phố`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `25/4 lúc 19:00`
+- expected notes: `dạo phố`
+
+- prompt: `tôi học nấu ăn ngày 20/4 lúc 3h chiều`
+- intent: `CREATE`
+- expected title: `học nấu ăn`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/4 lúc 15:00`
+- expected notes: `nấu ăn`
+
+#### 105. Additional training data for weekday and relative date patterns (100 examples)
+
+- prompt: `tôi đi chơi thứ 6 lúc 3h chiều`
+- intent: `CREATE`
+- expected title: `đi chơi`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `thứ 6 lúc 15:00`
+- expected notes: `đi chơi`
+
+- prompt: `tôi gặp bạn chủ nhật lúc 10h sáng`
+- intent: `CREATE`
+- expected title: `gặp bạn`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `chủ nhật lúc 10:00`
+- expected notes: `gặp bạn`
+
+- prompt: `tôi học bài ngày mai lúc 8h sáng`
+- intent: `CREATE`
+- expected title: `học bài`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `ngày mai lúc 08:00`
+- expected notes: `học tập`
+
+- prompt: `tôi dậy sớm sáng mai lúc 6h`
+- intent: `CREATE`
+- expected title: `dậy sớm`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `sáng mai lúc 06:00`
+- expected notes: `dậy sớm`
+
+- prompt: `tôi ngủ sớm tối nay lúc 9h`
+- intent: `CREATE`
+- expected title: `ngủ sớm`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tối nay lúc 21:00`
+- expected notes: `ngủ sớm`
+
+- prompt: `tôi làm việc hôm nay lúc 2h chiều`
+- intent: `CREATE`
+- expected title: `làm việc`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `hôm nay lúc 14:00`
+- expected notes: `làm việc`
+
+- prompt: `tôi nghỉ ngơi hôm qua lúc 4h chiều`
+- intent: `CREATE`
+- expected title: `nghỉ ngơi`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `hôm qua lúc 16:00`
+- expected notes: `nghỉ ngơi`
+
+- prompt: `tôi đi siêu thị hôm kia lúc 10h sáng`
+- intent: `CREATE`
+- expected title: `đi siêu thị`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `hôm kia lúc 10:00`
+- expected notes: `siêu thị`
+
+- prompt: `tôi đi picnic cuối tuần lúc 9h`
+- intent: `CREATE`
+- expected title: `đi picnic`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần lúc 09:00`
+- expected notes: `picnic`
+
+- prompt: `cuối tuần này tôi đi picnic lúc 9h`
+- intent: `CREATE`
+- expected title: `đi picnic`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần này lúc 09:00`
+- expected notes: `picnic`
+
+- prompt: `tôi tập thể dục cuối tuần này lúc 7h tối`
+- intent: `CREATE`
+- expected title: `tập thể dục`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần này lúc 19:00`
+- expected notes: `thể dục`
+
+- prompt: `tôi làm việc nhà tuần này lúc 3h chiều`
+- intent: `CREATE`
+- expected title: `làm việc nhà`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `tuần này lúc 15:00`
+- expected notes: `việc nhà`
+
+- prompt: `tôi đi du lịch tháng sau lúc 8h sáng`
+- intent: `CREATE`
+- expected title: `đi du lịch`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `tháng sau lúc 08:00`
+- expected notes: `du lịch`
+
+- prompt: `tôi dậy lúc 9h sáng ngày mai`
+- intent: `CREATE`
+- expected title: `dậy`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `ngày mai lúc 09:00`
+- expected notes: `dậy`
+
+- prompt: `tôi ăn trưa lúc 2h chiều hôm nay`
+- intent: `CREATE`
+- expected title: `ăn trưa`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `hôm nay lúc 14:00`
+- expected notes: `ăn trưa`
+
+- prompt: `tôi đi ngủ lúc 10h tối nay`
+- intent: `CREATE`
+- expected title: `đi ngủ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tối nay lúc 22:00`
+- expected notes: `ngủ`
+
+- prompt: `tôi làm việc lúc 14h ngày kia`
+- intent: `CREATE`
+- expected title: `làm việc`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `ngày kia lúc 14:00`
+- expected notes: `làm việc`
+
+- prompt: `tôi tập gym lúc 4h chiều cuối tuần`
+- intent: `CREATE`
+- expected title: `tập gym`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần lúc 16:00`
+- expected notes: `gym`
+
+- prompt: `tôi uống cà phê lúc 11h sáng mai`
+- intent: `CREATE`
+- expected title: `uống cà phê`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `sáng mai lúc 11:00`
+- expected notes: `cà phê`
+
+- prompt: `tôi họp lúc 2h30 chiều ngày 25/4`
+- intent: `CREATE`
+- expected title: `họp`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `25/4 lúc 14:30`
+- expected notes: `họp`
+
+- prompt: `tôi ăn tối lúc 4h30 tối nay`
+- intent: `CREATE`
+- expected title: `ăn tối`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tối nay lúc 16:30`
+- expected notes: `ăn tối`
+
+- prompt: `tôi nghỉ trưa lúc 12h trưa hôm nay`
+- intent: `CREATE`
+- expected title: `nghỉ trưa`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `hôm nay lúc 12:00`
+- expected notes: `nghỉ trưa`
+
+- prompt: `tôi đi chơi thứ 7 lúc 2h chiều`
+- intent: `CREATE`
+- expected title: `đi chơi`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `thứ 7 lúc 14:00`
+- expected notes: `đi chơi`
+
+- prompt: `tôi gặp gia đình chủ nhật lúc 11h sáng`
+- intent: `CREATE`
+- expected title: `gặp gia đình`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `chủ nhật lúc 11:00`
+- expected notes: `gia đình`
+
+- prompt: `tôi làm việc cuối năm lúc 10h sáng`
+- intent: `CREATE`
+- expected title: `làm việc`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `cuối năm lúc 10:00`
+- expected notes: `làm việc`
+
+- prompt: `nhắc tôi nộp báo cáo cuối năm`
+- intent: `CREATE`
+- expected title: `nộp báo cáo`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `cuối năm lúc 18:00`
+- expected notes: `báo cáo`
+
+#### 106. Additional training data for position words patterns (50 examples)
+
+- prompt: `tôi đi chơi vào ngày mai lúc 4h chiều`
+- intent: `CREATE`
+- expected title: `đi chơi`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `ngày mai lúc 16:00`
+- expected notes: `đi chơi`
+
+- prompt: `ngày mai, tôi đi siêu thị lúc 3h`
+- intent: `CREATE`
+- expected title: `đi siêu thị`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `ngày mai lúc 15:00`
+- expected notes: `siêu thị`
+
+- prompt: `lúc 5h ngày kia, tôi tập thể dục`
+- intent: `CREATE`
+- expected title: `tập thể dục`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `ngày kia lúc 17:00`
+- expected notes: `thể dục`
+
+- prompt: `tôi uống thuốc trước 2h ngày 25/4`
+- intent: `CREATE`
+- expected title: `uống thuốc`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `25/4 lúc 14:00`
+- expected notes: `thuốc`
+
+- prompt: `tôi đóng tiền cuối tháng này lúc 10h sáng`
+- intent: `CREATE`
+- expected title: `đóng tiền`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `cuối tháng này lúc 10:00`
+- expected notes: `tiền`
+
+- prompt: `cuối tháng tôi đóng tiền nhà lúc 10h`
+- intent: `CREATE`
+- expected title: `đóng tiền nhà`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `cuối tháng lúc 22:00`
+- expected notes: `tiền nhà`
+
+- prompt: `tôi làm việc vào sáng mai lúc 8h`
+- intent: `CREATE`
+- expected title: `làm việc`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `sáng mai lúc 08:00`
+- expected notes: `làm việc`
+
+- prompt: `sáng mai, tôi uống cà phê lúc 7h`
+- intent: `CREATE`
+- expected title: `uống cà phê`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `sáng mai lúc 07:00`
+- expected notes: `cà phê`
+
+- prompt: `lúc 6h tối nay, tôi xem phim`
+- intent: `CREATE`
+- expected title: `xem phim`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tối nay lúc 18:00`
+- expected notes: `phim`
+
+- prompt: `tôi ăn tối trước 8h ngày 20/4`
+- intent: `CREATE`
+- expected title: `ăn tối`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `20/4 lúc 20:00`
+- expected notes: `ăn tối`
+
+- prompt: `tôi học bài vào chiều hôm nay lúc 3h`
+- intent: `CREATE`
+- expected title: `học bài`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `chiều hôm nay lúc 15:00`
+- expected notes: `học tập`
+
+- prompt: `chiều hôm nay, tôi đi dạo lúc 4h`
+- intent: `CREATE`
+- expected title: `đi dạo`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `chiều hôm nay lúc 16:00`
+- expected notes: `đi dạo`
+
+- prompt: `lúc 9h sáng mai, tôi tập gym`
+- intent: `CREATE`
+- expected title: `tập gym`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `sáng mai lúc 09:00`
+- expected notes: `gym`
+
+- prompt: `tôi nấu ăn trước 12h ngày 15/5`
+- intent: `CREATE`
+- expected title: `nấu ăn`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `15/5 lúc 12:00`
+- expected notes: `nấu ăn`
+
+- prompt: `tôi đọc sách vào tối nay lúc 8h`
+- intent: `CREATE`
+- expected title: `đọc sách`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tối nay lúc 20:00`
+- expected notes: `sách`
+
+- prompt: `tối nay, tôi nghe nhạc lúc 9h`
+- intent: `CREATE`
+- expected title: `nghe nhạc`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tối nay lúc 21:00`
+- expected notes: `nhạc`
+
+- prompt: `lúc 7h trưa mai, tôi nghỉ ngơi`
+- intent: `CREATE`
+- expected title: `nghỉ ngơi`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `ngày mai lúc 07:00`
+- expected notes: `nghỉ ngơi`
+
+- prompt: `tôi làm việc trước 5h ngày 30/4`
+- intent: `CREATE`
+- expected title: `làm việc`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `30/4 lúc 17:00`
+- expected notes: `làm việc`
+
+- prompt: `tôi đi shopping vào sáng thứ 2 lúc 9h`
+- intent: `CREATE`
+- expected title: `đi shopping`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `thứ 2 lúc 09:00`
+- expected notes: `shopping`
+
+- prompt: `thứ 2, tôi đi shopping lúc 9h`
+- intent: `CREATE`
+- expected title: `đi shopping`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `thứ 2 lúc 09:00`
+- expected notes: `shopping`
+
+- prompt: `lúc 10h chủ nhật, tôi gặp bạn`
+- intent: `CREATE`
+- expected title: `gặp bạn`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `chủ nhật lúc 10:00`
+- expected notes: `bạn bè`
+
+- prompt: `tôi tập thể dục trước 6h ngày 25/4`
+- intent: `CREATE`
+- expected title: `tập thể dục`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `25/4 lúc 18:00`
+- expected notes: `thể dục`
+
+- prompt: `tôi ăn sáng vào buổi sáng hôm nay lúc 7h`
+- intent: `CREATE`
+- expected title: `ăn sáng`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `hôm nay lúc 07:00`
+- expected notes: `ăn sáng`
+
+- prompt: `buổi sáng hôm nay, tôi ăn sáng lúc 7h`
+- intent: `CREATE`
+- expected title: `ăn sáng`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `hôm nay lúc 07:00`
+- expected notes: `ăn sáng`
+
+- prompt: `lúc 2h chiều mai, tôi uống nước`
+- intent: `CREATE`
+- expected title: `uống nước`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `ngày mai lúc 14:00`
+- expected notes: `nước`
+
+- prompt: `tôi uống nước trước 3h ngày 20/4`
+- intent: `CREATE`
+- expected title: `uống nước`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `20/4 lúc 15:00`
+- expected notes: `nước`
+
+- prompt: `tôi làm bài tập vào tối thứ 5 lúc 8h`
+- intent: `CREATE`
+- expected title: `làm bài tập`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `thứ 5 lúc 20:00`
+- expected notes: `bài tập`
+
+- prompt: `thứ 5, tôi làm bài tập lúc 8h tối`
+- intent: `CREATE`
+- expected title: `làm bài tập`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `thứ 5 lúc 20:00`
+- expected notes: `bài tập`
+
+- prompt: `lúc 11h sáng kia, tôi dậy`
+- intent: `CREATE`
+- expected title: `dậy`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `ngày kia lúc 11:00`
+- expected notes: `dậy`
+
+- prompt: `tôi dậy trước 7h ngày 15/5`
+- intent: `CREATE`
+- expected title: `dậy`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `15/5 lúc 05:00`
+- expected notes: `dậy`
+
+- prompt: `tôi xem tin tức vào buổi sáng tuần sau lúc 8h`
+- intent: `CREATE`
+- expected title: `xem tin tức`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tuần sau lúc 08:00`
+- expected notes: `tin tức`
+
+- prompt: `buổi sáng tuần sau, tôi xem tin tức lúc 8h`
+- intent: `CREATE`
+- expected title: `xem tin tức`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tuần sau lúc 08:00`
+- expected notes: `tin tức`
+
+- prompt: `lúc 4h chiều mai, tôi gọi điện`
+- intent: `CREATE`
+- expected title: `gọi điện`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `ngày mai lúc 16:00`
+- expected notes: `điện thoại`
+
+- prompt: `tôi gọi điện trước 5h ngày 30/4`
+- intent: `CREATE`
+- expected title: `gọi điện`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `30/4 lúc 17:00`
+- expected notes: `điện thoại`
+
+- prompt: `tôi học ngoại ngữ vào tối thứ 7 lúc 7h`
+- intent: `CREATE`
+- expected title: `học ngoại ngữ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `thứ 7 lúc 19:00`
+- expected notes: `ngoại ngữ`
+
+- prompt: `thứ 7, tôi học ngoại ngữ lúc 7h tối`
+- intent: `CREATE`
+- expected title: `học ngoại ngữ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `thứ 7 lúc 19:00`
+- expected notes: `ngoại ngữ`
+
+- prompt: `lúc 8h trưa kia, tôi ăn cơm`
+- intent: `CREATE`
+- expected title: `ăn cơm`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `ngày kia lúc 08:00`
+- expected notes: `ăn cơm`
+
+- prompt: `tôi ăn cơm trước 12h ngày 25/5`
+- intent: `CREATE`
+- expected title: `ăn cơm`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `25/5 lúc 12:00`
+- expected notes: `ăn cơm`
+
+- prompt: `tôi làm việc nhà vào buổi chiều cuối tuần lúc 3h`
+- intent: `CREATE`
+- expected title: `làm việc nhà`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần lúc 15:00`
+- expected notes: `việc nhà`
+
+- prompt: `buổi chiều cuối tuần, tôi làm việc nhà lúc 3h`
+- intent: `CREATE`
+- expected title: `làm việc nhà`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần lúc 15:00`
+- expected notes: `việc nhà`
+
+- prompt: `lúc 6h tối mai, tôi ngủ`
+- intent: `CREATE`
+- expected title: `ngủ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `ngày mai lúc 18:00`
+- expected notes: `ngủ`
+
+- prompt: `tôi ngủ trước 10h ngày 20/4`
+- intent: `CREATE`
+- expected title: `ngủ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `20/4 lúc 22:00`
+- expected notes: `ngủ`
+
+- prompt: `tôi tập thể thao vào sáng chủ nhật lúc 6h`
+- intent: `CREATE`
+- expected title: `tập thể thao`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `chủ nhật lúc 06:00`
+- expected notes: `thể thao`
+
+- prompt: `chủ nhật, tôi tập thể thao lúc 6h sáng`
+- intent: `CREATE`
+- expected title: `tập thể thao`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `chủ nhật lúc 06:00`
+- expected notes: `thể thao`
+
+- prompt: `lúc 9h sáng kia, tôi uống sữa`
+- intent: `CREATE`
+- expected title: `uống sữa`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `ngày kia lúc 09:00`
+- expected notes: `sữa`
+
+- prompt: `tôi uống sữa trước 8h ngày 15/5`
+- intent: `CREATE`
+- expected title: `uống sữa`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `15/5 lúc 06:00`
+- expected notes: `sữa`
+
+- prompt: `tôi đi mua đồ vào buổi trưa tháng sau lúc 12h`
+- intent: `CREATE`
+- expected title: `đi mua đồ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tháng sau lúc 12:00`
+- expected notes: `mua đồ`
+
+- prompt: `buổi trưa tháng sau, tôi đi mua đồ lúc 12h`
+- intent: `CREATE`
+- expected title: `đi mua đồ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tháng sau lúc 12:00`
+- expected notes: `mua đồ`
+
+- prompt: `tôi thức khuya sáng mai lúc 1h`
+- intent: `CREATE`
+- expected title: `thức khuya`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `sáng mai lúc 01:00`
+- expected notes: `thức khuya`
+
+- prompt: `tôi xem phim tối nay lúc 8h`
+- intent: `CREATE`
+- expected title: `xem phim`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tối nay lúc 20:00`
+- expected notes: `phim`
+
+- prompt: `tôi làm bài tập hôm nay lúc 3h chiều`
+- intent: `CREATE`
+- expected title: `làm bài tập`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `hôm nay lúc 15:00`
+- expected notes: `bài tập`
+
+- prompt: `tôi dọn nhà hôm qua lúc 5h chiều`
+- intent: `CREATE`
+- expected title: `dọn nhà`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `hôm qua lúc 17:00`
+- expected notes: `dọn nhà`
+
+- prompt: `tôi đi shopping hôm kia lúc 11h sáng`
+- intent: `CREATE`
+- expected title: `đi shopping`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `hôm kia lúc 11:00`
+- expected notes: `shopping`
+
+- prompt: `tôi đi dạo cuối tuần lúc 10h`
+- intent: `CREATE`
+- expected title: `đi dạo`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần lúc 10:00`
+- expected notes: `đi dạo`
+
+- prompt: `cuối tuần này tôi đi dạo lúc 10h`
+- intent: `CREATE`
+- expected title: `đi dạo`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần này lúc 10:00`
+- expected notes: `đi dạo`
+
+- prompt: `tôi chạy bộ cuối tuần này lúc 6h sáng`
+- intent: `CREATE`
+- expected title: `chạy bộ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần này lúc 06:00`
+- expected notes: `chạy bộ`
+
+- prompt: `tôi nấu ăn tuần này lúc 6h tối`
+- intent: `CREATE`
+- expected title: `nấu ăn`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tuần này lúc 18:00`
+- expected notes: `nấu ăn`
+
+- prompt: `tôi đi công tác tháng sau lúc 7h sáng`
+- intent: `CREATE`
+- expected title: `đi công tác`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `tháng sau lúc 07:00`
+- expected notes: `công tác`
+
+- prompt: `tôi đọc sách ngày mai lúc 10h sáng`
+- intent: `CREATE`
+- expected title: `đọc sách`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `ngày mai lúc 10:00`
+- expected notes: `sách`
+
+- prompt: `tôi ăn sáng lúc 7h sáng hôm nay`
+- intent: `CREATE`
+- expected title: `ăn sáng`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `hôm nay lúc 07:00`
+- expected notes: `ăn sáng`
+
+- prompt: `tôi đi tắm lúc 8h tối nay`
+- intent: `CREATE`
+- expected title: `đi tắm`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tối nay lúc 20:00`
+- expected notes: `tắm`
+
+- prompt: `tôi làm báo cáo lúc 16h ngày kia`
+- intent: `CREATE`
+- expected title: `làm báo cáo`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `ngày kia lúc 16:00`
+- expected notes: `báo cáo`
+
+- prompt: `tôi tập yoga lúc 5h chiều cuối tuần`
+- intent: `CREATE`
+- expected title: `tập yoga`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần lúc 17:00`
+- expected notes: `yoga`
+
+- prompt: `tôi uống nước lúc 12h trưa mai`
+- intent: `CREATE`
+- expected title: `uống nước`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `ngày mai lúc 12:00`
+- expected notes: `nước`
+
+- prompt: `tôi gọi điện lúc 3h30 chiều ngày 25/4`
+- intent: `CREATE`
+- expected title: `gọi điện`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `25/4 lúc 15:30`
+- expected notes: `điện thoại`
+
+- prompt: `tôi nghe nhạc lúc 5h30 tối nay`
+- intent: `CREATE`
+- expected title: `nghe nhạc`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tối nay lúc 17:30`
+- expected notes: `nhạc`
+
+- prompt: `tôi ngủ trưa lúc 1h trưa hôm nay`
+- intent: `CREATE`
+- expected title: `ngủ trưa`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `hôm nay lúc 13:00`
+- expected notes: `ngủ trưa`
+
+- prompt: `tôi đi chơi thứ 2 lúc 4h chiều`
+- intent: `CREATE`
+- expected title: `đi chơi`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `thứ 2 lúc 16:00`
+- expected notes: `đi chơi`
+
+- prompt: `tôi gặp khách hàng chủ nhật lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `gặp khách hàng`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `chủ nhật lúc 09:00`
+- expected notes: `khách hàng`
+
+- prompt: `tôi học toán ngày mai lúc 7h sáng`
+- intent: `CREATE`
+- expected title: `học toán`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `ngày mai lúc 07:00`
+- expected notes: `toán`
+
+- prompt: `tôi thức dậy sáng mai lúc 5h`
+- intent: `CREATE`
+- expected title: `thức dậy`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `sáng mai lúc 05:00`
+- expected notes: `thức dậy`
+
+- prompt: `tôi xem TV tối nay lúc 9h`
+- intent: `CREATE`
+- expected title: `xem TV`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tối nay lúc 21:00`
+- expected notes: `TV`
+
+- prompt: `tôi làm bài tập về nhà hôm nay lúc 4h chiều`
+- intent: `CREATE`
+- expected title: `làm bài tập về nhà`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `hôm nay lúc 16:00`
+- expected notes: `bài tập`
+
+- prompt: `tôi giặt đồ hôm qua lúc 6h chiều`
+- intent: `CREATE`
+- expected title: `giặt đồ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `hôm qua lúc 18:00`
+- expected notes: `giặt đồ`
+
+- prompt: `tôi đi mua đồ hôm kia lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `đi mua đồ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `hôm kia lúc 09:00`
+- expected notes: `mua đồ`
+
+- prompt: `tôi đi câu cá cuối tuần lúc 6h`
+- intent: `CREATE`
+- expected title: `đi câu cá`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần lúc 06:00`
+- expected notes: `câu cá`
+
+- prompt: `cuối tuần này tôi đi câu cá lúc 6h`
+- intent: `CREATE`
+- expected title: `đi câu cá`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần này lúc 06:00`
+- expected notes: `câu cá`
+
+- prompt: `tôi tập aerobic cuối tuần này lúc 8h sáng`
+- intent: `CREATE`
+- expected title: `tập aerobic`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần này lúc 08:00`
+- expected notes: `aerobic`
+
+- prompt: `tôi làm bánh tuần này lúc 4h chiều`
+- intent: `CREATE`
+- expected title: `làm bánh`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tuần này lúc 16:00`
+- expected notes: `làm bánh`
+
+- prompt: `tôi đi hội thảo tháng sau lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `đi hội thảo`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `tháng sau lúc 09:00`
+- expected notes: `hội thảo`
+
+- prompt: `tôi viết nhật ký ngày mai lúc 8h tối`
+- intent: `CREATE`
+- expected title: `viết nhật ký`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `ngày mai lúc 20:00`
+- expected notes: `nhật ký`
+
+- prompt: `tôi ăn kem lúc 3h chiều hôm nay`
+- intent: `CREATE`
+- expected title: `ăn kem`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `hôm nay lúc 15:00`
+- expected notes: `kem`
+
+- prompt: `tôi đi spa lúc 2h chiều tối nay`
+- intent: `CREATE`
+- expected title: `đi spa`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `tối nay lúc 14:00`
+- expected notes: `spa`
+
+- prompt: `tôi làm slide lúc 15h ngày kia`
+- intent: `CREATE`
+- expected title: `làm slide`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `ngày kia lúc 15:00`
+- expected notes: `slide`
+
+- prompt: `tôi tập piano lúc 6h chiều cuối tuần`
+- intent: `CREATE`
+- expected title: `tập piano`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần lúc 18:00`
+- expected notes: `piano`
+
+- prompt: `tôi uống sữa lúc 11h trưa mai`
+- intent: `CREATE`
+- expected title: `uống sữa`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `ngày mai lúc 11:00`
+- expected notes: `sữa`
+
+- prompt: `tôi gọi video lúc 4h chiều ngày 25/4`
+- intent: `CREATE`
+- expected title: `gọi video`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `25/4 lúc 16:00`
+- expected notes: `video call`
+
+- prompt: `tôi nghe podcast lúc 6h30 tối nay`
+- intent: `CREATE`
+- expected title: `nghe podcast`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tối nay lúc 18:30`
+- expected notes: `podcast`
+
+- prompt: `tôi nghỉ ngơi lúc 2h trưa hôm nay`
+- intent: `CREATE`
+- expected title: `nghỉ ngơi`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `hôm nay lúc 14:00`
+- expected notes: `nghỉ ngơi`
+
+- prompt: `tôi đi chơi thứ 3 lúc 5h chiều`
+- intent: `CREATE`
+- expected title: `đi chơi`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `thứ 3 lúc 17:00`
+- expected notes: `đi chơi`
+
+- prompt: `tôi gặp đối tác chủ nhật lúc 8h sáng`
+- intent: `CREATE`
+- expected title: `gặp đối tác`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `chủ nhật lúc 08:00`
+- expected notes: `đối tác`
+
+- prompt: `tôi học hóa ngày mai lúc 6h sáng`
+- intent: `CREATE`
+- expected title: `học hóa`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `ngày mai lúc 06:00`
+- expected notes: `hóa học`
+
+- prompt: `tôi thức đêm sáng mai lúc 2h`
+- intent: `CREATE`
+- expected title: `thức đêm`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `sáng mai lúc 02:00`
+- expected notes: `thức đêm`
+
+- prompt: `tôi xem series tối nay lúc 10h`
+- intent: `CREATE`
+- expected title: `xem series`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tối nay lúc 22:00`
+- expected notes: `series`
+
+- prompt: `tôi làm bài tập toán hôm nay lúc 5h chiều`
+- intent: `CREATE`
+- expected title: `làm bài tập toán`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `hôm nay lúc 17:00`
+- expected notes: `toán`
+
+- prompt: `tôi rửa chén hôm qua lúc 7h chiều`
+- intent: `CREATE`
+- expected title: `rửa chén`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `hôm qua lúc 19:00`
+- expected notes: `rửa chén`
+
+- prompt: `tôi đi mua thuốc hôm kia lúc 8h sáng`
+- intent: `CREATE`
+- expected title: `đi mua thuốc`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `hôm kia lúc 08:00`
+- expected notes: `thuốc`
+
+- prompt: `tôi đi câu lạc bộ cuối tuần lúc 7h`
+- intent: `CREATE`
+- expected title: `đi câu lạc bộ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần lúc 07:00`
+- expected notes: `câu lạc bộ`
+
+- prompt: `cuối tuần này tôi đi câu lạc bộ lúc 7h`
+- intent: `CREATE`
+- expected title: `đi câu lạc bộ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần này lúc 07:00`
+- expected notes: `câu lạc bộ`
+
+- prompt: `tôi tập gym cuối tuần này lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `tập gym`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần này lúc 09:00`
+- expected notes: `gym`
+
+- prompt: `tôi làm salad tuần này lúc 5h chiều`
+- intent: `CREATE`
+- expected title: `làm salad`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tuần này lúc 17:00`
+- expected notes: `salad`
+
+- prompt: `tôi đi họp báo tháng sau lúc 10h sáng`
+- intent: `CREATE`
+- expected title: `đi họp báo`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `tháng sau lúc 10:00`
+- expected notes: `họp báo`
+
+- prompt: `tôi viết code ngày mai lúc 9h tối`
+- intent: `CREATE`
+- expected title: `viết code`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `ngày mai lúc 21:00`
+- expected notes: `code`
+
+- prompt: `tôi ăn bánh lúc 4h chiều hôm nay`
+- intent: `CREATE`
+- expected title: `ăn bánh`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `hôm nay lúc 16:00`
+- expected notes: `bánh`
+
+- prompt: `tôi đi massage lúc 3h chiều tối nay`
+- intent: `CREATE`
+- expected title: `đi massage`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `tối nay lúc 15:00`
+- expected notes: `massage`
+
+- prompt: `tôi làm presentation lúc 14h ngày kia`
+- intent: `CREATE`
+- expected title: `làm presentation`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `ngày kia lúc 14:00`
+- expected notes: `presentation`
+
+- prompt: `tôi tập violin lúc 7h chiều cuối tuần`
+- intent: `CREATE`
+- expected title: `tập violin`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần lúc 19:00`
+- expected notes: `violin`
+
+- prompt: `tôi uống trà lúc 10h trưa mai`
+- intent: `CREATE`
+- expected title: `uống trà`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `ngày mai lúc 10:00`
+- expected notes: `trà`
+
+- prompt: `tôi gọi conference lúc 5h chiều ngày 25/4`
+- intent: `CREATE`
+- expected title: `gọi conference`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `25/4 lúc 17:00`
+- expected notes: `conference`
+
+- prompt: `tôi nghe audiobook lúc 7h30 tối nay`
+- intent: `CREATE`
+- expected title: `nghe audiobook`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `tối nay lúc 19:30`
+- expected notes: `audiobook`
+
+- prompt: `tôi nghỉ giải lao lúc 3h trưa hôm nay`
+- intent: `CREATE`
+- expected title: `nghỉ giải lao`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `hôm nay lúc 15:00`
+- expected notes: `giải lao`
+
+- prompt: `tôi nộp hồ sơ ngày 15-8 lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `nộp hồ sơ`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `15/8 lúc 09:00`
+- expected notes: `hồ sơ`
+
+- prompt: `tôi đi dã ngoại ngày 13/5/2025 lúc 14h`
+- intent: `CREATE`
+- expected title: `đi dã ngoại`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `13/5/2025 lúc 14:00`
+- expected notes: `dã ngoại`
+
+- prompt: `tôi gặp nhà đầu tư ngày 21-7-2027 lúc 16h`
+- intent: `CREATE`
+- expected title: `gặp nhà đầu tư`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `21/7/2027 lúc 16:00`
+- expected notes: `nhà đầu tư`
+
+- prompt: `tôi tham dự conference ngày 20/4 lúc 10:00`
+- intent: `CREATE`
+- expected title: `tham dự conference`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/4 lúc 10:00`
+- expected notes: `conference`
+
+- prompt: `tôi đi mua sắm ngày/15/9/2025 lúc 8h30`
+- intent: `CREATE`
+- expected title: `đi mua sắm`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `15/9/2025 lúc 08:30`
+- expected notes: `mua sắm`
+
+- prompt: `tôi trang trí nhà ngày-15-8 lúc 11h`
+- intent: `CREATE`
+- expected title: `trang trí nhà`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `15/8 lúc 11:00`
+- expected notes: `trang trí nhà`
+
+- prompt: `tôi đi picnic ngày-25-10-2025 lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `đi picnic`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `25/10/2025 lúc 09:00`
+- expected notes: `picnic`
+
+- prompt: `tôi đi bảo dưỡng ngày 20 tháng 5 lúc 2h chiều`
+- intent: `CREATE`
+- expected title: `đi bảo dưỡng`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/5 lúc 14:00`
+- expected notes: `bảo dưỡng`
+
+- prompt: `tôi tham gia networking ngày 20 tháng 5 năm 2029 lúc 10h`
+- intent: `CREATE`
+- expected title: `tham gia networking`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/5/2029 lúc 10:00`
+- expected notes: `networking`
+
+- prompt: `tôi bắt đầu marketing ngày 1 tháng 6 năm 2025 lúc 8h sáng`
+- intent: `CREATE`
+- expected title: `bắt đầu marketing`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `1/6/2025 lúc 08:00`
+- expected notes: `marketing`
+
+- prompt: `tôi đi bowling ngày 25/4 lúc 7h tối`
+- intent: `CREATE`
+- expected title: `đi bowling`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `25/4 lúc 19:00`
+- expected notes: `bowling`
+
+- prompt: `tôi học khiêu vũ ngày 20/4 lúc 3h chiều`
+- intent: `CREATE`
+- expected title: `học khiêu vũ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/4 lúc 15:00`
+- expected notes: `khiêu vũ`
+
+- prompt: `tôi nộp kế hoạch ngày 15-8 lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `nộp kế hoạch`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `15/8 lúc 09:00`
+- expected notes: `kế hoạch`
+
+- prompt: `tôi đi leo núi ngày 13/5/2025 lúc 14h`
+- intent: `CREATE`
+- expected title: `đi leo núi`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `13/5/2025 lúc 14:00`
+- expected notes: `leo núi`
+
+- prompt: `tôi gặp cố vấn ngày 21-7-2027 lúc 16h`
+- intent: `CREATE`
+- expected title: `gặp cố vấn`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `21/7/2027 lúc 16:00`
+- expected notes: `cố vấn`
+
+- prompt: `tôi tham dự summit ngày 20/4 lúc 10:00`
+- intent: `CREATE`
+- expected title: `tham dự summit`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/4 lúc 10:00`
+- expected notes: `summit`
+
+- prompt: `tôi đi mua quà ngày/15/9/2025 lúc 8h30`
+- intent: `CREATE`
+- expected title: `đi mua quà`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `15/9/2025 lúc 08:30`
+- expected notes: `mua quà`
+
+- prompt: `tôi lau dọn nhà ngày-15-8 lúc 11h`
+- intent: `CREATE`
+- expected title: `lau dọn nhà`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `15/8 lúc 11:00`
+- expected notes: `lau dọn`
+
+- prompt: `tôi đi câu lạc bộ ngày-25-10-2025 lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `đi câu lạc bộ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `25/10/2025 lúc 09:00`
+- expected notes: `câu lạc bộ`
+
+- prompt: `tôi đi bảo hiểm ngày 20 tháng 5 lúc 2h chiều`
+- intent: `CREATE`
+- expected title: `đi bảo hiểm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/5 lúc 14:00`
+- expected notes: `bảo hiểm`
+
+- prompt: `tôi tham gia meetup ngày 20 tháng 5 năm 2029 lúc 10h`
+- intent: `CREATE`
+- expected title: `tham gia meetup`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/5/2029 lúc 10:00`
+- expected notes: `meetup`
+
+- prompt: `tôi bắt đầu bán hàng ngày 1 tháng 6 năm 2025 lúc 8h sáng`
+- intent: `CREATE`
+- expected title: `bắt đầu bán hàng`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `1/6/2025 lúc 08:00`
+- expected notes: `bán hàng`
+
+- prompt: `tôi đi karaoke ngày 25/4 lúc 7h tối`
+- intent: `CREATE`
+- expected title: `đi karaoke`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `25/4 lúc 19:00`
+- expected notes: `karaoke`
+
+- prompt: `tôi học guitar ngày 20/4 lúc 3h chiều`
+- intent: `CREATE`
+- expected title: `học guitar`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/4 lúc 15:00`
+- expected notes: `guitar`
+
+- prompt: `tôi nộp đề xuất ngày 15-8 lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `nộp đề xuất`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `15/8 lúc 09:00`
+- expected notes: `đề xuất`
+
+- prompt: `tôi đi camping ngày 13/5/2025 lúc 14h`
+- intent: `CREATE`
+- expected title: `đi camping`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `13/5/2025 lúc 14:00`
+- expected notes: `camping`
+
+- prompt: `tôi gặp mentor ngày 21-7-2027 lúc 16h`
+- intent: `CREATE`
+- expected title: `gặp mentor`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `21/7/2027 lúc 16:00`
+- expected notes: `mentor`
+
+- prompt: `tôi tham dự expo ngày 20/4 lúc 10:00`
+- intent: `CREATE`
+- expected title: `tham dự expo`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/4 lúc 10:00`
+- expected notes: `expo`
+
+- prompt: `tôi đi mua thực phẩm ngày/15/9/2025 lúc 8h30`
+- intent: `CREATE`
+- expected title: `đi mua thực phẩm`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `15/9/2025 lúc 08:30`
+- expected notes: `thực phẩm`
+
+- prompt: `tôi sửa chữa nhà ngày-15-8 lúc 11h`
+- intent: `CREATE`
+- expected title: `sửa chữa nhà`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `15/8 lúc 11:00`
+- expected notes: `sửa chữa`
+
+- prompt: `tôi đi yoga ngày-25-10-2025 lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `đi yoga`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `25/10/2025 lúc 09:00`
+- expected notes: `yoga`
+
+- prompt: `ngày 1 tháng 1 năm 2030, tôi tham gia hội nghị`
+- intent: `CREATE`
+- expected title: `tham gia hội nghị`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `1/1/2030`
+- expected notes: `công việc`, `hội nghị`
+
+#### 103. Examples cho patterns "cuối tháng"
+
+- prompt: `cuối tháng tôi đóng tiền nhà cho bà chủ lúc 10h`
+- intent: `CREATE`
+- expected title: `đóng tiền nhà cho bà chủ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `cuối tháng`
+- expected notes: `tiền nhà`, `thuê nhà`
+
+- prompt: `cuối tháng tôi đi du lịch với mấy anh trong công ty lúc 9h`
+- intent: `CREATE`
+- expected title: `đi du lịch với mấy anh trong công ty`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `cuối tháng`
+- expected notes: `du lịch`, `công ty`
+
+- prompt: `Sáng thứ 7 tôi có đi siêu thị với vợ lúc 9h`
+- intent: `CREATE`
+- expected title: `đi siêu thị với vợ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `thứ 7 lúc 09:00`
+- expected notes: `gia đình`, `siêu thị`
+
+#### 101.4. Cuộc họp, công việc với "có"
+
+- prompt: `Sáng mai tôi có cuộc họp với khách hàng lúc 9h`
+- intent: `CREATE`
+- expected title: `cuộc họp với khách hàng`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `sáng mai lúc 09:00`
+- expected notes: `công việc`, `họp`, `khách hàng`
+
+- prompt: `Ngày 25 tháng 4 năm 2026 mình có buổi phỏng vấn ứng viên lúc 2h chiều`
+- intent: `CREATE`
+- expected title: `buổi phỏng vấn ứng viên`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `25/4/2026 lúc 14:00`
+- expected notes: `công việc`, `phỏng vấn`
+
+- prompt: `Chiều nay tôi có cuộc họp team lúc 3h`
+- intent: `CREATE`
+- expected title: `cuộc họp team`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `chiều nay lúc 15:00`
+- expected notes: `công việc`, `họp`, `team`
+
+- prompt: `Thứ 2 tuần sau mình có báo cáo tiến độ dự án lúc 10h sáng`
+- intent: `CREATE`
+- expected title: `báo cáo tiến độ dự án`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `thứ 2 tuần sau lúc 10:00`
+- expected notes: `công việc`, `báo cáo`, `dự án`
+
+- prompt: `Ngày 30 tháng 6 năm 2026 tôi có meeting với đối tác lúc 11h`
+- intent: `CREATE`
+- expected title: `meeting với đối tác`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `30/6/2026 lúc 11:00`
+- expected notes: `công việc`, `meeting`, `đối tác`
+
+- prompt: `Tối thứ 4 tôi có buổi training nhân viên mới lúc 7h`
+- intent: `CREATE`
+- expected title: `buổi training nhân viên mới`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `thứ 4 lúc 19:00`
+- expected notes: `công việc`, `training`, `nhân viên`
+
+- prompt: `Sáng nay tôi có họp khẩn cấp lúc 8h30`
+- intent: `CREATE`
+- expected title: `họp khẩn cấp`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `sáng nay lúc 08:30`
+- expected notes: `công việc`, `họp`, `khẩn cấp`
+
+- prompt: `Ngày 15 tháng 9 năm 2026 mình có review hiệu suất lúc 2h chiều`
+- intent: `CREATE`
+- expected title: `review hiệu suất`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `15/9/2026 lúc 14:00`
+- expected notes: `công việc`, `review`, `hiệu suất`
+
+#### 101.5. Y tế, sức khỏe với "có"
+
+- prompt: `Sáng mai tôi có lịch khám bác sĩ lúc 8h`
+- intent: `CREATE`
+- expected title: `lịch khám bác sĩ`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `sáng mai lúc 08:00`
+- expected notes: `y tế`, `khám bệnh`
+
+- prompt: `Ngày 5 tháng 5 năm 2026 mình có hẹn nha sĩ lúc 10h sáng`
+- intent: `CREATE`
+- expected title: `hẹn nha sĩ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `5/5/2026 lúc 10:00`
+- expected notes: `y tế`, `nha sĩ`
+
+- prompt: `Chiều nay tôi có tiêm vắc xin lúc 3h`
+- intent: `CREATE`
+- expected title: `tiêm vắc xin`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `chiều nay lúc 15:00`
+- expected notes: `y tế`, `tiêm chủng`
+
+- prompt: `Thứ 6 tuần này mình có xét nghiệm máu lúc 7h sáng`
+- intent: `CREATE`
+- expected title: `xét nghiệm máu`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `thứ 6 lúc 07:00`
+- expected notes: `y tế`, `xét nghiệm`
+
+- prompt: `Ngày 20 tháng 7 năm 2026 tôi có tái khám lúc 9h`
+- intent: `CREATE`
+- expected title: `tái khám`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/7/2026 lúc 09:00`
+- expected notes: `y tế`, `tái khám`
+
+- prompt: `Sáng thứ 3 tôi có đi khám mắt lúc 8h30`
+- intent: `CREATE`
+- expected title: `đi khám mắt`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `thứ 3 lúc 08:30`
+- expected notes: `y tế`, `khám mắt`
+
+#### 101.6. Sinh nhật, sự kiện với "có"
+
+- prompt: `Tối thứ 7 tôi có tiệc sinh nhật bạn lúc 7h`
+- intent: `CREATE`
+- expected title: `tiệc sinh nhật bạn`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `thứ 7 lúc 19:00`
+- expected notes: `sự kiện`, `sinh nhật`
+
+- prompt: `Ngày 14 tháng 2 năm 2027 mình có hẹn Valentine lúc 6h tối`
+- intent: `CREATE`
+- expected title: `hẹn Valentine`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `14/2/2027 lúc 18:00`
+- expected notes: `sự kiện`, `Valentine`
+
+- prompt: `Cuối tuần này tôi có liên hoan công ty lúc 5h chiều`
+- intent: `CREATE`
+- expected title: `liên hoan công ty`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần lúc 17:00`
+- expected notes: `sự kiện`, `liên hoan`, `công ty`
+
+- prompt: `Ngày 1 tháng 1 năm 2027 mình có tiệc tất niên lúc 8h tối`
+- intent: `CREATE`
+- expected title: `tiệc tất niên`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `1/1/2027 lúc 20:00`
+- expected notes: `sự kiện`, `tất niên`
+
+- prompt: `Chiều mai tôi có họp lớp cũ lúc 4h`
+- intent: `CREATE`
+- expected title: `họp lớp cũ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `chiều mai lúc 16:00`
+- expected notes: `sự kiện`, `họp lớp`
+
+#### 101.7. Đa dạng thời gian với "có"
+
+- prompt: `Tôi có việc gấp cần làm ngay bây giờ`
+- intent: `CREATE`
+- expected title: `việc gấp`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `ngay bây giờ`
+- expected notes: `khẩn cấp`
+
+- prompt: `Ngày mai mình có deadline nộp báo cáo lúc 5h chiều`
+- intent: `CREATE`
+- expected title: `deadline nộp báo cáo`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `ngày mai lúc 17:00`
+- expected notes: `deadline`, `báo cáo`
+
+- prompt: `Tối nay tôi có hẹn lúc 8h`
+- intent: `CREATE`
+- expected title: `hẹn`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `tối nay lúc 20:00`
+- expected notes: ``
+
+- prompt: `Sáng chủ nhật mình có hoạt động tình nguyện lúc 7h`
+- intent: `CREATE`
+- expected title: `hoạt động tình nguyện`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `chủ nhật lúc 07:00`
+- expected notes: `tình nguyện`
+
+- prompt: `Trưa mai tôi có cơm trưa với đối tác lúc 12h`
+- intent: `CREATE`
+- expected title: `cơm trưa với đối tác`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `trưa mai lúc 12:00`
+- expected notes: `ăn trưa`, `đối tác`
+
+- prompt: `Chiều 30 tháng 4 tôi có chương trình văn nghệ lúc 3h`
+- intent: `CREATE`
+- expected title: `chương trình văn nghệ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `30/4 lúc 15:00`
+- expected notes: `văn nghệ`
+
+#### 101.8. Các mẫu "có" với cấu trúc khác nhau
+
+- prompt: `Mình có buổi học piano lúc 6h tối nay`
+- intent: `CREATE`
+- expected title: `buổi học piano`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `tối nay lúc 18:00`
+- expected notes: `học`, `piano`
+
+- prompt: `Tôi có lịch massage lúc 4h chiều mai`
+- intent: `CREATE`
+- expected title: `lịch massage`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `chiều mai lúc 16:00`
+- expected notes: `massage`, `thư giãn`
+
+- prompt: `Có buổi gặp gỡ bạn bè lúc 8h tối thứ 7`
+- intent: `CREATE`
+- expected title: `gặp gỡ bạn bè`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `thứ 7 lúc 20:00`
+- expected notes: `bạn bè`
+
+- prompt: `Tôi có cuộc gọi điện thoại với sếp lúc 10h sáng`
+- intent: `CREATE`
+- expected title: `gọi điện với sếp`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `sáng lúc 10:00`
+- expected notes: `gọi điện`, `sếp`
+
+- prompt: `Mình có hẹn cắt tóc lúc 2h chiều nay`
+- intent: `CREATE`
+- expected title: `hẹn cắt tóc`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `chiều nay lúc 14:00`
+- expected notes: `cắt tóc`
+
+- prompt: `Tôi có lịch đi bank lúc 9h sáng thứ 2`
+- intent: `CREATE`
+- expected title: `đi bank`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `thứ 2 lúc 09:00`
+- expected notes: `ngân hàng`
+
+- prompt: `Có buổi chụp hình cưới lúc 10h sáng chủ nhật`
+- intent: `CREATE`
+- expected title: `chụp hình cưới`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `chủ nhật lúc 10:00`
+- expected notes: `chụp hình`, `cưới`
+
+- prompt: `Tôi có buổi tư vấn bảo hiểm lúc 3h chiều thứ 4`
+- intent: `CREATE`
+- expected title: `tư vấn bảo hiểm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `thứ 4 lúc 15:00`
+- expected notes: `bảo hiểm`, `tư vấn`
+
+#### 101.9. Mẫu "có" với ngày tháng năm đầy đủ
+
+- prompt: `Ngày 25 tháng 12 năm 2026 tôi có lễ giáng sinh lúc 7h tối`
+- intent: `CREATE`
+- expected title: `lễ giáng sinh`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `25/12/2026 lúc 19:00`
+- expected notes: `giáng sinh`
+
+- prompt: `Ngày 1 tháng 5 năm 2027 mình có đi lao động tình nguyện lúc 8h sáng`
+- intent: `CREATE`
+- expected title: `đi lao động tình nguyện`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `1/5/2027 lúc 08:00`
+- expected notes: `tình nguyện`
+
+- prompt: `Ngày 2 tháng 9 năm 2026 tôi có đi chơi lễ lúc 9h`
+- intent: `CREATE`
+- expected title: `đi chơi lễ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `2/9/2026 lúc 09:00`
+- expected notes: `lễ`
+
+- prompt: `Ngày 8 tháng 3 năm 2027 mình có tặng quà mẹ lúc 10h sáng`
+- intent: `CREATE`
+- expected title: `tặng quà mẹ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `8/3/2027 lúc 10:00`
+- expected notes: `quà`, `mẹ`
+
+- prompt: `Ngày 20 tháng 10 năm 2026 tôi có họp phụ huynh lúc 2h chiều`
+- intent: `CREATE`
+- expected title: `họp phụ huynh`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `20/10/2026 lúc 14:00`
+- expected notes: `họp`, `phụ huynh`
+
+- prompt: `Ngày 15 tháng 1 năm 2027 mình có tất niên công ty lúc 6h tối`
+- intent: `CREATE`
+- expected title: `tất niên công ty`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `15/1/2027 lúc 18:00`
+- expected notes: `tất niên`, `công ty`
+
+#### 101.10. Mẫu "có" với priority khác nhau
+
+- prompt: `Tôi có việc khẩn cấp phải làm ngay lúc 3h chiều`
+- intent: `CREATE`
+- expected title: `việc khẩn cấp`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `lúc 15:00`
+- expected notes: `khẩn cấp`
+
+- prompt: `Mình có việc quan trọng lúc 9h sáng mai`
+- intent: `CREATE`
+- expected title: `việc quan trọng`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `sáng mai lúc 09:00`
+- expected notes: `quan trọng`
+
+- prompt: `Tôi có việc bình thường lúc 2h chiều nay`
+- intent: `CREATE`
+- expected title: `việc bình thường`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `chiều nay lúc 14:00`
+- expected notes: ``
+
+- prompt: `Mình có việc không gấp lắm lúc 5h`
+- intent: `CREATE`
+- expected title: `việc không gấp`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `lúc 17:00`
+- expected notes: ``
+
+- prompt: `Tôi có việc ưu tiên cao lúc 10h`
+- intent: `CREATE`
+- expected title: `việc ưu tiên cao`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `lúc 10:00`
+- expected notes: `ưu tiên cao`
+
+- prompt: `Mình có việc nhỏ lúc 4h chiều`
+- intent: `CREATE`
+- expected title: `việc nhỏ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `chiều lúc 16:00`
+- expected notes: ``
+
+### 102. Pattern "phải" - CREATE (bị nhầm thành VIEW/DELETE)
+
+#### 102.1. "phải" + action + deadline
+
+- prompt: `Thứ 3 tuần sau tôi phải báo cáo đồ án lúc 3h`
+- intent: `CREATE`
+- expected title: `báo cáo đồ án`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `thứ 3 tuần sau lúc 15:00`
+- expected notes: ``
+
+- prompt: `Ngày mai tôi phải nộp bài tập lúc 5h chiều`
+- intent: `CREATE`
+- expected title: `nộp bài tập`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `ngày mai lúc 17:00`
+- expected notes: ``
+
+- prompt: `Thứ 6 này mình phải đi khám bệnh lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `đi khám bệnh`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `thứ 6 lúc 09:00`
+- expected notes: ``
+
+- prompt: `Ngày 15 tháng 5 tôi phải gặp khách hàng lúc 2h chiều`
+- intent: `CREATE`
+- expected title: `gặp khách hàng`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `15/5 lúc 14:00`
+- expected notes: ``
+
+- prompt: `Sáng chủ nhật tôi phải dọn nhà lúc 8h`
+- intent: `CREATE`
+- expected title: `dọn nhà`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `chủ nhật lúc 08:00`
+- expected notes: ``
+
+- prompt: `Tối mai mình phải họp nhóm lúc 7h`
+- intent: `CREATE`
+- expected title: `họp nhóm`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `tối mai lúc 19:00`
+- expected notes: ``
+
+- prompt: `Thứ 2 tuần tới tôi phải thi vấn đáp lúc 10h`
+- intent: `CREATE`
+- expected title: `thi vấn đáp`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `thứ 2 tuần tới lúc 10:00`
+- expected notes: ``
+
+- prompt: `Chiều nay tôi phải gửi báo cáo lúc 4h`
+- intent: `CREATE`
+- expected title: `gửi báo cáo`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `chiều nay lúc 16:00`
+- expected notes: ``
+
+- prompt: `Ngày 20 tháng 6 tôi phải tham gia workshop lúc 1h chiều`
+- intent: `CREATE`
+- expected title: `tham gia workshop`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `20/6 lúc 13:00`
+- expected notes: ``
+
+- prompt: `Cuối tuần này mình phải sửa xe lúc 10h sáng`
+- intent: `CREATE`
+- expected title: `sửa xe`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần lúc 10:00`
+- expected notes: ``
+
+### 103. Pattern "có buổi" - CREATE (bị nhầm thành DELETE)
+
+#### 103.1. "có buổi" + activity + time
+
+- prompt: `Thứ 7 tuần sau mình có buổi leo núi nhân tạo lúc 10h`
+- intent: `CREATE`
+- expected title: `leo núi nhân tạo`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `thứ 7 tuần sau lúc 10:00`
+- expected notes: `thể thao`
+
+- prompt: `Sáng mai tôi có buổi tập gym lúc 6h`
+- intent: `CREATE`
+- expected title: `tập gym`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `sáng mai lúc 06:00`
+- expected notes: `thể thao`
+
+- prompt: `Chiều nay mình có buổi bơi lội lúc 4h`
+- intent: `CREATE`
+- expected title: `bơi lội`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `chiều nay lúc 16:00`
+- expected notes: `thể thao`
+
+- prompt: `Ngày 10 tháng 5 tôi có buổi phỏng vấn lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `phỏng vấn`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `10/5 lúc 09:00`
+- expected notes: ``
+
+- prompt: `Tối thứ 6 mình có buổi tiệc sinh nhật lúc 7h`
+- intent: `CREATE`
+- expected title: `tiệc sinh nhật`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `thứ 6 lúc 19:00`
+- expected notes: `sinh nhật`
+
+- prompt: `Chủ nhật này tôi có buổi ăn cưới lúc 11h`
+- intent: `CREATE`
+- expected title: `ăn cưới`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `chủ nhật lúc 11:00`
+- expected notes: ``
+
+- prompt: `Thứ 4 tuần sau mình có buổi khám nha sĩ lúc 2h chiều`
+- intent: `CREATE`
+- expected title: `khám nha sĩ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `thứ 4 lúc 14:00`
+- expected notes: `y tế`
+
+- prompt: `Sáng thứ 2 tôi có buổi họp khẩn lúc 8h30`
+- intent: `CREATE`
+- expected title: `họp khẩn`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `thứ 2 lúc 08:30`
+- expected notes: ``
+
+- prompt: `Chiều 30 tháng 4 mình có buổi văn nghệ lúc 3h`
+- intent: `CREATE`
+- expected title: `văn nghệ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `30/4 lúc 15:00`
+- expected notes: ``
+
+- prompt: `Ngày 25 tháng 12 tôi có buổi lễ giáng sinh lúc 6h tối`
+- intent: `CREATE`
+- expected title: `lễ giáng sinh`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `25/12 lúc 18:00`
+- expected notes: ``
+
+### 104. Pattern "có bài thi" - CREATE (bị nhầm thành DELETE)
+
+#### 104.1. "có bài thi/kiểm tra" + subject + time
+
+- prompt: `Ngày 20 tháng 4 năm 2026, tôi có bài thi cuối kỳ lúc 1h chiều`
+- intent: `CREATE`
+- expected title: `bài thi cuối kỳ`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `20/4/2026 lúc 13:00`
+- expected notes: ``
+
+- prompt: `Sáng thứ 2 tôi có bài kiểm tra toán lúc 8h`
+- intent: `CREATE`
+- expected title: `bài kiểm tra toán`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `thứ 2 lúc 08:00`
+- expected notes: ``
+
+- prompt: `Chiều mai mình có bài thi tiếng Anh lúc 2h`
+- intent: `CREATE`
+- expected title: `bài thi tiếng Anh`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `chiều mai lúc 14:00`
+- expected notes: ``
+
+- prompt: `Ngày 15 tháng 6 tôi có bài thi vật lý lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `bài thi vật lý`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `15/6 lúc 09:00`
+- expected notes: ``
+
+- prompt: `Thứ 6 tuần này tôi có bài kiểm tra hóa lúc 10h`
+- intent: `CREATE`
+- expected title: `bài kiểm tra hóa`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `thứ 6 lúc 10:00`
+- expected notes: ``
+
+- prompt: `Tối chủ nhật mình có bài thi lập trình lúc 7h`
+- intent: `CREATE`
+- expected title: `bài thi lập trình`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `chủ nhật lúc 19:00`
+- expected notes: ``
+
+- prompt: `Ngày 5 tháng 7 tôi có bài kiểm tra sinh học lúc 3h chiều`
+- intent: `CREATE`
+- expected title: `bài kiểm tra sinh học`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `5/7 lúc 15:00`
+- expected notes: ``
+
+- prompt: `Thứ 4 tuần sau tôi có bài thi lịch sử lúc 8h30 sáng`
+- intent: `CREATE`
+- expected title: `bài thi lịch sử`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `thứ 4 tuần sau lúc 08:30`
+- expected notes: ``
+
+- prompt: `Chiều 20 tháng 5 mình có bài kiểm tra địa lý lúc 4h`
+- intent: `CREATE`
+- expected title: `bài kiểm tra địa lý`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `20/5 lúc 16:00`
+- expected notes: ``
+
+- prompt: `Ngày 10 tháng 8 tôi có bài thi tốt nghiệp lúc 7h sáng`
+- intent: `CREATE`
+- expected title: `bài thi tốt nghiệp`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `10/8 lúc 07:00`
+- expected notes: ``
+
+### 105. VIEW Intent - Kiểm tra/xem danh sách task
+
+#### 105.1. Xem tất cả task
+
+- prompt: `Cho tôi xem danh sách tất cả công việc`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Hiển thị toàn bộ task của tôi`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Liệt kê những việc cần làm`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Tôi muốn xem lịch làm việc tuần này`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Danh sách công việc hôm nay là gì`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Cho tôi xem các task chưa hoàn thành`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Hiện những việc còn tồn đọng`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Xem todo list của tôi`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Tôi có những task nào đang chạy`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Kiểm tra lịch trình tháng này`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+#### 105.2. Xem task theo điều kiện
+
+- prompt: `Cho tôi xem task đang trong tiến trình`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: `IN_PROGRESS`
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Hiển thị task có độ ưu tiên cao`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: `HIGH`
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Những việc đã hoàn thành tuần trước`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: `COMPLETED`
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Công việc trễ hạn có những gì`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: `OVERDUE`
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Cho tôi xem việc chưa làm`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: `PENDING`
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Task nào deadline hôm nay`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: `hôm nay`
+- expected notes: ``
+
+- prompt: `Việc cần làm trong ngày mai`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: `ngày mai`
+- expected notes: ``
+
+- prompt: `Cho tôi xem task ưu tiên thấp`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: `LOW`
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Những việc đã xong tháng này`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: `COMPLETED`
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Danh sách cuộc họp tuần tới`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+### 106. UPDATE Intent - Sửa đổi task hiện có
+
+#### 106.1. Update trạng thái
+
+- prompt: `Đánh dấu hoàn thành task họp nhóm`
+- intent: `UPDATE`
+- expected title: `họp nhóm`
+- expected priority: ``
+- expected status: `COMPLETED`
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Chuyển task gửi báo cáo sang đang làm`
+- intent: `UPDATE`
+- expected title: `gửi báo cáo`
+- expected priority: ``
+- expected status: `IN_PROGRESS`
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Đánh dấu xong việc nộp đơn`
+- intent: `UPDATE`
+- expected title: `nộp đơn`
+- expected priority: ``
+- expected status: `COMPLETED`
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Cập nhật trạng thái task đi khám bệnh là xong`
+- intent: `UPDATE`
+- expected title: `đi khám bệnh`
+- expected priority: ``
+- expected status: `COMPLETED`
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Đánh dấu task mua đồ là đã xong`
+- intent: `UPDATE`
+- expected title: `mua đồ`
+- expected priority: ``
+- expected status: `COMPLETED`
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Chuyển task thanh toán hóa đơn sang hoàn thành`
+- intent: `UPDATE`
+- expected title: `thanh toán hóa đơn`
+- expected priority: ``
+- expected status: `COMPLETED`
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Đánh dấu xong việc gọi điện khách hàng`
+- intent: `UPDATE`
+- expected title: `gọi điện khách hàng`
+- expected priority: ``
+- expected status: `COMPLETED`
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Cập nhật task chuẩn bị slide là đang làm`
+- intent: `UPDATE`
+- expected title: `chuẩn bị slide`
+- expected priority: ``
+- expected status: `IN_PROGRESS`
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Chuyển việc dọn nhà sang đã xong`
+- intent: `UPDATE`
+- expected title: `dọn nhà`
+- expected priority: ``
+- expected status: `COMPLETED`
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Đánh dấu xong task thi cuối kỳ`
+- intent: `UPDATE`
+- expected title: `thi cuối kỳ`
+- expected priority: ``
+- expected status: `COMPLETED`
+- expected dueDate: ``
+- expected notes: ``
+
+#### 106.2. Update deadline/priority
+
+- prompt: `Chuyển hạn nộp báo cáo sang ngày mai`
+- intent: `UPDATE`
+- expected title: `nộp báo cáo`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: `ngày mai`
+- expected notes: ``
+
+- prompt: `Đổi deadline họp nhóm sang thứ 6`
+- intent: `UPDATE`
+- expected title: `họp nhóm`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: `thứ 6`
+- expected notes: ``
+
+- prompt: `Tăng độ ưu tiên task gửi email lên cao`
+- intent: `UPDATE`
+- expected title: `gửi email`
+- expected priority: `HIGH`
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Giảm ưu tiên việc đi chợ xuống thấp`
+- intent: `UPDATE`
+- expected title: `đi chợ`
+- expected priority: `LOW`
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Chuyển thời gian gặp khách hàng sang 3h chiều`
+- intent: `UPDATE`
+- expected title: `gặp khách hàng`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: `lúc 15:00`
+- expected notes: ``
+
+- prompt: `Cập nhật hạn nộp bài sang tuần sau`
+- intent: `UPDATE`
+- expected title: `nộp bài`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: `tuần sau`
+- expected notes: ``
+
+- prompt: `Tăng ưu tiên task khám bác sĩ lên khẩn cấp`
+- intent: `UPDATE`
+- expected title: `khám bác sĩ`
+- expected priority: `HIGH`
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Đổi lịch họp sang ngày 20 tháng 5`
+- intent: `UPDATE`
+- expected title: `họp`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: `20/5`
+- expected notes: ``
+
+- prompt: `Chuyển deadline thanh toán sang cuối tuần`
+- intent: `UPDATE`
+- expected title: `thanh toán`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: `cuối tuần`
+- expected notes: ``
+
+- prompt: `Sửa thời gian tập gym thành 6h sáng`
+- intent: `UPDATE`
+- expected title: `tập gym`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: `lúc 06:00`
+- expected notes: ``
+
+### 107. DELETE Intent - Xóa task
+
+#### 107.1. Xóa task cụ thể
+
+- prompt: `Xóa task họp nhóm`
+- intent: `DELETE`
+- expected title: `họp nhóm`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Xóa công việc gửi báo cáo`
+- intent: `DELETE`
+- expected title: `gửi báo cáo`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Loại bỏ task đi khám bệnh`
+- intent: `DELETE`
+- expected title: `đi khám bệnh`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Gỡ việc mua đồ khỏi danh sách`
+- intent: `DELETE`
+- expected title: `mua đồ`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Xóa task chuẩn bị slide thuyết trình`
+- intent: `DELETE`
+- expected title: `chuẩn bị slide thuyết trình`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Xóa việc thanh toán hóa đơn`
+- intent: `DELETE`
+- expected title: `thanh toán hóa đơn`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Xóa task gọi điện khách hàng`
+- intent: `DELETE`
+- expected title: `gọi điện khách hàng`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Hủy task thi cuối kỳ`
+- intent: `DELETE`
+- expected title: `thi cuối kỳ`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Xóa việc dọn nhà khỏi todo list`
+- intent: `DELETE`
+- expected title: `dọn nhà`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Xóa task tập gym`
+- intent: `DELETE`
+- expected title: `tập gym`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+#### 107.2. Xóa nhiều task/theo điều kiện
+
+- prompt: `Xóa tất cả task đã hoàn thành`
+- intent: `DELETE`
+- expected title: ``
+- expected priority: ``
+- expected status: `COMPLETED`
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Xóa toàn bộ todo list`
+- intent: `DELETE`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Xóa các task trễ hạn`
+- intent: `DELETE`
+- expected title: ``
+- expected priority: ``
+- expected status: `OVERDUE`
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Xóa những việc đã xong`
+- intent: `DELETE`
+- expected title: ``
+- expected priority: ``
+- expected status: `COMPLETED`
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Xóa toàn bộ công việc trong danh sách`
+- intent: `DELETE`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Xóa các task ưu tiên thấp`
+- intent: `DELETE`
+- expected title: ``
+- expected priority: `LOW`
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Xóa hết task chưa làm`
+- intent: `DELETE`
+- expected title: ``
+- expected priority: ``
+- expected status: `PENDING`
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Xóa tất cả việc đã xong tháng này`
+- intent: `DELETE`
+- expected title: ``
+- expected priority: ``
+- expected status: `COMPLETED`
+- expected dueDate: ``
+- expected notes: ``
+
+- prompt: `Xóa các task không còn cần thiết`
+- intent: `DELETE`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+### 108. Edge-case prompt training
+
+#### 108.1. Relative weekday and "phải/có buổi"
+
+- prompt: `Chiều thứ 3 tuần sau tôi phải báo cáo đồ án lúc 3h`
+- intent: `CREATE`
+- expected title: `báo cáo đồ án`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `thứ 3 tuần sau lúc 15:00`
+- expected notes: ``
+
+- prompt: `Chiều thứ 3 tuần sau tôi có buổi báo cáo đồ án lúc 3h`
+- intent: `CREATE`
+- expected title: `buổi báo cáo đồ án`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `thứ 3 tuần sau lúc 15:00`
+- expected notes: `buổi`
+
+- prompt: `Thứ 3 tuần sau tôi có buổi báo cáo đồ án lúc 3h chiều`
+- intent: `CREATE`
+- expected title: `buổi báo cáo đồ án`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `thứ 3 tuần sau lúc 15:00`
+- expected notes: `buổi`
+
+- prompt: `Thứ 3 tuần sau tôi phải hoàn thành báo cáo lúc 4h`
+- intent: `CREATE`
+- expected title: `hoàn thành báo cáo`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `thứ 3 tuần sau lúc 16:00`
+- expected notes: ``
+
+- prompt: `Thứ 3 tuần sau tôi có buổi thuyết trình lúc 2h chiều`
+- intent: `CREATE`
+- expected title: `buổi thuyết trình`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `thứ 3 tuần sau lúc 14:00`
+- expected notes: `buổi`
+
+#### 108.2. Informal weekend/month expressions
+
+- prompt: `Cuối tuần tôi đi cà hê với bạn lúc 10h`
+- intent: `CREATE`
+- expected title: `đi cà hê với bạn`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần lúc 10:00`
+- expected notes: ``
+
+- prompt: `Cuối tuần sau tôi đi về quê lúc 3h chiều`
+- intent: `CREATE`
+- expected title: `đi về quê`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần sau lúc 15:00`
+- expected notes: ``
+
+- prompt: `Cuối tuần này tôi đi về quê lúc 10h`
+- intent: `CREATE`
+- expected title: `đi về quê`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần này lúc 10:00`
+- expected notes: ``
+
+- prompt: `Cuối tháng này tôi đóng tiền nhà cho bà chủ lúc 10h`
+- intent: `CREATE`
+- expected title: `đóng tiền nhà cho bà chủ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `cuối tháng này lúc 10:00`
+- expected notes: ``
+
+- prompt: `Cuối tháng tôi đóng tiền nhà cho bà chủ lúc 10h`
+- intent: `CREATE`
+- expected title: `đóng tiền nhà cho bà chủ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: ``
+- expected notes: `cần rõ tháng`
+
+- prompt: `Cuối tháng này tôi cần nộp tiền điện lúc 8h`
+- intent: `CREATE`
+- expected title: `nộp tiền điện`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `cuối tháng này lúc 08:00`
+- expected notes: ``
+
+- prompt: `cuối tháng này tôi đóng tiền nhà cho bà chủ lúc 10h`
+- intent: `CREATE`
+- expected title: `đóng tiền nhà cho bà chủ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 10:00
+- expected notes: `thanh toán`
+
+- prompt: `Thêm đóng tiền điện cuối tháng, ưu tiên cao`
+- intent: `CREATE`
+- expected title: `đóng tiền điện`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này
+- expected notes: `ưu tiên cao`
+
+- prompt: `Cuối tháng tôi nộp báo cáo cho sếp lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `nộp báo cáo cho sếp`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 09:00
+- expected notes: `báo cáo`
+
+- prompt: `Nhắc nộp phí bảo hiểm cuối tháng này lúc 16h`
+- intent: `CREATE`
+- expected title: `nộp phí bảo hiểm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 16:00
+- expected notes: `bảo hiểm`
+
+- prompt: `Cuối tháng này thanh toán hóa đơn internet, ưu tiên thấp`
+- intent: `CREATE`
+- expected title: `thanh toán hóa đơn internet`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này
+- expected notes: `ưu tiên thấp`
+
+- prompt: `Thêm đóng tiền nước cuối tháng lúc 14h30`
+- intent: `CREATE`
+- expected title: `đóng tiền nước`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 14:30
+- expected notes: `thanh toán`
+
+- prompt: `Cuối tháng nộp thuế cá nhân lúc 17h`
+- intent: `CREATE`
+- expected title: `nộp thuế cá nhân`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 17:00
+- expected notes: `thuế`
+
+- prompt: `Đóng tiền thuê xe cuối tháng này`
+- intent: `CREATE`
+- expected title: `đóng tiền thuê xe`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này
+- expected notes: `thuê xe`
+
+- prompt: `Cuối tháng tôi trả góp ngân hàng lúc 11h`
+- intent: `CREATE`
+- expected title: `trả góp ngân hàng`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 11:00
+- expected notes: `ngân hàng`
+
+- prompt: `Nhắc đóng phí hội viên cuối tháng, ưu tiên cao`
+- intent: `CREATE`
+- expected title: `đóng phí hội viên`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này
+- expected notes: `hội viên`
+
+- prompt: `Cuối tháng này nộp học phí con lúc 8h sáng`
+- intent: `CREATE`
+- expected title: `nộp học phí con`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 08:00
+- expected notes: `học phí`
+
+- prompt: `Thêm thanh toán thẻ tín dụng cuối tháng lúc 18h`
+- intent: `CREATE`
+- expected title: `thanh toán thẻ tín dụng`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 18:00
+- expected notes: `thẻ tín dụng`
+
+- prompt: `Cuối tháng đóng tiền gas lúc 12h trưa`
+- intent: `CREATE`
+- expected title: `đóng tiền gas`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 12:00
+- expected notes: `gas`
+
+- prompt: `Nộp báo cáo doanh thu cuối tháng này lúc 15h`
+- intent: `CREATE`
+- expected title: `nộp báo cáo doanh thu`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 15:00
+- expected notes: `doanh thu`
+
+- prompt: `Cuối tháng tôi mua bảo hiểm xe lúc 13h`
+- intent: `CREATE`
+- expected title: `mua bảo hiểm xe`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 13:00
+- expected notes: `bảo hiểm xe`
+
+- prompt: `Thêm đóng tiền trọ cuối tháng, ưu tiên thấp`
+- intent: `CREATE`
+- expected title: `đóng tiền trọ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này
+- expected notes: `ưu tiên thấp`
+
+- prompt: `Cuối tháng này trả tiền vay bạn lúc 19h tối`
+- intent: `CREATE`
+- expected title: `trả tiền vay bạn`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 19:00
+- expected notes: `vay mượn`
+
+- prompt: `Nộp phí gym cuối tháng lúc 10h30`
+- intent: `CREATE`
+- expected title: `nộp phí gym`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 10:30
+- expected notes: `gym`
+
+- prompt: `Cuối tháng thanh toán Netflix lúc 20h`
+- intent: `CREATE`
+- expected title: `thanh toán Netflix`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 20:00
+- expected notes: `Netflix`
+
+- prompt: `Đóng tiền học lớp con cuối tháng này`
+- intent: `CREATE`
+- expected title: `đóng tiền học lớp con`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này
+- expected notes: `học lớp con`
+
+- prompt: `Cuối tháng nộp biên lai thuế lúc 16h30`
+- intent: `CREATE`
+- expected title: `nộp biên lai thuế`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 16:30
+- expected notes: `thuế`
+
+- prompt: `Thêm trả tiền wifi cuối tháng lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `trả tiền wifi`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 09:00
+- expected notes: `wifi`
+
+- prompt: `Cuối tháng này đóng phí quản lý chung cư`
+- intent: `CREATE`
+- expected title: `đóng phí quản lý chung cư`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này
+- expected notes: `chung cư`
+
+- prompt: `Nộp báo cáo bán hàng cuối tháng lúc 14h`
+- intent: `CREATE`
+- expected title: `nộp báo cáo bán hàng`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 14:00
+- expected notes: `bán hàng`
+
+- prompt: `Cuối tháng trả nợ thẻ lúc 17h30`
+- intent: `CREATE`
+- expected title: `trả nợ thẻ`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 17:30
+- expected notes: `nợ thẻ`
+
+- prompt: `Thêm đóng tiền báo cuối tháng, ưu tiên thấp`
+- intent: `CREATE`
+- expected title: `đóng tiền báo`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này
+- expected notes: `báo`
+
+- prompt: `Cuối tháng này nộp phí gửi xe lúc 11h`
+- intent: `CREATE`
+- expected title: `nộp phí gửi xe`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 11:00
+- expected notes: `gửi xe`
+
+- prompt: `Đóng tiền học thêm cuối tháng lúc 18h30`
+- intent: `CREATE`
+- expected title: `đóng tiền học thêm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 18:30
+- expected notes: `học thêm`
+
+- prompt: `Cuối tháng thanh toán Grab lúc 12h30`
+- intent: `CREATE`
+- expected title: `thanh toán Grab`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 12:30
+- expected notes: `Grab`
+
+- prompt: `Nộp phí CLB cuối tháng này lúc 15h30`
+- intent: `CREATE`
+- expected title: `nộp phí CLB`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 15:30
+- expected notes: `CLB`
+
+- prompt: `Cuối tháng tôi đóng tiền từ thiện lúc 20h30`
+- intent: `CREATE`
+- expected title: `đóng tiền từ thiện`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 20:30
+- expected notes: `từ thiện`
+
+- prompt: `Thêm nộp phí đường bộ cuối tháng lúc 8h30`
+- intent: `CREATE`
+- expected title: `nộp phí đường bộ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 08:30
+- expected notes: `đường bộ`
+
+- prompt: `Cuối tháng này trả tiền hàng xóm mượn lúc 13h30`
+- intent: `CREATE`
+- expected title: `trả tiền hàng xóm mượn`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 13:30
+- expected notes: `hàng xóm`
+
+- prompt: `Đóng phí bạn bè cuối tháng lúc 7h sáng`
+- intent: `CREATE`
+- expected title: `đóng phí bạn bè`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 07:00
+- expected notes: `bạn bè`
+
+- prompt: `Cuối tháng nộp phí yoga lúc 19h`
+- intent: `CREATE`
+- expected title: `nộp phí yoga`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 19:00
+- expected notes: `yoga`
+
+- prompt: `Thanh toán Shopee cuối tháng này lúc 21h`
+- intent: `CREATE`
+- expected title: `thanh toán Shopee`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 21:00
+- expected notes: `Shopee`
+
+- prompt: `Cuối tháng đóng tiền trà sữa lúc 22h`
+- intent: `CREATE`
+- expected title: `đóng tiền trà sữa`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 22:00
+- expected notes: `trà sữa`
+
+- prompt: `Nộp phí app học cuối tháng lúc 6h sáng`
+- intent: `CREATE`
+- expected title: `nộp phí app học`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 06:00
+- expected notes: `app học`
+
+- prompt: `Cuối tháng này tôi cần giao giấy tờ lúc 9h`
+- intent: `CREATE`
+- expected title: `giao giấy tờ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `cuối tháng này lúc 09:00`
+- expected notes: ``
+
+- prompt: `Cuối tuần này tôi đến nhà ngoại lúc 11h`
+- intent: `CREATE`
+- expected title: `đến nhà ngoại`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `cuối tuần này lúc 11:00`
+- expected notes: ``
+
+#### 108.3. Spoken Vietnamese and title extraction
+
+- prompt: `Nay tôi đi chơi đá banh với bạn bè vào 7h tối`
+- intent: `CREATE`
+- expected title: `đi chơi đá banh với bạn bè`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `hôm nay lúc 19:00`
+- expected notes: ``
+
+- prompt: `Hôm sau tôi phải tới bệnh việc lúc 9h`
+- intent: `CREATE`
+- expected title: `tới bệnh việc`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `hôm sau lúc 09:00`
+- expected notes: ``
+
+- prompt: `Nay tôi có việc ra ngoài lúc 3h`
+- intent: `CREATE`
+- expected title: `việc ra ngoài`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: `hôm nay lúc 15:00`
+- expected notes: ``
+
+- prompt: `Nay tôi đi cà phê với bạn lúc 10h`
+- intent: `CREATE`
+- expected title: `đi cà phê với bạn`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: `hôm nay lúc 10:00`
+- expected notes: ``
+
+- prompt: `Ngày 20 tháng 4 năm 2026, tôi có buổi phỏng vấn lúc 1h chiều`
+- intent: `CREATE`
+- expected title: `buổi phỏng vấn`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: `20/4/2026 lúc 13:00`
+- expected notes: `phỏng vấn`
+
+- prompt: `Xóa những việc trùng lặp`
+- intent: `DELETE`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: ``
+
+### 109. VIEW / DELETE confusion examples
+
+#### 109.1. VIEW commands using "xóa" / "hủy" wording
+
+- prompt: `Xem những task cần xóa`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `xóa`
+
+- prompt: `Cho tôi xem các công việc đã xóa`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `đã xóa`
+
+- prompt: `Liệt kê những việc đã bị xóa`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `bị xóa`
+
+- prompt: `Xem các task mà tôi đã xóa`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `đã xóa`
+
+- prompt: `Hiển thị danh sách việc xóa`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `xóa`
+
+- prompt: `Xem những task đang chờ xóa`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `chờ xóa`
+
+- prompt: `Xem task chưa được xóa`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `chưa xóa`
+
+- prompt: `Xem các công việc đã hủy`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `hủy`
+
+- prompt: `Cho tôi xem các công việc đã bị hủy`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `bị hủy`
+
+- prompt: `Xem reminder đã xóa`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `reminder, xóa`
+
+- prompt: `Xem task đã xóa hôm nay`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: `hôm nay`
+- expected notes: `đã xóa`
+
+- prompt: `Xem các việc xóa trong tuần`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: `tuần này`
+- expected notes: `xóa`
+
+- prompt: `Xem task xóa gần đây`
+- intent: `VIEW`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `xóa gần đây`
+
+#### 109.2. DELETE commands with view-like wording
+
+- prompt: `Xóa task họp nhóm đang hiển thị`
+- intent: `DELETE`
+- expected title: `họp nhóm`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `đang hiển thị`
+
+- prompt: `Xóa việc gửi báo cáo mà tôi đang xem`
+- intent: `DELETE`
+- expected title: `gửi báo cáo`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `đang xem`
+
+- prompt: `Loại bỏ task dọn nhà đang hiển thị`
+- intent: `DELETE`
+- expected title: `dọn nhà`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `đang hiển thị`
+
+- prompt: `Xóa công việc thanh toán hóa đơn đang xem`
+- intent: `DELETE`
+- expected title: `thanh toán hóa đơn`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `đang xem`
+
+- prompt: `Hủy task gặp khách hàng đang mở`
+- intent: `DELETE`
+- expected title: `gặp khách hàng`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `đang mở`
+
+- prompt: `Xóa các task tôi vừa thấy trong danh sách`
+- intent: `DELETE`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `vừa thấy`
+
+- prompt: `Hủy những việc đang được xem`
+- intent: `DELETE`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `đang xem`
+
+- prompt: `Xóa việc họp dự án mà tôi đang xem`
+- intent: `DELETE`
+- expected title: `họp dự án`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `đang xem`
+
+- prompt: `Loại bỏ task sửa xe đang hiển thị`
+- intent: `DELETE`
+- expected title: `sửa xe`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `đang hiển thị`
+
+- prompt: `Xóa task tập gym đang xem`
+- intent: `DELETE`
+- expected title: `tập gym`
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `đang xem`
+
+- prompt: `Xóa task này khỏi danh sách tôi đang xem`
+- intent: `DELETE`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `đang xem`
+
+- prompt: `Xóa việc đang mở`
+- intent: `DELETE`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `đang mở`
+
+- prompt: `Xóa task hiện tại`
+- intent: `DELETE`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `hiện tại`
+
+- prompt: `Hủy bỏ task đang được xem`
+- intent: `DELETE`
+- expected title: ``
+- expected priority: ``
+- expected status: ``
+- expected dueDate: ``
+- expected notes: `đang được xem`
+- prompt: `cuối tháng này tôi đóng tiền nhà cho bà chủ lúc 10h`
+- intent: `CREATE`
+- expected title: `đóng tiền nhà cho bà chủ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 10:00
+- expected notes: `thanh toán`
+- prompt: `Thêm đóng tiền điện cuối tháng, ưu tiên cao`
+- intent: `CREATE`
+- expected title: `đóng tiền điện`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này
+- expected notes: `ưu tiên cao`
+- prompt: `Cuối tháng tôi nộp báo cáo cho sếp lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `nộp báo cáo cho sếp`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 09:00
+- expected notes: `báo cáo`
+- prompt: `Nhắc nộp phí bảo hiểm cuối tháng này lúc 16h`
+- intent: `CREATE`
+- expected title: `nộp phí bảo hiểm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 16:00
+- expected notes: `bảo hiểm`
+- prompt: `Cuối tháng này thanh toán hóa đơn internet, ưu tiên thấp`
+- intent: `CREATE`
+- expected title: `thanh toán hóa đơn internet`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này
+- expected notes: `ưu tiên thấp`
+- prompt: `Thêm đóng tiền nước cuối tháng lúc 14h30`
+- intent: `CREATE`
+- expected title: `đóng tiền nước`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 14:30
+- expected notes: `thanh toán`
+- prompt: `Cuối tháng nộp thuế cá nhân lúc 17h`
+- intent: `CREATE`
+- expected title: `nộp thuế cá nhân`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 17:00
+- expected notes: `thuế`
+- prompt: `Đóng tiền thuê xe cuối tháng này`
+- intent: `CREATE`
+- expected title: `đóng tiền thuê xe`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này
+- expected notes: `thuê xe`
+- prompt: `Cuối tháng tôi trả góp ngân hàng lúc 11h`
+- intent: `CREATE`
+- expected title: `trả góp ngân hàng`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 11:00
+- expected notes: `ngân hàng`
+- prompt: `Nhắc đóng phí hội viên cuối tháng, ưu tiên cao`
+- intent: `CREATE`
+- expected title: `đóng phí hội viên`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này
+- expected notes: `hội viên`
+- prompt: `Cuối tháng này nộp học phí con lúc 8h sáng`
+- intent: `CREATE`
+- expected title: `nộp học phí con`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 08:00
+- expected notes: `học phí`
+- prompt: `Thêm thanh toán thẻ tín dụng cuối tháng lúc 18h`
+- intent: `CREATE`
+- expected title: `thanh toán thẻ tín dụng`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 18:00
+- expected notes: `thẻ tín dụng`
+- prompt: `Cuối tháng đóng tiền gas lúc 12h trưa`
+- intent: `CREATE`
+- expected title: `đóng tiền gas`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 12:00
+- expected notes: `gas`
+- prompt: `Nộp báo cáo doanh thu cuối tháng này lúc 15h`
+- intent: `CREATE`
+- expected title: `nộp báo cáo doanh thu`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 15:00
+- expected notes: `doanh thu`
+- prompt: `Cuối tháng tôi mua bảo hiểm xe lúc 13h`
+- intent: `CREATE`
+- expected title: `mua bảo hiểm xe`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 13:00
+- expected notes: `bảo hiểm xe`
+- prompt: `Thêm đóng tiền trọ cuối tháng, ưu tiên thấp`
+- intent: `CREATE`
+- expected title: `đóng tiền trọ`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này
+- expected notes: `ưu tiên thấp`
+- prompt: `Cuối tháng này trả tiền vay bạn lúc 19h tối`
+- intent: `CREATE`
+- expected title: `trả tiền vay bạn`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 19:00
+- expected notes: `vay mượn`
+- prompt: `Nộp phí gym cuối tháng lúc 10h30`
+- intent: `CREATE`
+- expected title: `nộp phí gym`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 10:30
+- expected notes: `gym`
+- prompt: `Cuối tháng thanh toán Netflix lúc 20h`
+- intent: `CREATE`
+- expected title: `thanh toán Netflix`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 20:00
+- expected notes: `Netflix`
+- prompt: `Đóng tiền học lớp con cuối tháng này`
+- intent: `CREATE`
+- expected title: `đóng tiền học lớp con`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này
+- expected notes: `học lớp con`
+- prompt: `Cuối tháng nộp biên lai thuế lúc 16h30`
+- intent: `CREATE`
+- expected title: `nộp biên lai thuế`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 16:30
+- expected notes: `thuế`
+- prompt: `Thêm trả tiền wifi cuối tháng lúc 9h sáng`
+- intent: `CREATE`
+- expected title: `trả tiền wifi`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 09:00
+- expected notes: `wifi`
+- prompt: `Cuối tháng này đóng phí quản lý chung cư`
+- intent: `CREATE`
+- expected title: `đóng phí quản lý chung cư`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này
+- expected notes: `chung cư`
+- prompt: `Nộp báo cáo bán hàng cuối tháng lúc 14h`
+- intent: `CREATE`
+- expected title: `nộp báo cáo bán hàng`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 14:00
+- expected notes: `bán hàng`
+- prompt: `Cuối tháng trả nợ thẻ lúc 17h30`
+- intent: `CREATE`
+- expected title: `trả nợ thẻ`
+- expected priority: `HIGH`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 17:30
+- expected notes: `nợ thẻ`
+- prompt: `Thêm đóng tiền báo cuối tháng, ưu tiên thấp`
+- intent: `CREATE`
+- expected title: `đóng tiền báo`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này
+- expected notes: `báo`
+- prompt: `Cuối tháng này nộp phí gửi xe lúc 11h`
+- intent: `CREATE`
+- expected title: `nộp phí gửi xe`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 11:00
+- expected notes: `gửi xe`
+- prompt: `Đóng tiền học thêm cuối tháng lúc 18h30`
+- intent: `CREATE`
+- expected title: `đóng tiền học thêm`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 18:30
+- expected notes: `học thêm`
+- prompt: `Cuối tháng thanh toán Grab lúc 12h30`
+- intent: `CREATE`
+- expected title: `thanh toán Grab`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 12:30
+- expected notes: `Grab`
+- prompt: `Nộp phí CLB cuối tháng này lúc 15h30`
+- intent: `CREATE`
+- expected title: `nộp phí CLB`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 15:30
+- expected notes: `CLB`
+- prompt: `Cuối tháng tôi đóng tiền từ thiện lúc 20h30`
+- intent: `CREATE`
+- expected title: `đóng tiền từ thiện`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 20:30
+- expected notes: `từ thiện`
+- prompt: `Thêm nộp phí đường bộ cuối tháng lúc 8h30`
+- intent: `CREATE`
+- expected title: `nộp phí đường bộ`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 08:30
+- expected notes: `đường bộ`
+- prompt: `Cuối tháng này trả tiền hàng xóm mượn lúc 13h30`
+- intent: `CREATE`
+- expected title: `trả tiền hàng xóm mượn`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 13:30
+- expected notes: `hàng xóm`
+- prompt: `Đóng phí bạn bè cuối tháng lúc 7h sáng`
+- intent: `CREATE`
+- expected title: `đóng phí bạn bè`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 07:00
+- expected notes: `bạn bè`
+- prompt: `Cuối tháng nộp phí yoga lúc 19h`
+- intent: `CREATE`
+- expected title: `nộp phí yoga`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 19:00
+- expected notes: `yoga`
+- prompt: `Thanh toán Shopee cuối tháng này lúc 21h`
+- intent: `CREATE`
+- expected title: `thanh toán Shopee`
+- expected priority: `MEDIUM`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 21:00
+- expected notes: `Shopee`
+- prompt: `Cuối tháng đóng tiền trà sữa lúc 22h`
+- intent: `CREATE`
+- expected title: `đóng tiền trà sữa`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 22:00
+- expected notes: `trà sữa`
+- prompt: `Nộp phí app học cuối tháng lúc 6h sáng`
+- intent: `CREATE`
+- expected title: `nộp phí app học`
+- expected priority: `LOW`
+- expected status: `PENDING`
+- expected dueDate: cuối tháng này lúc 06:00
+- expected notes: `app học`

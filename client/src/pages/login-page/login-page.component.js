@@ -1,12 +1,12 @@
 import { Checkbox } from '@/antd-components/checkbox.component';
 import { Form } from '@/antd-components/form.component';
-import { message } from '@/antd-components/message.component';
 import { Space } from '@/antd-components/space.component';
-import { API_ENDPOINTS, AUTH_ID, PAGE_PATH, STORAGE_KEYS } from '@/utilities/constants';
-import { todoApi } from '@/utilities/services/api.service';
-import { setCookie } from '@/utilities/services/storage.service';
+import { AUTH_ID, PAGE_PATH, STORAGE_KEYS } from '@/utilities/constants';
+import { useAuthFlow } from '@/utilities/hooks/use-auth-flow.hook.js';
+import { useFacebookSDK } from '@/utilities/hooks/use-facebook-sdk.hook.js';
+import { getLocalStorage, setLocalStorage } from '@/utilities/services/storage.service';
 import { useGoogleLogin } from '@react-oauth/google';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -33,82 +33,31 @@ import {
   Wrapper,
 } from './styles/login-page.styled';
 
-const { AUTH_TOKEN } = STORAGE_KEYS;
-
-// Login page component with email and password fields, login and register buttons
 export const LoginPage = () => {
   const [form] = Form.useForm();
-  const [isLoading, setIsLoading] = useState(false);
   const emailRef = useRef(null);
-
   const navigate = useNavigate();
   const location = useLocation();
 
+  const { isLoading, loginWithEmailPassword, loginWithGoogle, loginWithFacebook } = useAuthFlow();
+  const isFacebookAvailable = useFacebookSDK();
+
   const defaultEmail = useMemo(() => {
-    return location.state?.email ?? '';
+    return location.state?.email ?? getLocalStorage(STORAGE_KEYS.REMEMBER_EMAIL) ?? '';
   }, [location.state]);
 
-  const handleLogin = async values => {
-    setIsLoading(true);
+  const googleLogin = useGoogleLogin({
+    onSuccess: loginWithGoogle,
+    onError: () => {},
+    flow: 'implicit',
+  });
 
-    try {
-      const apiResponse = await todoApi.post(API_ENDPOINTS.LOGIN, {
-        email: values.email,
-        password: values.password,
-      });
+  const handleLogin = values => {
+    loginWithEmailPassword(values);
 
-      message.success('Login successfully!', 1);
-
-      setCookie(AUTH_TOKEN, apiResponse.data.token);
-      navigate(PAGE_PATH.TODO_LIST, { replace: true });
-    } catch (e) {
-      message.error(e.response.data?.error, 1);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleGoogleLogin = async googleResponse => {
-    const accessToken = googleResponse?.access_token;
-
-    if (!accessToken) return message.error('Google authentication failed: missing token', 1);
-
-    setIsLoading(true);
-
-    try {
-      const apiResponse = await todoApi.post(API_ENDPOINTS.GOOGLE_LOGIN, { accessToken });
-
-      message.success('Login successfully!', 1);
-      setCookie(AUTH_TOKEN, apiResponse.data.token);
-      navigate(PAGE_PATH.TODO_LIST, { replace: true });
-    } catch (e) {
-      message.error(e.response.data?.error, 1);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleFacebookLogin = async facebookResponse => {
-    const { accessToken, userID: userId } = facebookResponse;
-
-    if (!accessToken || !userId) return message.error('Facebook authentication failed.', 1);
-
-    setIsLoading(true);
-
-    try {
-      const apiResponse = await todoApi.post(API_ENDPOINTS.FACEBOOK_LOGIN, {
-        accessToken,
-        userId,
-      });
-
-      message.success('Login successfully!', 1);
-      setCookie(AUTH_TOKEN, apiResponse.data.token);
-      navigate(PAGE_PATH.TODO_LIST, { replace: true });
-    } catch (e) {
-      message.error(e.response.data?.error, 1);
-    } finally {
-      setIsLoading(false);
-    }
+    values.remember
+      ? setLocalStorage(STORAGE_KEYS.REMEMBER_EMAIL, values.email)
+      : localStorage.removeItem(STORAGE_KEYS.REMEMBER_EMAIL);
   };
 
   useEffect(() => {
@@ -121,6 +70,7 @@ export const LoginPage = () => {
         form.setFieldsValue({
           email: defaultEmail,
           password: '',
+          remember: !!getLocalStorage(STORAGE_KEYS.REMEMBER_EMAIL),
         });
       }, 100);
   }, [defaultEmail, form]);
@@ -187,31 +137,29 @@ export const LoginPage = () => {
 
           <SocialLoginWrapper>
             <Space direction="vertical" align="center" style={{ color: 'var(--primary-text-color)' }}>
-              <SocialImageButton
-                preview={false}
-                onClick={useGoogleLogin({
-                  onSuccess: handleGoogleLogin,
-                  onError: () => message.error('Google sign-in failed', 1),
-                  flow: 'implicit',
-                })}
-                src="/google.png"
-                alt="Google icon"
-              />
+              <SocialImageButton preview={false} onClick={googleLogin} src="/google.png" alt="Google icon" />
               Google
             </Space>
 
-            <FacebookLogin
-              appId={AUTH_ID.FACEBOOK_APP_ID}
-              fields="name,email,picture"
-              callback={handleFacebookLogin}
-              onFailure={() => message.error('Facebook sign-in failed', 1)}
-              render={({ onClick }) => (
-                <Space direction="vertical" align="center" style={{ color: 'var(--primary-text-color)' }}>
-                  <SocialImageButton onClick={onClick} preview={false} src="/facebook.png" alt="Facebook icon" />
-                  Facebook
-                </Space>
-              )}
-            />
+            {isFacebookAvailable && (
+              <FacebookLogin
+                appId={AUTH_ID.FACEBOOK_APP_ID}
+                fields="name,email,picture"
+                callback={loginWithFacebook}
+                onFailure={() => {}}
+                render={({ onClick }) => (
+                  <Space direction="vertical" align="center" style={{ color: 'var(--primary-text-color)' }}>
+                    <SocialImageButton
+                      onClick={() => onClick()}
+                      preview={false}
+                      src="/facebook.png"
+                      alt="Facebook icon"
+                    />
+                    Facebook
+                  </Space>
+                )}
+              />
+            )}
           </SocialLoginWrapper>
         </Form>
       </LoginForm>

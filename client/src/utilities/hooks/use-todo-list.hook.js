@@ -284,6 +284,7 @@ export const useTodoList = () => {
 
   return {
     todoList,
+    originalList,
     fetchedTodos,
     isLoading,
     viewTask,

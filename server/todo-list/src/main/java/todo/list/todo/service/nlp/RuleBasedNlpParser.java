@@ -14,7 +14,8 @@ import java.util.regex.Pattern;
 @ApplicationScoped
 public class RuleBasedNlpParser implements NlpParser {
     private static final Pattern CREATE_PATTERN = Pattern.compile(
-            "\\b(thêm|tạo|lập|nhắc|ghi|ghi lại|thêm mới|tạo mới|lập mới|cần làm)\\b", Pattern.CASE_INSENSITIVE);
+            "\\b(thêm|tạo|lập|nhắc|ghi|ghi lại|thêm mới|tạo mới|lập mới|cần làm|phải|muốn|sẽ)\\b",
+            Pattern.CASE_INSENSITIVE);
     private static final Pattern UPDATE_PATTERN = Pattern.compile("\\b(sửa|cập nhật|chỉnh sửa|thay đổi|đổi)\\b",
             Pattern.CASE_INSENSITIVE);
     private static final Pattern DELETE_PATTERN = Pattern.compile("\\b(xóa|xoá|hủy|huy|gỡ)\\b",
@@ -30,12 +31,12 @@ public class RuleBasedNlpParser implements NlpParser {
             .compile("\\b(thấp|không gấp|bình thường|normal|thường)\\b", Pattern.CASE_INSENSITIVE);
 
     private static final Pattern TITLE_REMOVE_PATTERN = Pattern.compile(
-            "\\b(hãy|giúp( mình)?|tạo( giúp)?|lập|đặt|nhắc|tôi|mình|mua|đặt|hoàn thành|xong|đã xong|đang làm|gấp|khẩn|ưu tiên cao|thấp|bình thường|ngày mai|mai|hôm nay|mốt|ngày kia|thứ\\s*(?:hai|ba|tư|năm|sáu|bảy|[2-7])|chủ nhật|cn|tuần sau|cuối tuần|cuoi tuan|tháng sau|chiều|sáng|tối|trưa|lúc|trước|deadline|gửi sếp|gửi cho sếp|gửi sếp trước|phải nộp|phải xong|phải|cần xong|cần|báo cáo quan trọng|giờ)\\b",
+            "\\b(hãy|giúp( mình)?|tạo( giúp)?|lập|đặt|nhắc|tôi|mình|mua|đặt|hoàn thành|xong|đã xong|đang làm|gấp|khẩn|ưu tiên cao|thấp|bình thường|ngày mai|mai|hôm nay|mốt|ngày kia|thứ\\s*(?:hai|ba|tư|năm|sáu|bảy|[2-7])|chủ nhật|cn|tuần sau|cuối tuần|cuoi tuan|tháng sau|cuối tháng|chiều|sáng|tối|trưa|lúc|trước|vào|deadline|gửi sếp|gửi cho sếp|gửi sếp trước|phải nộp|phải xong|phải|cần xong|cần|báo cáo quan trọng|giờ)\\b",
             Pattern.CASE_INSENSITIVE);
     private static final Pattern TITLE_TIME_PATTERN = Pattern.compile("\\b(\\d{1,2})(?:h| giờ|:)(\\d{1,2})?\\b",
             Pattern.CASE_INSENSITIVE);
     private static final Pattern TITLE_DATE_PATTERN = Pattern.compile(
-            "\\b(ngày\\s*\\d{1,2}\\s*(?:tháng|thang)\\s*\\d{1,2}|\\d{1,2}\\s*(?:tháng|thang)\\s*\\d{1,2}|ngày\\s*\\d{1,2})\\b",
+            "\\b(?:ngày\\s*)?(\\d{1,2})\\s*(?:tháng|thang)\\s*(\\d{1,2})(?:\\s*(?:năm|nam)\\s*(\\d{2,4}))?|(\\d{1,2})[\\/\\.-](\\d{1,2})(?:[\\/\\.-](\\d{2,4}))?|cuối\\s+tháng(?:\\s+này)?|tháng\\s+sau|tuần\\s+sau|cuối\\s+tuần(?:\\s+này)?\\b",
             Pattern.CASE_INSENSITIVE);
 
     private static final Pattern STATUS_COMPLETED_PATTERN = Pattern
@@ -159,17 +160,31 @@ public class RuleBasedNlpParser implements NlpParser {
     }
 
     private LocalDate parseRelativeDate(String text) {
-        if (Pattern.compile("\\b(nay|hôm nay|hom nay|hômnay)\\b", Pattern.CASE_INSENSITIVE).matcher(text).find())
+        if (Pattern.compile("\\b(nay|hôm nay|hom nay|hômnay|chiều nay|tối nay|sáng nay|trưa nay|đêm nay)\\b",
+                Pattern.CASE_INSENSITIVE).matcher(text).find())
             return LocalDate.now();
 
         if (Pattern.compile("\\b(ngày mai|mai)\\b", Pattern.CASE_INSENSITIVE).matcher(text).find())
             return LocalDate.now().plusDays(1);
+
+        if (Pattern.compile("\\b(hôm kia)\\b", Pattern.CASE_INSENSITIVE).matcher(text).find())
+            return LocalDate.now().minusDays(2);
 
         if (Pattern.compile("\\b(mốt|ngày kia)\\b", Pattern.CASE_INSENSITIVE).matcher(text).find())
             return LocalDate.now().plusDays(2);
 
         if (Pattern.compile("\\b(hôm qua)\\b", Pattern.CASE_INSENSITIVE).matcher(text).find())
             return LocalDate.now().minusDays(1);
+
+        if (Pattern.compile("\\b(cuối\\s+tháng\\s+này)\\b", Pattern.CASE_INSENSITIVE).matcher(text).find()) {
+            LocalDate now = LocalDate.now();
+            return now.withDayOfMonth(now.lengthOfMonth());
+        }
+
+        if (Pattern.compile("\\b(cuối\\s+tháng)\\b", Pattern.CASE_INSENSITIVE).matcher(text).find()) {
+            LocalDate now = LocalDate.now();
+            return now.withDayOfMonth(now.lengthOfMonth());
+        }
 
         return null;
     }
@@ -307,7 +322,7 @@ public class RuleBasedNlpParser implements NlpParser {
 
     private String buildTitle(String text) {
         // Remove time/date/priority/status keywords first
-        String cleaned = TITLE_REMOVE_PATTERN.matcher(text).replaceAll("")
+        String cleaned = removeVietnameseWords(text, TITLE_REMOVE_PATTERN)
                 .replaceAll("\\s+", " ")
                 .trim();
 
@@ -328,9 +343,10 @@ public class RuleBasedNlpParser implements NlpParser {
                 .trim();
 
         // Clean up leading/trailing filler words
-        cleaned = cleaned.replaceAll("^(cho|và|thì|là|ở|tại|vào|lúc|để|với|của|những|các|có|việc|phải|đi|ra|ngoài)\\s+",
+        cleaned = cleaned.replaceAll(
+                "^(cho|và|thì|là|ở|tại|vào|lúc|để|với|của|những|các|có|việc|phải|đi|ra|ngoài|có|buổi|buổi)\\s+",
                 "");
-        cleaned = cleaned.replaceAll("\\s+(cho|và|thì|là|ở|tại|vào|lúc|để|với|của|những|các)$", "");
+        cleaned = cleaned.replaceAll("\\s+(cho|và|thì|là|ở|tại|vào|lúc|để|với|của|những|các|có|buổi|buổi)$", "");
         cleaned = cleaned.trim();
 
         // Take first meaningful segment (before comma or period)
@@ -339,17 +355,36 @@ public class RuleBasedNlpParser implements NlpParser {
         // Validate candidate: should be meaningful (3+ chars) and not just time/date
         // words
         if (candidate.length() >= 3 && !isOnlyTimeDateWords(candidate)) {
-            return candidate;
+            return capitalizeFirstLetter(candidate);
         }
 
         // Fallback: try different extraction approach
         String fallback = extractActionPhrase(text);
         if (!fallback.isEmpty() && !isOnlyTimeDateWords(fallback)) {
-            return fallback;
+            return capitalizeFirstLetter(fallback);
         }
 
         // Final fallback
-        return fallback.isEmpty() ? "Nhiệm vụ AI" : fallback;
+        return fallback.isEmpty() ? "Nhiệm vụ AI" : capitalizeFirstLetter(fallback);
+    }
+
+    private String removeVietnameseWords(String text, Pattern pattern) {
+        // Normalize spacing first
+        String normalized = text.replaceAll("\\s+", " ").trim();
+
+        // Use the original pattern - it should work with Vietnamese characters
+        // because Java's \b supports Unicode word boundaries by default
+        String result = pattern.matcher(normalized).replaceAll("");
+
+        // Clean up extra spaces
+        return result.replaceAll("\\s+", " ").trim();
+    }
+
+    private String capitalizeFirstLetter(String text) {
+        if (text == null || text.isEmpty())
+            return text;
+
+        return text.substring(0, 1).toUpperCase() + text.substring(1);
     }
 
     private boolean isOnlyTimeDateWords(String text) {

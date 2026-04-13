@@ -16,7 +16,7 @@ export const TodoListPage = () => {
 
   const {
     todoList,
-    fetchedTodos,
+    originalList,
     isLoading,
     viewTask,
     currentPriorityFilter,
@@ -50,7 +50,7 @@ export const TodoListPage = () => {
 
         <ContentContainer ref={contentRef}>
           <ContentContainerHeader
-            hasCurrentTasks={fetchedTodos.length > 0}
+            hasCurrentTasks={originalList.length > 0}
             currentPriority={currentPriorityFilter}
             currentDueDate={currentDueDateFilter}
             onFilterPriority={handleFilterPriority}

@@ -771,35 +771,779 @@
 - sentence: `In tài liệu trước 16h`
 - labels: B-TITLE I-TITLE I-TITLE O B-TIME
 
-- sentence: `Nay tôi về nhà lúc tối`
-- labels: O O B-TITLE I-TITLE O B-TIME
+- sentence: `Nay tôi về nhà lúc 18h tối`
+- labels: O O B-TITLE I-TITLE O B-TIME B-TIME
 
-- sentence: `Nay tôi phải đi họp lúc 3h`
+- sentence: `Nay tôi phải đi họp lúc 3h chiều`
+- labels: O O O B-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Nay tôi có việc phải hoàn thành trước 17h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi sẽ gọi cho khách hàng lúc 16h30`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Nay tôi cần gửi báo cáo vào 14h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi có lịch hẹn bác sĩ lúc 9h30`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Nay tôi phải tập gym vào 19h`
 - labels: O O O B-TITLE I-TITLE O B-TIME
 
-- sentence: `Nay tôi có việc phải hoàn thành`
-- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE
+- sentence: `Nay tôi sẽ nộp hồ sơ lúc 15h15`
+- labels: O O O B-TITLE I-TITLE I-TITLE O O
 
-- sentence: `Nay tôi sẽ gọi cho khách hàng`
-- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE
+- sentence: `Nay tôi cần chuẩn bị bài thuyết trình lúc 11h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
 
-- sentence: `Nay tôi cần gửi báo cáo`
-- labels: O O O B-TITLE I-TITLE I-TITLE
+- sentence: `Nay tôi muốn dọn nhà lúc 20h`
+- labels: O O O B-TITLE I-TITLE O B-TIME
 
-- sentence: `Nay tôi có lịch hẹn bác sĩ`
-- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE
+- sentence: `Nay phải gọi cho khách lúc 10h sáng`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
 
-- sentence: `Nay tôi phải tập gym`
-- labels: O O O B-TITLE I-TITLE
+- sentence: `Nay tôi cần đi siêu thị lúc 16h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
 
-- sentence: `Nay tôi sẽ nộp hồ sơ`
-- labels: O O O B-TITLE I-TITLE I-TITLE
+- sentence: `Hôm nay có họp trực tuyến lúc 13h30`
+- labels: O O O B-TITLE I-TITLE I-TITLE O O
 
-- sentence: `Nay tôi cần chuẩn bị bài thuyết trình`
-- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE
+- sentence: `Nay phải làm bài tập thêm vào buổi tối lúc 21h`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE O O B-TIME O B-TIME
 
-- sentence: `Nay tôi muốn dọn nhà`
-- labels: O O O B-TITLE I-TITLE
+- sentence: `Nay về quê xong trước 8h tối`
+- labels: O B-TITLE I-TITLE O O B-TIME B-TIME
+
+- sentence: `Nay mình tranh thủ sửa máy tính lúc 11h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi nhận đơn hàng lúc 14 giờ`
+- labels: O O B-TITLE I-TITLE I-TITLE O O O
+
+- sentence: `Nay gửi mail yêu cầu sếp lúc 17h`
+- labels: O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay chiều tôi làm việc ở văn phòng lúc 15h30`
+- labels: O B-TIME O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Nay tối tôi học tiếng Anh lúc 20h30`
+- labels: O B-TIME O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Nay sáng tôi họp online lúc 8h`
+- labels: O B-TIME O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay trưa tôi ăn nhẹ lúc 12h30`
+- labels: O B-TIME O B-TITLE I-TITLE O O
+
+- sentence: `Nay chiều tôi đến thư viện lúc 16h`
+- labels: O B-TIME O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tối tôi gọi điện cho bố lúc 21h`
+- labels: O B-TIME O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay mình học thêm lúc 18h30`
+- labels: O O B-TITLE I-TITLE O O
+
+- sentence: `Nay tôi phỏng vấn lúc 10h`
+- labels: O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi gặp nhà cung cấp lúc 11h`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay mình làm báo cáo tài chính lúc 14h`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi trả lời khách hàng lúc 15h`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi đặt vé xem phim lúc 19h`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi đến ngân hàng lúc 9h`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi sửa máy tính lúc 16h`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi học đàn lúc 17h`
+- labels: O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi làm slide lúc 13h`
+- labels: O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi gọi điện cho bố lúc 18h`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi lên kế hoạch dự án lúc 14h30`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Nay tôi tập yoga lúc 7h`
+- labels: O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi có buổi họp online lúc 10h30`
+- labels: O O O O B-TITLE I-TITLE O O
+
+- sentence: `Nay tôi đi thị trường lúc 8h`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi trả tiền hóa đơn lúc 11h`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi dọn phòng lúc 20h`
+- labels: O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi học tiếng Nhật lúc 19h`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi gửi báo cáo lúc 16h`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi uống thuốc lúc 21h`
+- labels: O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi họp đội lúc 15h`
+- labels: O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi soạn email lúc 12h`
+- labels: O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi viết nhật ký lúc 22h`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi làm bài kiểm tra lúc 17h`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi đi mua sắm lúc 10h`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi liên hệ đối tác lúc 14h`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi đã nói sẽ nộp báo cáo trước 18h`
+- labels: O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia họp với khách lúc 2h chiều`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Tôi đã ăn tối hôm kia lúc 19h30`
+- labels: O O B-TITLE B-TIME O O O O
+
+- sentence: `Hôm kia tôi phải đi sân bay lúc 6h sáng`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Cuộc hẹn hôm kia vào buổi trưa lúc 12h`
+- labels: B-TITLE I-TITLE O O O O B-TIME O B-TIME
+
+- sentence: `Hôm kia tôi đi khám bệnh lúc 10h30`
+- labels: O O O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Hôm kia buổi chiều tôi sửa ô tô lúc 16h`
+- labels: O O O B-TIME O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Tôi đã nộp hồ sơ hôm kia lúc 14h15`
+- labels: O O B-TITLE I-TITLE I-TITLE O O O O
+
+- sentence: `Hôm kia tôi qua nhà ba mẹ lúc 18h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuộc họp hôm kia diễn ra lúc 9h15`
+- labels: B-TITLE I-TITLE O O O O O O
+
+- sentence: `Hôm kia mình đi chợ lúc 17h30 chiều`
+- labels: O O O B-TITLE I-TITLE O O B-TIME
+
+- sentence: `Hôm kia tôi phải sửa máy lạnh lúc 15h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi nhận bưu phẩm lúc 11h sáng`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Hôm kia tối tôi xem phim lúc 20h`
+- labels: O O B-TIME O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi làm bài tập về nhà lúc 19h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi phải làm bài tập lúc 8h sáng`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Hôm kia mình kể chuyện với bạn lúc 19h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi dạy học online lúc 14h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia sáng tôi đi chạy bộ lúc 6h30`
+- labels: O O B-TIME O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Hôm kia tôi học tiếng Anh lúc 19h tối`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Hôm kia tôi gọi cho bạn vào lúc 8h tối`
+- labels: O O O B-TITLE I-TITLE I-TITLE O O B-TIME B-TIME
+
+- sentence: `Hôm kia tôi phải nộp thuế lúc 16h30`
+- labels: O O O O B-TITLE I-TITLE O O
+
+- sentence: `Hôm kia tôi làm việc ở văn phòng lúc 9h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia mình gặp bạn uống cà phê lúc 16h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi tìm hiểu hợp đồng lúc 10h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi trả lời email lúc 11h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi đi họp online lúc 14h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi sửa file báo cáo lúc 15h30`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Hôm kia tôi học online lúc 19h`
+- labels: O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi tập gym lúc 18h`
+- labels: O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi nấu cơm lúc 17h`
+- labels: O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi đi đón con lúc 16h30`
+- labels: O O O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Hôm kia tôi kiểm tra kho hàng lúc 13h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi gọi điện cho sếp lúc 8h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi đóng gói hàng lúc 10h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi xin nghỉ phép lúc 9h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi chạy bộ lúc 6h30`
+- labels: O O O B-TITLE I-TITLE O O
+
+- sentence: `Hôm kia tôi học thêm lúc 20h`
+- labels: O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi đi chợ lúc 8h30`
+- labels: O O O B-TITLE I-TITLE O O
+
+- sentence: `Hôm kia tôi viết báo cáo lúc 14h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi sắp xếp tài liệu lúc 11h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi họp nhóm lúc 15h`
+- labels: O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi gặp đối tác lúc 10h30`
+- labels: O O O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Hôm kia tôi đi du lịch lúc 7h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi chuẩn bị bài thuyết trình lúc 13h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi đọc sách lúc 21h`
+- labels: O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi trả hóa đơn lúc 12h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi khám sức khỏe lúc 8h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi dọn nhà lúc 17h30`
+- labels: O O O B-TITLE I-TITLE O O
+
+- sentence: `Hôm kia tôi đến thăm bà lúc 10h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi làm bài kiểm tra lúc 9h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi giao hồ sơ lúc 14h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia mình đi học thêm lúc 18h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi họp trực tuyến lúc 16h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi sửa xe lúc 13h30`
+- labels: O O O B-TITLE I-TITLE O O
+
+- sentence: `Hôm kia tôi nhận cuộc gọi lúc 11h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi đi tập gym lúc 7h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi nói chuyện với đối tác lúc 15h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm kia tôi đặt vé xem phim lúc 20h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm sau tôi phải họp lúc 8h sáng`
+- labels: O O O O B-TITLE O B-TIME B-TIME
+
+- sentence: `Hôm sau mình đi tiêm phòng lúc 10h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Việc giao hàng sẽ diễn ra hôm sau vào chiều lúc 15h`
+- labels: O B-TITLE I-TITLE O O O O O O B-TIME O B-TIME
+
+- sentence: `Hôm sau tôi cần họp với đội lúc 16h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Ngày mai thì không, hôm sau tôi đi khám bệnh lúc 11h`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm sau buổi trưa tôi ăn trưa với khách lúc 12h30`
+- labels: O O O B-TIME O B-TITLE I-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Hôm sau sáng tôi phải đi họp lúc 9h`
+- labels: O O B-TIME O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm sau tôi gửi email báo cáo lúc 10h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm sau mình dọn dẹp phòng vào tối lúc 19h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME O B-TIME
+
+- sentence: `Hôm sau tôi tập gym lúc 7h30`
+- labels: O O O B-TITLE I-TITLE O O
+
+- sentence: `Hôm sau tôi học nhóm lúc 18h`
+- labels: O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm sau mình nộp hồ sơ lúc 15h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm sau gặp bác sĩ lúc 15h30`
+- labels: O O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Hôm sau tôi đi siêu thị lúc 16h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm sau tôi phải chơi banh đũa lúc 3h chiều`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Hôm sau tôi cần giao hàng lúc 7h sáng`
+- labels: O O O O B-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Hôm sau mình làm bài thuyết trình lúc 14h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm sau buổi chiều tôi dạy học lúc 15h`
+- labels: O O O B-TIME O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm sau tối tôi xem phim với gia đình lúc 20h`
+- labels: O O B-TIME O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm sau tôi gọi cho đối tác lúc 8h tối`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Hôm sau mình học thêm tiếng Nhật lúc 16h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm sau tôi làm báo cáo lúc 13h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm sau tôi gặp khách hàng lúc 10h30`
+- labels: O O O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Hôm sau tôi đi lấy hàng lúc 9h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm sau tôi tập yoga lúc 18h`
+- labels: O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm sau mình đi xem nhà lúc 14h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm sau tôi chuẩn bị bài giảng lúc 11h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm sau tối tôi ăn cùng gia đình lúc 19h`
+- labels: O O B-TIME O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm sau tôi nộp đơn xin việc lúc 9h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm sau tôi đọc sách lúc 20h`
+- labels: O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm qua tôi đã họp với sếp lúc 9h30`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Hôm qua tôi ăn trưa lúc 12h`
+- labels: O O O B-TITLE B-TIME O B-TIME
+
+- sentence: `Hôm qua tôi phải đi sân bay lúc 6h sáng`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Hôm qua buổi chiều tôi sửa ô tô lúc 15h`
+- labels: O O O B-TIME O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm qua tôi nhận bưu phẩm lúc 11h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm qua tôi xem phim với bạn lúc 20h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm qua tôi có lịch hẹn bác sĩ lúc 14h30`
+- labels: O O O O B-TITLE I-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Hôm qua tối tôi ăn tối lúc 19h`
+- labels: O O B-TIME O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm qua tôi phải làm báo cáo lúc 22h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm qua mình dạy học online lúc 18h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm qua tôi đi chợ lúc 16h30`
+- labels: O O O B-TITLE I-TITLE O O
+
+- sentence: `Hôm qua tôi tập gym lúc 7h30`
+- labels: O O O B-TITLE I-TITLE O O
+
+- sentence: `Hôm qua tôi đi họp lúc 8h30 sáng`
+- labels: O O O B-TITLE I-TITLE O O B-TIME
+
+- sentence: `Hôm qua tôi ghi chú gửi mail lúc 17h`
+- labels: O O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm qua tôi họp với nhóm lúc 13h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm qua tôi làm việc đến 19h`
+- labels: O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm qua tôi dọn nhà lúc 17h`
+- labels: O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm qua tôi chuẩn bị slide lúc 14h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm qua tôi kiểm tra email lúc 11h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Hôm qua tôi học tiếng Anh lúc 18h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mai tôi phải nộp báo cáo lúc 10h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mai chiều tôi họp với đối tác lúc 15h`
+- labels: O B-TIME O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mai sáng mình đi tập lúc 6h30`
+- labels: O B-TIME O B-TITLE I-TITLE O O
+
+- sentence: `Mai tối tôi ăn tối cùng gia đình lúc 19h`
+- labels: O B-TIME O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mai tôi phải đi siêu thị lúc 11h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mai tôi gặp bác sĩ lúc 14h30`
+- labels: O O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Mai sáng tôi làm bài kiểm tra lúc 8h`
+- labels: O B-TIME O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mai tôi gửi email báo cáo lúc 10h30`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Mai chiều tôi học thêm lúc 17h`
+- labels: O B-TIME O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Mai tối tôi xem phim lúc 20h`
+- labels: O B-TIME O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Mai buổi trưa tôi ăn trưa với khách lúc 12h30`
+- labels: O O B-TIME O B-TITLE I-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Mai trưa tôi đi họp lúc 13h`
+- labels: O B-TIME O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Mai tối tôi tập gym lúc 18h30`
+- labels: O B-TIME O B-TITLE I-TITLE O O
+
+- sentence: `Mai sáng tôi làm báo cáo lúc 9h`
+- labels: O B-TIME O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mai tôi gặp nhóm lúc 16h`
+- labels: O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Mai tôi kiểm tra nhật ký lúc 9h`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mai tôi họp với phòng lúc 14h30`
+- labels: O O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Mai tôi đi xét nghiệm lúc 10h`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mai tôi soạn thảo hợp đồng lúc 16h`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mai tối tôi xem phim lúc 20h30`
+- labels: O B-TIME O B-TITLE I-TITLE O O
+
+- sentence: `Mốt tôi đi họp lúc 8h sáng`
+- labels: O O B-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Mốt tôi có cuộc hẹn bác sĩ lúc 10h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mốt chiều tôi đi siêu thị lúc 17h`
+- labels: O B-TIME O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mốt tối tôi học tiếng Anh lúc 19h30`
+- labels: O B-TIME O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Mốt tôi phải nộp hồ sơ lúc 15h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mốt sáng tôi đi chạy bộ lúc 6h30`
+- labels: O B-TIME O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Mốt buổi trưa tôi ăn trưa với khách lúc 12h30`
+- labels: O O B-TIME O B-TITLE I-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Mốt tôi làm bài tập lúc 14h`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mốt tôi sửa chiếc máy tính lúc 16h`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mốt tối tôi xem phim lúc 20h`
+- labels: O B-TIME O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Mốt tôi gửi email cho đối tác lúc 11h`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mốt tôi có buổi học thêm lúc 17h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mốt tôi phải đi tiêm phòng lúc 9h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mốt chiều tôi gặp nhóm lúc 15h`
+- labels: O B-TIME O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Mốt tôi đi làm báo cáo lúc 13h`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mốt tôi thăm mẹ lúc 15h`
+- labels: O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Mốt tôi kiểm tra tài liệu lúc 14h30`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Mốt tôi học nhảy lúc 19h`
+- labels: O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Mốt tối tôi gọi bạn lúc 21h`
+- labels: O B-TIME O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi đi chợ lúc 9h`
+- labels: O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này mình họp nhóm lúc 14h`
+- labels: O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi đi siêu thị lúc 10h30`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Cuối tuần này tối tôi xem phim lúc 20h`
+- labels: O O O B-TIME O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi có lịch hẹn bác sĩ lúc 15h`
+- labels: O O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này mình đi bơi lúc 8h sáng`
+- labels: O O O O B-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Cuối tuần này tôi làm việc ở văn phòng lúc 13h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi học Anh lúc 17h`
+- labels: O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi đi khám nha khoa lúc 16h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi đã hẹn gặp bạn lúc 18h`
+- labels: O O O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này mình đi làm tình nguyện lúc 9h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi cần dọn nhà lúc 14h`
+- labels: O O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi họp trực tuyến lúc 11h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này mình tập yoga lúc 7h30`
+- labels: O O O O B-TITLE I-TITLE O O
+
+- sentence: `Cuối tuần này tôi nộp hồ sơ lúc 16h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi đi mua sắm lúc 15h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi đi mua sắm lúc 14h chiều`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Cuối tuần này tôi họp nhóm lúc 10h`
+- labels: O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi làm bánh lúc 13h`
+- labels: O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi gặp bác sĩ lúc 10h30`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Cuối tuần này tôi làm việc sáng lúc 8h`
+- labels: O O O O B-TITLE I-TITLE B-TIME O B-TIME
+
+- sentence: `Cuối tuần này tôi đi cắm trại lúc 7h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi họp gia đình lúc 12h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi sửa máy lúc 15h`
+- labels: O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi viết nhật ký lúc 20h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi sửa chữa xe lúc 9h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi đi thăm bạn lúc 10h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi học thêm lúc 14h`
+- labels: O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi có buổi cà phê lúc 16h`
+- labels: O O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi đến bảo tàng lúc 11h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi đi chợ hoa lúc 8h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi làm việc nhóm lúc 13h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi tập gym lúc 18h`
+- labels: O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi gọi mẹ lúc 19h`
+- labels: O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi xem triển lãm lúc 15h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi phải nộp báo cáo lúc 15h`
+- labels: O O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi họp với sếp lúc 10h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này mình đi siêu thị lúc 11h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi làm việc đến 18h`
+- labels: O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi đi khám bệnh lúc 16h30`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Cuối tháng này mình nộp hồ sơ lúc 14h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi gửi email lúc 10h30`
+- labels: O O O O B-TITLE I-TITLE O O
+
+- sentence: `Cuối tháng này tôi cần nộp hóa đơn vào 10h`
+- labels: O O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi đi gặp kế toán lúc 13h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi làm bài tập lúc 20h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi kiểm tra báo cáo lúc 9h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi gặp khách hàng lúc 13h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi đi giao hàng lúc 17h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này mình làm slide lúc 15h`
+- labels: O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi dọn dẹp nhà lúc 14h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi nộp thuế lúc 16h30`
+- labels: O O O O B-TITLE I-TITLE O O
+
+- sentence: `Cuối tháng này tôi kiểm tra dự án lúc 11h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi gặp sếp lúc 10h30`
+- labels: O O O O B-TITLE I-TITLE O O
+
+- sentence: `Cuối tháng này tôi vào công ty lúc 8h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi tổng kết công việc lúc 16h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi hoàn thành báo cáo lúc 17h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi họp kiểm tra lúc 9h30`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Cuối tháng này tôi sửa hợp đồng lúc 14h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi kiểm tra kho lúc 11h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi tổng kết lúc 16h30`
+- labels: O O O O B-TITLE I-TITLE O O
 
 - sentence: `Nhắc nhở tôi tập gym mỗi sáng`
 - labels: O O O B-TITLE I-TITLE B-DATE B-TIME
@@ -3593,4 +4337,1405 @@
 
 - sentence: `Đi du lịch ngắn ngày vào thứ 7`
 - labels: B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-DATE I-DATE
+
+- sentence: `Thứ 7 tuần sau mình có buổi leo núi nhân tạo lúc 10h ngày 20 tháng 4 năm 2026`
+- labels: O O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME O O O O O O
+
+- sentence: `Ngày 15 tháng 5 năm 2026 tôi có buổi tập gym lúc 6h sáng`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Chủ nhật này mình có trận đá bóng lúc 4h chiều`
+- labels: O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Thứ 4 tuần này tôi có buổi bơi lội lúc 7h tối`
+- labels: O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Sáng mai mình có buổi chạy bộ công viên lúc 5h30`
+- labels: B-TIME O O O O B-TITLE I-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Chiều nay tôi có buổi tập yoga lúc 5h`
+- labels: B-TIME O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Ngày 10 tháng 6 năm 2026 mình có giải chạy marathon lúc 6h sáng`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Tối thứ 6 tôi có buổi tập võ lúc 8h`
+- labels: B-TIME O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Ngày 20 tháng 5 năm 2029, tôi có bài thi cuối kỳ lúc 1h chiều`
+- labels: O O O O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Sáng mai tôi có bài kiểm tra toán lúc 8h`
+- labels: B-TIME O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Thứ 2 tuần sau mình có thi vấn đáp môn triết lúc 2h chiều`
+- labels: O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Ngày 5 tháng 7 năm 2026 tôi có bài thi tiếng Anh lúc 9h sáng`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Chiều nay tôi có bài thuyết trình lúc 3h`
+- labels: B-TIME O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Thứ 6 này mình có nộp báo cáo thực tập lúc 5h chiều`
+- labels: O O O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Ngày 15 tháng 8 năm 2026 tôi có thi tốt nghiệp lúc 7h30 sáng`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE O O B-TIME
+
+- sentence: `Tuần sau tôi có bài tập lớn môn lập trình lúc 10h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này mình có bữa tiệc sinh nhật gia đình lúc 6h tối`
+- labels: O O O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Sáng chủ nhật tôi có buổi họp mặt gia đình lúc 10h`
+- labels: B-TIME O O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Ngày 1 tháng 6 năm 2026 mình có đưa con đi chơi công viên lúc 8h sáng`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Chiều nay tôi có đón con tan học lúc 4h30`
+- labels: B-TIME O O O B-TITLE I-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Tối mai mình có ăn tối với bố mẹ lúc 7h`
+- labels: B-TIME O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Ngày 10 tháng 10 năm 2026 tôi có đám cưới họ hàng lúc 11h sáng`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `ngày 20 tháng 5 năm 2029, tôi tới bệnh viện lúc 9h sáng`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `ngày 15 tháng 3 năm 2029, tôi đi mua sắm lúc 2h chiều`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `ngày 1 tháng 1 năm 2030, tôi tham gia hội nghị lúc 8h30 sáng`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE O O B-TIME
+
+- sentence: `ngày 25 tháng 12 năm 2028, tôi gặp gỡ bạn bè lúc 7h tối`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `ngày 20 tháng 5 năm 2029, tôi tới bệnh viện`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE
+
+- sentence: `ngày 15 tháng 3 năm 2029, tôi đi mua sắm`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE
+
+- sentence: `tôi sinh nhật ngày 25/4 lúc 8h tối`
+- labels: O B-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi chơi ngày 20/4 lúc 3h chiều`
+- labels: O B-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi có kỳ thi ngày 15-8 lúc 9h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi tốt nghiệp ngày 13/5/2025 lúc 14h`
+- labels: O B-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi kết hôn ngày 21-7-2027 lúc 16h`
+- labels: O B-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi có cuộc họp ngày 20/4 lúc 10:00`
+- labels: O B-TITLE I-TITLE I-TITLE O B-DATE I-DATE I-DATE I-DATE B-TIME I-TIME I-TIME
+
+- sentence: `tôi đi khám bệnh ngày/15/9/2025 lúc 8h30`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O O O O
+
+- sentence: `tôi mua nhà ngày-15-8 lúc 11h`
+- labels: O B-TITLE I-TITLE O O O O O O B-TIME
+
+- sentence: `tôi nghỉ hưu ngày-25-10-2025 lúc 9h sáng`
+- labels: O B-TITLE I-TITLE O O O O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi công tác ngày 20 tháng 5 lúc 2h chiều`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi tham gia sự kiện ngày 20 tháng 5 năm 2029 lúc 10h`
+- labels: O B-TITLE I-TITLE I-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi bắt đầu công việc ngày 1 tháng 6 năm 2025 lúc 8h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE I-TITLE O O O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi ăn tối ngày 25/4 lúc 7h tối`
+- labels: O B-TITLE I-TITLE B-TIME O O O O O B-TIME O
+
+- sentence: `tôi học tiếng Anh ngày 20/4 lúc 3h chiều`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi nộp báo cáo ngày 15-8 lúc 9h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi tập gym ngày 13/5/2025 lúc 14h`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi gặp khách hàng ngày 21-7-2027 lúc 16h`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi tham dự hội thảo ngày 20/4 lúc 10:00`
+- labels: O B-TITLE I-TITLE I-TITLE I-TITLE O B-DATE I-DATE I-DATE I-DATE B-TIME I-TIME I-TIME
+
+- sentence: `tôi đi siêu thị ngày/15/9/2025 lúc 8h30`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O O O O
+
+- sentence: `tôi sửa nhà ngày-15-8 lúc 11h`
+- labels: O B-TITLE I-TITLE O O O O O O B-TIME
+
+- sentence: `tôi về quê ngày-25-10-2025 lúc 9h sáng`
+- labels: O B-TITLE I-TITLE O O O O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi họp ngày 20 tháng 5 lúc 2h chiều`
+- labels: O B-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi tham gia khóa học ngày 20 tháng 5 năm 2029 lúc 10h`
+- labels: O B-TITLE I-TITLE I-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi bắt đầu dự án ngày 1 tháng 6 năm 2025 lúc 8h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE I-TITLE O O O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi cà phê ngày 25/4 lúc 7h tối`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi học piano ngày 20/4 lúc 3h chiều`
+- labels: O B-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi nộp đơn ngày 15-8 lúc 9h sáng`
+- labels: O B-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi bơi ngày 13/5/2025 lúc 14h`
+- labels: O B-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi gặp đối tác ngày 21-7-2027 lúc 16h`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi tham dự webinar ngày 20/4 lúc 10:00`
+- labels: O B-TITLE I-TITLE I-TITLE O B-DATE I-DATE I-DATE I-DATE B-TIME I-TIME I-TIME
+
+- sentence: `tôi đi chợ ngày/15/9/2025 lúc 8h30`
+- labels: O B-TITLE I-TITLE O O O O O O O O O
+
+- sentence: `tôi sơn nhà ngày-15-8 lúc 11h`
+- labels: O B-TITLE I-TITLE O O O O O O B-TIME
+
+- sentence: `tôi đi lễ ngày-25-10-2025 lúc 9h sáng`
+- labels: O B-TITLE I-TITLE O O O O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi phỏng vấn ngày 20 tháng 5 lúc 2h chiều`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi tham gia workshop ngày 20 tháng 5 năm 2029 lúc 10h`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi bắt đầu kinh doanh ngày 1 tháng 6 năm 2025 lúc 8h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE I-TITLE O O O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi xem phim ngày 25/4 lúc 7h tối`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi học vẽ ngày 20/4 lúc 3h chiều`
+- labels: O B-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi nộp thuế ngày 15-8 lúc 9h sáng`
+- labels: O B-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi câu cá ngày 13/5/2025 lúc 14h`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi gặp nhà cung cấp ngày 21-7-2027 lúc 16h`
+- labels: O B-TITLE I-TITLE I-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi tham dự seminar ngày 20/4 lúc 10:00`
+- labels: O B-TITLE I-TITLE I-TITLE O B-DATE I-DATE I-DATE I-DATE B-TIME I-TIME I-TIME
+
+- sentence: `tôi đi mua đồ ngày/15/9/2025 lúc 8h30`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O O O O
+
+- sentence: `tôi dọn nhà ngày-15-8 lúc 11h`
+- labels: O B-TITLE I-TITLE O O O O O O B-TIME
+
+- sentence: `tôi đi chùa ngày-25-10-2025 lúc 9h sáng`
+- labels: O B-TITLE I-TITLE O O O O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi kiểm tra ngày 20 tháng 5 lúc 2h chiều`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi tham gia training ngày 20 tháng 5 năm 2029 lúc 10h`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi bắt đầu startup ngày 1 tháng 6 năm 2025 lúc 8h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi dạo phố ngày 25/4 lúc 7h tối`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi học nấu ăn ngày 20/4 lúc 3h chiều`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi chơi thứ 6 lúc 3h chiều`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi gặp bạn chủ nhật lúc 10h sáng`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi học bài ngày mai lúc 8h sáng`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi dậy sớm sáng mai lúc 6h`
+- labels: O B-TITLE I-TITLE B-TIME O O B-TIME
+
+- sentence: `tôi ngủ sớm tối nay lúc 9h`
+- labels: O B-TITLE I-TITLE B-TIME O O B-TIME
+
+- sentence: `tôi làm việc hôm nay lúc 2h chiều`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi nghỉ ngơi hôm qua lúc 4h chiều`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi đi siêu thị hôm kia lúc 10h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi đi picnic cuối tuần lúc 9h`
+- labels: O B-TITLE I-TITLE O O O B-TIME
+
+- sentence: `cuối tuần này tôi đi picnic lúc 9h`
+- labels: O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `tôi tập thể dục cuối tuần này lúc 7h tối`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O B-TIME B-TIME
+
+- sentence: `tôi làm việc nhà tuần này lúc 3h chiều`
+- labels: O B-TITLE I-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi đi du lịch tháng sau lúc 8h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi dậy lúc 9h sáng ngày mai`
+- labels: O B-TITLE O B-TIME B-TIME O O
+
+- sentence: `tôi ăn trưa lúc 2h chiều hôm nay`
+- labels: O B-TITLE B-TIME O B-TIME B-TIME O O
+
+- sentence: `tôi đi ngủ lúc 10h tối nay`
+- labels: O B-TITLE I-TITLE O B-TIME B-TIME O
+
+- sentence: `tôi làm việc lúc 14h ngày kia`
+- labels: O B-TITLE I-TITLE O B-TIME O O
+
+- sentence: `tôi tập gym lúc 4h chiều cuối tuần`
+- labels: O B-TITLE I-TITLE O B-TIME B-TIME O O
+
+- sentence: `tôi uống cà phê lúc 11h sáng mai`
+- labels: O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME O
+
+- sentence: `tôi họp lúc 2h30 chiều ngày 25/4`
+- labels: O B-TITLE O O B-TIME O O O O
+
+- sentence: `tôi ăn tối lúc 4h30 tối nay`
+- labels: O B-TITLE B-TIME O O O O
+
+- sentence: `tôi nghỉ trưa lúc 12h trưa hôm nay`
+- labels: O B-TITLE B-TIME O B-TIME O O O
+
+- sentence: `tôi đi chơi thứ 7 lúc 2h chiều`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi gặp gia đình chủ nhật lúc 11h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi làm việc cuối năm lúc 10h sáng`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `nhắc tôi nộp báo cáo cuối năm`
+- labels: O O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `tôi đi chơi vào ngày mai lúc 4h chiều`
+- labels: O B-TITLE I-TITLE O O O O B-TIME B-TIME
+
+- sentence: `ngày mai, tôi đi siêu thị lúc 3h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `lúc 5h ngày kia, tôi tập thể dục`
+- labels: O B-TIME O O O O B-TITLE I-TITLE I-TITLE
+
+- sentence: `tôi uống thuốc trước 2h ngày 25/4`
+- labels: O B-TITLE I-TITLE O B-TIME O O O O
+
+- sentence: `tôi đóng tiền cuối tháng này lúc 10h sáng`
+- labels: O B-TITLE I-TITLE O O O O B-TIME B-TIME
+
+- sentence: `cuối tháng tôi đóng tiền nhà lúc 10h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `tôi làm việc vào sáng mai lúc 8h`
+- labels: O B-TITLE I-TITLE O B-TIME O O B-TIME
+
+- sentence: `sáng mai, tôi uống cà phê lúc 7h`
+- labels: B-TIME O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `lúc 6h tối nay, tôi xem phim`
+- labels: O B-TIME B-TIME O O O B-TITLE I-TITLE
+
+- sentence: `tôi ăn tối trước 8h ngày 20/4`
+- labels: O B-TITLE B-TIME O B-TIME O O O O
+
+- sentence: `tôi học bài vào chiều hôm nay lúc 3h`
+- labels: O B-TITLE I-TITLE O B-TIME O O O B-TIME
+
+- sentence: `chiều hôm nay, tôi đi dạo lúc 4h`
+- labels: B-TIME O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `lúc 9h sáng mai, tôi tập gym`
+- labels: O B-TIME B-TIME O O O B-TITLE I-TITLE
+
+- sentence: `tôi nấu ăn trước 12h ngày 15/5`
+- labels: O B-TITLE I-TITLE O B-TIME O O O O
+
+- sentence: `tôi đọc sách vào tối nay lúc 8h`
+- labels: O B-TITLE I-TITLE O B-TIME O O B-TIME
+
+- sentence: `tối nay, tôi nghe nhạc lúc 9h`
+- labels: B-TIME O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `lúc 7h trưa mai, tôi nghỉ ngơi`
+- labels: O B-TIME B-TIME O O O B-TITLE I-TITLE
+
+- sentence: `tôi làm việc trước 5h ngày 30/4`
+- labels: O B-TITLE I-TITLE O B-TIME O O O O
+
+- sentence: `tôi đi shopping vào sáng thứ 2 lúc 9h`
+- labels: O B-TITLE I-TITLE O B-TIME O O O B-TIME
+
+- sentence: `thứ 2, tôi đi shopping lúc 9h`
+- labels: O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `lúc 10h chủ nhật, tôi gặp bạn`
+- labels: O B-TIME O O O O B-TITLE I-TITLE
+
+- sentence: `tôi tập thể dục trước 6h ngày 25/4`
+- labels: O B-TITLE I-TITLE I-TITLE O B-TIME O O O O
+
+- sentence: `tôi ăn sáng vào buổi sáng hôm nay lúc 7h`
+- labels: O B-TITLE B-TIME O O O O O O B-TIME
+
+- sentence: `buổi sáng hôm nay, tôi ăn sáng lúc 7h`
+- labels: O B-TIME O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `lúc 2h chiều mai, tôi uống nước`
+- labels: O B-TIME B-TIME O O O B-TITLE I-TITLE
+
+- sentence: `tôi uống nước trước 3h ngày 20/4`
+- labels: O B-TITLE I-TITLE O B-TIME O O O O
+
+- sentence: `tôi làm bài tập vào tối thứ 5 lúc 8h`
+- labels: O B-TITLE I-TITLE I-TITLE O B-TIME O O O B-TIME
+
+- sentence: `thứ 5, tôi làm bài tập lúc 8h tối`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `lúc 11h sáng kia, tôi dậy`
+- labels: O B-TIME B-TIME O O O B-TITLE
+
+- sentence: `tôi dậy trước 7h ngày 15/5`
+- labels: O B-TITLE O B-TIME O O O O
+
+- sentence: `tôi xem tin tức vào buổi sáng tuần sau lúc 8h`
+- labels: O B-TITLE I-TITLE I-TITLE O O B-TIME O O O B-TIME
+
+- sentence: `buổi sáng tuần sau, tôi xem tin tức lúc 8h`
+- labels: O B-TIME O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `lúc 4h chiều mai, tôi gọi điện`
+- labels: O B-TIME B-TIME O O O B-TITLE I-TITLE
+
+- sentence: `tôi gọi điện trước 5h ngày 30/4`
+- labels: O B-TITLE I-TITLE O B-TIME O O O O
+
+- sentence: `tôi học ngoại ngữ vào tối thứ 7 lúc 7h`
+- labels: O B-TITLE I-TITLE I-TITLE O B-TIME O O O B-TIME
+
+- sentence: `thứ 7, tôi học ngoại ngữ lúc 7h tối`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `lúc 8h trưa kia, tôi ăn cơm`
+- labels: O B-TIME B-TIME O O O B-TITLE I-TITLE
+
+- sentence: `tôi ăn cơm trước 12h ngày 25/5`
+- labels: O B-TITLE I-TITLE O B-TIME O O O O
+
+- sentence: `tôi làm việc nhà vào buổi chiều cuối tuần lúc 3h`
+- labels: O B-TITLE I-TITLE I-TITLE O O B-TIME O O O B-TIME
+
+- sentence: `buổi chiều cuối tuần, tôi làm việc nhà lúc 3h`
+- labels: O B-TIME O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `lúc 6h tối mai, tôi ngủ`
+- labels: O B-TIME B-TIME O O O B-TITLE
+
+- sentence: `tôi ngủ trước 10h ngày 20/4`
+- labels: O B-TITLE O B-TIME O O O O
+
+- sentence: `tôi tập thể thao vào sáng chủ nhật lúc 6h`
+- labels: O B-TITLE I-TITLE I-TITLE O B-TIME O O O B-TIME
+
+- sentence: `chủ nhật, tôi tập thể thao lúc 6h sáng`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `lúc 9h sáng kia, tôi uống sữa`
+- labels: O B-TIME B-TIME O O O B-TITLE I-TITLE
+
+- sentence: `tôi uống sữa trước 8h ngày 15/5`
+- labels: O B-TITLE I-TITLE O B-TIME O O O O
+
+- sentence: `tôi đi mua đồ vào buổi trưa tháng sau lúc 12h`
+- labels: O B-TITLE I-TITLE I-TITLE O O B-TIME O O O B-TIME
+
+- sentence: `buổi trưa tháng sau, tôi đi mua đồ lúc 12h`
+- labels: O B-TIME O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `tôi thức khuya sáng mai lúc 1h`
+- labels: O B-TITLE I-TITLE B-TIME O O B-TIME
+
+- sentence: `tôi xem phim tối nay lúc 8h`
+- labels: O B-TITLE I-TITLE B-TIME O O B-TIME
+
+- sentence: `tôi làm bài tập hôm nay lúc 3h chiều`
+- labels: O B-TITLE I-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi dọn nhà hôm qua lúc 5h chiều`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi đi shopping hôm kia lúc 11h sáng`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi đi dạo cuối tuần lúc 10h`
+- labels: O B-TITLE I-TITLE O O O B-TIME
+
+- sentence: `cuối tuần này tôi đi dạo lúc 10h`
+- labels: O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `tôi chạy bộ cuối tuần này lúc 6h sáng`
+- labels: O B-TITLE I-TITLE O O O O B-TIME B-TIME
+
+- sentence: `tôi nấu ăn tuần này lúc 6h tối`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi đi công tác tháng sau lúc 7h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi đọc sách ngày mai lúc 10h sáng`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi ăn sáng lúc 7h sáng hôm nay`
+- labels: O B-TITLE B-TIME O B-TIME O O O
+
+- sentence: `tôi đi tắm lúc 8h tối nay`
+- labels: O B-TITLE I-TITLE O B-TIME B-TIME O
+
+- sentence: `tôi làm báo cáo lúc 16h ngày kia`
+- labels: O B-TITLE I-TITLE I-TITLE O B-TIME O O
+
+- sentence: `tôi tập yoga lúc 5h chiều cuối tuần`
+- labels: O B-TITLE I-TITLE O B-TIME B-TIME O O
+
+- sentence: `tôi uống nước lúc 12h trưa mai`
+- labels: O B-TITLE I-TITLE O B-TIME B-TIME O
+
+- sentence: `tôi gọi điện lúc 3h30 chiều ngày 25/4`
+- labels: O B-TITLE I-TITLE O O B-TIME O O O O
+
+- sentence: `tôi nghe nhạc lúc 5h30 tối nay`
+- labels: O B-TITLE I-TITLE O O B-TIME O
+
+- sentence: `tôi ngủ trưa lúc 1h trưa hôm nay`
+- labels: O B-TITLE B-TIME O B-TIME O O O
+
+- sentence: `tôi đi chơi thứ 2 lúc 4h chiều`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi gặp khách hàng chủ nhật lúc 9h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi học toán ngày mai lúc 7h sáng`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi thức dậy sáng mai lúc 5h`
+- labels: O B-TITLE I-TITLE B-TIME O O B-TIME
+
+- sentence: `tôi xem TV tối nay lúc 9h`
+- labels: O B-TITLE I-TITLE B-TIME O O B-TIME
+
+- sentence: `tôi làm bài tập về nhà hôm nay lúc 4h chiều`
+- labels: O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi giặt đồ hôm qua lúc 6h chiều`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi đi mua đồ hôm kia lúc 9h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi đi câu cá cuối tuần lúc 6h`
+- labels: O B-TITLE I-TITLE I-TITLE O O O B-TIME
+
+- sentence: `cuối tuần này tôi đi câu cá lúc 6h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `tôi tập aerobic cuối tuần này lúc 8h sáng`
+- labels: O B-TITLE I-TITLE O O O O B-TIME B-TIME
+
+- sentence: `tôi làm bánh tuần này lúc 4h chiều`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi đi hội thảo tháng sau lúc 9h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi viết nhật ký ngày mai lúc 8h tối`
+- labels: O B-TITLE I-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi ăn kem lúc 3h chiều hôm nay`
+- labels: O B-TITLE I-TITLE O B-TIME B-TIME O O
+
+- sentence: `tôi đi spa lúc 2h chiều tối nay`
+- labels: O B-TITLE I-TITLE O B-TIME B-TIME B-TIME O
+
+- sentence: `tôi làm slide lúc 15h ngày kia`
+- labels: O B-TITLE I-TITLE O B-TIME O O
+
+- sentence: `tôi tập piano lúc 6h chiều cuối tuần`
+- labels: O B-TITLE I-TITLE O B-TIME B-TIME O O
+
+- sentence: `tôi uống sữa lúc 11h trưa mai`
+- labels: O B-TITLE I-TITLE O B-TIME B-TIME O
+
+- sentence: `tôi gọi video lúc 4h chiều ngày 25/4`
+- labels: O B-TITLE I-TITLE O B-TIME B-TIME O O O O
+
+- sentence: `tôi nghe podcast lúc 6h30 tối nay`
+- labels: O B-TITLE I-TITLE O O B-TIME O
+
+- sentence: `tôi nghỉ ngơi lúc 2h trưa hôm nay`
+- labels: O B-TITLE I-TITLE O B-TIME B-TIME O O
+
+- sentence: `tôi đi chơi thứ 3 lúc 5h chiều`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi gặp đối tác chủ nhật lúc 8h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi học hóa ngày mai lúc 6h sáng`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi thức đêm sáng mai lúc 2h`
+- labels: O B-TITLE B-TIME B-TIME O O B-TIME
+
+- sentence: `tôi xem series tối nay lúc 10h`
+- labels: O B-TITLE I-TITLE B-TIME O O B-TIME
+
+- sentence: `tôi làm bài tập toán hôm nay lúc 5h chiều`
+- labels: O B-TITLE I-TITLE I-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi rửa chén hôm qua lúc 7h chiều`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi đi mua thuốc hôm kia lúc 8h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi đi câu lạc bộ cuối tuần lúc 7h`
+- labels: O B-TITLE I-TITLE I-TITLE I-TITLE O O O B-TIME
+
+- sentence: `cuối tuần này tôi đi câu lạc bộ lúc 7h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `tôi tập gym cuối tuần này lúc 9h sáng`
+- labels: O B-TITLE I-TITLE O O O O B-TIME B-TIME
+
+- sentence: `tôi làm salad tuần này lúc 5h chiều`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi đi họp báo tháng sau lúc 10h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi viết code ngày mai lúc 9h tối`
+- labels: O B-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `tôi ăn bánh lúc 4h chiều hôm nay`
+- labels: O B-TITLE I-TITLE O B-TIME B-TIME O O
+
+- sentence: `tôi đi massage lúc 3h chiều tối nay`
+- labels: O B-TITLE I-TITLE O B-TIME B-TIME B-TIME O
+
+- sentence: `tôi làm presentation lúc 14h ngày kia`
+- labels: O B-TITLE I-TITLE O B-TIME O O
+
+- sentence: `tôi tập violin lúc 7h chiều cuối tuần`
+- labels: O B-TITLE I-TITLE O B-TIME B-TIME O O
+
+- sentence: `tôi uống trà lúc 10h trưa mai`
+- labels: O B-TITLE I-TITLE O B-TIME B-TIME O
+
+- sentence: `tôi gọi conference lúc 5h chiều ngày 25/4`
+- labels: O B-TITLE I-TITLE O B-TIME B-TIME O O O O
+
+- sentence: `tôi nghe audiobook lúc 7h30 tối nay`
+- labels: O B-TITLE I-TITLE O O B-TIME O
+
+- sentence: `tôi nghỉ giải lao lúc 3h trưa hôm nay`
+- labels: O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME O O
+
+- sentence: `tôi nộp hồ sơ ngày 15-8 lúc 9h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi dã ngoại ngày 13/5/2025 lúc 14h`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi gặp nhà đầu tư ngày 21-7-2027 lúc 16h`
+- labels: O B-TITLE I-TITLE I-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi tham dự conference ngày 20/4 lúc 10:00`
+- labels: O B-TITLE I-TITLE I-TITLE O B-DATE I-DATE I-DATE I-DATE B-TIME I-TIME I-TIME
+
+- sentence: `tôi đi mua sắm ngày/15/9/2025 lúc 8h30`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O O O O
+
+- sentence: `tôi trang trí nhà ngày-15-8 lúc 11h`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O B-TIME
+
+- sentence: `tôi đi picnic ngày-25-10-2025 lúc 9h sáng`
+- labels: O B-TITLE I-TITLE O O O O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi bảo dưỡng ngày 20 tháng 5 lúc 2h chiều`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi tham gia networking ngày 20 tháng 5 năm 2029 lúc 10h`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi bắt đầu marketing ngày 1 tháng 6 năm 2025 lúc 8h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi bowling ngày 25/4 lúc 7h tối`
+- labels: O B-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi học khiêu vũ ngày 20/4 lúc 3h chiều`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi nộp kế hoạch ngày 15-8 lúc 9h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi leo núi ngày 13/5/2025 lúc 14h`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi gặp cố vấn ngày 21-7-2027 lúc 16h`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi tham dự summit ngày 20/4 lúc 10:00`
+- labels: O B-TITLE I-TITLE I-TITLE O B-DATE I-DATE I-DATE I-DATE B-TIME I-TIME I-TIME
+
+- sentence: `tôi đi mua quà ngày/15/9/2025 lúc 8h30`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O O O O
+
+- sentence: `tôi lau dọn nhà ngày-15-8 lúc 11h`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O B-TIME
+
+- sentence: `tôi đi câu lạc bộ ngày-25-10-2025 lúc 9h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE I-TITLE O O O O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi bảo hiểm ngày 20 tháng 5 lúc 2h chiều`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi tham gia meetup ngày 20 tháng 5 năm 2029 lúc 10h`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi bắt đầu bán hàng ngày 1 tháng 6 năm 2025 lúc 8h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE I-TITLE O O O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi karaoke ngày 25/4 lúc 7h tối`
+- labels: O B-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi học guitar ngày 20/4 lúc 3h chiều`
+- labels: O B-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi nộp đề xuất ngày 15-8 lúc 9h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O B-TIME B-TIME
+
+- sentence: `tôi đi camping ngày 13/5/2025 lúc 14h`
+- labels: O B-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi gặp mentor ngày 21-7-2027 lúc 16h`
+- labels: O B-TITLE I-TITLE O O O O O O O B-TIME
+
+- sentence: `tôi tham dự expo ngày 20/4 lúc 10:00`
+- labels: O B-TITLE I-TITLE I-TITLE O B-DATE I-DATE I-DATE I-DATE B-TIME I-TIME I-TIME
+
+- sentence: `tôi đi mua thực phẩm ngày/15/9/2025 lúc 8h30`
+- labels: O B-TITLE I-TITLE I-TITLE I-TITLE O O O O O O O O O
+
+- sentence: `tôi sửa chữa nhà ngày-15-8 lúc 11h`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O O B-TIME
+
+- sentence: `tôi đi yoga ngày-25-10-2025 lúc 9h sáng`
+- labels: O B-TITLE I-TITLE O O O O O O O O B-TIME B-TIME
+
+- sentence: `ngày 1 tháng 1 năm 2030, tôi tham gia hội nghị`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE
+
+- sentence: `cuối tháng tôi đóng tiền nhà cho bà chủ lúc 10h`
+- labels: B-DATE I-DATE O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `cuối tháng tôi đi du lịch với mấy anh trong công ty lúc 9h`
+- labels: B-DATE I-DATE O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Sáng thứ 7 tôi có đi siêu thị với vợ lúc 9h`
+- labels: B-TIME O O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Sáng mai tôi có cuộc họp với khách hàng lúc 9h`
+- labels: B-TIME O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Ngày 25 tháng 4 năm 2026 mình có buổi phỏng vấn ứng viên lúc 2h chiều`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Chiều nay tôi có cuộc họp team lúc 3h`
+- labels: B-TIME O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Thứ 2 tuần sau mình có báo cáo tiến độ dự án lúc 10h sáng`
+- labels: O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Ngày 30 tháng 6 năm 2026 tôi có meeting với đối tác lúc 11h`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Tối thứ 4 tôi có buổi training nhân viên mới lúc 7h`
+- labels: B-TIME O O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Sáng nay tôi có họp khẩn cấp lúc 8h30`
+- labels: B-TIME O O O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Ngày 15 tháng 9 năm 2026 mình có review hiệu suất lúc 2h chiều`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Sáng mai tôi có lịch khám bác sĩ lúc 8h`
+- labels: B-TIME O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Ngày 5 tháng 5 năm 2026 mình có hẹn nha sĩ lúc 10h sáng`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Chiều nay tôi có tiêm vắc xin lúc 3h`
+- labels: B-TIME O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Thứ 6 tuần này mình có xét nghiệm máu lúc 7h sáng`
+- labels: O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Ngày 20 tháng 7 năm 2026 tôi có tái khám lúc 9h`
+- labels: O O O O O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Sáng thứ 3 tôi có đi khám mắt lúc 8h30`
+- labels: B-TIME O O O O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Tối thứ 7 tôi có tiệc sinh nhật bạn lúc 7h`
+- labels: B-TIME O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Ngày 14 tháng 2 năm 2027 mình có hẹn Valentine lúc 6h tối`
+- labels: O O O O O O O O B-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Cuối tuần này tôi có liên hoan công ty lúc 5h chiều`
+- labels: O O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Ngày 1 tháng 1 năm 2027 mình có tiệc tất niên lúc 8h tối`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Chiều mai tôi có họp lớp cũ lúc 4h`
+- labels: B-TIME O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Tôi có việc gấp cần làm ngay bây giờ`
+- labels: O O B-TITLE I-TITLE O O B-DATE I-DATE I-DATE
+
+- sentence: `Ngày mai mình có deadline nộp báo cáo lúc 5h chiều`
+- labels: O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Tối nay tôi có hẹn lúc 8h`
+- labels: B-TIME O O O B-TITLE O B-TIME
+
+- sentence: `Sáng chủ nhật mình có hoạt động tình nguyện lúc 7h`
+- labels: B-TIME O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Trưa mai tôi có cơm trưa với đối tác lúc 12h`
+- labels: B-TIME O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Chiều 30 tháng 4 tôi có chương trình văn nghệ lúc 3h`
+- labels: B-TIME O O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Mình có buổi học piano lúc 6h tối nay`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME O
+
+- sentence: `Tôi có lịch massage lúc 4h chiều mai`
+- labels: O O B-TITLE I-TITLE O B-TIME B-TIME O
+
+- sentence: `Có buổi gặp gỡ bạn bè lúc 8h tối thứ 7`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME O O
+
+- sentence: `Tôi có cuộc gọi điện thoại với sếp lúc 10h sáng`
+- labels: O O O O O O O O O B-TIME B-TIME
+
+- sentence: `Mình có hẹn cắt tóc lúc 2h chiều nay`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME O
+
+- sentence: `Tôi có lịch đi bank lúc 9h sáng thứ 2`
+- labels: O O O B-TITLE I-TITLE O B-TIME B-TIME O O
+
+- sentence: `Có buổi chụp hình cưới lúc 10h sáng chủ nhật`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME O O
+
+- sentence: `Tôi có buổi tư vấn bảo hiểm lúc 3h chiều thứ 4`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME O O
+
+- sentence: `Ngày 25 tháng 12 năm 2026 tôi có lễ giáng sinh lúc 7h tối`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Ngày 1 tháng 5 năm 2027 mình có đi lao động tình nguyện lúc 8h sáng`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Ngày 2 tháng 9 năm 2026 tôi có đi chơi lễ lúc 9h`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Ngày 8 tháng 3 năm 2027 mình có tặng quà mẹ lúc 10h sáng`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Ngày 20 tháng 10 năm 2026 tôi có họp phụ huynh lúc 2h chiều`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Ngày 15 tháng 1 năm 2027 mình có tất niên công ty lúc 6h tối`
+- labels: O O O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Tôi có việc khẩn cấp phải làm ngay lúc 3h chiều`
+- labels: O O B-TITLE I-TITLE I-TITLE O O O O B-TIME B-TIME
+
+- sentence: `Mình có việc quan trọng lúc 9h sáng mai`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME O
+
+- sentence: `Tôi có việc bình thường lúc 2h chiều nay`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME O
+
+- sentence: `Mình có việc không gấp lắm lúc 5h`
+- labels: O O B-TITLE I-TITLE I-TITLE O O B-TIME
+
+- sentence: `Tôi có việc ưu tiên cao lúc 10h`
+- labels: O O B-TITLE I-TITLE I-TITLE B-PRIORITY O B-TIME
+
+- sentence: `Mình có việc nhỏ lúc 4h chiều`
+- labels: O O B-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Thứ 3 tuần sau tôi phải báo cáo đồ án lúc 3h`
+- labels: O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Ngày mai tôi phải nộp bài tập lúc 5h chiều`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Thứ 6 này mình phải đi khám bệnh lúc 9h sáng`
+- labels: O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Ngày 15 tháng 5 tôi phải gặp khách hàng lúc 2h chiều`
+- labels: O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Sáng chủ nhật tôi phải dọn nhà lúc 8h`
+- labels: B-TIME O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Tối mai mình phải họp nhóm lúc 7h`
+- labels: B-TIME O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Thứ 2 tuần tới tôi phải thi vấn đáp lúc 10h`
+- labels: O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Chiều nay tôi phải gửi báo cáo lúc 4h`
+- labels: B-TIME O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Ngày 20 tháng 6 tôi phải tham gia workshop lúc 1h chiều`
+- labels: O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Cuối tuần này mình phải sửa xe lúc 10h sáng`
+- labels: O O O O O B-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Sáng mai tôi có buổi tập gym lúc 6h`
+- labels: B-TIME O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Chiều nay mình có buổi bơi lội lúc 4h`
+- labels: B-TIME O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Ngày 10 tháng 5 tôi có buổi phỏng vấn lúc 9h sáng`
+- labels: O O O O O O O B-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Tối thứ 6 mình có buổi tiệc sinh nhật lúc 7h`
+- labels: B-TIME O O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Chủ nhật này tôi có buổi ăn cưới lúc 11h`
+- labels: O O O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Thứ 4 tuần sau mình có buổi khám nha sĩ lúc 2h chiều`
+- labels: O O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Sáng thứ 2 tôi có buổi họp khẩn lúc 8h30`
+- labels: B-TIME O O O O O B-TITLE I-TITLE O O
+
+- sentence: `Chiều 30 tháng 4 mình có buổi văn nghệ lúc 3h`
+- labels: B-TIME O O O O O O B-TITLE I-TITLE O B-TIME
+
+- sentence: `Ngày 25 tháng 12 tôi có buổi lễ giáng sinh lúc 6h tối`
+- labels: O O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Ngày 20 tháng 4 năm 2026, tôi có bài thi cuối kỳ lúc 1h chiều`
+- labels: O O O O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Sáng thứ 2 tôi có bài kiểm tra toán lúc 8h`
+- labels: B-TIME O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Chiều mai mình có bài thi tiếng Anh lúc 2h`
+- labels: B-TIME O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Ngày 15 tháng 6 tôi có bài thi vật lý lúc 9h sáng`
+- labels: O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Thứ 6 tuần này tôi có bài kiểm tra hóa lúc 10h`
+- labels: O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Tối chủ nhật mình có bài thi lập trình lúc 7h`
+- labels: B-TIME O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Ngày 5 tháng 7 tôi có bài kiểm tra sinh học lúc 3h chiều`
+- labels: O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Thứ 4 tuần sau tôi có bài thi lịch sử lúc 8h30 sáng`
+- labels: O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE O O B-TIME
+
+- sentence: `Chiều 20 tháng 5 mình có bài kiểm tra địa lý lúc 4h`
+- labels: B-TIME O O O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Ngày 10 tháng 8 tôi có bài thi tốt nghiệp lúc 7h sáng`
+- labels: O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Cho tôi xem danh sách tất cả công việc`
+- labels: O O O O O O O O O
+
+- sentence: `Hiển thị toàn bộ task của tôi`
+- labels: O O O O O O O
+
+- sentence: `Liệt kê những việc cần làm`
+- labels: O O O O O O
+
+- sentence: `Tôi muốn xem lịch làm việc tuần này`
+- labels: O O O O O O O O
+
+- sentence: `Danh sách công việc hôm nay là gì`
+- labels: O O O O O O O O
+
+- sentence: `Cho tôi xem các task chưa hoàn thành`
+- labels: O O O O O O O O
+
+- sentence: `Hiện những việc còn tồn đọng`
+- labels: O O O O O O
+
+- sentence: `Xem todo list của tôi`
+- labels: O O O O O
+
+- sentence: `Tôi có những task nào đang chạy`
+- labels: O O O O O O O
+
+- sentence: `Kiểm tra lịch trình tháng này`
+- labels: O O O O O O
+
+- sentence: `Cho tôi xem task đang trong tiến trình`
+- labels: O O O O O O O O
+
+- sentence: `Hiển thị task có độ ưu tiên cao`
+- labels: O O O O O O O B-PRIORITY
+
+- sentence: `Những việc đã hoàn thành tuần trước`
+- labels: O O O O O O O
+
+- sentence: `Công việc trễ hạn có những gì`
+- labels: O O O O O O O
+
+- sentence: `Cho tôi xem việc chưa làm`
+- labels: O O O O O O
+
+- sentence: `Task nào deadline hôm nay`
+- labels: O O O B-DATE I-DATE
+
+- sentence: `Việc cần làm trong ngày mai`
+- labels: O O O O B-DATE I-DATE
+
+- sentence: `Cho tôi xem task ưu tiên thấp`
+- labels: O O O O O O B-PRIORITY
+
+- sentence: `Những việc đã xong tháng này`
+- labels: O O O O O O
+
+- sentence: `Danh sách cuộc họp tuần tới`
+- labels: O O O O O O
+
+- sentence: `Đánh dấu hoàn thành task họp nhóm`
+- labels: O O O O O B-TITLE I-TITLE
+
+- sentence: `Chuyển task gửi báo cáo sang đang làm`
+- labels: O O B-TITLE I-TITLE I-TITLE O O O
+
+- sentence: `Đánh dấu xong việc nộp đơn`
+- labels: O O O O B-TITLE I-TITLE
+
+- sentence: `Cập nhật trạng thái task đi khám bệnh là xong`
+- labels: O O O O O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Đánh dấu task mua đồ là đã xong`
+- labels: O O O B-TITLE I-TITLE O O O
+
+- sentence: `Chuyển task thanh toán hóa đơn sang hoàn thành`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE O O O
+
+- sentence: `Đánh dấu xong việc gọi điện khách hàng`
+- labels: O O O O B-TITLE I-TITLE I-TITLE I-TITLE
+
+- sentence: `Cập nhật task chuẩn bị slide là đang làm`
+- labels: O O O B-TITLE I-TITLE I-TITLE O O O
+
+- sentence: `Chuyển việc dọn nhà sang đã xong`
+- labels: O O B-TITLE I-TITLE O O O
+
+- sentence: `Đánh dấu xong task thi cuối kỳ`
+- labels: O O O O B-TITLE I-TITLE I-TITLE
+
+- sentence: `Chuyển hạn nộp báo cáo sang ngày mai`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-DATE I-DATE
+
+- sentence: `Đổi deadline họp nhóm sang thứ 6`
+- labels: O O B-TITLE I-TITLE O B-DATE I-DATE
+
+- sentence: `Tăng độ ưu tiên task gửi email lên cao`
+- labels: O O O O O B-TITLE I-TITLE O B-PRIORITY
+
+- sentence: `Giảm ưu tiên việc đi chợ xuống thấp`
+- labels: O O O O B-TITLE I-TITLE O B-PRIORITY
+
+- sentence: `Chuyển thời gian gặp khách hàng sang 3h chiều`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Cập nhật hạn nộp bài sang tuần sau`
+- labels: O O O B-TITLE I-TITLE O B-DATE I-DATE
+
+- sentence: `Tăng ưu tiên task khám bác sĩ lên khẩn cấp`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O O O
+
+- sentence: `Đổi lịch họp sang ngày 20 tháng 5`
+- labels: O O B-TITLE O O O O O
+
+- sentence: `Chuyển deadline thanh toán sang cuối tuần`
+- labels: O O B-TITLE I-TITLE O B-DATE I-DATE
+
+- sentence: `Sửa thời gian tập gym thành 6h sáng`
+- labels: O O O B-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Xóa task họp nhóm`
+- labels: O O B-TITLE I-TITLE
+
+- sentence: `Xóa công việc gửi báo cáo`
+- labels: O O O B-TITLE I-TITLE I-TITLE
+
+- sentence: `Loại bỏ task đi khám bệnh`
+- labels: O O O B-TITLE I-TITLE I-TITLE
+
+- sentence: `Gỡ việc mua đồ khỏi danh sách`
+- labels: O O B-TITLE I-TITLE O O O
+
+- sentence: `Xóa task chuẩn bị slide thuyết trình`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE
+
+- sentence: `Xóa việc thanh toán hóa đơn`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE
+
+- sentence: `Xóa task gọi điện khách hàng`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE
+
+- sentence: `Hủy task thi cuối kỳ`
+- labels: O O B-TITLE I-TITLE I-TITLE
+
+- sentence: `Xóa việc dọn nhà khỏi todo list`
+- labels: O O B-TITLE I-TITLE O O O
+
+- sentence: `Xóa task tập gym`
+- labels: O O B-TITLE I-TITLE
+
+- sentence: `Xóa tất cả task đã hoàn thành`
+- labels: O O O O O O O
+
+- sentence: `Xóa toàn bộ todo list`
+- labels: O O O O O
+
+- sentence: `Xóa các task trễ hạn`
+- labels: O O O O O
+
+- sentence: `Xóa những việc đã xong`
+- labels: O O O O O
+
+- sentence: `Xóa toàn bộ công việc trong danh sách`
+- labels: O O O O O O O O
+
+- sentence: `Xóa các task ưu tiên thấp`
+- labels: O O O O O B-PRIORITY
+
+- sentence: `Xóa hết task chưa làm`
+- labels: O O O O O
+
+- sentence: `Xóa tất cả việc đã xong tháng này`
+- labels: O O O O O O O O
+
+- sentence: `Xóa các task không còn cần thiết`
+- labels: O O O O O O O
+
+- sentence: `Chiều thứ 3 tuần sau tôi phải báo cáo đồ án lúc 3h`
+- labels: B-TIME O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Chiều thứ 3 tuần sau tôi có buổi báo cáo đồ án lúc 3h`
+- labels: B-TIME O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Thứ 3 tuần sau tôi có buổi báo cáo đồ án lúc 3h chiều`
+- labels: O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Thứ 3 tuần sau tôi phải hoàn thành báo cáo lúc 4h`
+- labels: O O O O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Thứ 3 tuần sau tôi có buổi thuyết trình lúc 2h chiều`
+- labels: O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Cuối tuần tôi đi cà hê với bạn lúc 10h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần sau tôi đi về quê lúc 3h chiều`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Cuối tuần này tôi đi về quê lúc 10h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi đóng tiền nhà cho bà chủ lúc 10h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng tôi đóng tiền nhà cho bà chủ lúc 10h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tháng này tôi cần nộp tiền điện lúc 8h`
+- labels: O O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `cuối tháng này tôi đóng tiền nhà cho bà chủ lúc 10h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Thêm đóng tiền điện cuối tháng, ưu tiên cao`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O B-PRIORITY
+
+- sentence: `Cuối tháng tôi nộp báo cáo cho sếp lúc 9h sáng`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Nhắc nộp phí bảo hiểm cuối tháng này lúc 16h`
+- labels: O B-TITLE I-TITLE I-TITLE I-TITLE O O O O B-TIME
+
+- sentence: `Cuối tháng này thanh toán hóa đơn internet, ưu tiên thấp`
+- labels: B-DATE I-DATE I-DATE B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O O O B-PRIORITY
+
+- sentence: `Thêm đóng tiền nước cuối tháng lúc 14h30`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O
+
+- sentence: `Cuối tháng nộp thuế cá nhân lúc 17h`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Đóng tiền thuê xe cuối tháng này`
+- labels: B-TITLE I-TITLE I-TITLE I-TITLE B-DATE I-DATE I-DATE
+
+- sentence: `Cuối tháng tôi trả góp ngân hàng lúc 11h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nhắc đóng phí hội viên cuối tháng, ưu tiên cao`
+- labels: O B-TITLE I-TITLE I-TITLE I-TITLE O O O O O B-PRIORITY
+
+- sentence: `Cuối tháng này nộp học phí con lúc 8h sáng`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Thêm thanh toán thẻ tín dụng cuối tháng lúc 18h`
+- labels: O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O O O B-TIME
+
+- sentence: `Cuối tháng đóng tiền gas lúc 12h trưa`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Nộp báo cáo doanh thu cuối tháng này lúc 15h`
+- labels: B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O O O O B-TIME
+
+- sentence: `Cuối tháng tôi mua bảo hiểm xe lúc 13h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Thêm đóng tiền trọ cuối tháng, ưu tiên thấp`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O B-PRIORITY
+
+- sentence: `Cuối tháng này trả tiền vay bạn lúc 19h tối`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Nộp phí gym cuối tháng lúc 10h30`
+- labels: B-TITLE I-TITLE I-TITLE O O O O
+
+- sentence: `Cuối tháng thanh toán Netflix lúc 20h`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Đóng tiền học lớp con cuối tháng này`
+- labels: B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE B-DATE I-DATE I-DATE
+
+- sentence: `Cuối tháng nộp biên lai thuế lúc 16h30`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Thêm trả tiền wifi cuối tháng lúc 9h sáng`
+- labels: O B-TITLE I-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `Cuối tháng này đóng phí quản lý chung cư`
+- labels: B-DATE I-DATE I-DATE B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE I-TITLE
+
+- sentence: `Nộp báo cáo bán hàng cuối tháng lúc 14h`
+- labels: B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O O O B-TIME
+
+- sentence: `Cuối tháng trả nợ thẻ lúc 17h30`
+- labels: O O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Thêm đóng tiền báo cuối tháng, ưu tiên thấp`
+- labels: O B-TITLE I-TITLE I-TITLE O O O O O B-PRIORITY
+
+- sentence: `Cuối tháng này nộp phí gửi xe lúc 11h`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Đóng tiền học thêm cuối tháng lúc 18h30`
+- labels: B-TITLE I-TITLE I-TITLE I-TITLE O O O O
+
+- sentence: `Cuối tháng thanh toán Grab lúc 12h30`
+- labels: O O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Nộp phí CLB cuối tháng này lúc 15h30`
+- labels: B-TITLE I-TITLE I-TITLE O O O O O
+
+- sentence: `Cuối tháng tôi đóng tiền từ thiện lúc 20h30`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Thêm nộp phí đường bộ cuối tháng lúc 8h30`
+- labels: O B-TITLE I-TITLE I-TITLE I-TITLE O O O O
+
+- sentence: `Cuối tháng này trả tiền hàng xóm mượn lúc 13h30`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Đóng phí bạn bè cuối tháng lúc 7h sáng`
+- labels: B-TITLE I-TITLE I-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `Cuối tháng nộp phí yoga lúc 19h`
+- labels: O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Thanh toán Shopee cuối tháng này lúc 21h`
+- labels: B-TITLE I-TITLE I-TITLE O O O O B-TIME
+
+- sentence: `Cuối tháng đóng tiền trà sữa lúc 22h`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nộp phí app học cuối tháng lúc 6h sáng`
+- labels: B-TITLE I-TITLE I-TITLE I-TITLE O O O B-TIME B-TIME
+
+- sentence: `Cuối tháng này tôi cần giao giấy tờ lúc 9h`
+- labels: O O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Cuối tuần này tôi đến nhà ngoại lúc 11h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi đi chơi đá banh với bạn bè vào 7h tối`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Hôm sau tôi phải tới bệnh việc lúc 9h`
+- labels: O O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi có việc ra ngoài lúc 3h`
+- labels: O O O B-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Nay tôi đi cà phê với bạn lúc 10h`
+- labels: O O B-TITLE I-TITLE I-TITLE I-TITLE I-TITLE O B-TIME
+
+- sentence: `Ngày 20 tháng 4 năm 2026, tôi có buổi phỏng vấn lúc 1h chiều`
+- labels: O O O O O O O O O B-TITLE I-TITLE I-TITLE O B-TIME B-TIME
+
+- sentence: `Xóa những việc trùng lặp`
+- labels: O O O O O
+
+- sentence: `Xem những task cần xóa`
+- labels: O O O O O
+
+- sentence: `Cho tôi xem các công việc đã xóa`
+- labels: O O O O O O O O
+
+- sentence: `Liệt kê những việc đã bị xóa`
+- labels: O O O O O O O
+
+- sentence: `Xem các task mà tôi đã xóa`
+- labels: O O O O O O O
+
+- sentence: `Hiển thị danh sách việc xóa`
+- labels: O O O O O O
+
+- sentence: `Xem những task đang chờ xóa`
+- labels: O O O O O O
+
+- sentence: `Xem task chưa được xóa`
+- labels: O O O O O
+
+- sentence: `Xem các công việc đã hủy`
+- labels: O O O O O O
+
+- sentence: `Cho tôi xem các công việc đã bị hủy`
+- labels: O O O O O O O O O
+
+- sentence: `Xem reminder đã xóa`
+- labels: O O O O
+
+- sentence: `Xem task đã xóa hôm nay`
+- labels: O O O O B-DATE I-DATE
+
+- sentence: `Xem các việc xóa trong tuần`
+- labels: O O O O O O
+
+- sentence: `Xem task xóa gần đây`
+- labels: O O O O O
+
+- sentence: `Xóa task họp nhóm đang hiển thị`
+- labels: O O B-TITLE I-TITLE O O O
+
+- sentence: `Xóa việc gửi báo cáo mà tôi đang xem`
+- labels: O O B-TITLE I-TITLE I-TITLE O O O O
+
+- sentence: `Loại bỏ task dọn nhà đang hiển thị`
+- labels: O O O B-TITLE I-TITLE O O O
+
+- sentence: `Xóa công việc thanh toán hóa đơn đang xem`
+- labels: O O O B-TITLE I-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Hủy task gặp khách hàng đang mở`
+- labels: O O B-TITLE I-TITLE I-TITLE O O
+
+- sentence: `Xóa các task tôi vừa thấy trong danh sách`
+- labels: O O O O O O O O O
+
+- sentence: `Hủy những việc đang được xem`
+- labels: O O O O O O
+
+- sentence: `Xóa việc họp dự án mà tôi đang xem`
+- labels: O O B-TITLE I-TITLE I-TITLE O O O O
+
+- sentence: `Loại bỏ task sửa xe đang hiển thị`
+- labels: O O O B-TITLE I-TITLE O O O
+
+- sentence: `Xóa task tập gym đang xem`
+- labels: O O B-TITLE I-TITLE O O
+
+- sentence: `Xóa task này khỏi danh sách tôi đang xem`
+- labels: O O O O O O O O O
+
+- sentence: `Xóa việc đang mở`
+- labels: O O O O
+
+- sentence: `Xóa task hiện tại`
+- labels: O O O O
+
+- sentence: `Hủy bỏ task đang được xem`
+- labels: O O O O O O
 

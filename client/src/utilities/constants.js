@@ -16,6 +16,7 @@ export const API_ENDPOINTS = Object.freeze({
   NLP_PARSE: '/nlp/parse',
 });
 
+// Page paths
 export const PAGE_PATH = Object.freeze({
   TODO_LIST: '/todos',
   LOGIN: '/login',
@@ -30,6 +31,7 @@ export const STORAGE_KEYS = Object.freeze({
   COMPANY_USER: 'company-user',
   PERSONAL_USER: 'personal-user',
   AUTH_TOKEN: 'auth_token',
+  REMEMBER_EMAIL: 'remember_email',
   NEW_SIGN_REQUEST: 'new-sign-request',
   NEW_TEMPLATE: 'new-template',
   CREATED_SIGN_REQUEST_TEMPALTE: 'created-sign-request-template',
@@ -46,14 +48,18 @@ export const STORAGE_KEYS = Object.freeze({
   USER_ACCOUNT: 'user-account',
 });
 
+// AI Assistant messages
 export const ASSISTANT_MESSAGES = Object.freeze({
   WELCOME: "Hello! I'm your Todo Assistant. What task schedule would you like me to create 😊?",
   EMPTY: 'Please enter a prompt before sending to me 😘',
+  LOADING: "Hang tight! I'm processing your request... ⏳",
   INTENT_NOT_SUPPORTED: 'I detected the task\'s intent is "%s 🤔", but currently I only support creating tasks',
-  TASK_CREATED:
-    'I have created the task "%s" for you. The due date is %s. If you want me to create another task, just say so 🥰!',
+  TASK_CREATED: 'I have created the task "%s" for you. The due date is %s. If you want me to create another task, just say so 🥰!',
+  PARSE_FAILED: 'I could not understand your prompt. Please try again with a different instruction 🥹',
+  TASK_CREATION_FAILED: 'An error occurred while creating the task. Please try again later 🥹',
 });
 
+// Priority levels
 export const PRIORITY_LEVELS = Object.freeze({
   ALL: 'All',
   HIGH: 'High',
@@ -61,6 +67,7 @@ export const PRIORITY_LEVELS = Object.freeze({
   LOW: 'Low',
 });
 
+// Intent types
 export const INTENT_TYPES = Object.freeze({
   CREATE: 'Create',
   UPDATE: 'Update',
@@ -68,6 +75,7 @@ export const INTENT_TYPES = Object.freeze({
   VIEW: 'View',
 });
 
+// Status types
 export const STATUS_TYPES = Object.freeze({
   MY_TASKS: 'My Tasks',
   COMPLETED: 'Completed',
@@ -76,6 +84,7 @@ export const STATUS_TYPES = Object.freeze({
   OVERDUE: 'Overdue',
 });
 
+// Priority values (backend)
 export const PRIORITY_VALUES = Object.freeze({
   ALL: 'ALL',
   HIGH: 'HIGH',
@@ -83,6 +92,7 @@ export const PRIORITY_VALUES = Object.freeze({
   LOW: 'LOW',
 });
 
+// Status values (backend)
 export const STATUS_VALUES = Object.freeze({
   MY_TASKS: 'MY_TASKS',
   PENDING: 'PENDING',
@@ -172,4 +182,8 @@ export const AUTH_ID = Object.freeze({
 export const RESET_PASSWORD_CONFIG = Object.freeze({
   PASSWORD_MIN_LENGTH: 10,
   COOL_DOWN_SECOND: 60,
+});
+
+export const EXTERNAL_SCRIPTS = Object.freeze({
+  FACEBOOK_SDK: 'https://connect.facebook.net/en_US/sdk.js',
 });

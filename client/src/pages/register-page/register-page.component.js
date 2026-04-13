@@ -1,7 +1,8 @@
 import { Form } from '@/antd-components/form.component';
 import { message } from '@/antd-components/message.component';
 import { Space } from '@/antd-components/space.component';
-import { API_ENDPOINTS, PAGE_PATH, RESET_PASSWORD_CONFIG } from '@/utilities/constants';
+import { API_ENDPOINTS, PAGE_PATH } from '@/utilities/constants';
+import { usePasswordValidation } from '@/utilities/hooks/use-password-validation.hook.js';
 import { todoApi } from '@/utilities/services/api.service';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -30,6 +31,7 @@ export const RegisterPage = () => {
   const [form] = Form.useForm();
   const [isLoading, setIsLoading] = useState(false);
   const emailRef = useRef(null);
+  const { getPasswordRules, getConfirmRules } = usePasswordValidation();
 
   const navigate = useNavigate();
 
@@ -84,29 +86,7 @@ export const RegisterPage = () => {
           <Form.Item
             label={<PasswordLabelWrapper size={270}>Password</PasswordLabelWrapper>}
             name="password"
-            rules={[
-              { required: true, message: 'Please enter your password!' },
-              {
-                min: RESET_PASSWORD_CONFIG.PASSWORD_MIN_LENGTH,
-                message: `Password must be at least ${RESET_PASSWORD_CONFIG.PASSWORD_MIN_LENGTH} characters!`,
-              },
-              {
-                pattern: /(?=.*[0-9])/,
-                message: 'Password must include at least one number!',
-              },
-              {
-                pattern: /(?=.*[a-z])/,
-                message: 'Password must include at least one lowercase letter!',
-              },
-              {
-                pattern: /(?=.*[A-Z])/,
-                message: 'Password must include at least one uppercase letter!',
-              },
-              {
-                pattern: /(?=.*[!@#$%^&*(),.?":{}|<>])/,
-                message: 'Password must include at least one special character!',
-              },
-            ]}
+            rules={getPasswordRules()}
           >
             <AuthPasswordField placeholder="Enter your password" />
           </Form.Item>
@@ -115,16 +95,7 @@ export const RegisterPage = () => {
             label={<ConfirmPasswordLabelWrapper size={270}>Confirm Password</ConfirmPasswordLabelWrapper>}
             name="confirmPassword"
             dependencies={['password']}
-            rules={[
-              { required: true, message: 'Please confirm your password!' },
-              ({ getFieldValue }) => ({
-                validator(_, value) {
-                  if (!value || getFieldValue('password') === value) return Promise.resolve();
-
-                  return Promise.reject(new Error('Passwords do not match!'));
-                },
-              }),
-            ]}
+            rules={getConfirmRules()}
           >
             <AuthPasswordField placeholder="Confirm your password" />
           </Form.Item>
