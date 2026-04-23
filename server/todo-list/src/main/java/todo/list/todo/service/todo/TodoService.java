@@ -151,7 +151,7 @@ public class TodoService {
         StatusEnum statusEnum = request.getStatus() != null ? request.getStatus() : StatusEnum.PENDING;
 
         todoSupportService.setTodoFields(todo, request.getTitle(), request.getDescription(), request.getDueDate(),
-                priorityEnum, statusEnum);
+                priorityEnum, statusEnum, false); // resetReminder = false for create
 
         saveTodo(todo);
 
@@ -165,9 +165,13 @@ public class TodoService {
         Todo todo = todoSupportService.findTodoByIdAndUser(userEmail, id);
         todo.updatedAt = Instant.now();
 
+        // FIXED: Check if dueDate changed and reset reminder flag
+        boolean dueDateChanged = request.getDueDate() != null && !request.getDueDate().equals(todo.dueDate);
+        boolean resetReminder = dueDateChanged;
+
         todoSupportService.setTodoFields(todo, request.getTitle(), request.getDescription(), request.getDueDate(),
                 request.getPriority(),
-                request.getStatus());
+                request.getStatus(), resetReminder);
 
         if (request.getCompleted() != null)
             todo.completed = request.getCompleted();

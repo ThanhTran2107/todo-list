@@ -38,20 +38,23 @@ public class TodoSupportService {
                 computedStatus, todo.createdAt, todo.updatedAt);
     }
 
-    // METHOD TO SET FIELDS FOR ENTITY
+    // METHOD TO SET FIELDS FOR ENTITY - FIXED: Add resetReminder for dueDate
+    // changes
     public void setTodoFields(Todo todo, String title, String description, Instant dueDate,
-            PriorityEnum priority,
-            StatusEnum status) {
+            PriorityEnum priority, StatusEnum status, boolean resetReminder) {
         todo.title = title.trim();
         todo.description = description != null ? description.trim() : null;
         todo.dueDate = dueDate;
         todo.priority = priority;
         todo.status = status;
 
+        // Reset reminder flag if dueDate changed (to allow new reminders)
+        if (resetReminder)
+            todo.reminded = false;
+
         // Ensure completed flag follows status
         if (status != null)
             todo.completed = status == StatusEnum.COMPLETED;
-
     }
 
     // METHOD TO VALIDATE INPUT FIELDS

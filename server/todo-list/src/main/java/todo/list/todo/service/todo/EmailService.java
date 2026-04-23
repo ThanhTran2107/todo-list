@@ -27,7 +27,7 @@ public class EmailService {
         try (InputStream is = getClass().getResourceAsStream("/templates/reminder-email.html")) {
             if (is == null)
                 throw new RuntimeException("Template not found");
-            
+
             htmlTemplate = new String(is.readAllBytes(), StandardCharsets.UTF_8);
         }
 
@@ -35,7 +35,7 @@ public class EmailService {
                 .withZone(ZoneId.of("Asia/Ho_Chi_Minh"));
         String formattedDate = formatter.format(todo.dueDate);
 
-        // TRUYỀN DỮ LIỆU VÀO TEMPLATE (Thứ tự phải khớp với các dấu %s trong HTML)
+        // Replace template placeholders (order must match HTML {placeholders})
         // 1: Email, 2: Title, 3: Date
         htmlTemplate = htmlTemplate
                 .replace("{email}", todo.user.email)
@@ -43,7 +43,7 @@ public class EmailService {
                 .replace("{dueDate}", formattedDate)
                 .replace("{appUrl}", frontendUrl);
 
-        // 4. Gửi email với nội dung đã được thay thế dữ liệu
+        // 4. Send email with replaced template data
         mailer.send(Mail.withHtml(
                 todo.user.email,
                 "Reminder: " + todo.title,

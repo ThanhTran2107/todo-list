@@ -77,7 +77,7 @@ public class TodoSupportServiceTest {
     void testSetTodoFields() {
         Todo todo = new Todo();
         todoSupportService.setTodoFields(todo, "New Title", "New Desc", Instant.now(), PriorityEnum.HIGH,
-                StatusEnum.IN_PROGRESS);
+                StatusEnum.IN_PROGRESS, false);
         assertEquals("New Title", todo.title);
         assertEquals(PriorityEnum.HIGH, todo.priority);
         assertEquals(StatusEnum.IN_PROGRESS, todo.status);
