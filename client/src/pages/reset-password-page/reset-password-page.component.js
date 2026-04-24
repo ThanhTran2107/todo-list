@@ -29,7 +29,7 @@ export const ResetPasswordPage = () => {
 
   const { phase, userEmail, isSubmitting, handleReset, getPasswordRules, getConfirmRules } = useResetPassword(token);
 
-  if (phase === 'loading') {
+  if (phase === 'loading')
     return (
       <Wrapper>
         <ResetPasswordForm>
@@ -42,7 +42,6 @@ export const ResetPasswordPage = () => {
         </ResetPasswordForm>
       </Wrapper>
     );
-  }
 
   if (phase === 'no_token' || phase === 'invalid') {
     const text =
@@ -57,12 +56,15 @@ export const ResetPasswordPage = () => {
               Reset password
             </TitleWrapper>
           </FormTitle>
+
           <FormBodyLabelText>{text}</FormBodyLabelText>
+
           <FormButtonWrapper>
             <PrimaryButton type="primary" block onClick={() => navigate(PAGE_PATH.FORGOT_PASSWORD)}>
               Request new reset link
             </PrimaryButton>
           </FormButtonWrapper>
+
           <FormFooter>
             <SecondaryButton onClick={() => navigate(PAGE_PATH.LOGIN)}>Back to login</SecondaryButton>
           </FormFooter>
@@ -81,7 +83,9 @@ export const ResetPasswordPage = () => {
               Reset password
             </TitleWrapper>
           </FormTitle>
+
           {userEmail && <FormBodyLabelText>Account: {userEmail}</FormBodyLabelText>}
+
           <Form.Item
             label={<EmailLabelWrapper size={270}>New password</EmailLabelWrapper>}
             name="password"
@@ -89,6 +93,7 @@ export const ResetPasswordPage = () => {
           >
             <AuthTextField type="password" placeholder="Enter new password" />
           </Form.Item>
+
           <Form.Item
             label={<EmailLabelWrapper size={270}>Confirm password</EmailLabelWrapper>}
             name="confirmPassword"
@@ -97,6 +102,7 @@ export const ResetPasswordPage = () => {
           >
             <AuthTextField type="password" placeholder="Confirm new password" />
           </Form.Item>
+
           <Form.Item>
             <FormButtonWrapper>
               <PrimaryButton type="primary" htmlType="submit" loading={isSubmitting} block>
@@ -105,6 +111,7 @@ export const ResetPasswordPage = () => {
             </FormButtonWrapper>
           </Form.Item>
         </Form>
+        
         <FormFooter>
           <FormFooterText>Link expires 30 minutes after it is sent.</FormFooterText>
           <SecondaryButton onClick={() => navigate(PAGE_PATH.LOGIN)}>Cancel</SecondaryButton>

@@ -35,7 +35,7 @@ public class ForgotPasswordService {
     PasswordEncoder passwordEncoder;
 
     @Inject
-    @Location("email-template.html")
+    @Location("reset-password-email.html")
     Template template;
 
     @Transactional
@@ -49,8 +49,8 @@ public class ForgotPasswordService {
         }
         passwordResetTokenRepository.deleteByUser(user);
         PasswordResetToken passwordResetToken = new PasswordResetToken(null, UUID.randomUUID().toString(),
-                                                                        LocalDateTime.now().plusMinutes(30), user,
-                                                                        LocalDateTime.now());
+                LocalDateTime.now().plusMinutes(30), user,
+                LocalDateTime.now());
         passwordResetToken = passwordResetTokenRepository.save(passwordResetToken);
         return passwordResetToken;
     }
@@ -62,7 +62,7 @@ public class ForgotPasswordService {
         mailer.send(Mail.withHtml(email, "Account recovery", htmlContent));
     }
 
-    public User getUserInfoByToken(String token) throws Exception{
+    public User getUserInfoByToken(String token) throws Exception {
         PasswordResetToken passwordResetToken = getTokenIfValid(token);
         if (passwordResetToken == null) {
             throw new InvalidTokenException("Invalid token or expired. ");
@@ -77,7 +77,8 @@ public class ForgotPasswordService {
         }
         String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?\":{}|<>]).*$";
         if (!newPassword.matches(passwordRegex)) {
-            throw new Exception("Password must contain at least one number, one lowercase letter, one uppercase letter, and one special character");
+            throw new Exception(
+                    "Password must contain at least one number, one lowercase letter, one uppercase letter, and one special character");
         }
         PasswordResetToken passwordResetToken = getTokenIfValid(token);
         User user = passwordResetToken.user;
@@ -94,6 +95,6 @@ public class ForgotPasswordService {
         if (optional.isEmpty() || optional.get().isExpired()) {
             return null;
         }
-        return  optional.get();
+        return optional.get();
     }
 }

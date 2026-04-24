@@ -46,7 +46,7 @@ public class EmailService {
         // 4. Send email with replaced template data
         mailer.send(Mail.withHtml(
                 todo.user.email,
-                "Reminder: " + todo.title,
+                "Upcoming Task Deadline: " + todo.title,
                 htmlTemplate));
     }
 
